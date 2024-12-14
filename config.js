@@ -9,9 +9,9 @@ import axios from 'axios'
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
 global.owner = [
-  ['50557865603', 'WillZek', true],
-  ['529831715910', 'IsitaBot-Ai', true],
-  ['50498409019', 'Soporte', true]
+  ['51927238856', 'Cristian Escobar', true],
+  ['51965911060', 'ShadowBot', true],
+  ['15099774744', 'Soporte', true]
 ]
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
@@ -21,17 +21,17 @@ global.prems = []
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
-global.packname = `[ Sticker Maker`
-global.author = '🌠 Isita Ai WhatsApp Bot ]'
-global.wm = '⛄IsitaBot❤️‍🔥'
-global.dev = '© Powered By Isa ❀'
-global.stickauth = `© IsitaBot Ai By Isa`
-global.stickpack = `©️ Powered By Isa`
-global.wait = '🌠 *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ... ฅ^•ﻌ•^ฅ*'
-global.botname = '[ 𝐈𝐬𝐢𝐭𝐚 𝐀𝐢 𝐖𝐡𝐚𝐬𝐀𝐩𝐩 𝐁𝐨𝐭 ]'
-global.textbot = `Powered By Isa`
+global.packname = `[ Shadow Bot - MD`
+global.author = 'Usxr Crxxs 🥀 ]'
+global.wm = 'Shadow Bot - MD'
+global.dev = '© Powered By Heavenly ❀'
+global.stickauth = `© Shadow By Cristian`
+global.stickpack = `©️ Powered By Cristian`
+global.wait = '🌙 *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ... ฅ^•ﻌ•^ฅ*'
+global.botname = '[ Shadow Bot WhatsApp ]'
+global.textbot = `Powered By Cristian`
 global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
-global.namechannel = '𝐓𝐇𝐄 𝐈𝐒𝐈𝐓𝐀𝐁𝐎𝐓-𝐀𝐈 🌠'
+global.namechannel = 'Shadow Bot - MD'
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
