@@ -1,7 +1,7 @@
 {
-    "name": "IsitaBot-Ai",
+    "name": "ShadowBot-MD",
     "version": "1.0.0",
-    "description": "Is the best",
+    "description": "WhatsApp Bot Simple",
     "main": "index.js",
     "type": "module",
     "directories": {
@@ -26,17 +26,17 @@
         "PrakBot",
         "baileys-md"
     ],
-    "homepage": "https://github.com/WillZek/IsitaBot-Ai",
+    "homepage": "https://github.com/CrxstianEscobar/ShadowBot-MD",
     "author": {
-        "name": "WillZek"
+        "name": "Cristian Escobar"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/WillZek/IsitaBot-Ai.git"
+        "url": "git+https://github.com/CrxstianEscobar/ShadowBot-MD.git"
     },
     "bugs": {
         "url":
-"https://github.com/WillZek/IsitaBot-Ai/issues"
+"https://github.com/CrxstianEscobar/ShadowBot-MD/issues"
     },
     "license": "MIT",
     "dependencies": {
