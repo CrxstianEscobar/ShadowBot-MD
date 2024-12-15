@@ -2,11 +2,11 @@
  <p align="center">🌙 WhatsApp Bot Node-Js.</p>
 </p>
 
-### *Bot En Desarrollo 🌙*
+  [![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=FF0000&lines=Bienvenido+al+Repositorio+Oficial+de;Shadow+Bot-MD;Creado+por+Cristian+Escobar+🥀)](https://git.io/typing-svg)
 ![Shadow](https://qu.ax/CDaWO.jpg)
 
 ## Creador 
 
 <a href="https://github.com/CrxstianEscobar">
-  <img src="https://github/CrxstianEscobar.png" width="180px"/>
+  <img src="https://qu.ax/HsOCy.jpg" width="180px"/>
 </a>
