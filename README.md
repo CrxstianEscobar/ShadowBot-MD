@@ -4,5 +4,5 @@
 ## Creador 
 
 <a href="https://github.com/CrxstianEscobar">
-  <img src="https://qu.ax/HsOCy.jpg" width="180px"/>
+  <img src="https://github/CrxstianEscobar.png" width="180px"/>
 </a>
