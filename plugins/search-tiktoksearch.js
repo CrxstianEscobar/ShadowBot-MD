@@ -9,7 +9,7 @@ const {
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(message.chat, "❕️ *¿QUÉ BÚSQUEDA DESEA REALIZAR EN TIKTOK?*", message, rcanal);
+    return conn.reply(message.chat, "❕️ *¿QUÉ BÚSQUEDA DESEA REALIZAR EN TIKTOK?*", message);
   }
 
   async function createVideoMessage(url) {
@@ -101,7 +101,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
 
 handler.help = ["tiktoksearch <txt>"];
 handler.estrellas = 1;
-handler.register = true
+handler.register = false
 handler.tags = ["search"];
 handler.command = ["tiktoksearch", "ttss", "tiktoks"];
 
