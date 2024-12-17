@@ -77,41 +77,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
     const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
     const doc = ['pdf', 'zip', 'vnd.openxmlformats-officedocument.presentationml.presentation', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'vnd.openxmlformats-officedocument.wordprocessingml.document'];
     const document = doc[Math.floor(Math.random() * doc.length)];
-    const str = `> 👋🏻 ¡Hola!, ${taguser}
-> ${saludo}
-> ${week}, ${date}
-> ${d.toLocaleTimeString(locale, opciones)}  | |  Perú - Lima
-*˚₊·˚₊· ͟͟͞͞➳❥ _Shadow Bot_*
-*☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
-*│* 
-*╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
-*⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
-*⎔ _Creador:_* _Cristian Escobar_
-*⎔ _Número:_* _+51 927238856_
-*⎔ _Uptime:_* _${uptime}_
-*⎔ _Versión:_* _1.4.0_
-
-*⎔ _Nivel:_* _${level}_
-*⎔ _Experiencia:_* _${exp}_
-*⎔ _Rango:_* _${role}_
-*⎔ _Diamantes:_* _${limit}_
-*⎔ _LuxeCoins:_* _${money}_
-*⎔ _Tokens:_* _${joincount}_
-*⎔ _Premium:_* ${user.premiumTime > 0 ? '✅' : (isPrems ? '✅' : '❌') || ''}
-ㅤ· · ────── ·•· ────── · · 
-_*Xɪᴍᴇ Lᴜxᴇ ᴍᴅ : Usxʀ Cʀxxs 🌙*_
-- Pᴀʀᴀ ᴇʟ ᴍᴇɴᴜ ᴄᴏᴍᴘʟᴇᴛᴏ ᴜsᴀ *.ᴀʟʟᴍᴇɴᴜ*
-ㅤ· · ────── ·•· ────── · · 
-${readMore}
-*╭┄⊰* ${tradutor.texto1[0]}
-*│* დ _.menuanimes_
-*│* დ _.menuaudios_
-*│* დ _.menulogos_
-*│* დ _.menuowner_
-*│* დ _.menurec_
-*│* დ _.menu18_
-*│* დ _.menuff_
-*╰─────────────────┄⊰*`.trim();
+    const str = `hola vro 😃`.trim();
     if (m.isGroup) {
       // await conn.sendFile(m.chat, vn, 'menu.mp3', null, m, true, { type: 'audioMessage', ptt: true})
       const fkontak2 = {'key': {'participants': '0@s.whatsapp.net', 'remoteJid': 'status@broadcast', 'fromMe': false, 'id': 'Halo'}, 'message': {'contactMessage': {'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}, 'participant': '0@s.whatsapp.net'};
