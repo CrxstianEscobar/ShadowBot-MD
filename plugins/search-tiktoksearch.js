@@ -9,7 +9,7 @@ const {
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(message.chat, "❕️ *¿QUÉ BÚSQUEDA DESEA REALIZAR EN TIKTOK?*", message);
+    return conn.reply(message.chat, "❕️ *¿QUÉ BÚSQUEDA DESEA REALIZAR EN TIKTOK?*", message, rcanal);
   }
 
   async function createVideoMessage(url) {
@@ -36,10 +36,10 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
           mediaType: 1, 
           showAdAttribution: true,
           title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙨⏜࣪᷼︵۬ ͜ ',
-          body: '<(✿◠‿◠)> 𝐈𝐬𝐢𝐭𝐚𝐁𝐨𝐭-𝐀𝐢 ✨',
+          body: '<(✿◠‿◠)> 𝐘𝐮𝐤𝐢_𝐒𝐮𝐨𝐮-𝐁𝐨𝐭 ✨',
           previewType: 0, 
-          thumbnail: catalogo,
-          sourceUrl: 'https://www.instagram.com/star.moony_desing', 
+          thumbnail: logo5,
+          sourceUrl: cn 
         }
       }
     });
@@ -53,7 +53,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
     for (let result of topResults) {
       results.push({
         body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: textbot }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: titulowm }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
           title: '' + result.title,
           hasMediaAttachment: true,
@@ -75,7 +75,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
               text: "✨️ RESULTADO DE: " + text
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "ᥫᩣBy Isa"
+              text: "ᥫᩣⁱᵃᵐ|𝔇ĕ𝐬†𝓻⊙γ𒆜"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               hasMediaAttachment: false
@@ -100,9 +100,10 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
 };
 
 handler.help = ["tiktoksearch <txt>"];
-handler.estrellas = 1;
-handler.register = false
-handler.tags = ["search"];
+//handler.yenes = 1;
+handler.group = true;
+handler.register = true
+handler.tags = ["buscador"];
 handler.command = ["tiktoksearch", "ttss", "tiktoks"];
 
 export default handler;
