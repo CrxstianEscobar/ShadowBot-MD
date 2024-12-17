@@ -1,15 +1,15 @@
 const handler = async (m, {conn}) => {
   m.reply(global.ComprarBot);
 };
-handler.command = /^(ComprarBot|Comprar|comprar|ComprarBot)$/i;
+handler.command = /^(comprarbot|comprar)$/i;
 export default handler;
 
 global.ComprarBot = `
-〔 *ISITA - BOT* 〕
+〔 *SHADOW - BOT* 〕
 
 *BOT PARA GRUPO* :
-> wa.me/529831715910
+> wa.me/51927238856
 
 *BOT PERZONALIZADO* :
-> wa.me/50557865603
+> wa.me/51927238856
 `;
