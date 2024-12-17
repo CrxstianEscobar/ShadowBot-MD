@@ -3,11 +3,7 @@ let time = global.db.data.users[m.sender].lastcofre + 0 // 36000000 10 Horas //8
 if (new Date - global.db.data.users[m.sender].lastcofre < 0) throw `[❗𝐈𝐍𝐅𝐎❗] 𝚈𝙰 𝚁𝙴𝙲𝙻𝙰𝙼𝙰𝚂𝚃𝙴 𝚃𝚄 𝙲𝙾𝙵𝚁𝙴\𝚗𝚅𝚄𝙴𝙻𝚅𝙴 𝙴𝙽 *${msToTime(time - new Date())}* 𝙿𝙰𝚁𝙰 𝚅𝙾𝙻𝚅𝙴𝚁 𝙰 𝚁𝙴𝙲𝙻𝙰𝙼𝙰𝚁`
 
 let img = 'https://qu.ax/CDaWO.jpg' 
-let d = new Date(new Date + 3600000);
 let date = d.toLocaleDateString(locale, {day: 'numeric', month: 'long', year: 'numeric'})
-let more = String.fromCharCode(8206)
-let readMore = more.repeat(850)
-let user = global.db.data.users[m.sender];
 let taguser = '@' + m.sender.split('@s.whatsapp.net')[0]
 let texto = `> ⓘ ¡Hola!, ${taguser}
 > ${date}
