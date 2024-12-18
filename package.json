@@ -36,7 +36,7 @@
         "@bochilteam/scraper": "^4.2.4",
         "@kaviaann/scrape": "^1.0.1",
         "@vitalets/google-translate-api": "^9.2.0",
-        "@whiskeysockets/baileys": "^6.7.5",
+        "@whiskeysockets/baileys": "^6.7.8",
         "@xct007/frieren-scraper": "^0.0.2",
         "google-libphonenumber": "latest",
         "acrcloud": "^1.4.0",
