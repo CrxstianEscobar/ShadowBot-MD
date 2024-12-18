@@ -18,8 +18,6 @@ global.owner = [
   ['15099774744', 'Soporte', true]
 ]
 
-//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
-
 global.mods = []
 global.prems = []
 
