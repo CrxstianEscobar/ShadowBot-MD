@@ -18,18 +18,6 @@
         "eslint": "eslint .",
         "eslintfix": "eslint --fix ."
     },
-    "keywords": [
-        "termux-whatsapp-bot",
-        "whatsapp-bot",
-        "whatsapp",
-        "js-whatsapp",
-        "whatsapp",
-        "prak-bot",
-        "prak",
-        "multi-device",
-        "PrakBot",
-        "baileys-md"
-    ],
     "homepage": "https://github.com/CrxstianEscobar/ShadowBot-MD",
     "author": {
         "name": "Cristian Escobar"
