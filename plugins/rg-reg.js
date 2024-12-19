@@ -1,4 +1,3 @@
-
 import { createHash } from 'crypto'
 import fs from 'fs'
 import fetch from 'node-fetch'
@@ -25,8 +24,8 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   let txt = `\`𝙍𝙀𝙂𝙄𝙎𝙏𝙍𝙊 - 𝙎𝙃𝘼𝘿𝙊𝙒\`\n\n`
       txt += `✧ *Nombre:* ${name}\n`
       txt += `✧ *Edad:* ${age} años\n`
-      txt += `✧ *Serie:*\n`
-      txt += `- ${sn}`
+      txt += `✧ *Serie:* ${sn}`
+      txt += `> Escribe *${usedPrefix}profile* para ver tu perfil.`
 await conn.sendAi(m.chat, botname, textbot, txt, img, img, canal, m)
 await m.react('✅')
 }
