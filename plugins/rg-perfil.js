@@ -13,12 +13,9 @@ try {
     } else {
         who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
     }
-/*
-    let pp = await conn.profilePictureUrl(who, 'image').catch(_ => '(https://i.ibb.co/QjgtQnR/file.jpg)');
-*/
-  let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer();
-    let name = conn.getName(who);
 
+    let pp = await conn.profilePictureUrl(who, 'image').catch(_ => '(https://i.ibb.co/QjgtQnR/file.jpg)');
+    let name = conn.getName(who);
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
 
     let texto = `
