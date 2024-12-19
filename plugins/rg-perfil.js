@@ -27,39 +27,10 @@ var handler = async (m, { conn }) => {
 「 👤 *PERFIL DE USUARIO* 」
 ☁️ *Nombre:* ${username}
 💠 *Edad:* ${age}
-⚧️ *Genero:* ${genre}
-🎂 *Cumpleaños:* ${birth} 
-👩‍❤️‍👩 *Casad@:* ${isMarried ? partnerName : 'Nadie'}
+👩‍❤️‍👩 *Casad@:* No
 📜 *Descripción:* ${description}
-🌀 *Registrado:* ${registered ? '✅': '❌'}
 🌐 *Pais:* ${userNationality}
-
-「 💰 *RECURSOS* 」
-💴 *Estrellas:* ${poin || 0}
-🌟 *Nivel:* ${level || 0}
-✨ *Experiencia:* ${exp || 0}
-⚜️ *Rango:* ${role}
-👑 *Premium:* ${premium ? '✅': '❌'}
 `.trim();
-
-    let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
-│⧼👤⧽ *ᴜsᴜᴀʀɪᴏ:* *${username}*
-│⧼💠⧽ *ᴇᴅᴀᴅ:* *${age}*
-│⧼⚧️⧽ *ɢᴇɴᴇʀᴏ:* *${genre}*
-│⧼🎂⧽ *ᴄᴜᴍᴘʟᴇᴀɴ̃ᴏs:* ${birth}
-│⧼👩‍❤️‍👩⧽ *ᴄᴀsᴀᴅᴏ:* ${isMarried ? partnerName : 'Nadie'}
-📜 *ᴅᴇsᴄʀɪᴘᴄɪᴏɴ:* ${description}
-│⧼🌀⧽ *ʀᴇɢɪsᴛʀᴀᴅᴏ:* ${registered ? '✅': '❌'}
-│⧼🌐⧽ *ᴘᴀɪs:* ${userNationality}
-
-╰─────────────────⪨
-
-╭────⪩ 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 ⪨
-│⧼💴⧽ *estrellas:* ${poin || 0}
-│⧼🌟⧽ *ɴɪᴠᴇʟ:* ${level || 0}
-│⧼✨⧽ *ᴇxᴘᴇʀɪᴇɴᴄɪᴀ:* ${exp || 0}
-│⧼⚜️⧽ *ʀᴀɴɢᴏ:* ${role}
-╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim();
 
     conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, { mentions: [who] });
 }
