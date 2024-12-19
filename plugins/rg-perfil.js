@@ -17,6 +17,7 @@ var handler = async (m, { conn }) => {
     let { description, age } = global.db.data.users[who] || {};
     let username = conn.getName(who);
 
+let registered = global.db.data.users[who] !== undefined;
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
     description = description || 'Sin Descripción';
 
