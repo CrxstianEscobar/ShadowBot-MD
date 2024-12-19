@@ -13,8 +13,10 @@ try {
     } else {
         who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
     }
-
+/*
     let pp = await conn.profilePictureUrl(who, 'image').catch(_ => '(https://i.ibb.co/QjgtQnR/file.jpg)');
+*/
+  let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer()
     let { description, age } = global.db.data.users[who] || {};
     let username = conn.getName(who);
 
