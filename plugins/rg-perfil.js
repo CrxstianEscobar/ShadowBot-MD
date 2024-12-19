@@ -2,15 +2,6 @@ import PhoneNumber from 'awesome-phonenumber';
 import fetch from 'node-fetch';
 import fs from 'fs';
 
-const loadMarriages = () => {
-    if (fs.existsSync('./storage/databases/marry.json')) {
-        const data = JSON.parse(fs.readFileSync('./storage/databases/marry.json', 'utf-8'));
-        global.db.data.marriages = data;
-    } else {
-        global.db.data.marriages = {};
-    }
-};
-
 var handler = async (m, { conn }) => {
     loadMarriages();
 
