@@ -17,22 +17,15 @@ try {
     let pp = await conn.profilePictureUrl(who, 'image').catch(_ => '(https://i.ibb.co/QjgtQnR/file.jpg)');
 */
   let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer();
-    let { description, age } = global.db.data.users[who] || {};
-    let username = conn.getName(who);
+    let name = conn.getName(who);
 
 let registered = global.db.data.users[who] !== undefined;
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
-    description = description || 'Sin Descripción';
-
-    let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
-    let userNationalityData = api.data.result;
-    let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
 
     let texto = `
 「 👤 *PERFIL DE USUARIO* 」
 ☁️ *Nombre:* ${name}
 💠 *Edad:* ${age}
-📜 *Descripción:* ${description}
 `
 
     conn.sendFile(m.chat, pp, 'perfil.jpg', noprem,  m, { mentions: [who] });
