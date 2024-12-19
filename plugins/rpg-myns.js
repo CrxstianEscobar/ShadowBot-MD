@@ -1,6 +1,5 @@
 import { createHash } from 'crypto';
-import canvafy from 'canvafy';
-import fs from 'fs/promises';
+import fs from 'fs';
 
 let handler = async function (m, { conn }) {
   try {
@@ -14,11 +13,11 @@ let handler = async function (m, { conn }) {
 
     let txt = `*\`N Ú M E R O - S E R I A L\`*\n\n🆔 *${sn}*\n`;
 
-    let userAvatar = await conn.profilePictureUrl(who, 'image').catch(() => 'https://telegra.ph/file/24fa902ead26340f3df2c.png');
+    let userAvatar = await conn.profilePictureUrl(who, 'image').catch(() => 'https://i.ibb.co/QjgtQnR/file.jpg');
 
     const security = await new canvafy.Security()
       .setAvatar(userAvatar)
-      .setBackground("image", "https://pomf2.lain.la/f/cy80v9q6.jpg")
+      .setBackground("image", "https://i.ibb.co/QjgtQnR/file.jpg")
       .setCreatedTimestamp(Date.now())
       .setSuspectTimestamp(31536000000)
       .setBorder("#f0f0f0")
@@ -27,13 +26,13 @@ let handler = async function (m, { conn }) {
       .setOverlayOpacity(0.9)
       .build();
 
-    if (Buffer.isBuffer(security)) {
+   /* if (Buffer.isBuffer(security)) {
       await conn.sendFile(m.chat, security, 'security.png', txt, m, null, fake);
     } else {
       const securityImagePath = './temp/security-image.png';
-      await fs.writeFile(securityImagePath, security);
+      await fs.writeFile(securityImagePath, security);*
 
-      await conn.sendFile(m.chat, securityImagePath, 'security.png', txt, m, null, fake);
+      await conn.sendFile(m.chat, securityImagePath, 'security.png', txt, m, null, fake);/*
     }
   } catch (error) {
     console.error(error);
