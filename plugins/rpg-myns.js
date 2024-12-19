@@ -6,7 +6,7 @@ m.reply(`
 ▢ *${mssg.numSn}* : ${sn} ${error.message}; message);`.trim())
 }
 handler.help = ['mysn']
-handler.tags = ['rg']
+handler.tags = ['rpg']
 handler.command = ['nserie', 'sn', 'mysn'] 
 handler.register = true
 
