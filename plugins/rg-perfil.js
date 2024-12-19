@@ -26,14 +26,14 @@ let registered = global.db.data.users[who] !== undefined;
     let userNationalityData = api.data.result;
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
 
-    let noprem = `
+    let texto = `
 「 👤 *PERFIL DE USUARIO* 」
 ☁️ *Nombre:* ${username}
 💠 *Edad:* ${age}
 👩‍❤️‍👩 *Casad@:* No
 📜 *Descripción:* ${description}
 🌐 *Pais:* ${userNationality}
-`.trim();
+`
 
     conn.sendFile(m.chat, pp, 'perfil.jpg', noprem,  m, { mentions: [who] });
 } catch (error) {
