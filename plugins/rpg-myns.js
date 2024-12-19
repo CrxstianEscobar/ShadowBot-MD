@@ -30,7 +30,7 @@ let handler = async function (m, { conn }) {
       await conn.sendFile(m.chat, security, 'security.png', txt, m, null, fake);
     } else {
       const securityImagePath = './temp/security-image.png';
-      await fs.writeFile(securityImagePath, security);*
+      await fs.writeFile(securityImagePath, security);
 
       await conn.sendFile(m.chat, securityImagePath, 'security.png', txt, m, null, fake);/*
     }
