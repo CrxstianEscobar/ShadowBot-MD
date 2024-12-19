@@ -8,7 +8,7 @@ let handler = async function (m, { conn, args, usedPrefix}) {
   m.reply(`*[ ℹ️ ] Registro eliminado.*`)
 }
 handler.help = ['unreg'] 
-handler.tags = ['rpg']
+handler.tags = ['rg']
 handler.command = ['unreg'] 
 handler.register = true
 
