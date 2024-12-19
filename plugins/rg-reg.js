@@ -21,12 +21,12 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
   user.regTime = + new Date
   user.registered = true
   let sn = createHash('md5').update(m.sender).digest('hex')
-  let img = await (await fetch(`https://i.ibb.co/s9N9QhG/file.jpg`)).buffer()
+  let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer()
   let txt = `\`𝙍𝙀𝙂𝙄𝙎𝙏𝙍𝙊 - 𝙎𝙃𝘼𝘿𝙊𝙒\`\n\n`
-      txt += `┌  ✩  *NOMBRE* : ${name}\n`
-      txt += `│  ✩  *EDAD* : ${age} años\n`
-      txt += `│  ✩  *NUMERO DE SERIE*\n`
-      txt += `└  ✩  ${sn}`
+      txt += `✧ *Nombre:* ${name}\n`
+      txt += `✧ *Edad:* ${age} años\n`
+      txt += `✧ *Serie:*\n`
+      txt += `- ${sn}`
 await conn.sendAi(m.chat, botname, textbot, txt, img, img, canal, m)
 await m.react('✅')
 }
