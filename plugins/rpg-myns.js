@@ -1,4 +1,4 @@
-//import { createHash } from 'crypto';
+import { createHash } from 'crypto';
 import fs from 'fs';
 
 let handler = async function (m, { conn }) {
@@ -25,14 +25,15 @@ let handler = async function (m, { conn }) {
       .setAvatarBorder("#f0f0f0")
       .setOverlayOpacity(0.9)
       .build();
-
-   /* if (Buffer.isBuffer(security)) {
+/*
+    if (Buffer.isBuffer(security)) {
       await conn.sendFile(m.chat, security, 'security.png', txt, m, null, fake);
     } else {
       const securityImagePath = './temp/security-image.png';
       await fs.writeFile(securityImagePath, security);
 
-      await conn.sendFile(m.chat, securityImagePath, 'security.png', txt, m, null, fake);/*
+      await conn.sendFile(m.chat, securityImagePath, 'security.png', txt, m, null, fake);
+*/
     }
   } catch (error) {
     console.error(error);
