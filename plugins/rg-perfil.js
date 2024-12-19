@@ -32,7 +32,6 @@ let registered = global.db.data.users[who] !== undefined;
 💠 *Edad:* ${age}
 👩‍❤️‍👩 *Casad@:* No
 📜 *Descripción:* ${description}
-🌐 *Pais:* //${userNationality}
 `.trim();
 
     conn.sendFile(m.chat, pp, 'perfil.jpg', noprem,  m, { mentions: [who] });
