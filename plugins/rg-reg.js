@@ -7,12 +7,12 @@ let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 let handler = async function (m, { conn, text, usedPrefix, command }) {
   let user = global.db.data.users[m.sender]
   let name2 = conn.getName(m.sender)
-  if (user.registered === true) return m.reply(`🧑‍💻 YA ESTAS REGISTRADO.\n\n*¿QUIERES HACERLO DE NUEVO?*\n\nUSE ESTE COMANDO PARA ELIMINAR SU REGISTRO.\n*${usedPrefix}unreg* <Número de serie>`)
+  if (user.registered === true) return m.reply(`[ ℹ️ ] *Usted ya esta registrado.*\nPara registrarse de nuevo borre su registro con este comando.\n\n_${usedPrefix}unreg *<Numero de serie>*_`)
   if (!Reg.test(text)) return m.reply(`🤖 FORMATO INCORRECTO.\n\nUSO DEL COMANDO: *${usedPrefix + command} nombre.edad*\nEjemplo : *${usedPrefix + command} ${name2}.16*`)
   let [_, name, splitter, age] = text.match(Reg)
-  if (!name) return m.reply('👻 El NOMBRE NO PUEDE ESTAR VACÍO.')
-  if (!age) return m.reply('👻 LA EDAD NO PUEDE ESTAR VACÍA.')
-  if (name.length >= 100) return m.reply('🫥 El NOMBRE ESTA MUY LARGO.' )
+  if (!name) return m.reply('🌙 El NOMBRE NO PUEDE ESTAR VACÍO.')
+  if (!age) return m.reply('🌙 LA EDAD NO PUEDE ESTAR VACÍA.')
+  if (name.length >= 100) return m.reply('🥷🏻 El NOMBRE ESTA MUY LARGO.' )
   age = parseInt(age)
   if (age > 100) return m.reply('👴🏻 WOW EL ABUELO QUIERE JUGAR AL BOT.')
   if (age < 5) return m.reply('🚼 EL BEBE QUIERE JUGAR JAJA. ')
