@@ -30,7 +30,7 @@ let registered = global.db.data.users[who] !== undefined;
 
     let texto = `
 「 👤 *PERFIL DE USUARIO* 」
-☁️ *Nombre:* ${username}
+☁️ *Nombre:* ${name}
 💠 *Edad:* ${age}
 📜 *Descripción:* ${description}
 `
