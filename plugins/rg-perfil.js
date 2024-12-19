@@ -4,6 +4,7 @@ import axios from 'axios';
 import fs from 'fs';
 
 var handler = async (m, { conn }) => {
+try {
     loadMarriages();
 
     let who;
