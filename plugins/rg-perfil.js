@@ -19,9 +19,6 @@ var handler = async (m, { conn }) => {
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
     description = description || 'Sin Descripción';
 
-    let isMarried = who in global.db.data.marriages;
-    let partner = isMarried ? global.db.data.marriages[who] : null;
-    let partnerName = partner ? conn.getName(partner) : 'Nadie';
     let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
     let userNationalityData = api.data.result;
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
