@@ -32,7 +32,7 @@ var handler = async (m, { conn }) => {
 🌐 *Pais:* ${userNationality}
 `.trim();
 
-    conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, { mentions: [who] });
+    conn.sendFile(m.chat, pp, 'perfil.jpg',  m, { mentions: [who] });
 }
 
 handler.help = ['profile'];
