@@ -15,6 +15,7 @@ try {
     }
 
     let pp = 'https://i.ibb.co/QjgtQnR/file.jpg';
+pp = await conn.profilePictureUrl(who);
     let name = conn.getName(who);
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
 
