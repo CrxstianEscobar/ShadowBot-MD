@@ -21,17 +21,18 @@ try {
 let registered = global.db.data.users[who] !== undefined;
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
     description = description || 'Sin Descripción';
-/*
+
     let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
     let userNationalityData = api.data.result;
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
-*/
+
     let noprem = `
 「 👤 *PERFIL DE USUARIO* 」
 ☁️ *Nombre:* ${username}
 💠 *Edad:* ${age}
 👩‍❤️‍👩 *Casad@:* No
 📜 *Descripción:* ${description}
+🌐 *Pais:* ${userNationality}
 `.trim();
 
     conn.sendFile(m.chat, pp, 'perfil.jpg', noprem,  m, { mentions: [who] });
