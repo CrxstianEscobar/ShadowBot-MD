@@ -1,4 +1,4 @@
-/*import { createHash } from 'crypto';
+//import { createHash } from 'crypto';
 import fs from 'fs';
 
 let handler = async function (m, { conn }) {
