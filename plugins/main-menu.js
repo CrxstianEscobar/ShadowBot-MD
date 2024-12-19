@@ -7,7 +7,7 @@ const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, is
   try {
     //const pp = 'https://qu.ax/HfZlZ.jpg';
     //const img = './Menumenu.jpg';
-let img = 'https://i.ibb.co/QpYZFDZ/file.jpg' 
+const img = 'https://i.ibb.co/QjgtQnR/file.jpg' 
     const d = new Date(new Date + 3600000);
     const locale = 'es';
     const week = d.toLocaleDateString(locale, {weekday: 'long'});
