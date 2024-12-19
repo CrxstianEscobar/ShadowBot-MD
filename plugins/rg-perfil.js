@@ -19,7 +19,6 @@ try {
   let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer();
     let name = conn.getName(who);
 
-let registered = global.db.data.users[who] !== undefined;
     age = registered ? (age || 'Desconocido') : 'Sin especificar';
 
     let texto = `
