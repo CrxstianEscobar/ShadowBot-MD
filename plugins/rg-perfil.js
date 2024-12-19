@@ -16,7 +16,7 @@ try {
 /*
     let pp = await conn.profilePictureUrl(who, 'image').catch(_ => '(https://i.ibb.co/QjgtQnR/file.jpg)');
 */
-  let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer()
+  let img = await (await fetch(`https://i.ibb.co/QjgtQnR/file.jpg`)).buffer();
     let { description, age } = global.db.data.users[who] || {};
     let username = conn.getName(who);
 
