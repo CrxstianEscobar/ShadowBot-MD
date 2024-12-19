@@ -27,7 +27,7 @@ try {
     conn.sendFile(m.chat, pp, 'perfil.jpg', texto,  m, { mentions: [who] });
 } catch (error) {
   console.error(error);
-  m.reply('Ocurrió un error al obtener el perfil del usuario: ${error.message');
+  m.reply(`Ocurrió un error al obtener el perfil del usuario: ${error.stack`);
 }
 };
 
