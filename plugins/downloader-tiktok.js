@@ -37,8 +37,8 @@ handler.tags = ['descargas']
 handler.command = /^t(t|iktok(d(own(load(er)?)?|l))?|td(own(load(er)?)?|l))$/i
 
 handler.disable = false
-handler.register = true
-handler.limit = true
+handler.register = false
+handler.limit = false
 
 export default handler
 
