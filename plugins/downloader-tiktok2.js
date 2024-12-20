@@ -16,9 +16,23 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*\n\n♡⑅*˖•. ·͙*̩̩͙˚̩̥̩̥*̩̩̥͙·̩̩̥͙*̩̩̥͙˚̩̥̩̥*̩̩͙‧͙ .•˖*⑅♡
-\n✧ Likes = ${tiktokData.data.digg_count}\n✧ Comentarios = ${tiktokData.data.comment_count}\n✧ Compartidas = ${tiktokData.data.share_count}\n✧ Vistas = ${tiktokData.data.play_count}\n✧ Descargas = ${tiktokData.data.download_count}\n꒷︶꒷꒥꒷‧૮꒰˵•ᵜ•˵꒱ა‧꒷︶꒷꒥꒷
-\n\n*👤 Usu꯭ario:*\n   ᜊ ${tiktokData.data.author.nickname || "No info"}\n(${tiktokData.data.author.unique_id} - https://www.tiktok.com/@${tiktokData.data.author.unique_id})\n*🎧 Son꯭ido:*\n${tiktokData.data.music}`;
+        const infonya_gan = `*📖 Descrip꯭ción:*
+> ${tiktokData.data.title}*
+
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+
+✧ Likes = ${tiktokData.data.digg_count}
+✧ Comentarios = ${tiktokData.data.comment_count}
+✧ Compartidas = ${tiktokData.data.share_count}
+✧ Vistas = ${tiktokData.data.play_count}
+✧ Descargas = ${tiktokData.data.download_count}
+﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏﹏
+
+*👤 Usu꯭ario:*
+·˚ ༘₊· ͟͟͞͞꒰➳ ${tiktokData.data.author.nickname || "No info"}
+(https://www.tiktok.com/@${tiktokData.data.author.unique_id})
+*🎧 Son꯭ido:*
+${tiktokData.data.music}`;
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOAD - TIKTOK V2`" + `\n\n${infonya_gan}`, m);
