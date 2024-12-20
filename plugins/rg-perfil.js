@@ -1,24 +1,41 @@
-import { createHash } from 'crypto'
+import PhoneNumber from 'awesome-phonenumber'
+import fetch from 'node-fetch'
+var handler = async (m, { conn }) => {
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let pp = await conn.profilePictureUrl(who, 'image').catch(_ => imagen1)
+let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender]
+let username = conn.getName(who)
+let noprem = `
+🚩 *PERFIL DE USUARIO*
+☁️ *Nombre:* ${username}
+💥 *Tag:* @${who.replace(/@.+/, '')}
+🌀 *Registrado:* ${registered ? '✅': '❌'}
 
-let handler = async function (m, { conn, text, usedPrefix }) {
+👑 *RECURSOS*
+🍪 *Cookies:* ${cookies}
+💥 *Nivel:* ${level}
+💫 *Experiencia:* ${exp}
+✨️ *Rango:* ${role}
 
-let pp = await conn.getProfilePicture(who).catch(_ => 'https://qu.ax/kgzBh.jpg')
-conn.sendFile(m.chat, pp, 'perfil.jpg', '', m, { mentions: [who] })
-//let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6)
-//let pp = await conn.profilePictureUrl(who, 'image').catch(_ => miniurl)
+💖 *Premium:* ${premium ? '✅': '❌'}
+`.trim()
+let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
+│⧼👤⧽ *ᴜsᴜᴀʀɪᴏ:* 「${username}」
+│⧼💌⧽ *ʀᴇɢɪsᴛʀᴀᴅᴏ:* ${registered ? '✅': '❌'}
+│⧼🔱⧽ *ʀᴏʟ:* Vip 👑
+╰───⪨
 
-    //conn.sendFile(m.chat, pp, 'perfil.jpg', 'm.reply', m, { mentions: [who] })
-
-m.reply(`*『 PERFIL DEL USUARIO 』*
-
-*👤Nombre:*
-*🌹Edad:*
-*🌎Pais:*
-*☁Descripción:*`.trim())
+╭────⪩ 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 ⪨
+│⧼🍪⧽ *ᴄᴏᴏᴋɪᴇs:* ${cookies}
+│⧼🔰⧽ *ɴɪᴠᴇʟ:* ${level}
+│⧼💫⧽ *ᴇxᴘᴇʀɪᴇɴᴄɪᴀ:* ${exp}
+│⧼⚜️⧽ *ʀᴀɴɢᴏ:* ${role}
+╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim()
+conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, rcanal, { mentions: [who] })
 }
-handler.help = ['perfil']
-handler.tags = ['rg']
-handler.command = ['perfil', 'profile'] 
+handler.help = ['profile']
 handler.register = true
-
+handler.group = true
+handler.tags = ['rg']
+handler.command = ['profile', 'perfil']
 export default handler
