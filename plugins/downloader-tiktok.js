@@ -32,9 +32,9 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 };
 
-handler.help = ['tiktok2'].map((v) => v + ' *<link>*')
+handler.help = ['tiktok'].map((v) => v + ' *<link>*')
 handler.tags = ['descargas']
-handler.command = /^(tt2|tiktok2)$/i;
+handler.command = /^(tt|tiktok)$/i;
 
 handler.disable = false
 handler.register = false
