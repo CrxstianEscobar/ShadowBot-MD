@@ -16,10 +16,10 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `*📖 Descripción:* ${tiktokData.data.title}\n*🚀 Publicado:* ${tiktokData.data.create_time}\n\n*⚜️ Estado:*\n=====================\nLikes = ${tiktokData.data.digg_count}\nComentarios = ${tiktokData.data.comment_count}\nCompartidas = ${tiktokData.data.share_count}\nVistas = ${tiktokData.data.play_count}\nDescargas = ${tiktokData.data.download_count}\n=====================\n\nUploader: ${tiktokData.data.author.nickname || "No info"}\n(${tiktokData.data.author.unique_id} - https://www.tiktok.com/@${tiktokData.data.author.unique_id})\n*🔊 Sonido:* ${tiktokData.data.music}\n`;
+        const infonya_gan = `*📖 Descripción:* ${tiktokData.data.title}\n*🚀 Publicado:* ${tiktokData.data.create_time}\n\n*⚜️ Estado:*\n֪     ⎯⎯⎯ ㅤִㅤ୨୧ㅤִㅤ────  ‎   ֪\nLikes = ${tiktokData.data.digg_count}\nComentarios = ${tiktokData.data.comment_count}\nCompartidas = ${tiktokData.data.share_count}\nVistas = ${tiktokData.data.play_count}\nDescargas = ${tiktokData.data.download_count}\n֪     ⎯⎯⎯ ㅤִㅤ୨୧ㅤִㅤ────  ‎   ֪\n\nUploader: ${tiktokData.data.author.nickname || "No info"}\n(${tiktokData.data.author.unique_id} - https://www.tiktok.com/@${tiktokData.data.author.unique_id})\n*🔊 Sonido:* ${tiktokData.data.music}\n`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DESCARGA DE TIKTOK`" + `\n\n${infonya_gan}`, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOAD - TIKTOK V2`" + `\n\n${infonya_gan}`, m);
             setTimeout(async () => {
                 // Aquí se eliminó la línea que enviaba el audio
                  await conn.sendFile(m.chat, `${tiktokData.data.music}`, "lagutt.mp3", "", m);
