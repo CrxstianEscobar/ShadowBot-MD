@@ -2,6 +2,7 @@ import { createHash } from 'crypto'
 import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 import fs from 'fs'
+import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command}) => {
   let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -21,9 +22,8 @@ let handler = async (m, { conn, usedPrefix, command}) => {
       txt += `◦ *Numero* : ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}\n`
       txt += `◦ *Nacionalidad* : ${userNationality}\n`
       txt += `◦ *Link* : wa.me/${who.split`@`[0]}\n`
-      txt += `◦ *Registrado* : ${registered ? 'Si': 'No'}`
   let mentionedJid = [who]
-await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, fake)
+await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null)
 }
 handler.help = ['perfil', 'perfil *@user*']
 handler.tags = ['rg']
