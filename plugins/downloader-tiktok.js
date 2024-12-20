@@ -2,7 +2,7 @@ import fetch from 'node-fetch'
 
 var handler = async (m, { conn, args, usedPrefix, command }) => {
     if (!args[0]) {
-        throw m.reply(`*[ ℹ️ ] Inserte un link de TikTok*\n*Ejemplo:* ${usedPrefix + command} https://vm.tiktok.com/ZMhAk8tLx/`);
+        throw m.reply(`*[ ℹ️ ] Ingrese un link de TikTok*\n\n*[ 💡 ] Ejemplo:* _${usedPrefix + command} https://vm.tiktok.com/ZMhAk8tLx/_`);
     }
 
     try {
