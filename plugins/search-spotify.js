@@ -78,6 +78,6 @@ await m.reply(m.chat, `error ${error.message}`);
 
 handler.help = ["spotifysearch"]
 handler.tags = ["search"]
-handler.command = /^(spotifysearch)$/i
+handler.command = /^(spotifysearch|sps|spsearch)$/i
 
 export default handler
