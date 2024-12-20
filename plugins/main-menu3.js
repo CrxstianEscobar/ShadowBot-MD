@@ -4,7 +4,8 @@ if (new Date - global.db.data.users[m.sender].lastcofre < 0) throw `[❗𝐈𝐍
 
 let img = 'https://i.ibb.co/QjgtQnR/file.jpg' 
     const user = global.db.data.users[m.sender];
-let taguser = '@' + m.sender.split('@s.whatsapp.net')[0]
+//let taguser = '@' + m.sender.split('@s.whatsapp.net')[0]
+let taguser = '@' + m.sender.pushname
 const fechaPeru = new Date().toLocaleString("es-PE", { timeZone: "America/Lima" });
 console.log(fechaPeru);
 
