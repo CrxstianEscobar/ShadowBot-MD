@@ -35,9 +35,7 @@ conn.sendMessage(m.chat, {
       renderLargerThumbnail: false 
     } 
   } 
-}, { 
-  quoted: m 
-})
+}
 
 //await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
 await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
