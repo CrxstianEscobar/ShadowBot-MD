@@ -24,11 +24,6 @@ let txt = `*_SOUND CLOUD MUSIC_*\n\n`;
     txt += `> *[ ℹ️ ] Se está enviando el audio, espere...*`
 
 await conn.sendMessage(m.chat, { 
-  audio: { 
-    url: dl_url, 
-    fileName: `${json[0].title}.mp3`, 
-    mimetype: 'audio/mpeg' 
-  }, 
   text: txt, 
   contextInfo: { 
     externalAdReply: { 
@@ -40,6 +35,14 @@ await conn.sendMessage(m.chat, {
       renderLargerThumbnail: true 
     } 
   } 
+}, { 
+  quoted: m 
+});
+
+await conn.sendMessage(m.chat, { 
+  audio: audio, 
+  fileName: `${json[0].title}.mp3`, 
+  mimetype: 'audio/mpeg' 
 }, { 
   quoted: m 
 })
