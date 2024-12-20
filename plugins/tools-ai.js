@@ -8,7 +8,7 @@ const isQuotedImage = m.quoted && (m.quoted.msg || m.quoted).mimetype && (m.quot
 
 const username = `${conn.getName(m.sender)}`
 
-const basePrompt = `Tu nombre es IsitaBot y parece haber sido creado por Isa_dzn. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, te encanta aprender y sobre todo las explosiónes, tu usas siempre el emoji "🌠". Lo más importante es que debes ser amigable con la persona con la que estás hablando. ${username}`
+const basePrompt = `Tu nombre es Shadow Ai y parece haber sido creado por Cristian Escobar. Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertidi, te encanta aprender y sobre todo el universo, tu usas el emoji "🌙". Lo más importante es que debes ser amigable con la persona con la que estás hablando. ${username}`
 
 if (isQuotedImage) {
 
@@ -18,17 +18,17 @@ const img = await q.download?.()
 
 if (!img) {
 
-console.error('🌠 Error: No image buffer available')
+console.error('*[ ℹ️ ] Error: No image buffer available*')
 
-return conn.reply(m.chat, '🌠 Error: No se pudo descargar la imagen.', m, fake)}
+return conn.reply(m.chat, '*[ ℹ️ ] Error: No se pudo descargar la imagen.*', m, fake)}
 
-const content = '🌠 ¿Qué se observa en la imagen?'
+const content = '*[ ℹ️ ] ¿Qué se observa en la imagen?*'
 
 try {
 
 const imageAnalysis = await fetchImageBuffer(content, img)
 
-const query = '😊 Descríbeme la imagen y detalla por qué actúan así. También dime quién eres'
+const query = '🕵🏻 Descríbeme la imagen y detalla por qué actúan así. También dime quién eres'
 
 const prompt = `${basePrompt}. La imagen que se analiza es: ${imageAnalysis.result}`
 
@@ -38,13 +38,13 @@ await conn.reply(m.chat, description, m)
 
 } catch (error) {
 
-console.error('🌠 Error al analizar la imagen:', error)
+console.error('*[ ℹ️ ] Error al analizar la imagen:*', error)
 
-await conn.reply(m.chat, '💛 Error al analizar la imagen.', m)}
+await conn.reply(m.chat, '*🥀 Error al analizar la imagen.*', m)}
 
 } else {
 
-if (!text) { return conn.reply(m.chat, `🌠 *Ingrese su petición*\n🌠 *Ejemplo de uso:* ${usedPrefix + command} Como hacer un avión de papel`, m, rcanal)}
+if (!text) { return conn.reply(m.chat, `*[ ℹ️ ] Ingrese su petición*\n\n*[ 💡 ] Ejemplo de uso:* _${usedPrefix + command} Que es la Radiación solar`, m, rcanal)}
 
 await m.react('💬')
 
@@ -60,9 +60,9 @@ await conn.reply(m.chat, response, m)
 
 } catch (error) {
 
-console.error('🌠 Error al obtener la respuesta:', error)
+console.error('*[ ℹ️ ] Error al obtener la respuesta:*', error)
 
-await conn.reply(m.chat, 'Error: intenta más tarde.', m)}}}
+await conn.reply(m.chat, '*Error: intenta más tarde.*', m)}}}
 
 handler.help = ['chatgpt <texto>', 'ia <texto>']
 
@@ -126,6 +126,6 @@ return response.data.result
 
 } catch (error) {
 
-console.error('🌠 Error al obtener:', error)
+console.error('*[ ℹ️ ] Error al obtener:*', error)
 
 throw error }}
