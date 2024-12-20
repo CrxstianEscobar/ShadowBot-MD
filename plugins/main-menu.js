@@ -20,7 +20,7 @@ await m.react('🌙')
 
 } catch (e) {
 await m.reply(`✘ Ocurrió un error al enviar el menú\n\n${e}`)
-await m.react('❌')
+await m.react(error)
 }}
 
 handler.help = ['menu']
