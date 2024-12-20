@@ -33,7 +33,7 @@ await conn.sendMessage(m.chat, {
       thumbnailUrl: image, 
       mediaType: 1, 
       showAdAttribution: true, 
-      renderLargerThumbnail: false 
+      renderLargerThumbnail: false
     } 
   } 
 }, { 
@@ -49,7 +49,7 @@ conn.sendMessage(m.chat, {
       thumbnailUrl: image, // Agrega la URL de la imagen aquí
       mediaType: 1,
       showAdAttribution: true,
-      renderLargerThumbnail: true
+      renderLargerThumbnail: false
     }
   }
 }, { quoted: m })
