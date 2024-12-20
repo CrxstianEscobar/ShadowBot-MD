@@ -1,104 +1,56 @@
-import fetch from 'node-fetch';
-
-
-const handler = async (m, {conn, usedPrefix, usedPrefix: _p, __dirname, text, isPrems}) => {
-  const datas = global
-
-  try {
-    //const pp = 'https://qu.ax/HfZlZ.jpg';
-    //const img = './Menumenu.jpg';
-const img = 'https://i.ibb.co/QjgtQnR/file.jpg' 
-    const d = new Date(new Date + 3600000);
-    const locale = 'es';
-    const week = d.toLocaleDateString(locale, {weekday: 'long'});
-    const date = d.toLocaleDateString(locale, {day: 'numeric', month: 'long', year: 'numeric'});
-    let opciones = { timeZone: "America/Lima", hour12: false };
-    let hours = d.toLocaleTimeString(locale, opciones).split(':')[0];
-    let saludo;
-
-    // Determina el saludo según la hora del día en Lima, Perú
-    if (hours == 0) {
-      saludo = '🌒 ¡Vaya, aún despierto! ¿Eres un búho nocturno o qué?';
-    } else if (hours == 1) {
-      saludo = '🌒 Ya es la 1 AM ¿Aún no es hora de dormir?';
-    } else if (hours == 2) {
-      saludo = '🌒 Las 2 de la mañana, ¡Un verdadero noctámbulo!';
-    } else if (hours == 3) {
-      saludo = '🌒 Son las 3 AM, ¿Seguro que no deberías dormir?';
-    } else if (hours == 4) {
-      saludo = '🌒 Son las 4 AM, ¡La noche aún es joven!';
-    } else if (hours == 5) {
-      saludo = '🌉 Buenos días, ¡Ya casi amanece!';
-    } else if (hours == 6) {
-      saludo = '🌄 Son las 6 AM, ¡Hora de despertar!';
-    } else if (hours == 7) {
-      saludo = '☀️ Son las 7 AM, ¡El sol ya está arriba, hora de desayunar!';
-    } else if (hours == 8) {
-      saludo = '☀️ Buenos días, ¡Ah empezar el día con energía!';
-    } else if (hours == 9) {
-      saludo = '☀️ Son las 9 AM, ¡Espero que ya estés despierto!';
-    } else if (hours == 10) {
-      saludo = '☀️ Las 10 de la mañana, ¡Un buen momento para ser productivo!';
-    } else if (hours == 11) {
-      saludo = '☀️ Son las 11 AM, ¡Casi es hora del almuerzo!';
-    } else if (hours == 12) {
-      saludo = '☀️ Buenas tardes, ¡Hora de almorzar!';
-    } else if (hours == 13) {
-      saludo = '☀️ Son la 1 PM, ¡Espero que hayas disfrutado tu almuerzo!';
-    } else if (hours == 14) {
-      saludo = '☀️ Las 2 de la tarde, ¡La recta final del día!';
-    } else if (hours == 15) {
-      saludo = '🌤 Son las 3 PM, ¡Mantén el ritmo!';
-    } else if (hours == 16) {
-      saludo = '🌤 Son las 4 PM, ¡Ya casi es el fin del día!';
-    } else if (hours == 17) {
-      saludo = '🌇 Buenas tardes, ¡El día se va acabando!';
-    } else if (hours == 18) {
-      saludo = '🌆 Son las 6 PM, ¡Es hora de relajarse un poco!';
-    } else if (hours == 19) {
-      saludo = '🌃 Buenas noches, ¿Hora de Netflix y relax?';
-    } else if (hours == 20) {
-      saludo = '🌃 Son las 8 PM, ¡Un buen momento para relajarse!';
-    } else if (hours == 21) {
-      saludo = '🌌 Buenas noches, ¿Preparado para el último sprint del día?';
-    } else if (hours == 22) {
-      saludo = '🌌 Son las 10 PM, ¡Hora de prepararse para dormir!';
-    } else if (hours == 23) {
-      saludo = '🌒 Buenas noches, ¿No deberías estar durmiendo ya?';
-      }
-    //const time = d.toLocaleString('es-PE', {hour: 'numeric', minute: 'numeric', hour12: true});
-    const _uptime = process.uptime() * 1000;
-    const uptime = clockString(_uptime);
-    const user = global.db.data.users[m.sender];
-    const {money, joincount} = global.db.data.users[m.sender];
-    const {exp, limit, level, role} = global.db.data.users[m.sender];
-    const rtotalreg = Object.values(global.db.data.users).filter((user) => user.registered == true).length;
-    const more = String.fromCharCode(8206);
-    const readMore = more.repeat(850);
-    const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
-    const doc = ['pdf', 'zip', 'vnd.openxmlformats-officedocument.presentationml.presentation', 'vnd.openxmlformats-officedocument.spreadsheetml.sheet', 'vnd.openxmlformats-officedocument.wordprocessingml.document'];
-    const document = doc[Math.floor(Math.random() * doc.length)];
-    const str = `hola vro 😃`.trim();
-    if (m.isGroup) {
-      // await conn.sendFile(m.chat, vn, 'menu.mp3', null, m, true, { type: 'audioMessage', ptt: true})
-      const fkontak2 = {'key': {'participants': '0@s.whatsapp.net', 'remoteJid': 'status@broadcast', 'fromMe': false, 'id': 'Halo'}, 'message': {'contactMessage': {'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}, 'participant': '0@s.whatsapp.net'};
-      conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
-    } else {
-      // await conn.sendFile(m.chat, vn, 'menu.mp3', null, m, true, { type: 'audioMessage', ptt: true})
-      const fkontak2 = {'key': {'participants': '0@s.whatsapp.net', 'remoteJid': 'status@broadcast', 'fromMe': false, 'id': 'Halo'}, 'message': {'contactMessage': {'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`}}, 'participant': '0@s.whatsapp.net'};
-      conn.sendMessage(m.chat, {image: pp, caption: str.trim(), mentions: [...str.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net')}, {quoted: fkontak2});
-    }
-  } catch {
-    conn.reply(m.chat, tradutor.texto1[1], m);
-  }
-};
-handler.command = /^(menu|menú|memu|memú|help|info|comandos|2help|menu1.2|ayuda|commands|commandos|cmd)$/i;
-handler.exp = 50;
-handler.fail = null;
-export default handler;
-function clockString(ms) {
-  const h = isNaN(ms) ? '--' : Math.floor(ms / 3600000);
-  const m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60;
-  const s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60;
-  return [h, m, s].map((v) => v.toString().padStart(2, 0)).join(':');
+import fs from 'fs'
+import fetch from 'node-fetch'
+import { xpRange } from '../lib/levelling.js'
+const { levelling } = '../lib/levelling.js'
+import { promises } from 'fs'
+import { join } from 'path'
+let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
+try {        
+/*let _package = JSON.parse(await promises.readFile(join(__dirname, '../package.json')).catch(_ => ({}))) || {}*/
+let { exp, cookies, level, role } = global.db.data.users[m.sender]
+let { min, xp, max } = xpRange(level, global.multiplier)
+let name = await conn.getName(m.sender)
+let _uptime = process.uptime() * 1000
+let _muptime
+if (process.send) {
+process.send('uptime')
+_muptime = await new Promise(resolve => {
+process.once('message', resolve)
+setTimeout(resolve, 1000)
+}) * 1000
 }
+let user = global.db.data.users[m.sender]
+let muptime = clockString(_muptime)
+let uptime = clockString(_uptime)
+let totalreg = Object.keys(global.db.data.users).length
+let rtotalreg = Object.values(global.db.data.users).filter(user => user.registered == true).length
+let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
+let mentionedJid = [who]
+let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
+let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
+const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
+
+let menu = `.𝗍ᥱᥲm ❀`.trim()
+
+await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: channelRD.id, newsletterName: channelRD.name, serverMessageId: -1, }, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞M͢ᴇɢ፝֟ᴜᴍ⃨ɪɴ⃜✰⃔࿐', body: dev, thumbnailUrl: perfil, sourceUrl: redes, mediaType: 1, renderLargerThumbnail: false,
+}, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
+await m.react(emojis)    
+
+} catch (e) {
+await m.reply(`✘ Ocurrió un error al enviar el menú\n\n${e}`)
+await m.react(error)
+}}
+
+handler.help = ['menu']
+handler.tags = ['main']
+handler.command = ['menu', 'help', 'menú', 'allmenú', 'allmenu', 'menucompleto'] 
+handler.register = true
+export default handler
+
+const more = String.fromCharCode(8206)
+const readMore = more.repeat(4001)
+function clockString(ms) {
+let h = isNaN(ms) ? '--' : Math.floor(ms / 3600000)
+let m = isNaN(ms) ? '--' : Math.floor(ms / 60000) % 60
+let s = isNaN(ms) ? '--' : Math.floor(ms / 1000) % 60
+return [h, m, s].map(v => v.toString().padStart(2, 0)).join(':')}
