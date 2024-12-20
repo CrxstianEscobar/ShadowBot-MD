@@ -2,12 +2,10 @@ import fs from 'fs'
 import fetch from 'node-fetch'
 import { promises } from 'fs'
 import { join } from 'path'
+
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
 try {        
 
-let name = await conn.getName(m.sender)
-let _uptime = process.uptime() * 1000
-let _muptime
 if (process.send) {
 process.send('uptime')
 _muptime = await new Promise(resolve => {
@@ -15,9 +13,6 @@ process.once('message', resolve)
 setTimeout(resolve, 1000)
 }) * 1000
 }
-let user = global.db.data.users[m.sender]
-let muptime = clockString(_muptime)
-let uptime = clockString(_uptime)
 
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let mentionedJid = [who]
