@@ -1,8 +1,13 @@
-// Código Creado Por Niño Piña Wa.me/50557865603
 import fetch from 'node-fetch';
 const handler = async (m, {conn, text, usedPrefix, command}) => {
+  if (command === 'genearimg2' || command === 'imgg2') {
+    if (!text) {
+      await conn.sendMessage(m.chat, {text: '*[ ℹ️ ] Falta el texto para generar la imagen*'}, {quoted: m});
+      return;
+    }
+  }
 // Verificamos que el usuario haya ingresado un texto
-if (!text) throw `*🧑‍💻 Ingresa un texto para generar tu imagen a tu gusto*`;
+//if (!text) throw `*🧑‍💻 Ingresa un texto para generar tu imagen a tu gusto*`;
 // Mostramos un emoji de reloj mientras generamos la imagen
 m.react('🕒');
 await conn.sendMessage(m.chat, {text: '*🧑‍💻 Espere, Estamos Trabajando en su imagen*'}, {quoted: m});
