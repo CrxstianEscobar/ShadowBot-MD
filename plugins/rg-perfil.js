@@ -18,7 +18,7 @@ let txt = `
 │ ୨୧ *Tᴀɢ:* @${who.replace(/@.+/, '')}
 │ ୨୧ *Eᴅᴀᴅ*: ${age} años
 │ ୨୧ *Gᴇɴᴇʀᴏ:* Hetero
-│ ୨୧ *Rᴇɢ:* {registered ? 'Si': 'No'}
+│ ୨୧ *Rᴇɢ:* ${registered ? 'Si': 'No'}
 │ ୨୧ *Pᴀɪs:* ${userNationality}
 ╰───────────────────⪩
 ˏˋ°•*⁀➷ *. :  ｡ * ﾟ  * .: ｡   * . :  ｡   *
