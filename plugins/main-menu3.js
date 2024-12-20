@@ -17,7 +17,7 @@ let texto = `> ⓘ ¡Hola!, ${taguser}
 *│* 
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
 *⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
-╭─·˚₊· ͟͟͞͞꒰➳ ᴍᴇɴᴜ - ʟᴏɢᴏs 𑁭𑁘
+╭─·˚₊· ͟͟͞͞꒰➳ \`ᴍᴇɴᴜ - ʟᴏɢᴏs\` 𑁭𑁘
 ┊⪩ _.logocorazon *<txt>*_
 ┊⪩ _.logochristmas *<txt>*_
 ┊⪩ _.logopareja *<txt>*_
