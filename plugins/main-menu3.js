@@ -1,5 +1,3 @@
-let handler = async function (m, { conn, text, usedPrefix }) {
-
 let handler = async (m, { isPrems, conn }) => {
 let time = global.db.data.users[m.sender].lastcofre + 0 // 36000000 10 Horas //86400000 24 Horas
 if (new Date - global.db.data.users[m.sender].lastcofre < 0) throw `[❗𝐈𝐍𝐅𝐎❗] 𝚈𝙰 𝚁𝙴𝙲𝙻𝙰𝙼𝙰𝚂𝚃𝙴 𝚃𝚄 𝙲𝙾𝙵𝚁𝙴\𝚗𝚅𝚄𝙴𝙻𝚅𝙴 𝙴𝙽 *${msToTime(time - new Date())}* 𝙿𝙰𝚁𝙰 𝚅𝙾𝙻𝚅𝙴𝚁 𝙰 𝚁𝙴𝙲𝙻𝙰𝙼𝙰𝚁`
@@ -20,39 +18,39 @@ let texto = `> ⓘ ¡Hola!, ${taguser}
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
 *⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
 ╭─·˚₊· ͟͟͞͞꒰➳ ᴍᴇɴᴜ - ʟᴏɢᴏs 𑁭𑁘
-┊⪩ _${usedPrefix}logocorazon *<txt>*_
-┊⪩ _${usedPrefix}logochristmas *<txt>*_
-┊⪩ _${usedPrefix}logopareja *<txt>*_
-┊⪩ _${usedPrefix}logoglitch *<txt>*_
-┊⪩ _${usedPrefix}logosad *<txt>*_
-┊⪩ _${usedPrefix}logogaming *<txt>*_
-┊⪩ _${usedPrefix}logosolitario *<txt>*_
-┊⪩ _${usedPrefix}logodragonball *<txt>*_
-┊⪩ _${usedPrefix}logoneon *<txt>*_
-┊⪩ _${usedPrefix}logogatito *<txt>*_
-┊⪩ _${usedPrefix}logochicagamer *<txt>*_
-┊⪩ _${usedPrefix}logoarmy *<txt>*_
-┊⪩ _${usedPrefix}logonaruto *<txt>*_
-┊⪩ _${usedPrefix}logofuturista *<txt>*_
-┊⪩ _${usedPrefix}logonube *<txt>*_
-┊⪩ _${usedPrefix}logoangel *<txt>*_
-┊⪩ _${usedPrefix}logcielo *<txt>*_
-┊⪩ _${usedPrefix}logograffiti3d *<txt>*_
-┊⪩ _${usedPrefix}logomatrix *<txt>*_
-┊⪩ _${usedPrefix}logohorror *<txt>*_
-┊⪩ _${usedPrefix}logoalas *<txt>*_
-┊⪩ _${usedPrefix}logopubg *<txt>*_
-┊⪩ _${usedPrefix}logoguerrero *<txt>*_
-┊⪩ _${usedPrefix}logopubgfem *<txt>*_
-┊⪩ _${usedPrefix}logolol *<txt>*_
-┊⪩ _${usedPrefix}logoamongus *<txt>*_
-┊⪩ _${usedPrefix}logoportadaplayer *<txt>*_
-┊⪩ _${usedPrefix}logoportadaff *<txt>*_
-┊⪩ _${usedPrefix}logovideotiger *<txt>*_
-┊⪩ _${usedPrefix}logovideointro *<txt>*_
-┊⪩ _${usedPrefix}logovideogaming *<txt>*_
-┊⪩ _${usedPrefix}sadcat *<txt>*_
-┊⪩ _${usedPrefix}tweet *<comentario>*_
+┊⪩ _.logocorazon *<txt>*_
+┊⪩ _.logochristmas *<txt>*_
+┊⪩ _.logopareja *<txt>*_
+┊⪩ _.logoglitch *<txt>*_
+┊⪩ _.logosad *<txt>*_
+┊⪩ _.logogaming *<txt>*_
+┊⪩ _.logosolitario *<txt>*_
+┊⪩ _.logodragonball *<txt>*_
+┊⪩ _.logoneon *<txt>*_
+┊⪩ _.logogatito *<txt>*_
+┊⪩ _.logochicagamer *<txt>*_
+┊⪩ _.logoarmy *<txt>*_
+┊⪩ _.logonaruto *<txt>*_
+┊⪩ _.logofuturista *<txt>*_
+┊⪩ _.logonube *<txt>*_
+┊⪩ _.logoangel *<txt>*_
+┊⪩ _.logcielo *<txt>*_
+┊⪩ _.logograffiti3d *<txt>*_
+┊⪩ _.logomatrix *<txt>*_
+┊⪩ _.logohorror *<txt>*_
+┊⪩ _.logoalas *<txt>*_
+┊⪩ _.logopubg *<txt>*_
+┊⪩ _.logoguerrero *<txt>*_
+┊⪩ _.logopubgfem *<txt>*_
+┊⪩ _.logolol *<txt>*_
+┊⪩ _.logoamongus *<txt>*_
+┊⪩ _.logoportadaplayer *<txt>*_
+┊⪩ _.logoportadaff *<txt>*_
+┊⪩ _.logovideotiger *<txt>*_
+┊⪩ _.logovideointro *<txt>*_
+┊⪩ _.logovideogaming *<txt>*_
+┊⪩ _.sadcat *<txt>*_
+┊⪩ _.tweet *<comentario>*_
 ╰─────────────── –`
 const fkontak = {
         "key": {
