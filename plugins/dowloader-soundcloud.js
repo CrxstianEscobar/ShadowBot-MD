@@ -18,10 +18,10 @@ let { link: dl_url, quality, image } = json2;
 let audio = await getBuffer(dl_url);
 
 let txt = `*\`SOUND CLOUD MUSICA\`*\n\n`;
-    txt += `        ✩  *Título* : ${json[0].title}\n`;
-    txt += `        ✩  *Calidad* : ${quality}\n`;
-    txt += `        ✩  *Url* : ${url}\n\n`;
-    txt += `> 🚩 *${textbot}*`
+    txt += `▢ *Título:* ${json[0].title}\n`;
+    txt += `▢ *Calidad:* ${quality}\n`;
+    txt += `▢ *Url:* ${url}\n\n`;
+    txt += `> Se está enviando su Audio`
 
 await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
 await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
