@@ -23,26 +23,12 @@ let txt = `\`DOWNLOADER - SOUNDCLOUD\`\n\n`;
     txt += `▢ *Url:* ${url}\n\n`;
     txt += `> *[ ℹ️ ] Se está enviando el audio, espere...*`
 
-conn.sendMessage(m.chat, { 
-  text: txt, 
-  contextInfo: { 
-    externalAdReply: { 
-      title: json[0].title, 
-      body: wm, 
-      thumbnailUrl: json[0].thumbnail, 
-      mediaType: 1, 
-      showAdAttribution: true, 
-      renderLargerThumbnail: false 
-    } 
-  } 
-}
-
-//await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
+await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
 await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 
-await m.react('✅');
+await m.react('☃️');
 } catch {
-await m.react('✖️');
+await m.react('🥀');
 }}
 
 handler.help = ['soundcloud *<búsqueda>*']
