@@ -7,10 +7,9 @@ let img = 'https://i.ibb.co/QjgtQnR/file.jpg'
 const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 const fechaPeru = new Date().toLocaleString("es-PE", { timeZone: "America/Lima" });
 console.log(fechaPeru);
-//let date = d.toLocaleDateString(locale, {day: 'numeric', month: 'long', year: 'numeric'})
-//let taguser = '@' + m.sender.split('@s.whatsapp.net')[0]
-let texto = `> ⓘ ¡Hola!, ${taguser}
-> ¿Como está hoy?
+
+let texto = `> ⓘ ¡Hola!, @${who.replace(/@.+/, '')}
+> ¡Buenos días! 😉
 > ${fechaPeru}
 *˚₊·˚₊· ͟͟͞͞➳❥ _Shadow Bot_*
 *☆═━┈◈ ╰ 1.4.0 MD ╯ ◈┈━═☆*
