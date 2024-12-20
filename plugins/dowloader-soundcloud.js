@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `🌠INGRESE EL NOMBRE DE ALGUNA CANCION *Soundcloud.*`, m, rcanal)
+if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Hace falta el título del audio de SoundCloud.*`, m, rcanal)
 
 await m.react('🕒');
 try {
@@ -17,7 +17,7 @@ let { link: dl_url, quality, image } = json2;
 
 let audio = await getBuffer(dl_url);
 
-let txt = `*\`- S O U N C L O U D - M U S I C -\`*\n\n`;
+let txt = `*\`SOUND CLOUD MUSICA\`*\n\n`;
     txt += `        ✩  *Título* : ${json[0].title}\n`;
     txt += `        ✩  *Calidad* : ${quality}\n`;
     txt += `        ✩  *Url* : ${url}\n\n`;
