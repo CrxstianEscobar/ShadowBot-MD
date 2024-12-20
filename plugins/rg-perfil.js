@@ -26,7 +26,7 @@ let handler = async (m, { conn, usedPrefix, command}) => {
 await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null, fake)
 }
 handler.help = ['perfil', 'perfil *@user*']
-handler.tags = ['start']
+handler.tags = ['rg']
 handler.command = /^(perfil|profile)$/i
 handler.register = true
 
