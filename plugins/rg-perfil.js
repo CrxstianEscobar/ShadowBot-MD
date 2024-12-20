@@ -2,10 +2,8 @@ import { createHash } from 'crypto'
 
 let handler = async function (m, { conn, text, usedPrefix }) {
 
-  let who = m.sender
-  let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kgzBh.jpg')
-  conn.sendFile(m.chat, pp, 'perfil', '', m, { mentions: [who] })
-}
+let pp = await conn.getProfilePicture(who).catch(_ => 'https://qu.ax/kgzBh.jpg')
+conn.sendFile(m.chat, pp, 'perfil.jpg', '', m, { mentions: [who] })
 //let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6)
 //let pp = await conn.profilePictureUrl(who, 'image').catch(_ => miniurl)
 
