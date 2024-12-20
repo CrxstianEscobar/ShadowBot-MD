@@ -8,7 +8,7 @@ const taguser = '@' + m.sender.split('@s.whatsapp.net')[0];
 const fechaPeru = new Date().toLocaleString("es-PE", { timeZone: "America/Lima" });
 console.log(fechaPeru);
 
-let texto = `> ⓘ ¡Hola!, @${who.replace(/@.+/, '')
+let texto = `> ⓘ ¡Hola!, ${taguser}
 > ¡Buenos días! 😉
 > ${fechaPeru}
 *˚₊·˚₊· ͟͟͞͞➳❥ _Shadow Bot_*
