@@ -46,7 +46,7 @@ conn.sendMessage(m.chat, {
     externalAdReply: {
       title: json[0].title,
       body: wm,
-      thumbnailUrl: getBuffer(search.all[0].thumbnail, { width: 400, height: 200 }), mediaType: 1, // Agrega la URL de la imagen aquí
+      thumbnailUrl: getBuffer(json[0].thumbnail, { width: 400, height: 200 }), mediaType: 1, // Agrega la URL de la imagen aquí
       mediaType: 1,
       showAdAttribution: true,
       renderLargerThumbnail: true
