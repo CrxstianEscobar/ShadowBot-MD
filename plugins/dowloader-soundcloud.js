@@ -17,7 +17,7 @@ let { link: dl_url, quality, image } = json2;
 
 let audio = await getBuffer(dl_url);
 
-let txt = `*_SOUND CLOUD MUSIC_*\n\n`;
+let txt = `\`DOWNLOADER - SOUNDCLOUD\`\n\n`;
     txt += `▢ *Título:* ${json[0].title}\n`;
     txt += `▢ *Calidad:* ${quality}\n`;
     txt += `▢ *Url:* ${url}\n\n`;
