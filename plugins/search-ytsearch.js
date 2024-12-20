@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import yts from "yt-search";
 import axios from 'axios';
-const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('baileys')).default;
+const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('wiskeysocketsbaileys')).default;
 import FormData from "form-data";
 import Jimp from "jimp";
 
