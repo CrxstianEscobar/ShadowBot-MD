@@ -5,24 +5,33 @@ let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? c
 let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kgzBh.jpg')
 let { level, exp, registered, regTime, age } = global.db.data.users[m.sender]
 let username = conn.getName(who)
-
 let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
     let userNationalityData = api.data.result;
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
 
 let txt = `
-🚩 *PERFIL DE USUARIO*
-☁️ *Nombre:* ${username}
-país: ${userNationality}
-edd: ${age} años
-💥 *Tag:* @${who.replace(/@.+/, '')}
+
+ˏˋ°──── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ────°ˊˎ
+
+╭─⪩ 𓆩 𝐏𝐄𝐑𝐅𝐈𝐋 - 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𓆪
+│ ୨୧ Nᴏᴍʙʀᴇ: ${username}
+│ ୨୧ Tᴀɢ: @${who.replace(/@.+/, '')}
+│ ୨୧ Eᴅᴀᴅ: ${age} años
+│ ୨୧ Pᴀɪs: ${userNationality}
+╰───────────────────⪩
+ˏˋ°•*⁀➷ *. :  ｡ * ﾟ  * .: ｡   * . :  ｡   *
+╭─⪩ 𓆩 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𓆪
+│ დ Nᴠʟ: ${level}
+│ დ Exᴘ: ${exp}
+╰───────────────────⪩
+   ‧̍̊·̊‧̥°̩̥˚̩̩̥͙°̩̥‧̥·̊‧̍̊ ♡ °̩̥˚̩̩̥͙°̩̥ ·͙*̩̩͙˚̩̥̩̥*̩̩̥͙·̩̩̥͙*̩̩̥͙˚̩̥̩̥*̩̩͙‧͙ °̩̥˚̩̩̥͙°̩̥ ♡ ‧̍̊·̊‧̥°̩̥˚̩̩̥͙°̩̥‧̥·̊‧̍̊
+> Sʜᴀᴅᴏᴡ Bᴏᴛ MD ♡
 🌀 *Registrado:* ${registered ? '✅': '❌'}
 `.trim()
 conn.sendFile(m.chat, pp, 'perfil.jpg', `${txt.trim()}`, m, rcanal, { mentions: [who] })
 }
 handler.help = ['profile']
 handler.register = true
-handler.group = true
 handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
 export default handler
