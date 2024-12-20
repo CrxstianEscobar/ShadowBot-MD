@@ -14,6 +14,7 @@ let txt = `
 🚩 *PERFIL DE USUARIO*
 ☁️ *Nombre:* ${username}
 país: ${userNationality}
+edd: ${age} años
 💥 *Tag:* @${who.replace(/@.+/, '')}
 🌀 *Registrado:* ${registered ? '✅': '❌'}
 `.trim()
