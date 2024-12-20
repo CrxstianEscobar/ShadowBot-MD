@@ -21,10 +21,9 @@ let handler = async (m, { conn, usedPrefix, command }) => {
     let img = await (await fetch(`${pp}`)).buffer()
     let txt = ` – *PERFIL - USER*\n\n`
     txt += `◦ *Nombre* : ${name}\n`
-    txt += `◦ *Edad* : ${age} años`\n`
-    txt += `◦ *Numero* : ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}\n`
-    txt += `◦ *Nacionalidad* : ${userNationality}\n`
-    txt += `◦ *Link* : wa.me/${who.split`@`[0]}\n`
+    txt += `◦ *Edad* : ${age} años`\n
+    txt += `◦ *Numero* : ${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`\n
+    txt += `◦ *Nacionalidad* : ${userNationality}`
     let mentionedJid = [who]
     await conn.sendFile(m.chat, img, 'thumbnail.jpg', txt, m, null)
   } catch (error) {
