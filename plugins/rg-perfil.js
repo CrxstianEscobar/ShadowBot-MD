@@ -6,6 +6,7 @@ import axios from 'axios'
 
 let handler = async (m, { conn, usedPrefix, command }) => {
 
+    let texto = `╰──────>⋆☽⋆ 💫 ⋆☾⋆<──────╯`.trim();
 
 
 handler.help = ['perfil', 'perfil *@user*']
