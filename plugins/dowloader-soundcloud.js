@@ -23,8 +23,22 @@ let txt = `*_SOUND CLOUD MUSIC_*\n\n`;
     txt += `▢ *Url:* ${url}\n\n`;
     txt += `> *[ ℹ️ ] Se está enviando el audio, espere...*`
 
-await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
-await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
+await conn.sendMessage(m.chat, { 
+  text: txt, 
+  contextInfo: { 
+    externalAdReply: { 
+      title: json[0].title, 
+      body: wm, 
+      thumbnailUrl: image, 
+      mediaType: 1, 
+      showAdAttribution: true, 
+      renderLargerThumbnail: true 
+    } 
+  } 
+}, { quoted: m });
+
+//await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
+//await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 
 await m.react('✅');
 } catch {
