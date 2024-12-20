@@ -7,9 +7,9 @@ import axios from 'axios'
 let handler = async (m, { conn, usedPrefix, command }) => {
  m.reply(global.ficha);
 
-handler.help = ['perfil', 'perfil *@user*']
+handler.help = ['perfil']
 handler.tags = ['rg']
-handler.command = /^(perfil|profile)$/i
+handler.command = ['perfil', 'profile'] 
 handler.register = true
 
 export default handler
