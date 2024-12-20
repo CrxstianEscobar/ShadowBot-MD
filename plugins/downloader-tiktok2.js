@@ -32,7 +32,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 ${tiktokData.data.music}`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOAD - TIKTOK V2`" + `\n\n${infonya_gan}`, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOADER - TIKTOK V2`" + `\n\n${infonya_gan}`, m);
             setTimeout(async () => {
                 // Aquí se eliminó la línea que enviaba el audio
                  await conn.sendFile(m.chat, `${tiktokData.data.music}`, "lagutt.mp3", "", m);
