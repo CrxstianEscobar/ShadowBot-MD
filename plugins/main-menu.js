@@ -25,9 +25,9 @@ let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.a
 let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
 
-let menu = `.𝗍ᥱᥲm ❀`.trim()
+let menu = `BLF ❀`.trim()
 
-await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardingScore: 999, body: dev, thumbnailUrl: perfil, mediaType: 1, renderLargerThumbnail: false,
+await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardingScore: 999, thumbnailUrl: perfil, mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 await m.react('🌙')    
 
@@ -39,7 +39,7 @@ await m.react('❌')
 handler.help = ['menu']
 handler.tags = ['main']
 handler.command = ['menu', 'help', 'menú', 'allmenú', 'allmenu', 'menucompleto'] 
-handler.register = true
+handler.register = false
 export default handler
 
 const more = String.fromCharCode(8206)
