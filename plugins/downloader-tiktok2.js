@@ -18,18 +18,15 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
         const videoURLWatermark = tiktokData.data.wmplay;
         const infonya_gan = `*📖 Descrip꯭ción:*
 > ${tiktokData.data.title}*
-
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒ *
-
 ┊ ✧ *Likes:* ${tiktokData.data.digg_count}
 ┊ ✧ *Comentarios:* ${tiktokData.data.comment_count}
 ┊ ✧ *Compartidas:* ${tiktokData.data.share_count}
 ┊ ✧ *Vistas:* ${tiktokData.data.play_count}
 ┊ ✧ *Descargas:* ${tiktokData.data.download_count}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒ ⭒ ⭒*   ˚̩̥̩̥*̩̩͙✩
-
 *👤 Usu꯭ario:*
-·˚ ༘₊· ͟͟͞͞꒰➳ ${tiktokData.data.author.nickname || "No info"}
+·˚₊· ͟͟͞͞꒰➳ ${tiktokData.data.author.nickname || "No info"}
 (https://www.tiktok.com/@${tiktokData.data.author.unique_id})
 *🎧 Son꯭ido:*
 ${tiktokData.data.music}`;
