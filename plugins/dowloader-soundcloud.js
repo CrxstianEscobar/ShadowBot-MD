@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import axios from 'axios';
 
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Hace falta el título del audio de SoundCloud.*\n\n*[ 💡 ] Ejemplo:* _.${usedPrefix + command} Cris MJ - Peligrosa_`, m, rcanal)
+if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Hace falta el título del audio de SoundCloud.*\n\n*[ 💡 ] Ejemplo:* _${usedPrefix + command} Floyymenor - Peligrosa_`, m, rcanal)
 
 await m.react('🕒');
 try {
