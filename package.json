@@ -42,7 +42,7 @@
         "acrcloud": "^1.4.0",
         "adm-zip": "^0.5.16",
         "api-dylux": "^1.8.5",
-        "aptoide-scraper": "^1.0.1",
+        "aptoide-scraper": "github:DIEGO-OFC/dv-aptoide-scraper",
         "awesome-phonenumber": "^3.4.0",
         "axios": "^1.1.2",
         "btch-downloader": "^2.3.2",
