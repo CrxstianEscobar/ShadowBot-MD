@@ -29,8 +29,6 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
   }
 
   try {
-    conn.reply(message.chat, '✨️ *ENVIANDO SUS RESULTADOS..*', message);
-}
 
     let results = [];
     let { data } = await axios.get("https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=" + text);
