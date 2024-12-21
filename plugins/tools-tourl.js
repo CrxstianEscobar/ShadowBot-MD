@@ -9,7 +9,7 @@ let handler = async (m, { conn }) => {
   let mime = (q.msg || q).mimetype || ''
   
   if (!mime.startsWith('image/')) {
-    return m.reply('🚩 Responde a una *Imagen.*')
+    return m.reply('*[ ℹ️ ] Responde a una imagen.*')
   }
   await m.react('🕓')
 
@@ -35,13 +35,13 @@ let handler = async (m, { conn }) => {
         txt += `  *» Delete* : ${api.data.data.delete_url}\n\n`
         txt += `🚩 *${textbot}*`
     await conn.sendFile(m.chat, api.data.data.url, 'ibb.jpg', txt, m, null, rcanal)
-    await m.react('✅')
+    await m.react('☃️')
   } else {
     await m.react('✖️')
   }
 }
 handler.tags = ['tools']
 handler.help = ['ibb']
-handler.command = /^(ibb)$/i
-handler.register = true 
+handler.command = /^(ibb|tourl)$/i
+handler.register = false
 export default handler
