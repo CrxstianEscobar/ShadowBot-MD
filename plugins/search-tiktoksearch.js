@@ -9,7 +9,7 @@ const {
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(message.chat, "❕️ *¿QUÉ BÚSQUEDA DESEA REALIZAR EN TIKTOK?*", message, rcanal);
+    return conn.reply(message.chat, "*[ ℹ️ ] Que búsqueda desea realizar en Tik Tok?*", message, rcanal);
   }
 
   async function createVideoMessage(url) {
@@ -29,14 +29,14 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
   }
 
   try {
-    conn.reply(message.chat, '✨️ *ENVIANDO SUS RESULTADOS..*', message, {
+    conn.reply(message.chat, '*[ ☃️ ] Enviando resultados...*', message, {
       contextInfo: { 
         externalAdReply: { 
           mediaUrl: null, 
           mediaType: 1, 
           showAdAttribution: true,
           title: '♡  ͜ ۬︵࣪᷼⏜݊᷼𝘿𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙨⏜࣪᷼︵۬ ͜ ',
-          body: '<(✿◠‿◠)> 𝐂𝐫𝐨𝐰𝐁𝐨𝐭-𝐒𝐓 ✨',
+          body: '<(✿◠‿◠)> 𝐒𝐡𝐚𝐝𝐨𝐰 𝐌𝐃 ✨',
           previewType: 0, 
           thumbnail: catalogo,
           sourceUrl: canal 
@@ -72,10 +72,10 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
           },
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
             body: proto.Message.InteractiveMessage.Body.create({
-              text: "✨️ RESULTADO DE: " + text
+              text: "☃️ Resultado de: " + text
             }),
             footer: proto.Message.InteractiveMessage.Footer.create({
-              text: "ᥫᩣWillZek"
+              text: "Sʜᴀᴅᴏᴡ Bᴏᴛ MD"
             }),
             header: proto.Message.InteractiveMessage.Header.create({
               hasMediaAttachment: false
