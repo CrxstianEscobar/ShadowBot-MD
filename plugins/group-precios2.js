@@ -13,8 +13,9 @@ await conn.sendMessage(m.chat, { image: { url: imageUrl }, caption: message }, {
 }
 handler.help = ['bermuda'];
 handler.tags = ['ff'];
-handler.group = true;
 handler.command = ['bermuda', 'mapabermuda'];
-handler.admin = true
-handler.botAdmin = false
+handler.admin = true;
+handler.botAdmin = false;
+handler.group = true ;
+
 export default handler;
