@@ -20,14 +20,6 @@ for (let track of json.data) {
 let image = await createImage(track.image)
 
 await m.react('✅')
-/* push.push({
-body: proto.Message.InteractiveMessage.Body.fromObject({
-text: `${track.title} - ${track.artist}`
-}),
-footer: proto.Message.InteractiveMessage.Footer.fromObject({text: `By IsitaBot`}),
-header: proto.Message.InteractiveMessage.Header.fromObject({title: '', hasMediaAttachment: true, imageMessage: image}),
-nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
-buttons: [ */ 
 
         push.push({
             body: proto.Message.InteractiveMessage.Body.fromObject({
