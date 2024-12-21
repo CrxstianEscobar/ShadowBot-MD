@@ -26,7 +26,7 @@ let handler = async (m, { conn, text, args, groupMetadata }) => {
     }
 
         if (!args[0]) {
-        return conn.reply(m.chat, `* [ ☃️ ] Utilice el comando con opciones:*\n1. \`.fantasmas list\` para etiquetar los miembros inactivos\n2. \`.fantasmas kick\` para expulsar a miembros inactivos`, m)
+        return conn.reply(m.chat, `*[ ☃️ ] Utilice el comando con opciones:*\n1. \`.fantasmas list\` para etiquetar los miembros inactivos\n2. \`.fantasmas kick\` para expulsar a miembros inactivos`, m)
     }
 
     if (args[0] === 'list') {
