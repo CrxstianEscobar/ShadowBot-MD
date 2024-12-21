@@ -21,8 +21,8 @@ const handler = async (m, { conn, command, args }) => {
       return conn.reply(m.chat, '*[🌠] El mensaje es demasiado largo. Intenta con una búsqueda más específica.*', m);
     }
 
-    const url = 'https://google.com/search?q='' + encodeURIComponent(text);
-    const ss = `(link unavailable);
+    const url = 'https://google.com/search?q=' + encodeURIComponent(text);
+    const ss = `https://image.thum.io/get/fullpage/$`;
     await conn.sendFile(m.chat, ss, 'error.png', url + '\n\n' + msg, m);
   } catch (error) {
     console.error(error);
