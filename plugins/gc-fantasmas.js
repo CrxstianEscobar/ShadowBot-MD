@@ -1,7 +1,4 @@
-/* 
-- Inactivos etiqueta y Kick By Angel-OFC 
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-*/
+//fantasmas etiqueta y kick.
 let handler = async (m, { conn, text, args, groupMetadata }) => {
     await conn.sendPresenceUpdate('composing', m.chat)
 
@@ -29,11 +26,11 @@ let handler = async (m, { conn, text, args, groupMetadata }) => {
     }
 
         if (!args[0]) {
-        return conn.reply(m.chat, `🤍 Utilice el comando con opciones:\n1. \`.inactivos list\` para etiquetar los miembros off\n2. \`.inactivos kick\` para expulsar a miembros off`, m)
+        return conn.reply(m.chat, `* [ ☃️ ] Utilice el comando con opciones:*\n1. \`.fantasmas list\` para etiquetar los miembros inactivos\n2. \`.fantasmas kick\` para expulsar a miembros inactivos`, m)
     }
 
     if (args[0] === 'list') {
-        if (total === 0) return conn.reply(m.chat, `🤍 *No hay bandos en este grupo.*`, m)
+        if (total === 0) return conn.reply(m.chat, `*[ ℹ️ ] Este grupo es activo v:*`, m)
         
         const groupName = await conn.getName(m.chat)
         const message = `*${total}/${member.length}* grupo *${groupName}* Lista de inactivos\n${sider.map(v => '  ○ @' + v.replace(/@.+/, '')).join('\n')}`
@@ -46,7 +43,7 @@ let handler = async (m, { conn, text, args, groupMetadata }) => {
     }
 
     if (args[0] === 'kick') {
-        if (total === 0) return conn.reply(m.chat, `🤍 *No hay bandos para patear en este grupo.*`, m)
+        if (total === 0) return conn.reply(m.chat, `*[ ℹ️ ] Este grupo es activo v:*`, m)
 
         for (const user of sider) {
             try {
@@ -56,15 +53,15 @@ let handler = async (m, { conn, text, args, groupMetadata }) => {
             }
         }
 
-        return conn.reply(m.chat, `🤍 Eliminado con éxito *${total}* miembros inactivos del grupo.`, m)
+        return conn.reply(m.chat, `*[ ℹ️ ] Eliminado con éxito ${total} miembros inactivos del grupo.*`, m)
     }
 
-    return conn.reply(m.chat, `🤍 Opción no válida. Utilice \`list\` para ver miembros inactivos o \`kick\` para eliminarlos.`, m)
+    return conn.reply(m.chat, `*[ ℹ️ ] Opción no válida*.\n\n*[ 💡 ] Utilice:*\n\`list\` para ver miembros inactivos\n\`kick\` para eliminarlos.`, m)
 }
 
-handler.help = ['inactivos']
-handler.tags = ['group']
-handler.command = /^(inactivos|gcinactivos)$/i
+handler.help = ['fantasmas']
+handler.tags = ['gc']
+handler.command = /^(inactivos|fantasmas)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
