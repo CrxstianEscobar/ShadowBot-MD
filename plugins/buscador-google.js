@@ -22,7 +22,7 @@ const handler = async (m, { conn, command, args }) => {
     }
 
     const url = 'https://google.com/search?q=' + encodeURIComponent(text);
-    const ss = `https://image.thum.io/get/fullpage/$`;
+    const ss = `https://image.thum.io/get/fullpage/${url}`;
     await conn.sendFile(m.chat, ss, 'error.png', url + '\n\n' + msg, m);
   } catch (error) {
     console.error(error);
