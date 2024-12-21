@@ -16,6 +16,6 @@ handler.tags = ['ff'];
 handler.command = ['bermuda', 'mapabermuda'];
 handler.admin = true;
 handler.botAdmin = false;
-handler.group = true ;
+handler.group = true;
 
 export default handler;
