@@ -7,7 +7,7 @@ do b = ps.getRandom()
 while (b === a)
 
   let mensajes = [
-    `*${toM(a)} `,
+    `*${toM(a)} ¡Felicidades! Eres el ganador del sorteo.*\n*¡Disfruta de tu premio 🥳!*`,
     `*${toM(a)} `,
     `*${toM(a)} `,
     `*${toM(a)} `,
