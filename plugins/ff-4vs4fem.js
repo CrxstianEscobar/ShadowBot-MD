@@ -36,7 +36,7 @@ const handler = async (m, { conn, args }) => {
 
     const diferenciaHoraria = diferenciasHorarias[pais];
 
-    const formatTime = (date) => date.toLocaleTimeString('es', { hour12: false, hour: '2-digit', minute: '2-digit' });
+    const formatTime = (date) => date.toLocaleTimeString('es', { hour12: true, hour: '2-digit', minute: '2-digit' });
 
     const horasEnPais = {
         CL: '',
