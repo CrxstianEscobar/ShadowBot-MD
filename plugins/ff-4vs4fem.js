@@ -1,6 +1,8 @@
-const handler = async (m, { conn, args }) => {
+const handler = async (m, { text, conn, args, usedPrefix, command }) => {
+
     if (args.length < 3) {
-        conn.reply(m.chat, 'Debes proporcionar la hora (HH:MM), AM/PM, y el país (MX, CO, CL, AR, PE, EC).', m);
+        conn.reply(m.chat, '*[ ℹ️ ] Proporciona la hora y el pais.*\n*Usa Ar para Argentina y Pe para Perú.*\n\n*[ 💡 ] Ejemplo:*
+.tx 10:00 am pe', m);
         return;
     }
 
