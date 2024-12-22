@@ -83,7 +83,7 @@ let toM = a => '@' + a.split('@')[0]
 🌹 • 
 🌹 • 
 
-> *Organiza:* ${toM}
+> *Organiza:* ${toM(a)}
 `.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
