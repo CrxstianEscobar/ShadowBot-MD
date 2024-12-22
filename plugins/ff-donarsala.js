@@ -1,12 +1,11 @@
 
 let toM = a => '@' + a.split('@')[0]
-
 function handler(m, { groupMetadata }) {
-  let ps = groupMetadata.participants.map(v => (link unavailable))
-  let a = ps.getRandom()
-  let b
-  do b = ps.getRandom()
-  while (b === a)
+let ps = groupMetadata.participants.map(v => v.id)
+let a = ps.getRandom()
+let b
+do b = ps.getRandom()
+while (b === a)
 
   let mensajes = [
     `*${toM(a)},* Oh beba vaya preparando esa sala... ☃️\n> By Shadow Bot MD`,
