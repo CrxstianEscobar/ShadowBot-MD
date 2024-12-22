@@ -9,7 +9,7 @@ while (b === a)
   let mensajes = [
     `*${toM(a)} ¡Felicidades! Eres el ganador del sorteo.*\n*¡Disfruta de tu premio 🥳!*`,
     `*${toM(a)} ¡Enhorabuena! Has sido seleccionado como el ganador del sorteo. ¡Bien hecho! 🎉*`,
-    `*${toM(a)} `,
+    `*${toM(a)} ¡La suerte te sonríe! Has sido seleccionado como el ganador del sorteo.*\n*¡Aprovecha al máximo tu premio! 🍨*`,
     `*${toM(a)} `,
     `*${toM(a)} `,
     `*${toM(a)} `,
