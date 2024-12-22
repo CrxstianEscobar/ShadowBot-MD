@@ -69,7 +69,7 @@ global.comienzo = '• • ◕◕════';
 global.fin = '════◕◕ • •';
 global.botdate = `${moment.tz('America/Lima').format('DD/MM/YY')}`;
 global.bottime = `${moment.tz('America/Lima').format('HH:mm:ss')}`;
-global.fgif = {key: {participant: '0@s.whatsapp.net'}, message: {'videoMessage': {'title': wm, 'h': `Hmm`, 'seconds': '999999999', 'gifPlayback': 'true', 'caption': bottime, 'jpegThumbnail': fs.readFileSync('./src/menus/Menu.jpg')}}};
+global.fgif = {key: {participant: '0@s.whatsapp.net'}, message: {'videoMessage': {'title': wm, 'h': `Hmm`, 'seconds': '999999999', 'gifPlayback': 'true', 'caption': bottime, 'jpegThumbnail': fs.readFileSync('./storage/img/miniurl.jpg')}}};
 global.multiplier = 99;
 global.flaaa = [
   'https://flamingtext.com/net-fu/proxy_form.cgi?&imageoutput=true&script=water-logo&script=water-logo&fontsize=90&doScale=true&scaleWidth=800&scaleHeight=500&fontsize=100&fillTextColor=%23000&shadowGlowColor=%23000&backgroundColor=%23000&text=',
