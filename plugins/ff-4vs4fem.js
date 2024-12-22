@@ -7,13 +7,13 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     const horaRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9]$/;
     if (!horaRegex.test(args[0])) {
-        conn.reply(m.chat, 'Formato de hora incorrecto. Debe ser HH:MM en formato de 12 horas.', m);
+        conn.reply(m.chat, '*[ ℹ️ ] Formato de hora incorrecto.*', m);
         return;
     }
 
     const horaUsuario = args[0];
-    const ampm = args[1].toUpperCase();
-    const pais = args[2].toUpperCase();
+    const ampm = args[2].toUpperCase();
+    const pais = args[3].toUpperCase();
 
     if (!['AM', 'PM'].includes(ampm)) {
         conn.reply(m.chat, 'Formato AM/PM incorrecto. Debe ser AM o PM.', m);
@@ -56,7 +56,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         horasEnPais[key] = formatTime(horaEnPais);
     }
 
-    const modalidad = args.slice(3).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
+    const modalidad = args.slice(1).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
 
     m.react('🎮');
 
