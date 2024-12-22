@@ -12,7 +12,7 @@ while (b === a)
     `*${toM(a)} ¡La suerte te sonríe! Has sido seleccionado como el ganador del sorteo.*\n*¡Aprovecha al máximo tu premio! 🍨*`
 ]
 
-  let mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length | 0];
+  let mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)];
 
   m.reply(mensajeAleatorio, null, { mentions: [a, b] })
 }
