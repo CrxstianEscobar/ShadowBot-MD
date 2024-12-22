@@ -1,7 +1,7 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {
-        conn.reply(m.chat, '*[ ℹ️ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* _.v4fem 10:00 am pe Vivido_', m);
+        conn.reply(m.chat, '*[ ℹ️ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* _.v6mixto 10:00 am pe Vivido_', m);
         return;
     }
 
