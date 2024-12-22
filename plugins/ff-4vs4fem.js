@@ -60,7 +60,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     m.react('🎮');
 
-    let modo = `*${modalidad}*`;
+    let modo = `${modalidad}`;
 
     const message = `ㅤㅤ•──⪻ *_VS FEM_* ⪼──•
 ╭─────━━━━────── •••
@@ -83,7 +83,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
-handler.help = ['tesis2']
+handler.help = ['4vs4fem']
 handler.tags = ['ff']
-handler.command = /^(tesis2)$/i
+handler.command = /^(v4fem)$/i
 export default handler;
