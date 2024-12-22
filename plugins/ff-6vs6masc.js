@@ -65,10 +65,10 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     const message = `ㅤㅤ•──⪻ *_VS MSC_* ⪼──•
 ╭─────━━━━────── •••
-» *🍨꒱ Modalidad:* 6vs6
+» *🍨꒱ Modalidad:* ${modo}
 » *⏰꒱ Horario:*
-╎  • *Perú:* 
-╎  • *Arg:* 
+╎  • *Perú:* ${horasEnPais.PE}
+╎  • *Arg:* ${horasEnPais.AR}
 ╰◣◥◣◥◤◢◤◢◣◥◣◥◤
 ㅤ _ʚ Jugadores:_ ᭡
 🥷🏻 • 
