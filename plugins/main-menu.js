@@ -14,7 +14,7 @@ let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
 
 let menu = `
-> Hola ${taguser} ${ucapan()}
+> 👋🏻 Hola \`${taguser}`\ ${ucapan()}
 *˚₊·˚₊· ͟͟͞͞➳❥ _Shadow Bot - MD_*
 *☆═━┈◈ ╰ 1.4.0 V ╯ ◈┈━═☆*
 *│* 
@@ -144,18 +144,18 @@ export default handler
 
 function ucapan() {
     const time = moment.tz('America/Lima').format('HH')
-    let res = "Buenas Noches🌙"
+    let res = "Buenas Noches 🌙"
     if (time >= 5) {
-        res = "Buena Madrugada🌄"
+        res = "Buena Madrugada 🌄"
     }
     if (time > 10) {
-        res = "Buenos días☀️"
+        res = "Buenos días ☀️"
     }
     if (time >= 12) {
-        res = "Buenas Tardes🌅"
+        res = "Buenas Tardes 🌅"
     }
     if (time >= 19) {
-        res = "Buenas Noches🌙"
+        res = "Buenas Noches 🌙"
     }
     return res
 }
