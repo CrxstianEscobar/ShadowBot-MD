@@ -62,7 +62,6 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     m.react('🎮');
 
     let modo = `${modalidad}`;
-    let toM = a => '@' + a.split('@')[0];
 
     const message = `ㅤ•─⪻ *_INTERNA FEM_* ⪼─•
 ╭─────━━━━────── •••
@@ -82,7 +81,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 🌹 • 
 🌹 • 
 
-> *Organiza: ${toM(a)}*
+> *Organiza: <txt>*
 `.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
