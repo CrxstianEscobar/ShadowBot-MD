@@ -12,8 +12,8 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     }
 
     const horaUsuario = args[0];
-    const ampm = args[2].toUpperCase();
-    const pais = args[3].toUpperCase();
+    const ampm = args[1].toUpperCase();
+    const pais = args[2].toUpperCase();
 
     if (!['AM', 'PM'].includes(ampm)) {
         conn.reply(m.chat, 'Formato AM/PM incorrecto. Debe ser AM o PM.', m);
@@ -56,7 +56,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         horasEnPais[key] = formatTime(horaEnPais);
     }
 
-    const modalidad = args.slice(1).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
+    const modalidad = args.slice(3).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
 
     m.react('🎮');
 
