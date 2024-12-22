@@ -56,7 +56,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         horasEnPais[key] = formatTime(horaEnPais);
     }
 
-    const modalidad = args.slice(1).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
+    const modalidad = args.slice(3).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
 
     m.react('🎮');
 
