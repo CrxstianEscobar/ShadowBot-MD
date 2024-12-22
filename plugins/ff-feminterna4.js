@@ -1,7 +1,5 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
-let toM = a => '@' + a.split('@')[0]
-
     if (args.length < 3) {
         conn.reply(m.chat, '*[ ℹ️ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* _.feminterna4 10:00 am pe Vivido_', m);
         return;
@@ -64,6 +62,7 @@ let toM = a => '@' + a.split('@')[0]
     m.react('🎮');
 
     let modo = `${modalidad}`;
+    let toM = a => '@' + a.split('@')[0];
 
     const message = `ㅤ•─⪻ *_INTERNA FEM_* ⪼─•
 ╭─────━━━━────── •••
@@ -83,7 +82,7 @@ let toM = a => '@' + a.split('@')[0]
 🌹 • 
 🌹 • 
 
-> *Organiza:* ${toM(a)}
+> *Organiza: ${toM(a)}*
 `.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
