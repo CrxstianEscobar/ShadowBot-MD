@@ -13,6 +13,12 @@ let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
 
 let menu = `
+> Hola
+*˚₊·˚₊· ͟͟͞͞➳❥ _Shadow Bot - MD_*
+*☆═━┈◈ ╰ 1.4.0 V ╯ ◈┈━═☆*
+*│* 
+*╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
+*⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
 ╭─·˚₊· ͟͟͞͞꒰➳ \`ɪɴғᴏʀᴍᴀᴄɪᴏɴ\` 𑁭𑁘
 ┊⪩ _.grupos_
 ┊⪩ _.owner_
