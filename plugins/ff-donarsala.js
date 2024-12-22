@@ -5,8 +5,8 @@ let a = ps.getRandom()
 let b
 do b = ps.getRandom()
 while (b === a)
-m.reply(`*${toM(a)},* _Esta vez te tocó donar la sala_ 📌
-Oh beba ☃️`, null, {
+m.reply(`*${toM(a)},* _Oh beba vaya preparando esa sala ☃️_ 
+> By Shadow Bot MD`, null, {
 mentions: [a, b]
 })}
 handler.help = ['donarsala']
