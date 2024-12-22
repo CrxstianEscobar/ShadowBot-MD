@@ -34,6 +34,7 @@
     "dependencies": {
         "@adiwajshing/keyed-db": "^0.2.4",
         "@bochilteam/scraper": "^4.2.4",
+        "@StarlightsTeam/Scraper": "github:StarlightsTeam/StarlightsTeam-Scraper",
         "@kaviaann/scrape": "^1.0.1",
         "@vitalets/google-translate-api": "^9.2.0",
         "@whiskeysockets/baileys": "^6.7.8",
