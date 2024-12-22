@@ -24,30 +24,24 @@ const handler = async (m, { conn, args }) => {
     if (ampm === 'AM' && hora === 12) hora = 0;
 
     const diferenciasHorarias = {
-        MX: -1, // UTC-6
-        CO: 0,  // UTC-5
         CL: 2,  // UTC-4
         AR: 2,  // UTC-3
         PE: 0,  // UTC-5
-        EC: 0   // UTC-5
     };
 
     if (!(pais in diferenciasHorarias)) {
-        conn.reply(m.chat, 'País no válido. Usa MX para México, CO para Colombia, CL para Chile, AR para Argentina, PE para Perú o EC para Ecuador.', m);
+        conn.reply(m.chat, 'País no válido. Usa AR para Argentina, PE para Perú.', m);
         return;
     }
 
     const diferenciaHoraria = diferenciasHorarias[pais];
 
-    const formatTime = (date) => date.toLocaleTimeString('es', { hour12: true, hour: '2-digit', minute: '2-digit' });
+    const formatTime = (date) => date.toLocaleTimeString('es', { hour12: false, hour: '2-digit', minute: '2-digit' });
 
     const horasEnPais = {
-        MX: '',
-        CO: '',
         CL: '',
         AR: '',
-        PE: '',
-        EC: ''
+        PE: ''
     };
 
     for (const key in diferenciasHorarias) {
@@ -61,37 +55,23 @@ const handler = async (m, { conn, args }) => {
         horasEnPais[key] = formatTime(horaEnPais);
     }
 
-    const message = `╭──────>⋆☽⋆ 🆚 ⋆☾⋆<──────╮
-ㅤ          •6  𝗩 𝗘 𝗥 𝗦 𝗨 𝗦  6•           
-╰──────>⋆☽⋆ 🆚 ⋆☾⋆<──────╯
+    const message = `ㅤㅤ•──⪻ *_VS FEM_* ⪼──•
+╭─────━━━━────── •••
+» *🍨꒱ Modalidad:* 4vs4
+» *⏰꒱ Horario:*
+╎  • *Perú:* ${horasEnPais.PE}
+╎  • *Arg:* ${horasEnPais.AR}
+╰◣◥◣◥◤◢◤◢◣◥◣◥◤
+ㅤ _ʚ Jugadoras:_ ᭡
+💋 • 
+💋 • 
+💋 • 
+💋 • 
+ㅤ _ʚ Suplentes:_ ᭡
+💋 • 
+💋 • 
 
-╭──────>⋆☽⋆ 🔥 ⋆☾⋆<──────╮
-│⏱ 𝐇𝐎𝐑𝐀𝐑𝐈𝐎:
-│🇲🇽 𝐌𝐄𝐗𝐈𝐂𝐎 : ${horasEnPais.MX}
-│🇨🇴 𝐂𝐎𝐋𝐎𝐌𝐁𝐈𝐀 : ${horasEnPais.CO}
-│🇵🇪 𝐏𝐄𝐑𝐔 : ${horasEnPais.PE}
-│🇪🇨 𝐄𝐂𝐔𝐀𝐃𝐎𝐑 : ${horasEnPais.EC}
-│🇨🇱 𝐂𝐇𝐈𝐋𝐄 : ${horasEnPais.CL}
-│🇦🇷 𝐀𝐑𝐆𝐄𝐍𝐓𝐈𝐍𝐀 : ${horasEnPais.AR}
-│
-│ㅤʚ 𝗝𝗨𝗚𝗔𝗗𝗢𝗥𝗘𝗦: 
-│
-│     𝗘𝗦𝗖𝗨𝗔𝗗𝗥𝗔 1
-│
-│👑 ➤ 
-│⚜️ ➤ 
-│⚜️ ➤ 
-│⚜️ ➤ 
-│⚜️ ➤
-│⚜️ ➤
-│
-│ㅤʚ 𝗦𝗨𝗣𝗟𝗘𝗡𝗧𝗘𝗦:
-│⚜️ ➤ 
-│⚜️ ➤ 
-│
-│ㅤʚ 𝗗𝗢𝗡𝗔𝗗𝗢𝗥 𝗗𝗘 𝗦𝗔𝗟𝗔:
-│🫂 ➤
-╰──────>⋆☽⋆ 🔥 ⋆☾⋆<──────╯
+> By Shadow Bot - MD
 `.trim();
     
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
