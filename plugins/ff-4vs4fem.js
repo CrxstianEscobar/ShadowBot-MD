@@ -56,9 +56,15 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         horasEnPais[key] = formatTime(horaEnPais);
     }
 
+    const modalidad = args.slice(1).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
+
+    m.react('🎮');
+
+    let modo = `*${modalidad}*`;
+
     const message = `ㅤㅤ•──⪻ *_VS FEM_* ⪼──•
 ╭─────━━━━────── •••
-» *🍨꒱ Modalidad:* 4vs4
+» *🍨꒱ Modalidad:* ${modo}
 » *⏰꒱ Horario:*
 ╎  • *Perú:* ${horasEnPais.PE}
 ╎  • *Arg:* ${horasEnPais.AR}
