@@ -16,15 +16,17 @@ const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://teleg
 let menu = `
 > 👋🏻 Hola ${taguser} ${ucapan()}
 > Perú | | Lima
-*˚₊·˚₊· ͟͟͞͞➳❥ _Shadow Bot - MD_*
-*☆═━┈◈ ╰ 1.4.0 V ╯ ◈┈━═☆*
+*˚₊·˚₊· ͟͟͞͞➳❥ Shadow MD*
+*☆═━┈◈ ╰ 1.4.0 ╯ ◈┈━═☆*
 *│* 
-*╰ ˚₊·˚₊· ͟͟͞͞➳❥ _By Cristian_*
+*╰ ˚₊·˚₊· ͟͟͞͞➳❥ By Crxstian*
 *⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
 *⎔ _Creador:_* _Cristian Escobar_
 *⎔ _Número:_* _+51 927238856_
 *⎔ _Uptime:_* _24/7_
 *⎔ _Versión:_* _1.4.0_
+
+ㅤ· · ────── ·•· ────── · · 
 
 ╭─·˚₊· ͟͟͞͞꒰➳ \`ɪɴғᴏʀᴍᴀᴄɪᴏɴ\` 𑁭𑁘
 ┊⪩ _.grupos_
