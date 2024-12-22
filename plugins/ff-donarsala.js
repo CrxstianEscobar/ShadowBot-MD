@@ -8,10 +8,10 @@ do b = ps.getRandom()
 while (b === a)
 
   let mensajes = [
-    `*${toM(a)},* Oh beba vaya preparando esa sala... ☃️\n> By Shadow Bot MD`,
-    `*${toM(a)},* ¡Prepárate para la batalla! 🎮\n> By Shadow Bot MD`,
-    `*${toM(a)},* ¡Es hora de jugar! 🎲\n> By Shadow Bot MD`,
-    `*${toM(a)},* ¡Vamos a ver quién es el mejor! 💪\n> By Shadow Bot MD`
+    `*${toM(a)} Vaya preparando esa sala... ☃️*\n> By Shadow Bot MD`,
+    `*${toM(a)} No te me escondas que vas a donar la sala 😏*\n> By Shadow Bot MD`,
+    `*${toM(a)} ¡La sala mijo yaya! 🗣️*\n> By Shadow Bot MD`,
+    `*${toM(a)} ¡Le tocó donar sala al insano! 💪*\n> By Shadow Bot MD`
 ]
 
   let mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)]
