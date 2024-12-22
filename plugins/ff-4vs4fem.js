@@ -56,6 +56,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
         horasEnPais[key] = formatTime(horaEnPais);
     }
 
+//Código agregado para definir una modalidad.
     const modalidad = args.slice(3).join(' '); // Segundo texto (modalidad), puede contener más de una palabra
 
     m.react('🎮');
@@ -85,5 +86,5 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 };
 handler.help = ['4vs4fem']
 handler.tags = ['ff']
-handler.command = /^(v4fem)$/i
+handler.command = /^(v4fem|4vs4fem|vs4fem)$/i
 export default handler;
