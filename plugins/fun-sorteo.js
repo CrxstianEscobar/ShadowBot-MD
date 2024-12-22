@@ -13,7 +13,7 @@ while (b === a)
     `*${toM(a)} ¡No te lo vas a creer! Eres el ganador del sorteo. ¡Parece que la suerte te ha sonreído!* 😯`,
     `*${toM(a)} ¡Lo lograste! Eres el ganador del sorteo. ¡No te rindas, sigue participando y quién sabe, tal vez ganes de nuevo!* 😊`,
     `*${toM(a)} ¡Ganaste! Eres el afortunado ganador del sorteo. 🏆*`,
-    `*${toM(a)} `
+    `*${toM(a)} ¡Enhorabuena! Has sido seleccionado como el ganador del sorteo. ¡No te preocupes, no te vamos a pedir que devuelvas el premio! 🎊*`
 ]
 
   let mensajeAleatorio = mensajes[Math.floor(Math.random() * mensajes.length)]
