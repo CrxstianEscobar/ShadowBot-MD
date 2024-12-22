@@ -63,7 +63,23 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     let modo = `${modalidad}`;
 
-    const message = `
+    const message = `ㅤㅤ•──⪻ *_VS MXT_* ⪼──•
+╭─────━━━━────── •••
+» *🍨꒱ Modalidad:* ${modo}
+» *⏰꒱ Horario:*
+╎  • *Perú:* ${horasEnPais.PE}
+╎  • *Arg:* ${horasEnPais.AR}
+╰◣◥◣◥◤◢◤◢◣◥◣◥◤
+ㅤ _ʚ Jugadorxs:_ ᭡
+☕ • 
+☕ • 
+☕ • 
+☕ • 
+ㅤ _ʚ Suplentes:_ ᭡
+☕ • 
+☕ • 
+
+> By Shadow Bot - MD
 `.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
