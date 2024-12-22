@@ -63,23 +63,21 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     let modo = `${modalidad}`;
 
-    const message = `ㅤㅤ•──⪻ *_VS FEM_* ⪼──•
+    const message = `ㅤㅤ•──⪻ *_VS MSC_* ⪼──•
 ╭─────━━━━────── •••
 » *🍨꒱ Modalidad:* ${modo}
 » *⏰꒱ Horario:*
 ╎  • *Perú:* ${horasEnPais.PE}
 ╎  • *Arg:* ${horasEnPais.AR}
 ╰◣◥◣◥◤◢◤◢◣◥◣◥◤
-ㅤ _ʚ Jugadoras:_ ᭡
-🌸 • 
-🌸 • 
-🌸 • 
-🌸 • 
-🌸 • 
-🌸 • 
+ㅤ _ʚ Jugadores:_ ᭡
+👹 • 
+👹 • 
+👹 • 
+👹 • 
 ㅤ _ʚ Suplentes:_ ᭡
-🌸 • 
-🌸 • 
+👹 • 
+👹 • 
 
 > By Shadow Bot - MD
 `.trim();
