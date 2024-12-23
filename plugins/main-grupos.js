@@ -1,19 +1,19 @@
 import fetch from 'node-fetch'
 
 let handler  = async (m, { conn, usedPrefix, command }) => {
-let img = await (await fetch(`https://i.ibb.co/s9N9QhG/file.jpg`)).buffer()
+let img = await (await fetch(`https://qu.ax/kgzBh.jpg`)).buffer()
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4001)
-let txt = `*Hola!, te invito a unirte a los grupos oficiales de de IsitaBot-Ai para convivir con la comunidad🌟*
+let txt = `*¡Hola!, te invito a unirte a los grupos oficiales de de Shadow Bot - MD para convivir con la comunidad 🌙*
 
-*✰* ${group}
+♡ ${group}
 
-*─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ*
+*─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ*
 
-➠ Enlace anulado? entre aquí! 
+➳ ¿Enlace anulado? ¡Entre aquí! 
 
-Instagram :
-*✰* https://www.instagram.com/star.moony_desing
+Canal Oficial:
+ꨄ 
 
 > 💫 ${textbot}`
 await conn.sendFile(m.chat, img, "Thumbnail.jpg", txt, m, null, rcanal)
