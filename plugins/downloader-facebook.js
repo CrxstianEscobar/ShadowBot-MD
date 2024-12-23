@@ -1,8 +1,8 @@
-import { igdl } from 'ruhend-scraper';
+ import { igdl } from 'ruhend-scraper';
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
-    return conn.reply(m.chat, '*\`Ingresa El link Del vídeo a descargar ❤️‍🔥\`*', m, fake);
+    return conn.reply(m.chat, '*\`Ingresa El link Del vídeo a descargar 🤍\`*', m, fake);
   }
 
   await m.react('🕒');
@@ -31,22 +31,19 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
   await m.react('✅');
   let video = data.url;
-
-  // Pueden Cambiar Lo De Video Descargado Con Exito, Por otro mensaje, Solo Lo hice Par Definir El dev
-  const dev = 'Video descargado con éxito!';
-
+  
   try {
     await conn.sendMessage(m.chat, { video: { url: video }, caption: dev, fileName: 'fb.mp4', mimetype: 'video/mp4' }, { quoted: m });
   } catch (error) {
-    return conn.reply(m.chat, `*Error al enviar el video. ${error.message}*`, m);
+    return conn.reply(m.chat, '*`Error al enviar el video.`*', m);
   await m.react('❌');
   }
 };
 
-handler.help = ['fb2 *<link>*'];
-handler.estrellas = 2
-handler.tags = ['downloader']
-handler.command = /^(fb2|facebook|fbdl)$/i;
+handler.help = ['fb *<link>*'];
+handler.corazones = 2
+handler.tags = ['dl']
+handler.command = /^(fb|facebook|fbdl)$/i;
 handler.register = true
 
-export default handler;
+export default handler;                                                                                                                                                                                                                                          
