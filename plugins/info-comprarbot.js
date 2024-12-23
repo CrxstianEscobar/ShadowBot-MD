@@ -1,5 +1,12 @@
+/*
 const handler = async (m, {conn}) => {
   m.reply(global.ComprarBot);
+*/
+
+const handler = async (m, {conn}) => {
+  conn.reply(m.chat, global.ComprarBot.replace('@user', `@${m.sender.username || m.sender.jid.split('@')[0]}`), m);
+};
+
 };
 handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
