@@ -2,7 +2,7 @@
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
-    return conn.reply(m.chat, '*\`Ingresa El link Del vídeo a descargar 🤍\`*', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el link del video de Facebook.*\n\n*[ 💡 ] Ejemplo: _${usedPrefix + command} https://www.facebook.com/reel/858448809516815/?mibextid=9drbnH&s=yWDuG2&fs=e_', m);
   }
 
   await m.react('🕒');
@@ -10,23 +10,23 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   try {
     res = await igdl(args[0]);
   } catch (error) {
-    return conn.reply(m.chat, '*`Error al obtener datos. Verifica el enlace.`*', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] Error al obtener el video, verifique que el enlace sea correcto*', m);
   }
 
   let result = res.data;
   if (!result || result.length === 0) {
-    return conn.reply(m.chat, '*`No se encontraron resultados.`*', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] No se encontraron resultados.*', m);
   }
 
   let data;
   try {
     data = result.find(i => i.resolution === "720p (HD)") || result.find(i => i.resolution === "360p (SD)");
   } catch (error) {
-    return conn.reply(m.chat, '*`Error al procesar los datos.`*', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] Error al enviar el video de Facebook*', m);
   }
 
   if (!data) {
-    return conn.reply(m.chat, '*`No se encontró una resolución adecuada.`*', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] No se encontró una resolución adecuada.*', m);
   }
 
   await m.react('☕');
