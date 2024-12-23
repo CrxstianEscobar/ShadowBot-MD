@@ -9,11 +9,11 @@ export default handler;
 global.ComprarBot = `
 *👋🏻 Hola vv te presento al bot mas lindo de Whatsapp.*
 
-*Link de Prueba*
+  ᰰ᷒☕᪤ ᥣіᥒk ძᥱ ⍴rᥙ፝֟ᥱ͟ᑲᥲs ::
 https://chat.whatsapp.com/BiMD1YYaFox8wqYyEBx0so
 
-*Mi Creador:*
-wa.me//51927238856
+  ᰰ᷒☃️᪤ ᥴrᥱᥲ֟፝ძ͟᥆r ::
+_wa.me//51927238856_
 
 ·˚ ༘₊· ͟͟͞͞꒰𝐌𝐄𝐓𝐎𝐃𝐎𝐒 𝐃𝐄 𝐏𝐀𝐆𝐎 🛍
 _- Mercado pago_
