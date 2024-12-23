@@ -4,8 +4,6 @@ const handler = async (m, {conn}) => {
 handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
-await m.react('☃️')
-
 global.ComprarBot = `
 Hola @user te presento al bot mas lindo de Whatsapp.
 Mi creador: wa.me//51927238856
