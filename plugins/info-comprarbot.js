@@ -5,8 +5,8 @@ handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
 global.ComprarBot = `
-Hola @user te presento al bot mas lindo de Whatsapp.
-Mi creador: wa.me//51927238856
+Hola @${m.sender.username || m.sender.jid.split('@')[0]} te presento al bot mas lindo de Whatsapp.
+*Mi creador:* wa.me//51927238856
 Consulta con el para adquirir el Bot.
 
 ·˚ ༘₊· ͟͟͞͞꒰𝐌𝐄𝐓𝐎𝐃𝐎𝐒 𝐃𝐄 𝐏𝐀𝐆𝐎 🛍
