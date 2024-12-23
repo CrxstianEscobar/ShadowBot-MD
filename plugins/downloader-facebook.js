@@ -29,7 +29,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     return conn.reply(m.chat, '*`No se encontró una resolución adecuada.`*', m);
   }
 
-  await m.react('✅');
+  await m.react('☃️');
   let video = data.url;
   
   try {
