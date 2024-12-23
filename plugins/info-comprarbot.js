@@ -15,7 +15,7 @@ https://chat.whatsapp.com/BiMD1YYaFox8wqYyEBx0so
   ᰰ᷒☃️᪤ ᥴrᥱᥲ֟፝ძ͟᥆r ::
 _wa.me//51927238856_
 
-·˚ ༘₊· ͟͟͞͞꒰𝐌𝐄𝐓𝐎𝐃𝐎𝐒 𝐃𝐄 𝐏𝐀𝐆𝐎 🛍
+·˚ ༘₊· ͟͟͞͞꒰𝐌𝐄𝐓𝐎𝐃𝐎𝐒 𝐃 𝐏𝐀𝐆𝐎 🛍
 _- Mercado pago_
 _- Yape_
 _- Pay pal_
