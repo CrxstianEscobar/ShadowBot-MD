@@ -6,12 +6,8 @@ const handler = async (m, {conn}) => {
 handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let mentionedJid = [who]
-let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
-
 global.ComprarBot = `
-Hola ${taguser} te presento al bot mas lindo de Whatsapp.
+Hola vv te presento al bot mas lindo de Whatsapp.
 *Mi creador:* wa.me//51927238856
 Consulta con el para adquirir el Bot.
 
