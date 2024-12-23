@@ -7,9 +7,13 @@ handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
 global.ComprarBot = `
-Hola vv te presento al bot mas lindo de Whatsapp.
-*Mi creador:* wa.me//51927238856
-Consulta con el para adquirir el Bot.
+*👋🏻 Hola vv te presento al bot mas lindo de Whatsapp.*
+
+*Link de Prueba*
+https://chat.whatsapp.com/BiMD1YYaFox8wqYyEBx0so
+
+*Mi Creador:*
+wa.me//51927238856
 
 ·˚ ༘₊· ͟͟͞͞꒰𝐌𝐄𝐓𝐎𝐃𝐎𝐒 𝐃𝐄 𝐏𝐀𝐆𝐎 🛍
 _- Mercado pago_
