@@ -2,7 +2,7 @@
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
-    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el link del video de Facebook.*\n\n*[ 💡 ] Ejemplo: _${usedPrefix + command} https://www.facebook.com/reel/858448809516815/?mibextid=9drbnH&s=yWDuG2&fs=e_', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el link del video de Facebook.*\n\n*[ 💡 ] Ejemplo:* _.facebook https://www.facebook.com/reel/858448809516815/?mibextid=9drbnH&s=yWDuG2&fs=e_', m);
   }
 
   await m.react('🕒');
