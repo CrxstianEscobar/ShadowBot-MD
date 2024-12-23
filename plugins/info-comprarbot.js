@@ -5,7 +5,7 @@ handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
 global.ComprarBot = `
-Hola @${m.sender.username || m.sender.jid.split('@')[0]} te presento al bot mas lindo de Whatsapp.
+Hola @dx te presento al bot mas lindo de Whatsapp.
 *Mi creador:* wa.me//51927238856
 Consulta con el para adquirir el Bot.
 
