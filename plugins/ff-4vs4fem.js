@@ -31,7 +31,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     };
 
     if (!(pais in diferenciasHorarias)) {
-        conn.reply(m.chat, 'País no válido. Usa AR para Argentina, PE para Perú.', m);
+        conn.reply(m.chat, '*[ ℹ️ ]País no válido. Usa AR para Argentina, PE para Perú.*', m);
         return;
     }
 
