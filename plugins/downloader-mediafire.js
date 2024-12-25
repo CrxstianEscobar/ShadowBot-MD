@@ -1,5 +1,3 @@
-//Código Hecho Por I'm Fz y Mejorado Por WillZek
-
 import axios from 'axios';
 import fetch from 'node-fetch';
 import * as cheerio from 'cheerio';
@@ -19,10 +17,10 @@ m.react('❄️')
 
     await conn.reply(m.chat, text, m, {
 contextInfo: { externalAdReply :{ showAdAttribution: true,
-                        sourceUrl: 'https://www.instagram.com/star.moony_desing',
+                        sourceUrl: 'https://whatsapp.com/channel/0029VakfOZfHFxP7rNrUQk2d',
                         mediaType: 2,
-                        description: `Sigueme En Instagram`,
-                        title: `👑 Gracias Por Usar A IsitaBot, WhatsApp Bot⛄`,
+                        description: `Sigue El Canal Por Favor`,
+                        title: `👑 Gracias Por Usar A BarbozaBot, WhatsApp Bot⛄`,
                         body: `🎄 Powered By WillZek`,          previewType: 0,
                         thumbnail: await (await fetch('https://i.ibb.co/ZfjXNy0/file.jpg')).buffer(),
                         mediaUrl: canal
@@ -42,10 +40,10 @@ contextInfo: { externalAdReply :{ showAdAttribution: true,
     text2 += `> 🎄Espera Un Momento, Enviando Archivo Tenga Paciencia❄️`
       await conn.reply(m.chat, text2, m, {
 contextInfo: { externalAdReply :{ showAdAttribution: true,
-                        sourceUrl: 'https://www.instagram.com/star.moony_desing',
+                        sourceUrl: 'https://whatsapp.com/channel/0029VakfOZfHFxP7rNrUQk2d',
                         mediaType: 2,
-                        description: `❤️‍🔥Sigueme En Instagram ❤️‍🔥`,
-                        title: `❄️ Gracias Por Usar IsitaBot, Sigue El Canal⛄`,
+                        description: `❤️‍🔥Sigue El Canal Por Favor❤️‍🔥`,
+                        title: `❄️ Gracias Por Usar BarbozaBot, Sigue El Canal⛄`,
                         body: `🎄 Powered By WillZek`,          previewType: 0,
                         thumbnail: await (await fetch('https://i.ibb.co/ZfjXNy0/file.jpg')).buffer(),
                         mediaUrl: canal
