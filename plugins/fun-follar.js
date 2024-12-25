@@ -9,5 +9,5 @@ _${text} ya estÃ¡s contenta como te dejaron la vagina y boca llena de leche? ğŸ¦
 }
 
 handler.command = /^(Follar|coger|violar|kchar)/i
-handler.fail = null
+handler.register = true
 export default handler
