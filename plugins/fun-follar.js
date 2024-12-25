@@ -9,7 +9,7 @@ _${text} ya te follaron 🔥_`, null, { mentions: [user] })
 }}
 handler.help = ['follar']
 handler.tags = ['fun']
-handler.command = /^(Follar|violar)/i
+handler.command = /^(follar|violar|kchar|reventar|penetrar|coger)/i
 
 handler.register = true
 export default handler
