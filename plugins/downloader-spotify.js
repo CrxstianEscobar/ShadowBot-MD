@@ -23,7 +23,7 @@ const handler = async (m, { conn, command, text, isAdmin }) => {
   }
 };
 
-handler.command = ['mute', 'unmute'];
+handler.command = ['mt', 'unmt'];
 handler.admin = true;
 handler.botAdmin = true;
 
