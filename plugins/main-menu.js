@@ -26,7 +26,7 @@ let menu = `
 *🪀 Numero:* +51927238856
 *⏰ Tiempo:*
 *🆙 Versión:* 1.0.0
-*👸🏻 Colaboradora: @la_mari1343
+*👸🏻 Colaboradora:* @la_mari1343
 ${readMore}
 ㅤ    乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
 
