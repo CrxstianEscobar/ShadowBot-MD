@@ -14,25 +14,33 @@ let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
 
 let menu = `
-> 👋🏻 Hola ${taguser} ${ucapan()}
-> Perú | | Lima
-*˚₊·˚₊· ͟͟͞͞➳❥ Shadow MD*
-*☆═━┈◈ ╰ 1.4.0 ╯ ◈┈━═☆*
-*│* 
-*╰ ˚₊·˚₊· ͟͟͞͞➳❥ By Crxstian*
-*⊰᯽⊱┈──╌•|* ⊱✿⊰ *|•╌──┈⊰᯽⊱*
-*⎔ _Creador:_* _Cristian Escobar_
-*⎔ _Número:_* _+51 927238856_
-*⎔ _Uptime:_* _24/7_
-*⎔ _Versión:_* _1.4.0_
+> ⓘ ${ucapan()} ${taguser}
+> Perú - Lima
 
-ㅤ· · ────── ·•· ────── · · 
+*˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
+*╭╌┈╼◈ ╰ 1.4.0 ╯◈╾┈╌★*
+*│*
+*╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
 
-╭─·˚₊· ͟͟͞͞꒰➳ \`ɪɴғᴏʀᴍᴀᴄɪᴏɴ\` 𑁭𑁘
-┊⪩ _.grupos_
-┊⪩ _.owner_
-┊⪩ _.comprarbot_
-╰────────────────── –
+*☕ Creador:* Cristian Escobar
+*🪀 Numero:* +51927238856
+*⏰ Tiempo:*
+*🆙 Versión:* 1.0.0
+${readMore}
+ㅤ    乂 *ʟɪsᴛᴀ ᴅᴇ ᴄᴏᴍᴀɴᴅᴏs* 乂
+
+╭─·˚₊· ͟͟͞͞꒰ \`ᴍᴇɴᴜ́s\`
+┊⪩ .menuaudios
+┊⪩ .menunsfw
+┊⪩ .menulogos
+┊⪩ .menuff
+╰──────────── ·
+
+╭─·˚₊· ͟͟͞͞꒰ \`ɪɴғᴏʀᴍᴀᴄɪᴏɴ\`
+┊⪩ .grupos
+┊⪩ .owner
+┊⪩ .comprarbot
+╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰➳ \`sᴜʙ ʙᴏᴛ\` 𑁭𑁘
 ┊⪩ _.serbot --code_
