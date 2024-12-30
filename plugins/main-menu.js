@@ -161,7 +161,7 @@ ${readMore}
 ┊⪩ _.unreg_
 ╰────────────────── –`.trim()
 
-await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nPʀᴏsᴘᴇʀᴏ Aɴ̃ᴏ\n💫Nᴜᴇᴠᴏ💫', thumbnailUrl: perfil, mediaType: 1, renderLargerThumbnail: false,
+await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nPʀᴏsᴘᴇʀᴏ Aɴ̃ᴏ Nᴜᴇᴠᴏ 💫', thumbnailUrl: perfil, mediaType: 1, renderLargerThumbnail: false,
 }, }, gifPlayback: true, gifAttribution: 0 }, { quoted: null })
 
 } catch (e) {
