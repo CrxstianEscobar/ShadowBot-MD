@@ -10,7 +10,7 @@ export async function before(m, {conn, isAdmin, isBotAdmin, isOwner, isROwner}) 
   if (m.sender === this.user.jid) return !0;
 
   if (bot.antiPrivate && !isOwner && !isROwner) {
-    await m.reply(`*[ ℹ️ ] Hola @${m.sender.split`@`[0]}, Lo Siento No Esta Permitido Escribirme Al Privado Por Lo Cual Serás Bloqueado/a*\n\n> 🍧 Puedes Unirte Al Grupo Oficial Del Bot\n\n\nhttps://chat.whatsapp.com/Cj8oTiVQOvIISylM5yi5DP`, false, {mentions: [m.sender]});
+    await m.reply(`*[ ℹ️ ] Hola @${m.sender.split`@`[0]}, Lo Siento No Esta Permitido Escribirme Al Privado Por Lo Cual Serás Bloqueado/a*\n\n> 🍧 Puedes Unirte Al Grupo Oficial Del Bot\n\nhttps://chat.whatsapp.com/Cj8oTiVQOvIISylM5yi5DP`, false, {mentions: [m.sender]});
     await this.updateBlockStatus(m.chat, 'block');
   }
   return !1;
