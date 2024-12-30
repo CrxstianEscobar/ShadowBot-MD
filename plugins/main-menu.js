@@ -14,7 +14,10 @@ let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
 
 let menu = `
-> ⓘ ${ucapan()} ${taguser}
+🌷 ¡Hᴏʟᴀ! ᴄᴏᴍᴏ ᴇsᴛᴀs ᴇʟ ᴅɪ́ᴀ ᴅᴇ ʜᴏʏ
+${taguser} Sᴏʏ Sʜᴀᴅᴏᴡ
+${ucapan()} 
+
 > Perú - Lima
 
 *˚₊·˚₊· ͟͟͞͞➳❥  Sʜʌᴅᴏ͟ᴡ Ɓᴏᴛ ᭃ*
