@@ -6,7 +6,7 @@ import { join } from 'path'
 
 let handler = async (m, { conn, usedPrefix, usedPrefix: _p, __dirname, text, command }) => {
 try {        
-await m.react('☃️')
+await m.react('🧋')
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let mentionedJid = [who]
 let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
@@ -192,18 +192,18 @@ export default handler
 
 function ucapan() {
     const time = moment.tz('America/Lima').format('HH')
-    let res = "Linda Noche 🌙"
+    let res = "Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌉"
     if (time >= 5) {
-        res = "Buena Madrugada 🌄"
+        res = "Bᴜᴇɴᴀ Mᴀᴅʀᴜɢᴀᴅᴀ 🏙️"
     }
     if (time > 10) {
-        res = "Buen Día ☀️"
+        res = "Bᴜᴇɴ Dɪ́ᴀ ☀️"
     }
     if (time >= 12) {
-        res = "Hermosa Tarde 🌅"
+        res = "Hᴇʀᴍᴏsᴀ Tᴀʀᴅᴇ 🌆"
     }
     if (time >= 19) {
-        res = "Linda Noche 🌙"
+        res = "Lɪɴᴅᴀ Nᴏᴄʜᴇ 🌃"
     }
     return res
 }
