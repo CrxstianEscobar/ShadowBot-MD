@@ -157,7 +157,6 @@ handler.help = ['aio'].map(v => v + ' *<link>*')
 handler.tags = ['downloader']
 handler.command = /^(aio)$/i
 
-handler.limit = true
 handler.register = true
 
 export default handler
