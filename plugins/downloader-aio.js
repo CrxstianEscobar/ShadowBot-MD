@@ -4,7 +4,7 @@ import path from 'path';
 import fetch from "node-fetch"
 
 let handler = async (m, { conn, args, text }) => {
-	if (!args[0]) return m.reply('✧ Ingresa un link de:\n- YouTube\n- instagram\n- tiktok\n- facebook\n- twitter ')
+	if (!args[0]) return m.reply('*[ ℹ️ ] Ingresa un link de:\n- YouTube\n- instagram\n- tiktok\n- facebook\n- twitter ')
 	
 // )await conn.sendMessage(m?.chat, {react: {text: `🌟`, key: m?.key}});
 class Fuck extends Error {
