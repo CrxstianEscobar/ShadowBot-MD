@@ -131,7 +131,6 @@ class RetaTube extends API {
         }
     }
 }
-/*
     const retatube = new RetaTube();
     try {
         const result = await retatube.scrape(text);
@@ -152,19 +151,6 @@ class RetaTube extends API {
     } catch (error) {
         await m.reply(`Error: ${error.message}`);
     }
-}
-*/
-
-try {
-  let videoMessage = `Tu mensaje personalizado aquí`; // cambia esto por tu mensaje personalizado
-  let videoUrl = text; // obtiene la URL del video del comando
-  let video = {
-    url: videoUrl,
-    caption: videoMessage
-  };
-  await conn.sendMessage(m.chat, video);
-} catch (error) {
-  console.error(error);
 }
 
 handler.help = ['aio'].map(v => v + ' *<link>*')
