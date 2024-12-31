@@ -82,6 +82,10 @@ ${readMore}
 ┊⪩ .pinterest *<txt>*
 ┊⪩ .tiktok *<url>*
 ┊⪩ .tiktok2 *<url>*
+┊⪩ .instagram *<url>*
+┊⪩ .instagram2 *<url>*
+┊⪩ .mediafire *<url>*
+┊⪩ .mega *<url>*
 ┊⪩ .tiktokrandom
 ╰──────────── ·
 
@@ -144,8 +148,8 @@ ${readMore}
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ɴsғᴡ\`
-┊⪩ .
-┊⪩ .
+┊⪩ .violar *<tag>*
+┊⪩ .follar *<tag>*
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ᴊᴜᴇɢᴏs\`
