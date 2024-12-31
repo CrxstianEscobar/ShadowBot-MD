@@ -12,12 +12,12 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   if (!/image\/(jpe?g|png)/.test(mime))
     throw m.reply(`*[ ℹ️ ] Etiqueta una Imagen.*`);
   else conn.hdr[m.sender] = true;
-  m.reply("*Mejorando calidad de imagen...*")
+  m.reply("*Mejorando la calidad de imagen...*")
   let img = await q.download?.()
   let error
   try {
     const This = await processing(img, "enhance")
-    conn.sendFile(m.chat, This, "", "`*Listo*`", m)
+    conn.sendFile(m.chat, This, "", "*Listo :3*", m)
   } catch (er) {
     error = true
   } finally {
