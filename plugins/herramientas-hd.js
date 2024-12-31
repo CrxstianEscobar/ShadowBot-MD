@@ -8,16 +8,16 @@ let handler = async (m, { conn, usedPrefix, command }) => {
   let q = m.quoted ? m.quoted : m
   let mime = (q.msg || q).mimetype || q.mediaType || ""
   if (!mime)
-    throw m.reply(`*✧ Etiqueta una Imagen.*`)
+    throw m.reply(`*[ ℹ️ ] Etiqueta una Imagen.*`)
   if (!/image\/(jpe?g|png)/.test(mime))
-    throw m.reply(`*✧ Etiqueta una Imagen.*`);
+    throw m.reply(`*[ ℹ️ ] Etiqueta una Imagen.*`);
   else conn.hdr[m.sender] = true;
-  m.reply("✧ Mejorando calidad de imagen...")
+  m.reply("*Mejorando calidad de imagen...*")
   let img = await q.download?.()
   let error
   try {
     const This = await processing(img, "enhance")
-    conn.sendFile(m.chat, This, "", "`✧ Listo >//<`", m)
+    conn.sendFile(m.chat, This, "", "`*Listo*`", m)
   } catch (er) {
     error = true
   } finally {
