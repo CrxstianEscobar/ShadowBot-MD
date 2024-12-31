@@ -134,7 +134,7 @@ class RetaTube extends API {
 
    // const retatube = new RetaTube();
     try {
-        const result = await retatube.scrape(text);
+        //const result = await retatube.scrape(text);
         let videoMessage = `Hola vv`;
         let audioMessage = `*Audio*:`;
 
