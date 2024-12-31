@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) throw m.reply(`*[ ℹ️ ] Ingresa un link de mediafire\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} https://www.mediafire.com/file/2v2x1p0x58qomva/WhatsApp_Messenger_2.24.21.8_beta_By_WhatsApp_LLC.apk/file`);
+if (!text) throw m.reply(`*[ ℹ️ ] Ingresa un link de mediafire.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} https://www.mediafire.com/file/2v2x1p0x58qomva/WhatsApp_Messenger_2.24.21.8_beta_By_WhatsApp_LLC.apk/file`);
 conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 	let ouh = await fetch(`https://api.agatz.xyz/api/mediafire?url=${text}`)
   let gyh = await ouh.json()
