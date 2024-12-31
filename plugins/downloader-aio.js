@@ -142,7 +142,7 @@ class RetaTube extends API {
         if (result.videoLinks.length > 0) {
             const video = result.videoLinks[0]; // Mengambil video dengan kualitas terbaik
 
-            await conn.sendMessage(m.chat, { video: { url: video.url });
+            await conn.sendMessage(m.chat, { video: { url: video.url}, caption: videoMessage }, { quoted: m });
         } else {
             await m.reply("Error.");
         }
