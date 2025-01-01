@@ -11,9 +11,13 @@ const handler = async (m, {conn, usedPrefix}) => {
     conn.reply(m.chat, '*[ ℹ️ ] Estas En Juego*' , conn.tekateki[id][0]);
     throw false;
   }
-  const tekateki = tradutor.texto4;
-  /*Para agregar más preguntas vaya a la carpeta de language en el archivo json de su 
+  /*const tekateki = tradutor.texto4;
+  Para agregar más preguntas vaya a la carpeta de language en el archivo json de su 
   idioma preferido, busque "acertijo" justo después del texto4 puede agregar sus preguntas*/
+
+const filePath = './plugins/_acertijo.json';
+const fileContent = fs.readFileSync(filePath, 'utf8');
+const tekateki = JSON.parse(fileContent);
   
   const json = tekateki[Math.floor(Math.random() * tekateki.length)];
   const _clue = json.response;
