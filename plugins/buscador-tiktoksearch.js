@@ -1,97 +1,95 @@
-import axios from 'axios'
-import fs from 'fs'
-import os from 'os'
-import ffmpeg from 'fluent-ffmpeg'
-import yts from 'yt-search'
+import axios from 'axios';
+import yts from 'yt-search';
 
-let handler = async (m, { conn, command, text, usedPrefix }) => {
-  if (!text) throw m.reply(`✧ Ejemplo: ${usedPrefix}${command} Waguri Edit`);
+let handler = async (m, { conn, text, usedPrefix, command }) => {
 
- await conn.sendMessage(m.chat, { react: { text: '🕒', key: m.key }})
-
+  if (!text) throw m.reply(`Ejemplo de uso: ${usedPrefix + command} Joji Ew`);
+  
     let results = await yts(text);
     let tes = results.videos[0]
+    
+const baseUrl = 'https://cuka.rfivecode.com';
+const cukaDownloader = {
+  youtube: async (url, exct) => {
+    const format = [ 'mp3', 'mp4' ];
+    try {
+      const response = await fetch(`${baseUrl}/download`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+          body: JSON.stringify({ url, format: exct })
+      });
 
-  const args = text.split(' ');
-  const videoUrl = args[0];
-  const resolution = args[1] || '480';
+      const data = await response.json();
+      return data;
+      console.log('Data:' + data);
+    } catch (error) {
+      return { success: false, message: error.message };
+      console.error('Error:', error);
+    }
+  },
+  tiktok: async (url) => {
+    try {
+      const response = await fetch(`${baseUrl}/tiktok/download`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ url })
+      });
 
-  const apiUrl = `https://api.ryzendesu.vip/api/downloader/ytmp4?url=${encodeURIComponent(tes.url)}&reso=480`;
+      const data = await response.json();
+      return data;
+      console.log('Data:' + data);
+    } catch (error) {
+      return { success: false, message: error.message };
+      console.error('Error:', error);
+    }
+  },
+  spotify: async (url) => {
+    try {
+      const response = await fetch(`${baseUrl}/spotify/download`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+          body: JSON.stringify({ url })
+      });
 
-  try {
-    const response = await axios.get(apiUrl);
-    const { url: videoStreamUrl, filename } = response.data;
-
-    if (!videoStreamUrl) throw m.reply('No hay respuesta de la api.');
-
-    const tmpDir = os.tmpdir();
-    const filePath = `${tmpDir}/${filename}`;
-
-    const writer = fs.createWriteStream(filePath);
-    const downloadResponse = await axios({
-      url: videoStreamUrl,
-      method: 'GET',
-      responseType: 'stream'
-    });
-
-    downloadResponse.data.pipe(writer);
-
-    await new Promise((resolve, reject) => {
-      writer.on('finish', resolve);
-      writer.on('error', reject);
-    });
-
-    const outputFilePath = `${tmpDir}/${filename.replace('.mp4', '_fixed.mp4')}`;
-
-    await new Promise((resolve, reject) => {
-      ffmpeg(filePath)
-        .outputOptions('-c copy')
-        .output(outputFilePath)
-        .on('end', resolve)
-        .on('error', reject)
-        .run();
-    });
-
-    const caption = `Aqui tiene su vídeo @${m.sender.split('@')[0]}`;
-
-await conn.sendMessage(m.chat, { document: { url: outputFilePath }, caption: caption, mimetype: 'video/mp4', fileName: `${tes.title}` + `.mp4`}, {quoted: m })
-
-/*    await conn.sendMessage(m.chat, {
-      video: { url: outputFilePath },
-      mimetype: "video/mp4",
-      fileName: filename,
-      caption,
-      mentions: [m.sender]
-    }, { quoted: m });*/
-await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }})
-
-    fs.unlink(filePath, (err) => {
-      if (err) {
-        console.error(`Failed to delete original video file: ${err}`);
-      } else {
-        console.log(`Deleted original video file: ${filePath}`);
-      }
-    });
-
-    fs.unlink(outputFilePath, (err) => {
-      if (err) {
-        console.error(`Failed to delete processed video file: ${err}`);
-      } else {
-        console.log(`Deleted processed video file: ${outputFilePath}`);
-      }
-    });
-
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-    await conn.sendMessage(m.chat, { react: { text: '❎', key: m.key }})
+      const data = await response.json();
+      return data;
+      console.log('Data:' + data);
+    } catch (error) {
+      return { success: false, message: error.message };
+      console.error('Error:', error);
+    }
   }
-};
+}
 
-handler.help = ['playvideo *<consulta>*'];
+let dataos = await cukaDownloader.youtube(tes.url, "mp3")
+console.log(dataos)
+let { title, thumbnail, quality, downloadUrl } = dataos
+  m.reply(`_✧ Enviando ${title} (${quality})_\n\n> ${tes.url}`)
+      const doc = {
+      audio: { url: downloadUrl },
+      mimetype: 'audio/mp4',
+      fileName: `${title}.mp3`,
+      contextInfo: {
+        externalAdReply: {
+          showAdAttribution: true,
+          mediaType: 2,
+          mediaUrl: tes.url,
+          title: title,
+          sourceUrl: tes.url,
+          thumbnail: await (await conn.getFile(thumbnail)).data
+        }
+      }
+    };
+    await conn.sendMessage(m.chat, doc, { quoted: m });
+}
+handler.help = ['play2 *<consulta>*'];
 handler.tags = ['downloader'];
-handler.command = /^(playvideo|playvid)$/i;
+handler.command = /^(play2)$/i;
 
-handler.register = true
-handler.disable = false
-
-export default handler
+export default handler;
