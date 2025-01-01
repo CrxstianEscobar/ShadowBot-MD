@@ -7,7 +7,7 @@ handler.before = async function(m) {
 
 
   const id = m.chat;
-  if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^ⷮ/i.test(m.quoted.text)) return !0;
+  if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^/i.test(m.quoted.text)) return !0;
   this.tekateki = this.tekateki ? this.tekateki : {};
   if (!(id in this.tekateki)) return m.reply('No estas en juego');
   if (m.quoted.id == this.tekateki[id][0].id) {
