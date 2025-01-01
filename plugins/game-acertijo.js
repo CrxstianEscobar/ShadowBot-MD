@@ -11,7 +11,7 @@ const handler = async (m, {conn, usedPrefix}) => {
     conn.reply(m.chat, 'Estas en juego', conn.tekateki[id][0]);
     throw false;
   }
-  const tekateki = tradutor.texto4;
+  const tekateki = 'JAA';
   /*Para agregar más preguntas vaya a la carpeta de language en el archivo json de su 
   idioma preferido, busque "acertijo" justo después del texto4 puede agregar sus preguntas*/
   
@@ -20,14 +20,14 @@ const handler = async (m, {conn, usedPrefix}) => {
   const clue = _clue.replace(/[A-Za-z]/g, '_');
   const caption = `
 ⷮ *${json.question}*
-${tradutor.texto2[0]} ${(timeout / 1000).toFixed(2)} segundos
-${tradutor.texto2[1]} +${poin} Exp
+'hola' ${(timeout / 1000).toFixed(2)} segundos
+'xd' +${poin} Exp
 `.trim();
   conn.tekateki[id] = [
     await conn.reply(m.chat, caption, m), json,
     poin,
     setTimeout(async () => {
-      if (conn.tekateki[id]) await conn.reply(m.chat, `${tradutor.texto3} ${json.response}`, conn.tekateki[id][0]);
+      if (conn.tekateki[id]) await conn.reply(m.chat, `?? ${json.response}`, conn.tekateki[id][0]);
       delete conn.tekateki[id];
     }, timeout)];
 };
