@@ -1,3 +1,4 @@
+import yts from "yt-search";
 
 let handler = async (m, { text, usedPrefix, command }) => {
   if (!text) return m.reply(`Por favor, proporciona el nombre de la canción o el artista para buscar.\n\nEjemplo: ${usedPrefix + command} elaina`);
