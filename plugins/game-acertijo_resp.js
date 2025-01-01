@@ -1,11 +1,8 @@
-
 import similarity from 'similarity';
-
 
 const threshold = 0.72;
 const handler = (m) => m;
 handler.before = async function(m) {
-
 
   const id = m.chat;
   if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^/i.test(m.quoted.text)) return !0;
