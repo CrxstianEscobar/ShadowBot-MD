@@ -1,28 +1,53 @@
-import { igdl } from "ruhend-scraper"
+import _ from "lodash"
 
-let handler = async (m, { args, conn }) => {
-  if (!args[0]) {
-    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa un link de Instagram*')
-  }
-  try {
-    await m.react('⏳️')
-    conn.reply(m.chat, `*[ 🍧 ] Enviando el Video...*`)
-    let res = await igdl(args[0])
-    let data = res.data
-    for (let media of data) {
-      await new Promise(resolve => setTimeout(resolve, 2000))
-      await conn.sendFile(m.chat, media.url, 'instagram.mp4', '*Tu video de instagram.*')
+let handler = async (m, { conn, command, usedPrefix, args }) => {
+  const text = _.get(args, "length") ? args.join(" ") : _.get(m, "quoted.text") || _.get(m, "quoted.caption") || _.get(m, "quoted.description") || ""
+  if (typeof text !== 'string' || !text.trim()) return m.reply(`✦ Ingresa una consulta\n*Ejemplo:* .${command} Joji Ew`)
+
+  await m.reply('✦ Espere un momento...')
+  
+const dps = await fetch(`https://rest.cifumo.biz.id/api/downloader/spotify-dl?url=${text}`)
+  const dp = await dps.json()
+
+  const { title = "No encontrado", type = "No encontrado", artis = "No encontrado", durasi = "No encontrado", download, image } = dp.data
+
+  const captvid = ` *✦Título:* ${title}
+ *✧Duración:* ${durasi}
+ *✦Tipo:* ${type}
+ *✧Artista:* ${artis}
+ *✦link:* ${text}
+ `
+
+  const spthumb = (await conn.getFile(image))?.data
+
+  const infoReply = {
+    contextInfo: {
+      externalAdReply: {
+        body: `✧ En unos momentos se entrega su audio`,
+        mediaType: 1,
+        mediaUrl: text,
+        previewType: 0,
+        renderLargerThumbnail: true,
+        sourceUrl: text,
+        thumbnail: spthumb,
+        title: `S P O T I F Y - A U D I O`
+      }
     }
-  } catch {
-    await m.react('❌')
-    conn.reply(m.chat, '*[ ℹ️ ] Ocurrió un error.*')
   }
+
+  await conn.reply(m.chat, captvid, m, infoReply)
+  infoReply.contextInfo.externalAdReply.body = `Audio descargado con éxito`
+  
+    await conn.sendMessage(m.chat, {
+      audio: { url: download },
+      caption: captvid,
+      mimetype: "audio/mpeg",
+      contextInfo: infoReply.contextInfo
+    }, { quoted: m })
 }
 
-handler.command = ['instagram', 'ig', 'instagram2', 'ig2']
-handler.tags = ['downloader']
-handler.help = ['instagram', 'ig']
-handler.group = false
-handler.register = false
-
+handler.help = ["spotifydl *<link>*"]
+handler.tags = ["downloader"]
+handler.command = /^(spotifydl)$/i
+handler.limit = true
 export default handler
