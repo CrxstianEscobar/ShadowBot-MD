@@ -42,8 +42,7 @@ handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
 export default handler;
 
 
-/*
-import fs from 'fs';
+/*import fs from 'fs';
 
 const timeout = 60000;
 const poin = 500;
