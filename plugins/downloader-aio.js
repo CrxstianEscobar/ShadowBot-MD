@@ -161,4 +161,3 @@ handler.command = /^(aio)$/i
 handler.register = true
 
 export default handler
-*/
