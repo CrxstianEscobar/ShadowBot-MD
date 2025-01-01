@@ -40,4 +40,4 @@ Puntos: +${poin} Exp
 handler.help = ['acertijo'];
 handler.tags = ['game'];
 handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
-export default handler;
+export default { handler, conn };
