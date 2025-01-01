@@ -1,4 +1,5 @@
-import _ from "lodash"
+import fetch from 'node-fetch';
+import _ from 'lodash';
 
 let handler = async (m, { conn, command, usedPrefix, args }) => {
   const text = _.get(args, "length") ? args.join(" ") : _.get(m, "quoted.text") || _.get(m, "quoted.caption") || _.get(m, "quoted.description") || ""
