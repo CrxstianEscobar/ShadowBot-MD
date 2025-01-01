@@ -1,4 +1,4 @@
-var handler = async (m, { conn,usedPrefix, command, text }) => {
+/*var handler = async (m, { conn,usedPrefix, command, text }) => {
 
 if (isNaN(text) && !text.match(/@/g)){
 
@@ -35,7 +35,7 @@ handler.admin = true
 handler.botAdmin = true
 handler.fail = null
 
-export default handler
+export default handler*/
 
 /*let handler = async (m, { conn,usedPrefix, command, text}) => {
 if(isNaN(text) && !text.match(/@/g)){
