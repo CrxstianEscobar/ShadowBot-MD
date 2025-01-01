@@ -8,7 +8,7 @@ const handler = async (m, {conn, usedPrefix}) => {
   conn.tekateki = conn.tekateki ? conn.tekateki : {};
   const id = m.chat;
   if (id in conn.tekateki) {
-    conn.reply(m.chat, tradutor.texto1, conn.tekateki[id][0]);
+    conn.reply(m.chat, '*[ ℹ️ ] Estas En Juego*, conn.tekateki[id][0]);
     throw false;
   }
   const tekateki = tradutor.texto4;
