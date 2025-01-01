@@ -17,12 +17,13 @@ await conn.sendFile(m.chat, no_watermark, `${title}.mp4`, wm, m)
 throw eror
 }
 }
-handler.help = ['tiktoksearch *<consulta>*']
-handler.tags = ['search']
-handler.command = /^(ttsearch|tiktoksearch)$/i
-handler.register = true
+handler.help = ['gnula'];
+handler.tags = ['buscador'];
+handler.command = /^(gnula)$/i;
+handler.premium = false;
+handler.register = true;
 
-export default handler
+export default handler;
 
 async function tiktoks(query) {
   return new Promise(async (resolve, reject) => {
