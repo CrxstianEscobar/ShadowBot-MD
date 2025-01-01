@@ -42,7 +42,8 @@ handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
 export default handler;
 
 
-/*import fs from 'fs';
+/*
+import fs from 'fs';
 
 const timeout = 60000;
 const poin = 500;
@@ -55,7 +56,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     conn.reply(m.chat, 'Estas en juego', conn.tekateki[id][0]);
     throw false;
   }
-
+*/
   const tekateki = [
     {
       question: '¿Cuál es el animal más rápido del mundo?',
