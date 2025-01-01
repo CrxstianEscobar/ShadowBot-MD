@@ -78,7 +78,7 @@ handler.before = async function(m) {
     const json = this.tekateki[id][1];
     if (m.text.toLowerCase() == json.response.toLowerCase().trim()) {
       global.db.data.users[m.sender].exp += this.tekateki[id][2];
-      m.reply(`Respuesta correcta\n+${this.tekateki[id][2]} Exp`);
+      m.reply(`Respuesta correcta\n+ Exp`);
       clearTimeout(this.tekateki[id][3]);
       delete this.tekateki[id];
     } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) m.reply('Casi Correcto, Intenta de Nuevo');
