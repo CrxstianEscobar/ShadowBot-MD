@@ -6,8 +6,10 @@ import FormData from "form-data";
 import Jimp from "jimp";
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) return m.reply(`• *Ejemplo:* .yts elaina edit`);
-
+  if (!text) {
+  m.reply(`Por favor, proporciona el nombre de la canción o el artista para buscar.`);
+  return;
+}
     await m.reply('> _*`Cargando...`*_');
 
     async function createImage(img) {
