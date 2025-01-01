@@ -17,11 +17,9 @@ await conn.sendFile(m.chat, no_watermark, `${title}.mp4`, wm, m)
 throw eror
 }
 }
-handler.help = ['gnula'];
+handler.help = ['ttsearch'];
 handler.tags = ['buscador'];
-handler.command = /^(gnula)$/i;
-handler.premium = false;
-handler.register = true;
+handler.command = /^(ttsearch)$/i;
 
 export default handler;
 
