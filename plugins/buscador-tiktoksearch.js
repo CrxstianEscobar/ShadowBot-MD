@@ -20,7 +20,6 @@ throw eror
 handler.help = ['tiktoksearch *<consulta>*']
 handler.tags = ['search']
 handler.command = /^(ttsearch|tiktoksearch)$/i
-handler.limit = true 
 handler.register = true
 
 export default handler
