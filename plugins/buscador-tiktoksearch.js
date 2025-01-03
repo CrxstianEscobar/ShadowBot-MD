@@ -53,6 +53,6 @@ await conn.sendFile(m.chat, music, 'HasumiBotFreeCodes.mp3', null, m)
 console.error(error)
 }}
 
-handler.command = /^(tiktoksearch)$/i
+handler.command = /^(tiktoksearch2|ttsearch2)$/i
 
 export default handler
