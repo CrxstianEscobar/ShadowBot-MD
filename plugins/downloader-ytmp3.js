@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let HS = async (m, { conn, text }) => {
-if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Ingresa un link de Youtube*`, m)
+if (!text) return conn.reply(m.chat, `*[ ℹ️ ] Ingresa un link de Youtube*\n\n*[ 💡 ] Ejemplo:* .yta https://youtube.com/watch?v=kLpH1nSLJSs`, m)
 
 try {
 let api = await fetch(`https://restapi.apibotwa.biz.id/api/ytmp3?url=${text}`)
@@ -14,6 +14,6 @@ await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3
 console.error(error)
 }}
 
-HS.command = ['ytmp3']
+HS.command = ['yta', 'ytmp3']
 
 export default HS
