@@ -32,6 +32,6 @@ await conn.sendFile(m.chat, sd || hd, 'HasumiBotFreeCodes.mp4', title, m)
 console.log(error)
 }}
 
-handler.command = /^(facebook)$/i
+handler.command = /^(facebook22)$/i
 
 export default handler
