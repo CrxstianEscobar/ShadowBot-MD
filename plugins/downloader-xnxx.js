@@ -1,11 +1,11 @@
-/*import fetch from 'node-fetch';
+import fetch from 'node-fetch';
 import axios from 'axios';
 import cheerio from 'cheerio';
 
 const handler = async (m, { conn, args, command, usedPrefix, text }) => {
 
   if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*Modo Horny #enable modohorny*`;
-  if (!args[0]) throw `*Asi ${usedPrefix + command} https://www.xvideos.com/video70389849/pequena_zorra_follada_duro*`;
+  if (!args[0]) throw `*Asi ℹ️ https://www.xvideos.com/video70389849/pequena_zorra_follada_duro*`;
   try {
     conn.reply(m.chat, `fast...`, m);
     const res = await xvideosdl(args[0]);
@@ -72,7 +72,7 @@ async function xvideosSearch(url) {
   });
 };
 
-*/
+/*
 
 import fetch from 'node-fetch';
 import axios from 'axios';
@@ -161,3 +161,4 @@ async function xvideosSearch(url) {
     });
   });
 };
+*/
