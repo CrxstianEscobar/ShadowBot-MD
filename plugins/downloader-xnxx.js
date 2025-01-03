@@ -7,15 +7,15 @@ const handler = async (m, { conn, args, command, usedPrefix, text }) => {
   //if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*Modo Horny #enable modohorny*`;
 
   if (!args[0]) {
-  return conn.reply(m.chat, `*Por favor, proporciona un enlace de XVideos*`, m);
+  return conn.reply(m.chat, `*[ ℹ️ ] Por favor, proporciona un enlace de XVideos.*\n\n*[ 💡 ] Ejemplo: https://www.xvideos.com/video70389849/pequena_zorra_follada_duro*`, m);
 }
 
   try {
-    conn.reply(m.chat, `fast...`, m);
+    conn.reply(m.chat, `*Enviando Video...*`, m);
     const res = await xvideosdl(args[0]);
     conn.sendMessage(m.chat, { document: { url: res.result.url }, mimetype: 'video/mp4', fileName: res.result.title }, { quoted: m });
   } catch (e) {
-    throw `Error hijo\n*◉ https://www.xvideos.com/video70389849/pequena_zorra_follada_duro*`;
+    throw `*[ ℹ️ ] Error, Proporciona un enlace correcto de XVideos.*`;
   }
 };
 handler.command = /^(xvideosdl)$/i;
