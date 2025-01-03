@@ -20,7 +20,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     return m.reply('*[ ℹ️ ] El link proporcionado es invalido.*');
   }
 
-  await conn.sendMessage(m.chat, { text: `*[ ℹ️ ] Descargando video de YouTube...*' });
+  await conn.sendMessage(m.chat, { text: '*[ ℹ️ ] Descargando video de YouTube...*' });
 
   try {
     let ytdata = await ytdl(text);
