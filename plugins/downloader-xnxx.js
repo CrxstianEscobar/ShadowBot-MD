@@ -5,7 +5,11 @@ import cheerio from 'cheerio';
 const handler = async (m, { conn, args, command, usedPrefix, text }) => {
 
   //if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*Modo Horny #enable modohorny*`;
-  if (!args[0]) throw `*Asi ℹ️*`;
+
+  if (!args[0]) {
+  return conn.reply(m.chat, `*Por favor, proporciona un enlace de XVideos*`, m);
+}
+
   try {
     conn.reply(m.chat, `fast...`, m);
     const res = await xvideosdl(args[0]);
