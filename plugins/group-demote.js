@@ -10,7 +10,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
     var number = text;
   }
   if (!text && !m.quoted) return conn.reply(m.chat, `*[ ℹ️ ] Menciona a un usuario para quitar admin.*`, m);
-  if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, `*No 👍🏼`, m);
+  if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, `*[ 🌷 ] El usuario ingresado es incorrecto.*`, m);
   try {
     if (text) {
       var user = number + '@s.whatsapp.net';
