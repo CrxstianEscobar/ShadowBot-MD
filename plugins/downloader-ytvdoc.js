@@ -11,22 +11,22 @@ const extractVideoID = (url) => {
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
     return m.reply(
-      `🔰 Admin-TK: Por favor, envía el enlace del video de YouTube junto al comando.\n\n✦ Ejemplo:\n> ${usedPrefix + command} https://youtube.com/watch?v=kGobHQ7z8X4`
+      `*[ ℹ️ ] Ingresa el link del video de YouTube junto al comando.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} https://youtube.com/watch?v=kLpH1nSLJSs`
     );
   }
 
   const videoID = extractVideoID(text);
   if (!videoID) {
-    return m.reply('🔰 Admin-TK: El enlace proporcionado no es válido. Asegúrate de usar un enlace de YouTube.');
+    return m.reply('*[ ℹ️ ] El link proporcionado es invalido.*');
   }
 
-  await conn.sendMessage(m.chat, { text: '🔰 Admin-TK: Descargando video desde YouTube... 🔽' });
+  await conn.sendMessage(m.chat, { text: `*[ ℹ️ ] Descargando video de YouTube...*' });
 
   try {
     let ytdata = await ytdl(text);
 
     if (!ytdata.success || !ytdata.video[0]) {
-      throw new Error('No se pudo obtener el enlace de descarga. Inténtalo más tarde.');
+      throw new Error('*[ ❌ ] No se pudo obtener el enlace de descarga. Inténtalo más tarde.*');
     }
 
     let videoInfo = ytdata.video[0];
@@ -34,7 +34,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     if (fileSizeInMB > 200) {
       return m.reply(
-        `🔰 Admin-TK: El archivo excede el límite permitido de 200 MB. Tamaño detectado: ${fileSizeInMB} MB.\nNo se puede descargar.`
+        `*[ ⚠️ ] El archivo excede el límite permitido de 200 MB. Tamaño detectado: ${fileSizeInMB} MB.*\n*No se puede descargar.*`
       );
     }
 
@@ -42,17 +42,17 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       m.chat,
       {
         document: { url: videoInfo.downloadLink },
-        caption: `🔰 Admin-TK: Video descargado con éxito.\n\n🎥 Título: ${ytdata.title}\n⏳ Duración: ${ytdata.duration}`,
+        caption: `*Video descargado con éxito.*\n\n*🎥 Título:* ${ytdata.title}\n*⏳ Duración:* ${ytdata.duration}`,
         mimetype: 'video/mp4',
         fileName: `${ytdata.title}.mp4`,
       },
       { quoted: m }
     );
-    await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
+    await conn.sendMessage(m.chat, { react: { text: '💫', key: m.key } });
   } catch (error) {
     console.error(`Error: ${error.message}`);
     await conn.sendMessage(m.chat, { react: { text: '❌', key: m.key } });
-    m.reply(`🔰 Admin-TK: Ocurrió un error al procesar tu solicitud.\n\n✦ Detalle del error: ${error.message || 'Error desconocido.'}`);
+    m.reply(`*[ ⚠️ ] Ocurrió un error al procesar tu solicitud.*\n\n*Detalle del error:* ${error.message || 'Error desconocido.'}`);
   }
 };
 
