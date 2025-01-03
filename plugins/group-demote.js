@@ -8,8 +8,8 @@ const handler = async (m, {conn, usedPrefix, text}) => {
     var number = text;
   }
 
-  if (!text && !m.quoted) return conn.reply(m.chat, `🥺 ${usedPrefix}quitaradmin @tag*\n*┠≽ ${usedPrefix}quitaradmin 🍃`, m);
-  if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, tradutor.texto2, m);
+  if (!text && !m.quoted) return conn.reply(m.chat, `*[ ℹ️ ] Menciona a un usuario para quitar admin.*`, m);
+  if (number.length > 13 || (number.length < 11 && number.length > 0)) return conn.reply(m.chat, `no 👍🏼`, m);
 
   try {
     if (text) {
@@ -22,7 +22,7 @@ const handler = async (m, {conn, usedPrefix, text}) => {
   } catch (e) {
   } finally {
     conn.groupParticipantsUpdate(m.chat, [user], 'demote');
-    conn.reply(m.chat, `😛`, m);
+    conn.reply(m.chat, `*[ ✅ ] Órdenes Recibidas`, m);
   }
 };
 handler.help = ['*593xxx*', '*@usuario*', '*responder chat*'].map((v) => 'demote ' + v);
