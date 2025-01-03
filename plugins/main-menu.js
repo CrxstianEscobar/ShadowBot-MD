@@ -80,10 +80,12 @@ ${readMore}
 ┊⪩ .aplay *<txt>*
 ┊⪩ .apk *<txt>*
 ┊⪩ .pinterest *<txt>*
+┊⪩ .ytmp3 *<url>*
 ┊⪩ .tiktok *<url>*
 ┊⪩ .tiktok2 *<url>*
 ┊⪩ .instagram *<url>*
 ┊⪩ .instagram2 *<url>*
+┊⪩ .facebook *<url>*
 ┊⪩ .mediafire *<url>*
 ┊⪩ .mega *<url>*
 ┊⪩ .tiktokrandom
@@ -92,6 +94,7 @@ ${readMore}
 ╭─·˚₊· ͟͟͞͞꒰ \`ʙᴜsᴄᴀᴅᴏʀᴇs\`
 ┊⪩ .ytsearch *<txt>*
 ┊⪩ .ttsearch *<txt>*
+┊⪩ .ttsearch2 *<txt>*
 ┊⪩ .spsearch *<txt>*
 ┊⪩ .githubsearch *txt>*
 ┊⪩ .letra *<txt>*
@@ -109,8 +112,8 @@ ${readMore}
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ɪᴀ - sʜᴀᴅᴏᴡ\`
-┊⪩ _.ia *<txt>*_
-┊⪩ _.demo *<txt>*_
+┊⪩ .ia *<txt>*
+┊⪩ .demo *<txt>*
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰➳ \`ʜᴇʀʀᴀᴍɪᴇɴᴛᴀs\` 𑁭𑁘
