@@ -1,24 +1,54 @@
-let { downloadContentFromMessage } = (await import('@whiskeysockets/baileys'));
+import fetch from "node-fetch"
 
-let handler = async (m, { conn }) => {
-if (!m.quoted) return conn.reply(m.chat, `🌀 Responde a una imagen ViewOnce.`, m)
-if (m.quoted.mtype !== 'viewOnceMessageV2') return conn.reply(m.chat, `🌀 Responde a una imagen ViewOnce.`, m)
-let msg = m.quoted.message
-let type = Object.keys(msg)[0]
-let media = await downloadContentFromMessage(msg[type], type == 'imageMessage' ? 'image' : 'video')
-let buffer = Buffer.from([])
-for await (const chunk of media) {
-buffer = Buffer.concat([buffer, chunk])
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) throw m.reply(`• *Ejemplo :* ${usedPrefix + command} stepmoms`)
+  let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${text}`)
+  let res = await response.json()
+
+  if (res.status !== 200) throw m.reply(`API Error: ${res.creator}`)
+
+  let resultText = ''
+  for (let i = 0; i < res.data.result.length; i++) {
+    let result = res.data.result[i]
+    let hasil = `• Titulo: *${result.title}*\n• Info: *${result.info}*\n• Link: *${result.link}*\n`
+    resultText += hasil + '\n'
+  }
+
+  let name = m.sender
+  let fkonn = {
+    key: {
+      fromMe: false,
+      participant: `0@s.whatsapp.net`,
+      ...(m.chat ? { remoteJid: '6285863907468@s.whatsapp.net' } : {})
+    },
+    message: {
+      contactMessage: {
+        displayName: await conn.getName(name),
+        vcard: `BEGIN:VCARD\nVERSION:3.0\nN:;a,;;;\nFN:${name}\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD`
+      }
+    }
+  }
+
+  await conn.reply(m.chat, '✦ Espere un momento...', fkonn)
+
+  conn.sendMessage(m.chat, {
+    text: resultText,
+    contextInfo: {
+      externalAdReply: {
+        title: `© 2024 Waguri Ai`,
+        body: wm,
+        thumbnailUrl: "https://pomf2.lain.la/f/kro5qrjk.jpg",
+        sourceUrl: "https://xxnx.com",
+        mediaType: 1,
+        renderLargerThumbnail: true
+      }
+    }
+  })
 }
-if (/video/.test(type)) {
-return conn.sendFile(m.chat, buffer, 'media.mp4', msg[type].caption || '', m)
-} else if (/image/.test(type)) {
-return conn.sendFile(m.chat, buffer, 'media.jpg', msg[type].caption || '', m)
-}}
-handler.help = ['ver']
-handler.tags = ['tools']
-handler.command = ['readviewonce', 'read', 'ver', 'readvo'] 
-//handler.limit = 1
-handler.register = true 
+
+handler.command = ['xnxxsearch']
+handler.help = ['xnxxsearch *<consulta>*']
+handler.tags = ['nsfw','search']
+handler.premium = false
 
 export default handler
