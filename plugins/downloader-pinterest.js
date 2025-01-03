@@ -42,7 +42,7 @@ let handler = async (_0x10bd40, {
   command: _0x5ad406
 }) => {
   if (!_0x27db11) {
-    return _0x9c7141.reply(_0x10bd40.chat, "🤍 *¿Que quieres buscar en pinterest?*", _0x10bd40, rcanal);
+    return _0x9c7141.reply( m.chat, "🤍 *¿Que quieres buscar en pinterest?*", m, rcanal);
   }
     await _0x10bd40.react("🕒");
   async function _0x3f3fc7(_0x5f4723) {
