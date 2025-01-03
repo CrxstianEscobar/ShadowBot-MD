@@ -80,7 +80,8 @@ ${readMore}
 ┊⪩ .aplay *<txt>*
 ┊⪩ .apk *<txt>*
 ┊⪩ .pinterest *<txt>*
-┊⪩ .ytmp3 *<url>*
+┊⪩ .yta *<url>*
+┊⪩ .ytvdoc *<url>*
 ┊⪩ .tiktok *<url>*
 ┊⪩ .tiktok2 *<url>*
 ┊⪩ .instagram *<url>*
@@ -138,7 +139,7 @@ ${readMore}
 ╭─·˚₊· ͟͟͞͞꒰ \`ɢʀᴜᴘᴏs\`
 ┊⪩ .add *<numero>*
 ┊⪩ .grupo abrir / cerrar
-┊⪩ .grouptime <*tiempo>*
+┊⪩ .grouptime *<tiempo>*
 ┊⪩ .promote *<tag>*
 ┊⪩ .demote *<tag>*
 ┊⪩ .kick *<tag>*
