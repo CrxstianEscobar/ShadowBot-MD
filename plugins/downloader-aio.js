@@ -15,23 +15,35 @@ https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
 https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
 */
 
-// *[ ❀ FACEBOOK DL ]*
-import fetch from 'node-fetch'
+// *[ ❀ PLAY ]*
+import fetch from 'node-fetch';
+import yts from 'yt-search'
 
-let handler = async (m, { text, conn, usedPrefix, command }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa un link de facebook`, m)
-
+let HS = async (m, { conn, text }) => {
+if (!text) return conn.reply(m.chat, `❀ Ingresa el texto de lo que quieres buscar`, m)
+let res = await yts(text)
+let vid = res.videos[0]
 
 try {
-let apisearch = await fetch(`https://api.agatz.xyz/api/facebook?url=${text}`)
-let json = await apisearch.json()
-let { sd, hd, title, thumbnail } = json.data
-await conn.sendFile(m.chat, thumbnail, 'HasumiBotFreeCodes.jpg', null, m)
-await conn.sendFile(m.chat, sd || hd, 'HasumiBotFreeCodes.mp4', title, m)
+
+let api = await fetch(`https://api.betabotz.eu.org/api/download/ytmp4?url=${vid.url}&apikey=btzKiyoEditz`)
+let json = await api.json()
+let { title, description, id, thumb, source, mp3, mp4 } = json.result
+let audio = {
+audio: { url: mp3 }, mimetype: "audio/mp4", fileName: `${title}`,
+contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 2,
+mediaUrl: vid.url, sourceUrl: vid.url,
+title: vid.title, body: null,
+thumbnailUrl: thumb
+}}}
+await conn.sendMessage(m.chat, audio, { quoted: m })
+
+await conn.sendMessage(m.chat, { video: { url: mp4 }, mimetype: 'video/mp4', fileName: `${title}.mp4`, caption: null }, { quoted: m })    
+    
 } catch (error) {
-console.log(error)
+console.error(error)
 }}
 
-handler.command = /^(facebook22)$/i
+HS.command = ['play44']
 
-export default handler
+export default HS
