@@ -1,7 +1,7 @@
 import fetch from "node-fetch"
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) throw m.reply(`• *Ejemplo :* ${usedPrefix + command} stepmoms`)
+  if (!text) throw m.reply(`*[ ℹ️ ] Ingresa el texto de lo que quieres buscar en Xnxx*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Con mi Prima.`)
   let response = await fetch(`https://api.agatz.xyz/api/xnxx?message=${text}`)
   let res = await response.json()
 
@@ -10,7 +10,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   let resultText = ''
   for (let i = 0; i < res.data.result.length; i++) {
     let result = res.data.result[i]
-    let hasil = `• Titulo: *${result.title}*\n• Info: *${result.info}*\n• Link: *${result.link}*\n`
+    let hasil = `• *Titulo:* ${result.title}\n• *Info:* ${result.info}\n• *Link:* ${result.link}\n`
     resultText += hasil + '\n'
   }
 
