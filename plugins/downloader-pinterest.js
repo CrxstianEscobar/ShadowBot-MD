@@ -1,4 +1,4 @@
-import Starlights from '@StarlightsTeam/Scraper';
+/*import Starlights from '@StarlightsTeam/Scraper';
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 if (!args[0]) return conn.reply(m.chat,`🚩 Ingrese un enlace de Pinterest\n\nEjemplo:\n> *${usedPrefix + command}* https://ar.pinterest.com/pin/588142032613788991/`, m);
@@ -27,4 +27,4 @@ handler.tags = ['downloader'];
 handler.command = ['pinterestdl', 'pindl'];
 handler.register = true;
 
-export default handler;
+export default handler;*/
