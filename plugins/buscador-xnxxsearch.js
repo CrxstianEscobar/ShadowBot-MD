@@ -29,13 +29,13 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     }
   }
 
-  await conn.reply(m.chat, '✦ Espere un momento...', fkonn)
+  await conn.reply(m.chat, '*[ ℹ️ ] Espere un momento...*', fkonn)
 
   conn.sendMessage(m.chat, {
     text: resultText,
     contextInfo: {
       externalAdReply: {
-        title: `© 2024 Waguri Ai`,
+        title: `Xnxx Videos`,
         body: wm,
         thumbnailUrl: "https://pomf2.lain.la/f/kro5qrjk.jpg",
         sourceUrl: "https://xxnx.com",
@@ -46,7 +46,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   })
 }
 
-handler.command = ['xnxxsearch']
+handler.command = ['xnxxsearch', 'xnxxs']
 handler.help = ['xnxxsearch *<consulta>*']
 handler.tags = ['nsfw','search']
 handler.premium = false
