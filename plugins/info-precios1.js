@@ -12,7 +12,14 @@ const handler = async (m, { conn, text }) => {
       const letra = `*Title:* ${lyricsData.title}\n*Artist:* ${lyricsData.artist}\n\n*Lyrics:*\n${lyricsData.lyrics}`;
       return conn.sendMessage(m.chat, { text: letra }, { quoted: m });
     } else {
-      return conn.reply(m.chat, '*[ ⚠️ ] No se encontró la letra para esta canción en Lyrics.ovh. ¿Quieres buscarla en otro sitio?*', m);
+      // Si no se encuentra en Lyrics.ovh, busca en Genius
+      const geniusData = await searchGenius(songTitle); 
+      if (geniusData) {
+        const letraGenius = `*Title:* ${geniusData.title}\n*Artist:* ${geniusData.artist}\n\n*Lyrics:*\n${geniusData.lyrics}`;
+        return conn.sendMessage(m.chat, { text: letraGenius }, { quoted: m });
+      } else {
+        return conn.reply(m.chat, '*[ ⚠️ ] No se encontró la letra para esta canción en Lyrics.ovh ni en Genius. ¿Quieres buscarla en otro sitio?*', m);
+      }
     }
   } catch (error) {
     console.error('Error:', error);
@@ -20,7 +27,7 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-// Función para buscar la letra de la canción
+// Función para buscar la letra en Lyrics.ovh
 async function searchLyrics(songTitle) {
   try {
     const formattedTitle = songTitle.split(' ').join('+'); // Reemplazar espacios por "+"
@@ -41,9 +48,47 @@ async function searchLyrics(songTitle) {
   }
 }
 
+// Función para buscar la letra en Genius
+async function searchGenius(songTitle) {
+  try {
+    const API_KEY = 'tu-api-key-genius';  // Usa tu API Key de Genius
+    const formattedTitle = songTitle.split(' ').join('+');  // Reemplazar espacios por "+"
+    
+    const searchResponse = await axios.get(`https://api.genius.com/search?q=${formattedTitle}`, {
+      headers: { 'Authorization': `Bearer ${API_KEY}` }
+    });
+
+    const song = searchResponse.data.response.hits[0]?.result; // Obtener el primer resultado
+    if (song) {
+      const lyricsResponse = await axios.get(song.url);
+      const lyricsPage = lyricsResponse.data;
+
+      // Extraer la letra de la página de Genius
+      const lyrics = extractLyricsFromGeniusPage(lyricsPage);
+      return {
+        title: song.title,
+        artist: song.primary_artist.name,
+        lyrics: lyrics,
+      };
+    } else {
+      return null; // Si no se encuentra en Genius
+    }
+  } catch (error) {
+    console.error('Error buscando en Genius:', error);
+    return null;
+  }
+}
+
+// Función para extraer la letra desde la página de Genius
+function extractLyricsFromGeniusPage(pageData) {
+  const regex = /"lyrics":\s*"([^"]+)"/g;  // Expresión regular para extraer la letra
+  const match = regex.exec(pageData);
+  return match ? match[1].replace(/\\n/g, '\n') : 'No se pudo extraer la letra';
+}
+
 // Configuración del comando
-handler.help = ['n', 'letrañ'].map(v => v + ' <song title>');
+handler.help = ['m', 'lm'].map(v => v + ' <song title>');
 handler.tags = ['internet'];
-handler.command = /^(n)$/i;
+handler.command = /^(m)$/i;
 
 export default handler;
