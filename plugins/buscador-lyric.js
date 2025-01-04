@@ -19,6 +19,10 @@ const handler = async (m, { conn, text }) => {
       lyrics = await searchLyrics(teks);
     }
 
+    if (!lyrics.status) {
+      throw lyrics.message; // Si no se encontró la letra, mostramos el mensaje de error.
+    }
+
     const tituloL = result[0]?.title || lyrics.title;
     const artistaL = result[0]?.artist || lyrics.artist;
 
@@ -44,7 +48,7 @@ const handler = async (m, { conn, text }) => {
     const previewUrl = result[0]?.preview
       ? result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".deezer.com", ".dzcdn.net")
       : "";
-    
+
     if (previewUrl) {
       await conn.sendMessage(
         m.chat,
@@ -64,7 +68,7 @@ const handler = async (m, { conn, text }) => {
 
 handler.help = ["lirik", "letra"].map((v) => v + " <song title>");
 handler.tags = ["internet"];
-handler.command = /^(li|lyrics|lyric|letra)$/i;
+handler.command = /^(let|lyrics|lyric|letra)$/i;
 
 export default handler;
 
