@@ -51,7 +51,7 @@ async function searchLyrics(songTitle) {
 // Función para buscar la letra en Genius
 async function searchGenius(songTitle) {
   try {
-    const API_KEY = 'tu-api-key-genius';  // Usa tu API Key de Genius
+    const API_KEY = 'bU47Z8A6LKMl9kyhI1rz8PxPwR8Fnny_ODkDGGBHqhmo97Ebo9-E5mvqPd3SB1yN';  // Usa tu API Key de Genius
     const formattedTitle = songTitle.split(' ').join('+');  // Reemplazar espacios por "+"
     
     const searchResponse = await axios.get(`https://api.genius.com/search?q=${formattedTitle}`, {
