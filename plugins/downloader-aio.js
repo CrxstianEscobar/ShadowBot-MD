@@ -135,7 +135,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     const res = await fetch(global.API("https://some-random-api.com", "/lyrics", { title: artistaL + tituloL, }));
     const json = await res.json();
 
-    let img;
+    /*let img;
     try {
       img = result.album.artwork;
     } catch {
@@ -149,12 +149,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
           img = lyrics.image;
         }
       }
-    }
+    }*/
 
     const previewUrl = result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".deezer.com", ".dzcdn.net");
     const textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics || "Lyrics not found."}`;
 
-    await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });
+    //await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });
+await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
+
     await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
   } catch (e) {
     console.log(`Error: ${e.message}`);
