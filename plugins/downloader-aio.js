@@ -155,7 +155,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
    /* const textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics || "Lyrics not found."}`;
 
-    await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });*/
+    await conn.reply(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });*/
 try {
 let textoLetra;
 if (lyrics.lyrics) {
@@ -163,13 +163,13 @@ if (lyrics.lyrics) {
 } else {
   textoLetra = "Lyrics not found.";
 }
-await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
+await conn.reply(m.chat, { text: textoLetra }, { quoted: m });
 } catch (error) {
   console.log('Error:', error);
-  await conn.sendMessage(m.chat, { text: 'Error al procesar la solicitud. Por favor, inténtalo de nuevo.' }, { quoted: m });
+  await conn.reply(m.chat, { text: 'Error al procesar la solicitud. Por favor, inténtalo de nuevo.' }, { quoted: m });
 }
 
-    await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
+    await conn.reply(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
   } catch (e) {
     console.log(`Error: ${e.message}`);
     throw `*f vro*`;
