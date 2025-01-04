@@ -118,7 +118,7 @@ import cheerio from "cheerio";
 import fs from "fs";
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text && !m.quoted?.text) return conn.reply(m.chat, '*[ 👩🏼 ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
+  if (!text && !m.quoted?.text) return conn.reply(m.chat, '*[ 😼 ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
 
   try {
     const result = await getTracks(text || m.quoted?.text);
