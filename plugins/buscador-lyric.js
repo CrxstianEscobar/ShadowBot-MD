@@ -1,55 +1,39 @@
 import axios from "axios"; // Usamos axios para obtener la letra
 import { getTracks } from "@green-code/music-track-data";
 import { googleImage } from "@bochilteam/scraper";
+import fs from "fs";
 
 const handler = async (m, { conn, text }) => {
   const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
   if (!teks) throw "*Please provide a song title*";
 
   try {
-    console.log("Buscando pista para:", teks);
-
-    // Obtener pistas usando la API de getTracks
     const result = await getTracks(teks);
-    console.log("Resultado de getTracks:", result); // Ver el resultado de getTracks
-
     let lyrics;
 
-    // Si encontramos el resultado, buscamos la letra de la canción
+    // Si obtenemos resultados de `getTracks`
     if (result && result[0]) {
-      console.log("Track found:", result[0]);
-      lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Buscar la letra usando el formato artist - song
+      lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Formato artist - song
     } else {
-      console.log("No track found, buscando solo la letra...");
-      lyrics = await searchLyrics(teks); // Buscar solo la letra de la canción si no encontramos resultado
+      // Si no se encuentra nada, buscamos la letra solo con el texto ingresado
+      lyrics = await searchLyrics(teks);
     }
-
-    if (!lyrics.status) {
-      throw lyrics.message; // Si no se encontró la letra, lanzamos un error
-    }
-
-    console.log("Letra encontrada:", lyrics); // Verificar la letra obtenida
 
     const tituloL = result[0]?.title || lyrics.title;
     const artistaL = result[0]?.artist || lyrics.artist;
 
     let img;
 
-    // Intentar obtener una imagen
+    // Intentamos obtener la imagen de varias fuentes
     try {
-      console.log("Intentando obtener imagen...");
       img = result[0]?.album?.artwork || (await googleImage(`${artistaL} ${tituloL}`)).getRandom();
-    } catch (err) {
-      console.error("Error al obtener imagen:", err);
+    } catch {
       img = lyrics.image || "https://example.com/default-image.jpg"; // Imagen predeterminada si no se obtiene ninguna
     }
-
-    console.log("Imagen obtenida:", img);
 
     const textoLetra = `*Title:* ${tituloL}\n*Artist:* ${artistaL}\n\n*Lyrics:*\n${lyrics.lyrics || "Lyrics not found."}`;
 
     // Enviar mensaje con la letra y la imagen
-    console.log("Enviando letra y imagen...");
     await conn.sendMessage(
       m.chat,
       { image: { url: img }, caption: textoLetra },
@@ -62,7 +46,6 @@ const handler = async (m, { conn, text }) => {
       : "";
 
     if (previewUrl) {
-      console.log("Enviando audio...");
       await conn.sendMessage(
         m.chat,
         {
@@ -73,9 +56,8 @@ const handler = async (m, { conn, text }) => {
         { quoted: m }
       );
     }
-
   } catch (error) {
-    console.error("Error completo:", error);
+    console.error(`Error: ${error.message}`);
     throw "*Error while fetching lyrics or track data*";
   }
 };
