@@ -163,7 +163,6 @@ if (lyrics.lyrics) {
 } else {
   textoLetra = "Lyrics not found.";
 }
-}
 await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
 } catch (error) {
    console.log('Error:', error);
