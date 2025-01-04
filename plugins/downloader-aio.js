@@ -8,7 +8,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
 if (!text && !m.quoted?.text) return conn.reply(m.chat, '*[ ℹ️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
 
-*/const teks = text || m.quoted?.text || '';
+/*const teks = text || m.quoted?.text || '';
 if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);*/
 
   try {
