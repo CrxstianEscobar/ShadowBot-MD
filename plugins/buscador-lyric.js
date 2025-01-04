@@ -1,106 +1,108 @@
-import axios from "axios"; // Usamos axios para obtener la letra
 import { getTracks } from "@green-code/music-track-data";
 import { googleImage } from "@bochilteam/scraper";
+import got from "got";
+import cheerio from "cheerio";
 import fs from "fs";
 
-const handler = async (m, { conn, text }) => {
-  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "😿";
-  if (!teks) throw "*Please provide a song title*";
-
+const handler = async (m, { conn, text, usedPrefix, command }) => {
+  
+  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
+  if (!teks) throw `*ℹ️ Proporciona un titulo: .letra beret ojala*`;
   try {
     const result = await getTracks(teks);
     let lyrics;
-
-    // Si obtenemos resultados de `getTracks`
-    if (result && result[0]) {
-      lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Formato artist - song
+    if (result) {
+      lyrics = await searchLyrics(`${result[0]?.artist} ${result[0]?.title}`);
     } else {
-      // Si no se encuentra nada, buscamos la letra solo con el texto ingresado
-      lyrics = await searchLyrics(teks);
+      lyrics = await searchLyrics(`${teks}`);
     }
-
-    const tituloL = result[0]?.title || lyrics.title;
-    const artistaL = result[0]?.artist || lyrics.artist;
-
+    const tituloL = result[0].title ? result[0].title : lyrics.title;
+    const artistaL = result[0].artist ? result[0].artist : lyrics.artist;
+    const res = await fetch(
+      global.API("https://some-random-api.com", "/lyrics", {
+        title: artistaL + tituloL,
+      }),
+    );
+    const json = await res.json();
     let img;
-
-    // Intentamos obtener la imagen de varias fuentes
     try {
-      img = result[0]?.album?.artwork || (await googleImage(`${artistaL} ${tituloL}`)).getRandom();
+      img = result.album.artwork;
     } catch {
-      img = lyrics.image || "https://example.com/default-image.jpg"; // Imagen predeterminada si no se obtiene ninguna
+      try {
+        img = json.thumbnail.genius;
+      } catch {
+        try {
+          const bochil = await googleImage(`${artistaL} ${tituloL}`);
+          img = await bochil.getRandom();
+        } catch {
+          img = lyrics.image;
+        }
+      }
     }
 
-    const textoLetra = `*Title:* ${tituloL}\n*Artist:* ${artistaL}\n\n*Lyrics:*\n${lyrics.lyrics || "Lyrics not found."}`;
+    const previewUrl = result[0]?.preview
+      .replace("http://cdn-preview-", "https://cdns-preview-")
+      .replace(".deezer.com", ".dzcdn.net");
 
-    // Enviar mensaje con la letra y la imagen
+    const textoLetra = `Title: *${tituloL || ""}*\nArtist:  *${artistaL || ""}*\n\nLetra \n${lyrics.lyrics || "Lyrics not found."}`;
     await conn.sendMessage(
       m.chat,
       { image: { url: img }, caption: textoLetra },
-      { quoted: m }
+      { quoted: m },
     );
-
-    // Enviar mensaje con audio (si hay previsualización)
-    const previewUrl = result[0]?.preview
-      ? result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".deezer.com", ".dzcdn.net")
-      : "";
-
-    if (previewUrl) {
-      await conn.sendMessage(
-        m.chat,
-        {
-          audio: { url: previewUrl },
-          fileName: `${artistaL} - ${tituloL}.mp3`,
-          mimetype: "audio/mp4",
-        },
-        { quoted: m }
-      );
-    }
-  } catch (error) {
-    console.error(`Error: ${error.message}`);
-    throw "*Error while fetching lyrics or track data*";
+    await conn.sendMessage(
+      m.chat,
+      {
+        audio: { url: previewUrl },
+        fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`,
+        mimetype: "audio/mp4",
+      },
+      { quoted: m },
+    );
+  } catch (e) {
+    console.log(`Error: ${e.message}`);
+    throw `*❌❌❌*`;
   }
 };
-
-handler.help = ["lirik", "letra"].map((v) => v + " <song title>");
+handler.help = ["lirik", "letra"].map((v) => v + " <Apa>");
 handler.tags = ["internet"];
-handler.command = /^(li|lyrics|lyric|letra)$/i;
-
+handler.command = /^(lirik|lyrics|lyric|letra)$/i;
 export default handler;
 
-// Función para buscar letras de canciones
+/* Creditos: https://github.com/darlyn1234 */
 async function searchLyrics(term) {
   try {
-    if (!term) throw "Please provide a valid song name to search the lyrics.";
-
-    // Reemplazar los espacios por '+' para la URL
-    const formattedTerm = term.split(" ").join("+");
-
-    // Llamada a la API de letras para buscar la canción
-    const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTerm}`);
-    const data = response.data;
-
-    // Si no se encuentra la letra, devolver un mensaje adecuado
-    if (!data.lyrics) {
-      return {
-        status: false,
-        message: `Couldn't find any lyrics for "${term}".`
-      };
-    }
-
-    // Devolver la letra encontrada
-    return {
+    if (!term) return "🟥 Provide the name of the song to search the lyrics";
+    const geniusResponse = await axios.get(
+      `https://deliriussapi-oficial.vercel.app/search/genius?q=${term}`,
+    );
+    const geniusData = geniusResponse.data;
+    if (!geniusData.length) return `🟨 Couldn't find any lyrics for "${term}"`;
+    const lyricsUrl = geniusData[0].url;
+    const lyricsResponse = await axios.get(
+      `https://deliriussapi-oficial.vercel.app/search/lyrics?url=${lyricsUrl}&parse=false`,
+    );
+    const result = {
       status: true,
-      title: term.split(" - ")[1] || "",
-      artist: term.split(" - ")[0] || "",
-      lyrics: data.lyrics,
-      image: "https://example.com/default-image.jpg" // Imagen predeterminada
+      creador: "Sareth",
+      title: geniusData[0].title || "",
+      fullTitle: geniusData[0].fullTitle || "",
+      artist: geniusData[0].artist.name || "",
+      artistUrl: geniusData[0].artist.url || "",
+      id: geniusData[0].id || "",
+      enpoint: geniusData[0].endpoint || "",
+      instrumental: geniusData[0].instrumental,
+      image: geniusData[0].image || "",
+      url: geniusData[0].url || "",
+      lyrics: lyricsResponse.data.lyrics || "",
     };
+    return result;
   } catch (error) {
-    console.error("Error searching lyrics:", error);
+    console.error(error.message);
     return {
+      creador: "Sareth",
       status: false,
-      message: error.message || "An error occurred while searching for lyrics."
+      message: new Error(error).message,
     };
   }
 }
