@@ -85,8 +85,8 @@ async function enviarLetraAlChat(m, { conn, text }) {
 }
 
 // Agregar el comando de la función a tu bot
-handler.help = ["x", "letra"].map((v) => v + " <song title>");
+handler.help = ["x", "xd"].map((v) => v + " <song title>");
 handler.tags = ["internet"];
-handler.command = /^(x)$/i;
+handler.command = /^(x|xd)$/i;
 
 export default handler;
