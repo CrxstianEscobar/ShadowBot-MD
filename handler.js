@@ -120,7 +120,7 @@ export async function handler(chatUpdate) {
             console.error(e)
         }
 //⚪ Funcion agregada
-export async function groupsUpdate(groupsUpdate) {
+/*export async function groupsUpdate(groupsUpdate) {
   if (opts['self'] && !isOwner && !isROwner) return;
   for (const groupUpdate of groupsUpdate) {
     const id = groupUpdate.id;
@@ -140,7 +140,7 @@ export async function groupsUpdate(groupsUpdate) {
     await this.sendMessage(id, { text, mentions: this.parseMention(text) });
   }
 }
-
+*/
 //🤍 Funcion termindad
         if (opts['nyimak'])  return
         if (!m.fromMe && opts['self'])  return
