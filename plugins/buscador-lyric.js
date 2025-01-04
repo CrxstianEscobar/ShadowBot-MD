@@ -3,11 +3,11 @@ import cheerio from 'cheerio';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   const teks = text || m.quoted?.text || '';
-  if (!teks) return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el título de la canción.*', m);
+  if (!teks) return conn.reply(m.chat, '*[ 🤖 ] Ingresa el título de la canción.*', m);
 
   try {
     // Reemplaza este token con el tuyo
-    const ACCESS_TOKEN = 'edUmUVkjQtj4ULLeYTSJ69vX3fYdD1ssNqy4BZEVJHFQ848TSOIVB8Wf0LlqIHAB'; 
+    const ACCESS_TOKEN = '_NtAE3KTS3t7KThl1PPmNt5UJ3BPWF_ssSoteHszAgMfmZHJWZFlY4Vyz58cM'; 
 
     // Solicitar a la API de Genius para obtener la canción
     const response = await axios.get('https://api.genius.com/search', {
