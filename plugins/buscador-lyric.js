@@ -9,25 +9,33 @@ const handler = async (m, { conn, text }) => {
   try {
     console.log("Buscando pista para:", teks);
 
+    // Obtener pistas usando la API de getTracks
     const result = await getTracks(teks);
+    console.log("Resultado de getTracks:", result); // Ver el resultado de getTracks
+
     let lyrics;
 
+    // Si encontramos el resultado, buscamos la letra de la canción
     if (result && result[0]) {
       console.log("Track found:", result[0]);
-      lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Formato artist - song
+      lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Buscar la letra usando el formato artist - song
     } else {
-      console.log("No track found, searching only for lyrics");
-      lyrics = await searchLyrics(teks); // Si no hay resultado, busca solo la letra
+      console.log("No track found, buscando solo la letra...");
+      lyrics = await searchLyrics(teks); // Buscar solo la letra de la canción si no encontramos resultado
     }
 
     if (!lyrics.status) {
-      throw lyrics.message; // Si no se encontró la letra, mostramos el mensaje de error.
+      throw lyrics.message; // Si no se encontró la letra, lanzamos un error
     }
+
+    console.log("Letra encontrada:", lyrics); // Verificar la letra obtenida
 
     const tituloL = result[0]?.title || lyrics.title;
     const artistaL = result[0]?.artist || lyrics.artist;
 
     let img;
+
+    // Intentar obtener una imagen
     try {
       console.log("Intentando obtener imagen...");
       img = result[0]?.album?.artwork || (await googleImage(`${artistaL} ${tituloL}`)).getRandom();
@@ -35,6 +43,8 @@ const handler = async (m, { conn, text }) => {
       console.error("Error al obtener imagen:", err);
       img = lyrics.image || "https://example.com/default-image.jpg"; // Imagen predeterminada si no se obtiene ninguna
     }
+
+    console.log("Imagen obtenida:", img);
 
     const textoLetra = `*Title:* ${tituloL}\n*Artist:* ${artistaL}\n\n*Lyrics:*\n${lyrics.lyrics || "Lyrics not found."}`;
 
