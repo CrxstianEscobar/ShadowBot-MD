@@ -1,4 +1,4 @@
-let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
+/*let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 
 export async function before(m, { conn, participants, groupMetadata }) {
 if (!m.messageStubType || !m.isGroup) return
@@ -43,4 +43,4 @@ await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.
 //messageStubParameters: m.messageStubParameters,
 //type: WAMessageStubType[m.messageStubType], 
 //})
-}}
+}}*/
