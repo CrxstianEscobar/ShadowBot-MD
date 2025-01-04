@@ -68,7 +68,6 @@ if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de l
   }
 };
 
-/* Creditos: https://github.com/darlyn1234 */
 async function searchLyrics(term) {
   try {
     if (!term) return "🟥 Provide the name of the song to search the lyrics";
