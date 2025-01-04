@@ -123,7 +123,7 @@ export async function handler(chatUpdate) {
 export async function groupsUpdate(groupsUpdate) {
   if (opts['self'] && !isOwner && !isROwner) return;
   for (const groupUpdate of groupsUpdate) {
-    const id = (link unavailable);
+    const id = groupUpdate.id;
     if (!id) continue;
     let chats = global.db.data?.chats?.[id], text = '';
     if (!chats?.detect) continue;
