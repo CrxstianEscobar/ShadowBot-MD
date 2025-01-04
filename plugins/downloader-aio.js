@@ -55,7 +55,6 @@ const textoLetra = `No`;
     await conn.sendMessage(
       m.chat,
       { image: { url: img }, caption: textoLetra },
-      { quoted: m },
     );
     await conn.sendMessage(
       m.chat,
