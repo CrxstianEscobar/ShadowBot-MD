@@ -428,12 +428,12 @@ conn: this,
 
 global.dfail = (type, m, conn, usedPrefix) => {
     let msg = {
-        rowner: "> _*`Perdon, Este comando es solo para mi Owner.`*_",
-        owner: "> _*`Perdon, Solo mi creador puede usar este comando.`*_",
-        mods: "> _*`Perdon, Este comando solo es para mods`*_",
-        premium: "> _*`No eres un usuario Premium, Habla con mi owner`*_",
+        rowner: "*[ ℹ️ ] Perdon, Este comando es solo para mi Creador.*",
+        owner: "*[ ℹ️ ] Perdon, Solo mi creador puede usar este comando.*",
+        mods: "*[ ℹ️ ] Perdon, Este comando solo es para mods*",
+        premium: "*[ ℹ️ ] No eres un usuario Premium, Habla con mi owner*",
         group: "*[ ℹ️ ] Perdon, Este comando solo es para grupos*",
-        private: "> _*`Ve a mi chat privado y usa este comando`*_",
+        private: "*[ ℹ️ ] Ve a mi chat privado y usa este comando*",
         admin: "*[ ℹ️ ] Esta función solo es para admins.*",
         botAdmin: "> _*`Es necesario que sea admin primero para usar esta función`*_",
         unreg: "> _*`‼️USUARIO NO REGISTRADO‼️`*_\n\n`Para registrarse:`\n\n> .reg nombre.edad\n\n`Ejemplo:`\n\n> .reg Shadow.18",
