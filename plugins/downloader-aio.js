@@ -49,7 +49,7 @@ if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de l
       .replace("http://cdn-preview-", "https://cdns-preview-")
       .replace(".deezer.com", ".dzcdn.net");
 
-    /*const textoLetra = `sotil *${tituloL || ""}*\ndoyil  *${artistaL || ""}*\n\nlytuv \n${lyrics.lyrics || "Lyrics not found."}`;*/
+    const textoLetra = `sotil *${tituloL || ""}*\ndoyil  *${artistaL || ""}*\n\nlytuv \n${lyrics.lyrics || "Lyrics not found."}`;
 
 const textoLetra = `No`;
     await conn.sendMessage(
