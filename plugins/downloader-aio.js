@@ -152,9 +152,18 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     }*/
 
     const previewUrl = result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".deezer.com", ".dzcdn.net");
-    const textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics || "Lyrics not found."}`;
 
-    //await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });
+   /* const textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics || "Lyrics not found."}`;
+
+    await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });*/
+
+let textoLetra;
+if (lyrics.lyrics) {
+  textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics}`;
+} else {
+  textoLetra = "Lyrics not found.";
+}
+
 await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
 
     await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
