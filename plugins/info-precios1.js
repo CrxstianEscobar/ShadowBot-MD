@@ -1,55 +1,40 @@
 import axios from 'axios';
 
 const handler = async (m, { conn, text }) => {
-  // Extraemos el título de la canción desde el texto
-  const teks = text || m.quoted?.text || '';
-  if (!teks) {
-    return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
+  const songTitle = text || m.quoted?.text || '';  // Obtener el texto de la canción
+  if (!songTitle) {
+    return conn.reply(m.chat, '*[ ⚠️ ] Ingresa el título de la canción para obtener la letra.*', m);
   }
 
   try {
-    // Buscar la letra de la canción
-    const lyrics = await searchLyricsOVH(teks);
-
-    if (!lyrics || !lyrics.lyrics) {
-      return conn.reply(m.chat, "*[ ⚠️ ] No se encontró la letra para esta canción.*", m);
+    const lyricsData = await searchLyrics(songTitle); // Buscar la letra usando Lyrics.ovh
+    if (lyricsData && lyricsData.lyrics) {
+      const letra = `*Title:* ${lyricsData.title}\n*Artist:* ${lyricsData.artist}\n\n*Lyrics:*\n${lyricsData.lyrics}`;
+      return conn.sendMessage(m.chat, { text: letra }, { quoted: m });
+    } else {
+      return conn.reply(m.chat, '*[ ⚠️ ] No se encontró la letra para esta canción en Lyrics.ovh. ¿Quieres buscarla en otro sitio?*', m);
     }
-
-    // Enviar la letra al chat
-    const textoLetra = `*Title:* ${lyrics.title}\n*Artist:* ${lyrics.artist}\n\n*Lyrics:*\n${lyrics.lyrics}`;
-
-    await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
-
   } catch (error) {
-    console.error('Error en la búsqueda:', error);
-    return conn.reply(m.chat, "*[ ⚠️ ] Hubo un problema al obtener la letra o los datos de la canción.*", m);
+    console.error('Error:', error);
+    return conn.reply(m.chat, '*[ ⚠️ ] Hubo un problema al obtener la letra.*', m);
   }
 };
 
-// Función que busca la letra de la canción usando Lyrics.ovh
-async function searchLyricsOVH(term) {
+// Función para buscar la letra de la canción
+async function searchLyrics(songTitle) {
   try {
-    if (!term) {
-      throw 'Por favor, proporciona un nombre válido de la canción para buscar la letra.';
+    const formattedTitle = songTitle.split(' ').join('+'); // Reemplazar espacios por "+"
+    const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTitle}`);
+
+    if (response.data.lyrics) {
+      return {
+        title: songTitle.split(' - ')[1] || songTitle,
+        artist: songTitle.split(' - ')[0] || 'Desconocido',
+        lyrics: response.data.lyrics,
+      };
+    } else {
+      return null;  // Si no se encuentra la letra
     }
-
-    // Reemplazamos los espacios con "+" para la URL
-    const formattedTerm = term.split(' ').join('+');
-    const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTerm}`);
-
-    // Si la API responde con un error, lo manejamos
-    if (response.data.error) {
-      console.log(`No se encontró letra para: ${term}`);
-      return null;
-    }
-
-    // Devolvemos la información de la letra
-    return {
-      status: true,
-      title: term.split(' - ')[1] || term, // Si no tiene el formato artista - canción, solo el nombre
-      artist: term.split(' - ')[0] || 'Desconocido', // Si no tiene el formato, poner 'Desconocido'
-      lyrics: response.data.lyrics,
-    };
   } catch (error) {
     console.error('Error buscando letra:', error);
     return null;
@@ -57,8 +42,8 @@ async function searchLyricsOVH(term) {
 }
 
 // Configuración del comando
-handler.help = ['m', 'm'].map(v => v + ' <song title>');
+handler.help = ['n', 'letrañ'].map(v => v + ' <song title>');
 handler.tags = ['internet'];
-handler.command = /^(m)$/i;
+handler.command = /^(n)$/i;
 
 export default handler;
