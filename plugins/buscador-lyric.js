@@ -45,7 +45,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       .replace("http://cdn-preview-", "https://cdns-preview-")
       .replace(".deezer.com", ".dzcdn.net");
 
-    const textoLetra = `Title: *${tituloL || ""}*\nArtist:  *${artistaL || ""}*\n\nLetra \n${lyrics.lyrics || "Lyrics not found."}`;
+    const textoLetra = `Title: *${tituloL}*\nArtist:  *${artistaL}*\n\nLetra \n${lyrics.lyrics || "Lyrics not found."}`;
     await conn.sendMessage(
       m.chat,
       { image: { url: img }, caption: textoLetra },
