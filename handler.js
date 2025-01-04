@@ -409,7 +409,7 @@ global.dfail = (type, m, conn, usedPrefix) => {
         owner: "> _*`Perdon, Solo mi creador puede usar este comando.`*_",
         mods: "> _*`Perdon, Este comando solo es para mods`*_",
         premium: "> _*`No eres un usuario Premium, Habla con mi owner`*_",
-        group: "> _*`Perdon, Este comando solo es para grupos`*_",
+        group: "*[ ℹ️ ] Perdon, Este comando solo es para grupos*",
         private: "> _*`Ve a mi chat privado y usa este comando`*_",
         admin: "> _*`Quien eres?, tu no eres admin`*_",
         botAdmin: "> _*`Es necesario que sea admin primero para usar esta función`*_",
