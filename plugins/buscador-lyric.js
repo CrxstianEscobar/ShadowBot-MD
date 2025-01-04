@@ -1,6 +1,6 @@
 // By Crxstian Escobar 🌙
 
-import axios from 'axios';
+/*import axios from 'axios';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   const teks = text || m.quoted?.text || '';
@@ -62,4 +62,4 @@ handler.help = ["letra"].map((v) => v + " <título de la canción>");
 handler.tags = ["buscador"];
 handler.command = /^(letra)$/i;
 
-export default handler;
+export default handler;*/
