@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   const teks = text || m.quoted?.text || '';
-  if (!teks) return conn.reply(m.chat, '*[ x ] Error: Ingresa el título de la canción.*', m);
+  if (!teks) return conn.reply(m.chat, '*[ ℹ️ ]  Ingresa el título de la canción.*', m);
 
   try {
     // Realizamos la solicitud a la API de búsqueda de canciones
