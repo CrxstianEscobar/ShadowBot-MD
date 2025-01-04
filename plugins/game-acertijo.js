@@ -1,4 +1,4 @@
-/*import fs from 'fs';
+import fs from 'fs';
 
 
 const timeout = 60000;
@@ -37,9 +37,9 @@ Puntos: +${poin} Exp
 handler.help = ['acertijo'];
 handler.tags = ['game'];
 handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
-export default handler;*/
+export default handler;
 
-
+/*
 import fs from 'fs';
 const timeout = 60000;
 const poin = 10;
