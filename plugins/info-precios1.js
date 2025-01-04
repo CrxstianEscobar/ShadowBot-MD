@@ -49,9 +49,9 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ["lirik", "letra"].map((v) => v + " <song title>");
+handler.help = ["lir", "ler"].map((v) => v + " <song title>");
 handler.tags = ["internet"];
-handler.command = /^(li|lyrics|lyric|letra)$/i;
+handler.command = /^(lir)$/i;
 
 export default handler;
 
