@@ -52,10 +52,7 @@ if (!teks) return conn.reply(m.chat, '*[ x ] Error: Ingresa el título de la can
     /*const textoLetra = `sotil *${tituloL || ""}*\ndoyil  *${artistaL || ""}*\n\nlytuv \n${lyrics.lyrics || "Lyrics not found."}`;*/
 
 const textoLetra = `No`;
-    await conn.sendMessage(
-      m.chat,
-      { image: { url: img }, caption: textoLetra },
-    );
+    await conn.reply(m.chat, textoLetra, m);
     await conn.sendMessage(
       m.chat,
       {
