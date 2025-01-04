@@ -1,70 +1,108 @@
-import axios from 'axios';
-import cheerio from 'cheerio';
+import { getTracks } from "@green-code/music-track-data";
+import { googleImage } from "@bochilteam/scraper";
+import got from "got";
+import cheerio from "cheerio";
+import fs from "fs";
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
-  const teks = text || m.quoted?.text || '';
-  if (!teks) return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el título de la canción.*', m);
 
+  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
+  if (!teks) throw `*Use así .letra beret ojala*`;
   try {
-    // Reemplaza este token con el tuyo
-    const ACCESS_TOKEN = '_NtAE3KTS3t7KThl1PPmNt5UJ3BPWF_ssSoteHszAgMfmZHJWZFlY4Vyz58cM';
-
-    // Verificar el token (petición de prueba)
-    const verifyToken = await axios.get('https://api.genius.com/account', {
-      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` }
-    });
-    if (verifyToken.status !== 200) {
-      return conn.reply(m.chat, '*[ ❌ ] El token de acceso no es válido o ha caducado.*', m);
-    }
-
-    // Solicitar a la API de Genius para obtener la canción
-    const response = await axios.get('https://api.genius.com/search', {
-      params: { q: teks },  // Búsqueda por título de la canción
-      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` }
-    });
-
-    // Verificar si la búsqueda ha devuelto resultados
-    const data = response.data.response.hits;
-    if (!Array.isArray(data) || data.length === 0) {
-      return conn.reply(m.chat, '*[ ❌ ] Error: No se encontró la letra de la canción.*', m);
-    }
-
-    // Obtener el path de la canción desde los resultados de la búsqueda
-    const songPath = data[0].result.path;
-    const lyricsUrl = `https://genius.com${songPath}`;  // Crear la URL de la página de la letra
-
-    // Obtener la página de la letra con axios
-    const lyricsPage = await axios.get(lyricsUrl);
-    const $ = cheerio.load(lyricsPage.data); // Cargar el HTML con cheerio
-
-    // Extraer la letra de la canción del HTML
-    const lyrics = $('.lyrics').text();  // Buscamos el contenedor con la clase 'lyrics'
-
-    // Si no se encontró la letra
-    if (!lyrics) {
-      return conn.reply(m.chat, '*[ ❌ ] Error: No se pudo obtener la letra de la canción.*', m);
-    }
-
-    // Crear el mensaje con la letra de la canción
-    const textoLetra = `*${data[0].result.title}*\n*${data[0].result.primary_artist.name}*\n\n${lyrics}`;
-    await conn.reply(m.chat, textoLetra, m);
-
-  } catch (e) {
-    console.log(`Error: ${e}`);  // Log de errores
-
-    // Gestionar diferentes tipos de errores
-    if (e.response) {
-      return conn.reply(m.chat, `Error en la API: ${e.response.status} - ${e.response.statusText}`, m);
-    } else if (e.request) {
-      return conn.reply(m.chat, `Error de red: No se pudo contactar con la API de Genius.`, m);
+    const result = await getTracks(teks);
+    let lyrics;
+    if (result) {
+      lyrics = await searchLyrics(`${result[0]?.artist} ${result[0]?.title}`);
     } else {
-      return conn.reply(m.chat, `Error: ${e.message}`, m);
+      lyrics = await searchLyrics(`${teks}`);
     }
+    const tituloL = result[0].title ? result[0].title : lyrics.title;
+    const artistaL = result[0].artist ? result[0].artist : lyrics.artist;
+    const res = await fetch(
+      global.API("https://some-random-api.com", "/lyrics", {
+        title: artistaL + tituloL,
+      }),
+    );
+    const json = await res.json();
+    let img;
+    try {
+      img = result.album.artwork;
+    } catch {
+      try {
+        img = json.thumbnail.genius;
+      } catch {
+        try {
+          const bochil = await googleImage(`${artistaL} ${tituloL}`);
+          img = await bochil.getRandom();
+        } catch {
+          img = lyrics.image;
+        }
+      }
+    }
+
+    const previewUrl = result[0]?.preview
+      .replace("http://cdn-preview-", "https://cdns-preview-")
+      .replace(".deezer.com", ".dzcdn.net");
+
+    const textoLetra = `Titulo *${tituloL || ""}*\nArtista *${artistaL || ""}*\n\nLetra \n${lyrics.lyrics || "Lyrics not found."}`;
+    await conn.sendMessage(
+      m.chat,
+      { image: { url: img }, caption: textoLetra },
+      { quoted: m },
+    );
+    await conn.sendMessage(
+      m.chat,
+      {
+        audio: { url: previewUrl },
+        fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`,
+        mimetype: "audio/mp4",
+      },
+      { quoted: m },
+    );
+  } catch (e) {
+    console.log(`Error: ${e.message}`);
+    throw `*Error*`;
   }
 };
-
-handler.help = ["letra"].map((v) => v + " <título de la canción>");
-handler.tags = ["buscador"];
-handler.command = /^(letra)$/i;
-
+handler.help = ["lirik", "letra"].map((v) => v + " <Apa>");
+handler.tags = ["internet"];
+handler.command = /^(lirik|lyrics|lyric|letra)$/i;
 export default handler;
+
+/* Creditos: https://github.com/darlyn1234 */
+async function searchLyrics(term) {
+  try {
+    if (!term) return "🟥 Provide the name of the song to search the lyrics";
+    const geniusResponse = await axios.get(
+      `https://deliriussapi-oficial.vercel.app/search/genius?q=${term}`,
+    );
+    const geniusData = geniusResponse.data;
+    if (!geniusData.length) return `🟨 Couldn't find any lyrics for "${term}"`;
+    const lyricsUrl = geniusData[0].url;
+    const lyricsResponse = await axios.get(
+      `https://deliriussapi-oficial.vercel.app/search/lyrics?url=${lyricsUrl}&parse=false`,
+    );
+    const result = {
+      status: true,
+      creador: "Sareth",
+      title: geniusData[0].title || "",
+      fullTitle: geniusData[0].fullTitle || "",
+      artist: geniusData[0].artist.name || "",
+      artistUrl: geniusData[0].artist.url || "",
+      id: geniusData[0].id || "",
+      enpoint: geniusData[0].endpoint || "",
+      instrumental: geniusData[0].instrumental,
+      image: geniusData[0].image || "",
+      url: geniusData[0].url || "",
+      lyrics: lyricsResponse.data.lyrics || "",
+    };
+    return result;
+  } catch (error) {
+    console.error(error.message);
+    return {
+      creador: "Sareth",
+      status: false,
+      message: new Error(error).message,
+    };
+  }
+}
