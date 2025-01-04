@@ -76,7 +76,7 @@ handler.tags = ["internet"];
 handler.command = /^(lirik|lyrics|lyric|letra)$/i;
 export default handler;
 
-// Creditos: https://github.com/darlyn1234 */
+// Creditos: https://github.com/darlyn1234 
 async function searchLyrics(term) {
   try {
     if (!term) return "🟥 Provide the name of the song to search the lyrics";
