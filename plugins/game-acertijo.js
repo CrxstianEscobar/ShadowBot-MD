@@ -1,4 +1,4 @@
-/*import fs from 'fs';
+import fs from 'fs';
 
 
 const timeout = 60000;
@@ -37,46 +37,4 @@ Puntos: +${poin} Exp
 handler.help = ['acertijo'];
 handler.tags = ['game'];
 handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
-export default handler;*/
-
-import fs from 'fs';
-
-const timeout = 60000;  // 60 segundos
-
-const handler = async (m, { conn }) => {
-  conn.tekateki = conn.tekateki ? conn.tekateki : {};
-  const id = m.chat;
-
-  if (id in conn.tekateki) {
-    conn.reply(m.chat, '*[ ℹ️ ] Estas en un juego de acertijo*', conn.tekateki[id][0]);
-    throw false;
-  }
-
-  const filePath = './plugins/_acertijo.json';
-  const fileContent = fs.readFileSync(filePath, 'utf8');
-  const tekateki = JSON.parse(fileContent);
-
-  const json = tekateki[Math.floor(Math.random() * tekateki.length)];  // Seleccionar un acertijo aleatorio
-
-  const caption = `
-ⷮ *${json.question}* 
-Tiempo restante: ${(timeout / 1000).toFixed(2)} segundos
-`.trim();
-
-  conn.tekateki[id] = [
-    await conn.reply(m.chat, caption, m),
-    json,
-    setTimeout(async () => {
-      if (conn.tekateki[id]) {
-        await conn.reply(m.chat, `Se acabó el tiempo! La respuesta era: ${json.response}`, conn.tekateki[id][0]);
-        delete conn.tekateki[id];
-      }
-    }, timeout)
-  ];
-};
-
-handler.help = ['acertijo'];
-handler.tags = ['game'];
-handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
-
 export default handler;
