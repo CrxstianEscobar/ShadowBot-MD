@@ -64,10 +64,6 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     throw `*f vro*`;
   }
 };
-handler.help = ["lirik", "letra"].map((v) => v + " <Apa>");
-handler.tags = ["internet"];
-handler.command = /^(lirik|lyrics|lyric|letra)$/i;
-export default handler;
 
 /* Creditos: https://github.com/darlyn1234 */
 async function searchLyrics(term) {
@@ -106,3 +102,8 @@ async function searchLyrics(term) {
     };
   }
 }
+
+handler.help = ["lirik", "letra"].map((v) => v + " <Apa>");
+handler.tags = ["internet"];
+handler.command = /^(lirik|lyrics|lyric|letra)$/i;
+export default handler;
