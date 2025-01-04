@@ -7,8 +7,13 @@ import fs from "fs";
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   
-  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
-  if (!teks) throw `*ℹ️ Proporciona un titulo: .letra beret ojala*`;
+ /* const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
+  if (!teks) throw `*ℹ️ Proporciona un titulo: .letra beret ojala*`;*/
+
+const teks = text || m.quoted?.text || '';
+if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
+
+
   try {
     const result = await getTracks(teks);
     let lyrics;
