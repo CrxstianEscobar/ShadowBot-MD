@@ -140,10 +140,10 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     const tituloL = lyrics.title;
     const artistaL = lyrics.artist;
-    const previewUrl = result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".(link unavailable)", ".(link unavailable)");
+    const previewUrl = result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".deezer.com", ".dzcdn.net");
 
     await conn.sendMessage(m.chat, { text: `Letra de ${tituloL} de ${artistaL}\n\n${lyrics.lyrics}` }, { quoted: m });
-    await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
+    await conn.sendMessage(m.chat`, m });
   } catch (error) {
     console.error(error);
     return conn.reply(m.chat, '*[ 😿 ] Error: Ocurrió un error al intentar obtener las letras de la canción.*', m);
@@ -159,11 +159,11 @@ export default handler;
 async function searchLyrics(term) {
   try {
     if (!term) return " Provide the name of the song to search the lyrics";
-    const geniusResponse = await axios.get(`(link unavailable));
+    const geniusResponse = await axios.get(`https://deliriussapi-oficial.vercel.app/search/genius?q=${term}`);
     const geniusData = geniusResponse.data;
     if (!geniusData.length) return ` Couldn't find any lyrics for "${term}"`;
     const lyricsUrl = geniusData[0].url;
-    const lyricsResponse = await axios.get(`(link unavailable));
+    const lyricsResponse = await axios.get(`https://deliriussapi-oficial.vercel.app/search/lyrics?url=${lyricsUrl}&parse=false`);
     const result = {
       status: true,
       creador: "Sareth",
