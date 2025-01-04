@@ -434,9 +434,9 @@ global.dfail = (type, m, conn, usedPrefix) => {
         premium: "> _*`No eres un usuario Premium, Habla con mi owner`*_",
         group: "*[ ℹ️ ] Perdon, Este comando solo es para grupos*",
         private: "> _*`Ve a mi chat privado y usa este comando`*_",
-        admin: "> _*`Quien eres?, tu no eres admin`*_",
+        admin: "*[ ℹ️ ] Esta función solo es para admins.*",
         botAdmin: "> _*`Es necesario que sea admin primero para usar esta función`*_",
-        unreg: "> _*`‼️USUARIO NO REGISTRADO‼️`*_\n\n`Para registrarse:`\n\n> .reg nombre.edad\n\n`Ejemplo:`\n\n> .reg Isa.18",
+        unreg: "> _*`‼️USUARIO NO REGISTRADO‼️`*_\n\n`Para registrarse:`\n\n> .reg nombre.edad\n\n`Ejemplo:`\n\n> .reg Shadow.18",
         restrict: "> _*`Comando desactivado por mi Owner`*_" 
     }[type]
     if (msg) return conn.reply(m.chat, msg, m, rcanal).then(_ => m.react('✖️'))
