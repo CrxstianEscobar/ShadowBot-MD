@@ -156,14 +156,16 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
    /* const textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics || "Lyrics not found."}`;
 
     await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });*/
-
+try {
 let textoLetra;
 if (lyrics.lyrics) {
   textoLetra = `ti *${tituloL || ""}*\nar *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics}`;
 } else {
   textoLetra = "Lyrics not found.";
 }
-
+} catch (error) {
+   console.log('Error:', error);
+}
 await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
 
     await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
