@@ -6,11 +6,11 @@ import fs from "fs";
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
 
-const teks = text || m.quoted?.text || '';
-if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
+if (!text && !m.quoted?.text) return conn.reply(m.chat, '*[ ℹ️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
 
-  /*const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
-  if (!teks) throw `asi vro .lyric beret ojala*`;*/
+/*const teks = text || m.quoted?.text || '';
+if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);*/
+
   try {
     const result = await getTracks(teks);
     let lyrics;
