@@ -124,7 +124,7 @@ import axios from 'axios';
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   try {
     const teks = text || m.quoted?.text || '';
-    if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
+    if (!teks) return conn.reply(m.chat, '*[ 😿 ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
 
     const result = await getTracks(teks);
     let lyrics;
