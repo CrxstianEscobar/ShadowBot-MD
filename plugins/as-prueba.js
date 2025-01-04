@@ -6,7 +6,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!teks) return conn.reply(m.chat, '*[ x ] Error: Ingresa el título de la canción.*', m);
 
   try {
-    const response = await axios.get(`https://deliriussapi-oficial.vercel.app/search/genius?q=`);
+    const response = await axios.get(`https://deliriussapi-oficial.vercel.app/search/genius?q=${teks}`);
     const data = response.data;
     if (!data.length) return conn.reply(m.chat, '*[ x ] Error: No se encontró la letra de la canción.*', m);
 
