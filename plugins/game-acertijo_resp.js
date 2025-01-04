@@ -1,4 +1,4 @@
-/*import similarity from 'similarity';
+import similarity from 'similarity';
 const threshold = 0.72;
 const handler = (m) => m;
 handler.before = async function(m) {
@@ -19,45 +19,5 @@ handler.before = async function(m) {
   return !0;
 };
 handler.exp = 0;
-export default handler;*/
-
-
-import similarity from 'similarity';
-const threshold = 0.72;
-
-const handler = async (m) => {
-  const id = m.chat;
-
-  // Verificar que el mensaje es una respuesta a un acertijo
-  if (!m.quoted || !m.quoted.fromMe || !m.quoted.isBaileys || !/^ⷮ/i.test(m.quoted.text)) {
-    return !0;  // Si no es un mensaje de acertijo, no hace nada
-  }
-
-  this.tekateki = this.tekateki ? this.tekateki : {};
-
-  // Verificar si hay un acertijo activo
-  if (!(id in this.tekateki)) {
-    return m.reply('✐ Ese acertijo ya ha terminado!');
-  }
-
-  // Verificar si el mensaje citado corresponde al acertijo activo
-  if (m.quoted.id == this.tekateki[id][0].id) {
-    const json = JSON.parse(JSON.stringify(this.tekateki[id][1]));  // Obtener el acertijo y respuesta
-
-    // Comparar la respuesta del usuario con la respuesta correcta
-    if (m.text.toLowerCase() === json.response.toLowerCase().trim()) {
-      m.reply('✐ *Respuesta correcta!* 🎉');  // Respuesta correcta
-      clearTimeout(this.tekateki[id][2]);  // Limpiar el temporizador
-      delete this.tekateki[id];  // Eliminar el acertijo después de la respuesta correcta
-    } else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) {
-      m.reply('✐ *Casi lo logras!* ❀');  // Respuesta similar
-    } else {
-      m.reply('✐ *Respuesta incorrecta!* ❌');  // Respuesta incorrecta
-    }
-  }
-
-  return !0;
-};
-
-handler.exp = 0;  // No estamos usando puntos ni base de datos
 export default handler;
+
