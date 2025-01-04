@@ -4,7 +4,7 @@ import { googleImage } from "@bochilteam/scraper";
 import fs from "fs";
 
 const handler = async (m, { conn, text }) => {
-  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
+  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "😿";
   if (!teks) throw "*Please provide a song title*";
 
   try {
