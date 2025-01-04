@@ -3,6 +3,7 @@ import { googleImage } from "@bochilteam/scraper";
 import got from "got";
 import cheerio from "cheerio";
 import fs from "fs";
+import axios from 'axios';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   
