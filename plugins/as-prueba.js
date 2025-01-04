@@ -22,8 +22,8 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ["letra"].map((v) => v + " <título de la canción>");
-handler.tags = ["internet"];
-handler.command = /^(letra)$/i;
+handler.help = ["let"].map((v) => v + " <título de la canción>");
+handler.tags = ["as"];
+handler.command = /^(let)$/i;
 
 export default handler;
