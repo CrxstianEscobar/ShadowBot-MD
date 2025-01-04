@@ -1,4 +1,5 @@
 import axios from 'axios';
+import cheerio from 'cheerio';
 
 const handler = async (m, { conn, text }) => {
   const songTitle = text || m.quoted?.text || '';  // Obtener el texto de la canción
@@ -8,12 +9,15 @@ const handler = async (m, { conn, text }) => {
 
   try {
     const lyricsData = await searchLyrics(songTitle); // Buscar la letra usando Lyrics.ovh
+    console.log('Resultado de Lyrics.ovh:', lyricsData); // Depuración
     if (lyricsData && lyricsData.lyrics) {
       const letra = `*Title:* ${lyricsData.title}\n*Artist:* ${lyricsData.artist}\n\n*Lyrics:*\n${lyricsData.lyrics}`;
       return conn.sendMessage(m.chat, { text: letra }, { quoted: m });
     } else {
+      console.log('No se encontró letra en Lyrics.ovh, buscando en Genius...');
       // Si no se encuentra en Lyrics.ovh, busca en Genius
-      const geniusData = await searchGenius(songTitle); 
+      const geniusData = await searchGenius(songTitle);
+      console.log('Resultado de Genius:', geniusData); // Depuración
       if (geniusData) {
         const letraGenius = `*Title:* ${geniusData.title}\n*Artist:* ${geniusData.artist}\n\n*Lyrics:*\n${geniusData.lyrics}`;
         return conn.sendMessage(m.chat, { text: letraGenius }, { quoted: m });
@@ -32,6 +36,7 @@ async function searchLyrics(songTitle) {
   try {
     const formattedTitle = songTitle.split(' ').join('+'); // Reemplazar espacios por "+"
     const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTitle}`);
+    console.log('Respuesta de Lyrics.ovh:', response.data); // Depuración
 
     if (response.data.lyrics) {
       return {
@@ -57,14 +62,12 @@ async function searchGenius(songTitle) {
     const searchResponse = await axios.get(`https://api.genius.com/search?q=${formattedTitle}`, {
       headers: { 'Authorization': `Bearer ${API_KEY}` }
     });
+    console.log('Respuesta de Genius Search:', searchResponse.data); // Depuración
 
     const song = searchResponse.data.response.hits[0]?.result; // Obtener el primer resultado
     if (song) {
-      const lyricsResponse = await axios.get(song.url);
-      const lyricsPage = lyricsResponse.data;
-
-      // Extraer la letra de la página de Genius
-      const lyrics = extractLyricsFromGeniusPage(lyricsPage);
+      const lyricsPage = await axios.get(song.url); // Obtener la página de la canción
+      const lyrics = extractLyricsFromGeniusPage(lyricsPage.data); // Extraer la letra de la página de Genius
       return {
         title: song.title,
         artist: song.primary_artist.name,
@@ -79,16 +82,21 @@ async function searchGenius(songTitle) {
   }
 }
 
-// Función para extraer la letra desde la página de Genius
+// Función para extraer la letra desde la página de Genius utilizando cheerio
 function extractLyricsFromGeniusPage(pageData) {
-  const regex = /"lyrics":\s*"([^"]+)"/g;  // Expresión regular para extraer la letra
-  const match = regex.exec(pageData);
-  return match ? match[1].replace(/\\n/g, '\n') : 'No se pudo extraer la letra';
+  const $ = cheerio.load(pageData); // Cargar la página HTML usando cheerio
+  const lyrics = $('.lyrics').text(); // Buscar la letra dentro de un contenedor con clase "lyrics"
+  
+  if (lyrics) {
+    return lyrics.trim(); // Retornar la letra, eliminando espacios innecesarios
+  } else {
+    return 'No se pudo extraer la letra de Genius.';
+  }
 }
 
 // Configuración del comando
-handler.help = ['m', 'lm'].map(v => v + ' <song title>');
+handler.help = ['mk', 'ml'].map(v => v + ' <song title>');
 handler.tags = ['internet'];
-handler.command = /^(m)$/i;
+handler.command = /^(mk)$/i;
 
 export default handler;
