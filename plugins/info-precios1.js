@@ -1,10 +1,11 @@
 import { getTracks } from "@green-code/music-track-data";
 import { googleImage } from "@bochilteam/scraper";
 import axios from "axios";
+import cheerio from "cheerio";
 
 const handler = async (m, { conn, text }) => {
   const teks = text || m.quoted?.text || '';
-  if (!teks) return conn.reply(m.chat, '*[ ℹ️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
+  if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
 
   // Tu Genius API Access Token
   const accessToken = "bU47Z8A6LKMl9kyhI1rz8PxPwR8Fnny_ODkDGGBHqhmo97Ebo9-E5mvqPd3SB1yN"; // Aquí pon tu token
@@ -64,9 +65,9 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-handler.help = ["genius", "gen"].map((v) => v + " <song title>");
+handler.help = ["gen", "geni"].map((v) => v + " <song title>");
 handler.tags = ["internet"];
-handler.command = /^(gen)$/i;
+handler.command = /^(geni)$/i;
 
 export default handler;
 
@@ -104,6 +105,28 @@ async function searchLyrics(term) {
     // Usamos cheerio para extraer la letra del HTML de la página de Genius
     const $ = cheerio.load(lyricsResponse.data);
     const lyrics = $(".lyrics").text().trim();
+
+    // Si no encontramos la letra, intentar otro selector
+    if (!lyrics) {
+      const lyricsAlt = $(".SongPage__Body__Lyrics-sc-1dqxkp5-7").text().trim();
+      if (lyricsAlt) {
+        return {
+          status: true,
+          title: song.title || "",
+          artist: song.primary_artist.name || "",
+          lyrics: lyricsAlt || "Lyrics not found.",
+          image: song.song_art_image_url || "https://example.com/default-image.jpg", // Imagen de la canción
+        };
+      }
+    }
+
+    // Si no encontramos la letra en ningún selector
+    if (!lyrics) {
+      return {
+        status: false,
+        message: "Lyrics not found.",
+      };
+    }
 
     return {
       status: true,
