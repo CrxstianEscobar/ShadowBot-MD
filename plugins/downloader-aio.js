@@ -146,7 +146,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
   } catch (error) {
     console.error(error);
-    return conn.reply(m.chat, '*[ ⚠️ ] Error: Ocurrió un error al intentar obtener las letras de la canción.*', m);
+    return conn.reply(m.chat, '*[ 😿 ] Error: Ocurrió un error al intentar obtener las letras de la canción.*', m);
   }
 };
 
