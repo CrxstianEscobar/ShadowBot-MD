@@ -1,44 +1,24 @@
 import axios from 'axios';
-import { getTracks } from '@green-code/music-track-data';
-import { googleImage } from '@bochilteam/scraper';
 
 const handler = async (m, { conn, text }) => {
+  // Extraemos el título de la canción desde el texto
   const teks = text || m.quoted?.text || '';
-  
   if (!teks) {
     return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
   }
 
   try {
-    const result = await getTracks(teks);
-    let lyrics;
+    // Buscar la letra de la canción
+    const lyrics = await searchLyricsOVH(teks);
 
-    // Intentamos obtener la letra de la canción con Lyrics.ovh
-    if (result && result[0]) {
-      lyrics = await searchLyricsOVH(`${result[0]?.artist} - ${result[0]?.title}`);
-    } else {
-      lyrics = await searchLyricsOVH(teks);
-    }
-
-    // Si no se encuentra la letra
     if (!lyrics || !lyrics.lyrics) {
       return conn.reply(m.chat, "*[ ⚠️ ] No se encontró la letra para esta canción.*", m);
     }
 
-    const tituloL = result[0]?.title || lyrics.title;
-    const artistaL = result[0]?.artist || lyrics.artist;
+    // Enviar la letra al chat
+    const textoLetra = `*Title:* ${lyrics.title}\n*Artist:* ${lyrics.artist}\n\n*Lyrics:*\n${lyrics.lyrics}`;
 
-    let img;
-    try {
-      img = result[0]?.album?.artwork || (await googleImage(`${artistaL} ${tituloL}`)).getRandom();
-    } catch {
-      img = lyrics.image || 'https://example.com/default-image.jpg';
-    }
-
-    const textoLetra = `*Title:* ${tituloL}\n*Artist:* ${artistaL}\n\n*Lyrics:*\n${lyrics.lyrics}`;
-
-    // Enviar el mensaje con la letra y la imagen
-    await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });
+    await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
 
   } catch (error) {
     console.error('Error en la búsqueda:', error);
@@ -46,7 +26,7 @@ const handler = async (m, { conn, text }) => {
   }
 };
 
-// Función para buscar las letras de las canciones usando Lyrics.ovh
+// Función que busca la letra de la canción usando Lyrics.ovh
 async function searchLyricsOVH(term) {
   try {
     if (!term) {
@@ -57,17 +37,18 @@ async function searchLyricsOVH(term) {
     const formattedTerm = term.split(' ').join('+');
     const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTerm}`);
 
+    // Si la API responde con un error, lo manejamos
     if (response.data.error) {
       console.log(`No se encontró letra para: ${term}`);
       return null;
     }
 
+    // Devolvemos la información de la letra
     return {
       status: true,
-      title: term.split(' - ')[1] || '',
-      artist: term.split(' - ')[0] || '',
+      title: term.split(' - ')[1] || term, // Si no tiene el formato artista - canción, solo el nombre
+      artist: term.split(' - ')[0] || 'Desconocido', // Si no tiene el formato, poner 'Desconocido'
       lyrics: response.data.lyrics,
-      image: 'https://example.com/default-image.jpg' // Imagen predeterminada
     };
   } catch (error) {
     console.error('Error buscando letra:', error);
@@ -75,7 +56,8 @@ async function searchLyricsOVH(term) {
   }
 }
 
-handler.help = ['m', 'h'].map(v => v + ' <song title>');
+// Configuración del comando
+handler.help = ['m', 'm'].map(v => v + ' <song title>');
 handler.tags = ['internet'];
 handler.command = /^(m)$/i;
 
