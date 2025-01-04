@@ -7,8 +7,8 @@ import axios from 'axios';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   
-  /*const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
-  if (!teks) throw `*${tradutor.texto1} ${usedPrefix + command} beret ojala*`;*/
+  const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
+  if (!teks) throw `*${tradutor.texto1} ${usedPrefix + command} beret ojala*`;
 
 const teks = text || m.quoted?.text || '';
 if (!teks) return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
@@ -76,7 +76,7 @@ handler.tags = ["internet"];
 handler.command = /^(lirik|lyrics|lyric|letra)$/i;
 export default handler;
 
-/* Creditos: https://github.com/darlyn1234 */
+// Creditos: https://github.com/darlyn1234 */
 async function searchLyrics(term) {
   try {
     if (!term) return "🟥 Provide the name of the song to search the lyrics";
