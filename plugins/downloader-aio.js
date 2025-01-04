@@ -11,7 +11,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!teks) throw `*${tradutor.texto1} ${usedPrefix + command} beret ojala*`;*/
 
 const teks = text || m.quoted?.text || '';
-if (!teks) return conn.reply(m.chat, '*[ x ] Error: Ingresa el título de la canción o el link del video de la canción.*', { quoted: m});
+if (!teks) return conn.reply(m.chat, '*[ x ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
 
   try {
     const result = await getTracks(teks);
