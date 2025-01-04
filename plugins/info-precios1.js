@@ -67,7 +67,7 @@ async function searchGenius(songTitle) {
     const song = searchResponse.data.response.hits[0]?.result; // Obtener el primer resultado
     if (song) {
       const lyricsPage = await axios.get(song.url); // Obtener la página de la canción
-      const lyrics = extractLyricsFromGeniusPage(lyricsPage.data); // Extraer la letra de la página de Genius
+      const lyrics = await extractLyricsFromGeniusPage(lyricsPage.data); // Extraer la letra de la página de Genius
       return {
         title: song.title,
         artist: song.primary_artist.name,
@@ -83,10 +83,17 @@ async function searchGenius(songTitle) {
 }
 
 // Función para extraer la letra desde la página de Genius utilizando cheerio
-function extractLyricsFromGeniusPage(pageData) {
+async function extractLyricsFromGeniusPage(pageData) {
   const $ = cheerio.load(pageData); // Cargar la página HTML usando cheerio
-  const lyrics = $('.lyrics').text(); // Buscar la letra dentro de un contenedor con clase "lyrics"
-  
+
+  // Buscamos la letra en el contenedor de las letras de Genius
+  let lyrics = $('.lyrics').text();
+
+  if (!lyrics) {
+    // Si no encontramos la letra en el contenedor `.lyrics`, intentamos con un contenedor alternativo
+    lyrics = $('.song_body-lyrics').text();
+  }
+
   if (lyrics) {
     return lyrics.trim(); // Retornar la letra, eliminando espacios innecesarios
   } else {
@@ -95,8 +102,8 @@ function extractLyricsFromGeniusPage(pageData) {
 }
 
 // Configuración del comando
-handler.help = ['mk', 'ml'].map(v => v + ' <song title>');
+handler.help = ['ap', 'a'].map(v => v + ' <song title>');
 handler.tags = ['internet'];
-handler.command = /^(mk)$/i;
+handler.command = /^(a)$/i;
 
 export default handler;
