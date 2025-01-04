@@ -7,7 +7,7 @@ import fs from "fs";
 const handler = async (m, { conn, text, usedPrefix, command }) => {
 
   const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
-  if (!teks) throw `*${tradutor.texto1} ${usedPrefix + command} beret ojala*`;
+  if (!teks) throw `asi vro .lyric beret ojala*`;
   try {
     const result = await getTracks(teks);
     let lyrics;
@@ -44,7 +44,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
       .replace("http://cdn-preview-", "https://cdns-preview-")
       .replace(".deezer.com", ".dzcdn.net");
 
-    const textoLetra = `${tradutor.texto2[0]} *${tituloL || ""}*\n${tradutor.texto2[1]}  *${artistaL || ""}*\n\n${tradutor.texto2[2]} \n${lyrics.lyrics || "Lyrics not found."}`;
+    const textoLetra = `ti *${tituloL || ""}*\nar  *${artistaL || ""}*\n\n$ly \n${lyrics.lyrics || "Lyrics not found."}`;
     await conn.sendMessage(
       m.chat,
       { image: { url: img }, caption: textoLetra },
@@ -61,7 +61,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     );
   } catch (e) {
     console.log(`Error: ${e.message}`);
-    throw `*${tradutor.texto2[3]}*`;
+    throw `*f vro*`;
   }
 };
 handler.help = ["lirik", "letra"].map((v) => v + " <Apa>");
