@@ -3,11 +3,19 @@ import cheerio from 'cheerio';
 
 const handler = async (m, { conn, text, usedPrefix, command }) => {
   const teks = text || m.quoted?.text || '';
-  if (!teks) return conn.reply(m.chat, '*[ 🤖 ] Ingresa el título de la canción.*', m);
+  if (!teks) return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el título de la canción.*', m);
 
   try {
     // Reemplaza este token con el tuyo
-    const ACCESS_TOKEN = '_NtAE3KTS3t7KThl1PPmNt5UJ3BPWF_ssSoteHszAgMfmZHJWZFlY4Vyz58cM'; 
+    const ACCESS_TOKEN = '_NtAE3KTS3t7KThl1PPmNt5UJ3BPWF_ssSoteHszAgMfmZHJWZFlY4Vyz58cM';
+
+    // Verificar el token (petición de prueba)
+    const verifyToken = await axios.get('https://api.genius.com/account', {
+      headers: { Authorization: `Bearer ${ACCESS_TOKEN}` }
+    });
+    if (verifyToken.status !== 200) {
+      return conn.reply(m.chat, '*[ ❌ ] El token de acceso no es válido o ha caducado.*', m);
+    }
 
     // Solicitar a la API de Genius para obtener la canción
     const response = await axios.get('https://api.genius.com/search', {
