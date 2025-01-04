@@ -1,4 +1,4 @@
-import fs from 'fs';
+/*import fs from 'fs';
 
 
 const timeout = 60000;
@@ -11,9 +11,6 @@ const handler = async (m, {conn, usedPrefix}) => {
     conn.reply(m.chat, '*[ ℹ️ ] Estas En Juego*' , conn.tekateki[id][0]);
     throw false;
   }
-  /*const tekateki = tradutor.texto4;
-  Para agregar más preguntas vaya a la carpeta de language en el archivo json de su 
-  idioma preferido, busque "acertijo" justo después del texto4 puede agregar sus preguntas*/
 
 const filePath = './plugins/_acertijo.json';
 const fileContent = fs.readFileSync(filePath, 'utf8');
@@ -40,4 +37,4 @@ Puntos: +${poin} Exp
 handler.help = ['acertijo'];
 handler.tags = ['game'];
 handler.command = /^(acertijo|acert|pregunta|adivinanza|tekateki)$/i;
-export default handler;
+export default handler;*/
