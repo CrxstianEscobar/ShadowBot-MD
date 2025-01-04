@@ -1,109 +1,92 @@
 import axios from 'axios';
-import cheerio from 'cheerio';
+import cheerio from 'cheerio';  // Para parsear la página de Genius
+import { getTracks } from "@green-code/music-track-data"; // Si quieres obtener la canción por nombre
+import { googleImage } from "@bochilteam/scraper"; // Para obtener la imagen
+import fs from "fs";
 
-const handler = async (m, { conn, text }) => {
-  const songTitle = text || m.quoted?.text || '';  // Obtener el texto de la canción
-  if (!songTitle) {
-    return conn.reply(m.chat, '*[ ⚠️ ] Ingresa el título de la canción para obtener la letra.*', m);
-  }
-
+// Función para obtener la letra de Genius
+async function obtenerLetraDeGenius(term) {
   try {
-    const lyricsData = await searchLyrics(songTitle); // Buscar la letra usando Lyrics.ovh
-    console.log('Resultado de Lyrics.ovh:', lyricsData); // Depuración
-    if (lyricsData && lyricsData.lyrics) {
-      const letra = `*Title:* ${lyricsData.title}\n*Artist:* ${lyricsData.artist}\n\n*Lyrics:*\n${lyricsData.lyrics}`;
-      return conn.sendMessage(m.chat, { text: letra }, { quoted: m });
-    } else {
-      console.log('No se encontró letra en Lyrics.ovh, buscando en Genius...');
-      // Si no se encuentra en Lyrics.ovh, busca en Genius
-      const geniusData = await searchGenius(songTitle);
-      console.log('Resultado de Genius:', geniusData); // Depuración
-      if (geniusData) {
-        const letraGenius = `*Title:* ${geniusData.title}\n*Artist:* ${geniusData.artist}\n\n*Lyrics:*\n${geniusData.lyrics}`;
-        return conn.sendMessage(m.chat, { text: letraGenius }, { quoted: m });
-      } else {
-        return conn.reply(m.chat, '*[ ⚠️ ] No se encontró la letra para esta canción en Lyrics.ovh ni en Genius. ¿Quieres buscarla en otro sitio?*', m);
+    const url = `https://api.genius.com/search?q=${term}`;
+    const response = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${bU47Z8A6LKMl9kyhI1rz8PxPwR8Fnny_ODkDGGBHqhmo97Ebo9-E5mvqPd3SB1yN}`,  // Reemplaza con tu API key de Genius
       }
-    }
-  } catch (error) {
-    console.error('Error:', error);
-    return conn.reply(m.chat, '*[ ⚠️ ] Hubo un problema al obtener la letra.*', m);
-  }
-};
-
-// Función para buscar la letra en Lyrics.ovh
-async function searchLyrics(songTitle) {
-  try {
-    const formattedTitle = songTitle.split(' ').join('+'); // Reemplazar espacios por "+"
-    const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTitle}`);
-    console.log('Respuesta de Lyrics.ovh:', response.data); // Depuración
-
-    if (response.data.lyrics) {
-      return {
-        title: songTitle.split(' - ')[1] || songTitle,
-        artist: songTitle.split(' - ')[0] || 'Desconocido',
-        lyrics: response.data.lyrics,
-      };
-    } else {
-      return null;  // Si no se encuentra la letra
-    }
-  } catch (error) {
-    console.error('Error buscando letra:', error);
-    return null;
-  }
-}
-
-// Función para buscar la letra en Genius
-async function searchGenius(songTitle) {
-  try {
-    const API_KEY = 'bU47Z8A6LKMl9kyhI1rz8PxPwR8Fnny_ODkDGGBHqhmo97Ebo9-E5mvqPd3SB1yN';  // Usa tu API Key de Genius
-    const formattedTitle = songTitle.split(' ').join('+');  // Reemplazar espacios por "+"
-    
-    const searchResponse = await axios.get(`https://api.genius.com/search?q=${formattedTitle}`, {
-      headers: { 'Authorization': `Bearer ${API_KEY}` }
     });
-    console.log('Respuesta de Genius Search:', searchResponse.data); // Depuración
 
-    const song = searchResponse.data.response.hits[0]?.result; // Obtener el primer resultado
-    if (song) {
-      const lyricsPage = await axios.get(song.url); // Obtener la página de la canción
-      const lyrics = await extractLyricsFromGeniusPage(lyricsPage.data); // Extraer la letra de la página de Genius
-      return {
-        title: song.title,
-        artist: song.primary_artist.name,
-        lyrics: lyrics,
-      };
-    } else {
-      return null; // Si no se encuentra en Genius
+    // Obtener la canción principal de los resultados
+    const song = response.data.response.hits[0].result;
+    const lyricsUrl = song.url;
+
+    // Obtener el HTML de la página de Genius con la letra
+    const lyricsResponse = await axios.get(lyricsUrl);
+    const $ = cheerio.load(lyricsResponse.data);
+
+    // Buscar la letra en la página
+    const lyrics = $('.lyrics').text().trim();
+
+    // Si la letra no está disponible en el HTML, manejar el error
+    if (!lyrics) {
+      return { error: true, message: "No se pudo extraer la letra." };
     }
+
+    return {
+      title: song.title,
+      artist: song.primary_artist.name,
+      lyrics: lyrics
+    };
   } catch (error) {
-    console.error('Error buscando en Genius:', error);
-    return null;
+    console.error(error.message);
+    return { error: true, message: "Ocurrió un error al obtener la letra." };
   }
 }
 
-// Función para extraer la letra desde la página de Genius utilizando cheerio
-async function extractLyricsFromGeniusPage(pageData) {
-  const $ = cheerio.load(pageData); // Cargar la página HTML usando cheerio
-
-  // Buscamos la letra en el contenedor de las letras de Genius
-  let lyrics = $('.lyrics').text();
-
-  if (!lyrics) {
-    // Si no encontramos la letra en el contenedor `.lyrics`, intentamos con un contenedor alternativo
-    lyrics = $('.song_body-lyrics').text();
+// Función para enviar la letra al chat
+async function enviarLetraAlChat(m, { conn, text }) {
+  const teks = text || m.quoted?.text || ''; 
+  if (!teks) {
+    return conn.reply(m.chat, '*[ ⚠️ ] Error: Ingresa el título de la canción o el link del video de la canción.*', m);
   }
 
-  if (lyrics) {
-    return lyrics.trim(); // Retornar la letra, eliminando espacios innecesarios
-  } else {
-    return 'No se pudo extraer la letra de Genius.';
+  // Obtener el resultado de la letra de Genius
+  const letra = await obtenerLetraDeGenius(teks);
+
+  // Verificar si la letra se obtuvo correctamente
+  if (letra.error) {
+    return conn.reply(m.chat, `*❌ Error:* ${letra.message}`, m);
+  }
+
+  const textoLetra = `*Title:* ${letra.title}\n*Artist:* ${letra.artist}\n\n*Lyrics:*\n${letra.lyrics || "No se pudo encontrar la letra."}`;
+
+  // Obtener imagen de la canción
+  let img;
+  try {
+    img = await googleImage(`${letra.artist} ${letra.title}`).getRandom();
+  } catch (err) {
+    img = "https://example.com/default-image.jpg";  // Imagen predeterminada si no se obtiene ninguna
+  }
+
+  // Enviar mensaje con la letra y la imagen
+  await conn.sendMessage(m.chat, { image: { url: img }, caption: textoLetra }, { quoted: m });
+
+  // Intentar enviar audio si está disponible
+  const result = await getTracks(teks);  // Si quieres usar la API para obtener la canción
+  const previewUrl = result[0]?.preview
+    ? result[0]?.preview.replace("http://cdn-preview-", "https://cdns-preview-").replace(".deezer.com", ".dzcdn.net")
+    : "";
+
+  if (previewUrl) {
+    await conn.sendMessage(m.chat, {
+      audio: { url: previewUrl },
+      fileName: `${letra.artist} - ${letra.title}.mp3`,
+      mimetype: "audio/mp4",
+    }, { quoted: m });
   }
 }
 
-// Configuración del comando
-handler.help = ['ap', 'a'].map(v => v + ' <song title>');
-handler.tags = ['internet'];
-handler.command = /^(a)$/i;
+// Agregar el comando de la función a tu bot
+handler.help = ["x", "letra"].map((v) => v + " <song title>");
+handler.tags = ["internet"];
+handler.command = /^(x)$/i;
 
 export default handler;
