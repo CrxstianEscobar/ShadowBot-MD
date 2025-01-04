@@ -119,29 +119,7 @@ export async function handler(chatUpdate) {
         } catch (e) {
             console.error(e)
         }
-//⚪ Funcion agregada
-/*export async function groupsUpdate(groupsUpdate) {
-  if (opts['self'] && !isOwner && !isROwner) return;
-  for (const groupUpdate of groupsUpdate) {
-    const id = groupUpdate.id;
-    if (!id) continue;
-    let chats = global.db.data?.chats?.[id], text = '';
-    if (!chats?.detect) continue;
-    if (groupUpdate.desc) {
-      text = (chats.sDesc || '```Description has been changed to```\n@desc').replace('@desc', groupUpdate.desc);
-    } else if (groupUpdate.subject) {
-      text = (chats.sSubject || '```Subject has been changed to```\n@subject').replace('@subject', groupUpdate.subject);
-    } else if (groupUpdate.icon) {
-      text = (chats.sIcon || '```Icon has been changed to```').replace('@icon', groupUpdate.icon);
-    } else if (groupUpdate.revoke) {
-      text = (chats.sRevoke || '```Group link has been changed to```\n@revoke').replace('@revoke', groupUpdate.revoke);
-    }
-    if (!text) continue;
-    await this.sendMessage(id, { text, mentions: this.parseMention(text) });
-  }
-}
-*/
-//🤍 Funcion termindad
+
         if (opts['nyimak'])  return
         if (!m.fromMe && opts['self'])  return
         if (opts['swonly'] && m.chat !== 'status@broadcast')  return
