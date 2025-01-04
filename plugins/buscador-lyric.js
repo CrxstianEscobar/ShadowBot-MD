@@ -10,14 +10,14 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     // Verificamos que la respuesta tenga estado 200 (OK)
     if (response.status !== 200) {
-      return conn.reply(m.chat, `*[ x ] Error: La API de Genius no respondió correctamente. Estado: ${response.status}.*`, m);
+      return conn.reply(m.chat, `*[ ❌ ] Error: La API de Genius no respondió correctamente. Estado: ${response.status}.*`, m);
     }
 
     const data = response.data;
 
     // Verificamos que 'data' sea un arreglo y tenga elementos
     if (!Array.isArray(data) || !data.length) {
-      return conn.reply(m.chat, '*[ x ] Error: No se encontró la letra de la canción.*', m);
+      return conn.reply(m.chat, '*[ ❌ ] Error: No se encontró la letra de la canción.*', m);
     }
 
     const lyricsUrl = data[0].url;
@@ -27,12 +27,12 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
 
     // Verificamos que la respuesta de letras tenga estado 200 (OK)
     if (lyricsResponse.status !== 200) {
-      return conn.reply(m.chat, `*[ x ] Error: La API de letras no respondió correctamente. Estado: ${lyricsResponse.status}.*`, m);
+      return conn.reply(m.chat, `*[ ❌ ] Error: La API de letras no respondió correctamente. Estado: ${lyricsResponse.status}.*`, m);
     }
 
     // Verificamos que la respuesta contenga las letras
     if (!lyricsResponse.data || !lyricsResponse.data.lyrics) {
-      return conn.reply(m.chat, '*[ x ] Error: No se pudo obtener la letra.*', m);
+      return conn.reply(m.chat, '*[ ❌ ] Error: No se pudo obtener la letra.*', m);
     }
 
     const lyrics = lyricsResponse.data.lyrics;
