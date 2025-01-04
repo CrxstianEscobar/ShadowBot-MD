@@ -163,10 +163,11 @@ if (lyrics.lyrics) {
 } else {
   textoLetra = "Lyrics not found.";
 }
+}
+await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
 } catch (error) {
    console.log('Error:', error);
 }
-await conn.sendMessage(m.chat, { text: textoLetra }, { quoted: m });
 
     await conn.sendMessage(m.chat, { audio: { url: previewUrl }, fileName: `${artistaL || "-"} - ${tituloL || "-"}.mp3`, mimetype: "audio/mp4" }, { quoted: m });
   } catch (e) {
