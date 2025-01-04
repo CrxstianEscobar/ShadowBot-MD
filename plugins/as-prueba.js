@@ -27,7 +27,7 @@ handler.tags = ["as"];
 handler.command = /^(let)$/i;
 
 export default handler;*/
-*/¡Claro, Cristian Escobar! Aquí tienes una versión mejorada de tu código, con algunas validaciones adicionales y mejoras en el manejo de errores:
+/*¡Claro, Cristian Escobar! Aquí tienes una versión mejorada de tu código, con algunas validaciones adicionales y mejoras en el manejo de errores:
 
 ```javascript*/
 import axios from 'axios';
