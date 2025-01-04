@@ -1,22 +1,23 @@
 import axios from "axios"; // Usamos axios para obtener la letra
 import { getTracks } from "@green-code/music-track-data";
 import { googleImage } from "@bochilteam/scraper";
-import fs from "fs";
 
 const handler = async (m, { conn, text }) => {
   const teks = text ? text : m.quoted && m.quoted.text ? m.quoted.text : "";
   if (!teks) throw "*Please provide a song title*";
 
   try {
+    console.log("Buscando pista para:", teks);
+
     const result = await getTracks(teks);
     let lyrics;
 
-    // Si obtenemos resultados de `getTracks`
     if (result && result[0]) {
+      console.log("Track found:", result[0]);
       lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Formato artist - song
     } else {
-      // Si no se encuentra nada, buscamos la letra solo con el texto ingresado
-      lyrics = await searchLyrics(teks);
+      console.log("No track found, searching only for lyrics");
+      lyrics = await searchLyrics(teks); // Si no hay resultado, busca solo la letra
     }
 
     if (!lyrics.status) {
@@ -27,17 +28,18 @@ const handler = async (m, { conn, text }) => {
     const artistaL = result[0]?.artist || lyrics.artist;
 
     let img;
-
-    // Intentamos obtener la imagen de varias fuentes
     try {
+      console.log("Intentando obtener imagen...");
       img = result[0]?.album?.artwork || (await googleImage(`${artistaL} ${tituloL}`)).getRandom();
-    } catch {
+    } catch (err) {
+      console.error("Error al obtener imagen:", err);
       img = lyrics.image || "https://example.com/default-image.jpg"; // Imagen predeterminada si no se obtiene ninguna
     }
 
     const textoLetra = `*Title:* ${tituloL}\n*Artist:* ${artistaL}\n\n*Lyrics:*\n${lyrics.lyrics || "Lyrics not found."}`;
 
     // Enviar mensaje con la letra y la imagen
+    console.log("Enviando letra y imagen...");
     await conn.sendMessage(
       m.chat,
       { image: { url: img }, caption: textoLetra },
@@ -50,6 +52,7 @@ const handler = async (m, { conn, text }) => {
       : "";
 
     if (previewUrl) {
+      console.log("Enviando audio...");
       await conn.sendMessage(
         m.chat,
         {
@@ -60,15 +63,16 @@ const handler = async (m, { conn, text }) => {
         { quoted: m }
       );
     }
+
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error("Error completo:", error);
     throw "*Error while fetching lyrics or track data*";
   }
 };
 
 handler.help = ["lirik", "letra"].map((v) => v + " <song title>");
 handler.tags = ["internet"];
-handler.command = /^(let|lyrics|lyric|letra)$/i;
+handler.command = /^(li|lyrics|lyric|letra)$/i;
 
 export default handler;
 
