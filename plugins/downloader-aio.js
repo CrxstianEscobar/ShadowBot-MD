@@ -1,7 +1,7 @@
 import { getTracks } from "@green-code/music-track-data";
 import { googleImage } from "@bochilteam/scraper";
 import got from "got";
-import *as cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import fs from "fs";
 import axios from 'axios';
 
