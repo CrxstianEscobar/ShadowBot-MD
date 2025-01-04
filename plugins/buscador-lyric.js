@@ -1,6 +1,6 @@
+import axios from "axios"; // Usamos axios para obtener la letra
 import { getTracks } from "@green-code/music-track-data";
 import { googleImage } from "@bochilteam/scraper";
-import axios from "axios"; // Usamos axios para obtener la letra
 import fs from "fs";
 
 const handler = async (m, { conn, text }) => {
@@ -13,7 +13,7 @@ const handler = async (m, { conn, text }) => {
 
     // Si obtenemos resultados de `getTracks`
     if (result && result[0]) {
-      lyrics = await searchLyrics(`${result[0]?.artist} ${result[0]?.title}`);
+      lyrics = await searchLyrics(`${result[0]?.artist} - ${result[0]?.title}`); // Formato artist - song
     } else {
       // Si no se encuentra nada, buscamos la letra solo con el texto ingresado
       lyrics = await searchLyrics(teks);
@@ -73,9 +73,14 @@ async function searchLyrics(term) {
   try {
     if (!term) throw "Please provide a valid song name to search the lyrics.";
 
-    const response = await axios.get(`https://api.lyrics.ovh/v1/${term}`);
+    // Reemplazar los espacios por '+' para la URL
+    const formattedTerm = term.split(" ").join("+");
+
+    // Llamada a la API de letras para buscar la canción
+    const response = await axios.get(`https://api.lyrics.ovh/v1/${formattedTerm}`);
     const data = response.data;
 
+    // Si no se encuentra la letra, devolver un mensaje adecuado
     if (!data.lyrics) {
       return {
         status: false,
@@ -83,12 +88,13 @@ async function searchLyrics(term) {
       };
     }
 
+    // Devolver la letra encontrada
     return {
       status: true,
       title: term.split(" - ")[1] || "",
       artist: term.split(" - ")[0] || "",
       lyrics: data.lyrics,
-      image: "https://example.com/default-image.jpg" // Imagen predeterminada en caso de que no se pueda obtener otra
+      image: "https://example.com/default-image.jpg" // Imagen predeterminada
     };
   } catch (error) {
     console.error("Error searching lyrics:", error);
