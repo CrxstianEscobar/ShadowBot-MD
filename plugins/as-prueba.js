@@ -60,7 +60,7 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.reply(m.chat, textoLetra, m);
   } catch (e) {
     console.log(`Error: ${e}`); // Imprimimos el error completo para depuración
-    return conn.reply(m.chat, 'Error: ${e.message} 😿🍨', m);
+    return conn.reply(m.chat, `Error: ${e.message} 😿🍨`, m);
   }
 };
 
