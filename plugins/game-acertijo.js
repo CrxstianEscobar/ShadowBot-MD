@@ -22,8 +22,8 @@ const tekateki = JSON.parse(fileContent);
 
   const caption = `
 ⷮ *${json.question}* 
-Tiempo restante: ${(timeout / 1000).toFixed(2)} segundos
-Puntos: +${poin} Exp
+• *Tiempo restante:* ${(timeout / 1000).toFixed(2)} segundos
+• *Puntos:* +${poin} Exp
 `.trim();
 
   conn.tekateki[id] = [
