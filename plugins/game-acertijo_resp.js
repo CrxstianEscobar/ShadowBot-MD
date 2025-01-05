@@ -45,7 +45,7 @@ handler.before = async function(m) {
 
     // Verificar si la respuesta es correcta
     if (m.text.toLowerCase() === json.response.toLowerCase().trim()) {
-      m.reply(`✐ *Respuesta correcta!*\n❀ ¡Bien hecho!`);
+      m.reply(`✐ *Respuesta correcta!*`);
       clearTimeout(this.tekateki[id][3]);
       delete this.tekateki[id];
     } 
