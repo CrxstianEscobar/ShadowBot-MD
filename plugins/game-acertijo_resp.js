@@ -21,6 +21,8 @@ handler.before = async function(m) {
 handler.exp = 0;
 export default handler;*/
 
+// ADAPTADO POR CRISTIAN ESCOBAR 🌙
+
 import similarity from 'similarity';
 const threshold = 0.72;
 
@@ -36,7 +38,7 @@ handler.before = async function(m) {
 
   // Verificar si el juego está activo para este chat
   if (!(id in this.tekateki)) {
-    return m.reply('✐ Ese acertijo ya ha terminado!');
+    return m.reply('*Ese acertijo ya ha terminado!*');
   }
 
   // Verificar si el mensaje citado corresponde al acertijo actual
@@ -45,17 +47,17 @@ handler.before = async function(m) {
 
     // Comprobar si la respuesta es correcta
     if (m.text.toLowerCase() === json.response.toLowerCase().trim()) {
-      m.reply(`✐ *Respuesta correcta!*\n+${this.tekateki[id][2]} exp`);
+      m.reply(`*Respuesta correcta!*\n+${this.tekateki[id][2]} exp`);
       clearTimeout(this.tekateki[id][3]);
       delete this.tekateki[id];
     } 
     // Si la respuesta es similar (umbral de similitud)
     else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) {
-      m.reply(`✐ Casi lo logras!`);
+      m.reply(`*Casi lo logras!*`);
     } 
     // Si la respuesta es incorrecta
     else {
-      m.reply('✐ Respuesta incorrecta!');
+      m.reply('*Respuesta incorrecta!*');
     }
   }
 
