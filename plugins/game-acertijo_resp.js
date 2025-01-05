@@ -29,8 +29,8 @@ const handler = (m) => m;
 handler.before = async function(m) {
   const id = m.chat;
 
-  // Verificar si el mensaje es una respuesta a un acertijo enviado por el bot
-  if (!m.quoted || !m.quoted.fromMe || !m.quoted.body.startsWith('ⷮ')) return;
+  // Verificar si el mensaje es una respuesta al acertijo enviado por el bot
+  if (!m.quoted || !m.quoted.fromMe || !m.quoted.text || !/^ⷮ/i.test(m.quoted.text)) return;
 
   this.tekateki = this.tekateki ? this.tekateki : {};
 
@@ -43,13 +43,13 @@ handler.before = async function(m) {
   if (m.quoted.id === this.tekateki[id][0].id) {
     const json = JSON.parse(JSON.stringify(this.tekateki[id][1]));
 
-    // Verificar si la respuesta es correcta
+    // Comprobar si la respuesta es correcta
     if (m.text.toLowerCase() === json.response.toLowerCase().trim()) {
       m.reply(`✐ *Respuesta correcta!*`);
       clearTimeout(this.tekateki[id][3]);
       delete this.tekateki[id];
     } 
-    // Verificar si la respuesta es similar
+    // Si la respuesta es similar (umbral de similitud)
     else if (similarity(m.text.toLowerCase(), json.response.toLowerCase().trim()) >= threshold) {
       m.reply(`✐ Casi lo logras!`);
     } 
@@ -58,7 +58,8 @@ handler.before = async function(m) {
       m.reply('✐ Respuesta incorrecta!');
     }
   }
-  return !0;
+
+  return true; // Asegúrate de que esto sea verdadero para continuar la ejecución
 };
 
 handler.exp = 0;
