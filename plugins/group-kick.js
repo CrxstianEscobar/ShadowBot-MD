@@ -11,7 +11,7 @@ let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) =
     let owner = groupMetadata.owner
 
     if (user === owner) {
-        return m.reply(`*[ ℹ️ ] No puedes eliminar al creador sel grupo.*`)
+        return m.reply(`*[ ℹ️ ] No puedes eliminar al creador del grupo.*`)
     }
 
     await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
