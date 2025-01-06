@@ -56,9 +56,9 @@ const handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ['ytmp4 *<link>*', 'ytvdoc *<link>*'];
+handler.help = [''ytvdoc *<link>*'];
 handler.tags = ['downloader'];
-handler.command = /^(ytmp4|ytvdoc|ytmp4doc)$/i;
+handler.command = /^(ytvdoc|ytmp4doc)$/i;
 
 export default handler;
 
