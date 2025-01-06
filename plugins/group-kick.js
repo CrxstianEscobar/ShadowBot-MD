@@ -18,21 +18,20 @@ handler.botAdmin = true
 
 export default handler*/
 
-
 let handler = async (m, { conn, participants, usedPrefix, command, isROwner }) => {
+    let kickte = `*[ 🫵🏼 ] Menciona al usuario que deseas eliminar.*`
 
-    let kickte = `*[ ℹ️ ] Menciona al usuario que deseas eliminar.*`
+    if (!m.mentionedJid[0] && !m.quoted) return m.reply(kickte, m.chat, { mentions: conn.parseMention(kickte)})
 
-    if (!m.mentionedJid[0] && !m.quoted) return m.reply(kickte, m.chat, { mentions: conn.parseMention(kickte)}) 
-    
     let user = m.mentionedJid[0] ? m.mentionedJid[0] : m.quoted.sender
-    
-    // Obtener el propietario del grupo
-    let owner = m.chat.split`-`[0]
+    let owr = m.chat.split`-`[0]
 
-    // Verificar si el usuario a expulsar es el propietario
+    // Verificamos si el usuario a eliminar es el creador del grupo
+    let groupMetadata = await conn.groupMetadata(m.chat)
+    let owner = groupMetadata.owner
+
     if (user === owner) {
-        return m.reply('*No puedes eliminar al creador del grupo.*')
+        return m.reply(`*No se puede eliminar al creador del grupo.*`)
     }
 
     await conn.groupParticipantsUpdate(m.chat, [user], 'remove')
