@@ -1,6 +1,4 @@
-Aquí te dejo una versión modificada de tu código que incluye reacciones de espera y finalizado:
 
-```
 /* 
  *❀ By JTxs* 
 [ Canal Principal ] : (link unavailable) 
@@ -42,4 +40,3 @@ let handler = async (m, { conn, command, text, usedPrefix }) => {
 handler.command = /^(ytmp4)$/i
 
 export default handler
-```
