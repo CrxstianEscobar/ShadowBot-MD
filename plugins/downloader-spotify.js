@@ -33,8 +33,8 @@ let HS = `- *Titulo :* ${title}
 - *Popularidad :* ${popularity}
 - *Link :* ${url}
 `
-await conn.sendFile(m.chat, cover, 'HasumiBotFreeCodes.jpg', HS, m)
-await conn.sendFile(m.chat, music, 'HasumiBotFreeCodes.mp4', null, m)
+await conn.sendFile(m.chat, cover, 'Shadow.jpg', HS, m)
+await conn.sendFile(m.chat, music, 'Shadow.mp4', null, m)
 } catch (error) {
 console.error(error)
 }}
