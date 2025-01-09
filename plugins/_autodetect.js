@@ -4,7 +4,7 @@ CUERVO-TEAM-SUPREME
 SE DEJAN CREDITOS PERRAS ES DE CUERVO 
 USO NO PRIVADO ES PUBLICO
 PERO CUERVO SE ENCARGA 
-*/
+
 let WAMessageStubType = (await import('@whiskeysockets/baileys')).default
 
 export async function before(m, { conn, participants, groupMetadata }) {
@@ -50,4 +50,4 @@ await conn.sendMessage(m.chat, { text: noadmingp, mentions: [`${m.sender}`,`${m.
 //messageStubParameters: m.messageStubParameters,
 //type: WAMessageStubType[m.messageStubType], 
 //})
-}}
+}}*/
