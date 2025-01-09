@@ -6,8 +6,12 @@ const separado = url.split("/");
 const resultado = separado[separado.length - 1];
 m.react('🩵')
 let link = `https://d.apkpure.com/b/APK/${resultado}?version=latest`
-let _url = new URL(link)
-    let url_dl = global.API(_url.origin, _url.pathname, Object.fromEntries(_url.searchParams.entries()), 'APIKEY')
+
+let url_dl = link;
+let response = await fetch(url_dl);
+let buffer = await response.arrayBuffer();
+conn.sendFile(m.chat, buffer, resultado + '.apk', `* ApkPure Downloader*`, m, false, { mimetype: 'application/vnd.android.package-archive', asDocument: true });
+
 let link_dl = await fetch(link)
 
 conn.sendFile(m.chat, url_dl, resultado + '.apk', `*⌗ ApkPure Downloader*`, m, false, { mimetype: 'application/videos.android.package-archive', asDocument: true })
