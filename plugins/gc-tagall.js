@@ -7,7 +7,7 @@ const handler = async (m, {isOwner, isAdmin, conn, text, participants, args, com
     throw false;
   }
   const pesan = args.join` `;
-const oi = `⇢=͟͟͞͞🄰νίऽ૭ : ${pesan}`;
+const oi = `\`⏤͟͟͞͞A⃞᥎ׁׅꪱׁׁׁׅׅׅׅ꯱ᨵׁׅׅ :\` ${pesan}`;
   let teks = `૮꒰˵•ᵜ•˵꒱ა‧ \`ꭈׁׅꫀׁׁׅܻׅ݊᥎ׁׅꪱׁׁׁׁׅׅׅׅ᥎ׁׅɑׁׅ݊ꪀ ℘ᥣׁׅ֪ɑׁׅ݊ꪀtׁׁׁׅׅׅɑׁׅׅ꯱!\`\n ⚘⃝ іᥒ𝗍ᥱgrᥲᥒ𝗍ᥱs : ${participants.length}\n\n ${oi}\n\n╭•┈┈•┈┈🌟┈•┈┈•◌ᜓ ݊ ᜒ𝅄\n`;
   for (const mem of participants) {
     teks += `│ ꕤᝰ. @${mem.id.split('@')[0]}\n`;
