@@ -1,5 +1,5 @@
 
-/* ✨ DERECHOS RESERVADOS DEL AUTOR ✨ - WillZek (@NiñoPiña) */
+/* ✨ DERECHOS RESERVADOS DEL AUTOR ✨ - WillZek (@NiñoPiña) 
 import { googleIt } from '@bochilteam/scraper';
 import axios from 'axios';
 
@@ -34,4 +34,4 @@ handler.help = ['google', 'googlef'].map((v) => v + ' <pencarian>');
 handler.tags = ['tools', 'search'];
 handler.command = /^googlef?$/i;
 
-export default handler;
+export default handler;*/
