@@ -2,7 +2,7 @@ import { spawn } from 'child_process'
 let handler = async (m, { conn, isROwner, text }) => {
     if (!process.send) return m.react('✖️')
     if (conn.user.jid == conn.user.jid) {
-    await m.reply('*🧑‍💻 REINICIANDO ISITABOT-AI*')
+    await m.reply('*🧑‍💻 REINICIANDO SHADOW BOT*')
     process.send('reset')
   } else return m.react('✖️')
 }
