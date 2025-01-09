@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+/*import fetch from 'node-fetch'
 let handler = async (m, { conn, args, usedPrefix, command }) => {
 if (!args[0]) throw `*❌ Ingresa un link de ApkPure*`
 const url = args[0]
@@ -18,4 +18,4 @@ handler.tags = ['dl', 'prem']
 handler.help = ['apkpure']
 handler.command = ['apkpure'] 
 handler.premium = false
-export default handler
+export default handler*/
