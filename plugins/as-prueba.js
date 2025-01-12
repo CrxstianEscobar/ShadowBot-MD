@@ -1,21 +1,16 @@
-/*import fetch from 'node-fetch'
-let handler = async (m, { conn, args, usedPrefix, command }) => {
-if (!args[0]) throw `*❌ Ingresa un link de ApkPure*`
-const url = args[0]
-const separado = url.split("/");
-const resultado = separado[separado.length - 1];
-m.react('🩵')
-let link = `https://d.apkpure.com/b/APK/${resultado}?version=latest`
+import fetch from 'node-fetch'
 
-let url_dl = global.API(_url.origin, _url.pathname, Object.fromEntries(_url.searchParams.entries()), 'APIKEY')
-
-let link_dl = await fetch(link)
-
-conn.sendFile(m.chat, url_dl, resultado + '.apk', `*⌗ ApkPure Downloader*`, m, false, { mimetype: 'application/videos.android.package-archive', asDocument: true })
-m.react('🍃')
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+if (!text) throw m.reply(`🌸 *Ingresa un link de pinterest*\n*🌹 Ejemplo:* ${usedPrefix}${command} https://pin.it/1q55U8K5K`);
+conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
+        let ouh = await fetch(`https://api.agatz.xyz/api/pinterest?url=${text}`)
+  let gyh = await ouh.json()
+        await conn.sendFile(m.chat, gyh.data.result, `pinvideobykeni.mp4`, `*🌷 Url:* ${gyh.data.url}`, m)
+        await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key }})
 }
-handler.tags = ['dl', 'prem']
-handler.help = ['apkpure']
-handler.command = ['apkpure'] 
+handler.help = ['pinvid *<link>*']
+handler.tags = ['descargas']
+handler.command = /^(pinvid|pinvideo)$/i
 handler.premium = false
-export default handler*/
+handler.register = true
+export default handler
