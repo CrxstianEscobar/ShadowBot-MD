@@ -1,4 +1,4 @@
-import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
+/*import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
 import fetch from 'node-fetch';
 const handler = async (m, {conn, args}) => {
   if (!args[0]) throw '*[❗𝐈𝐍𝐅𝐎❗] 𝙸𝙽𝚂𝙴𝚁𝚃𝙴 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 𝙼𝙰𝚂 𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 / 𝙻𝙸𝙽𝙺 𝙳𝙴 𝚄𝙽 𝚅𝙸𝙳𝙴𝙾 𝙳𝙴 𝚈𝙾𝚄𝚃𝚄𝙱𝙴*';
@@ -28,4 +28,4 @@ const handler = async (m, {conn, args}) => {
   }
 };
 handler.command = /^ytmp4doc|ytvdoc|ytmp4.2|ytv.2$/i;
-export default handler;
+export default handler;*/
