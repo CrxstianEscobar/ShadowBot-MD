@@ -4,29 +4,35 @@ import fetch from 'node-fetch';
 const handler = async (m, { conn, args }) => {
   // Verificamos si no se ha proporcionado un enlace
   if (!args[0]) {
-    // Si no hay enlace, enviamos el mensaje informativo
-    await m.reply('*[❗𝐈𝐍𝐅𝐎❗] I𝙽𝚂𝙴𝚁𝚃𝙴 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 𝙼𝙰𝚂 𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 / 𝙻𝙸𝙽𝙺 𝙳𝙴 𝚄𝙽 𝚅𝙸𝙳𝙴𝙾 𝙳𝙴 𝚈𝙾𝚄𝚃𝚄𝙱𝙴*');
-    return; // Terminamos la ejecución aquí, ya que no hay enlace.
+    await m.reply('*[❗𝐈𝐍𝐅𝐎❗] 𝙸𝙽𝚂𝙴𝚁𝚃𝙴 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 𝙼𝙰𝚂 𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 / 𝙻𝙸𝙽𝙺 𝙳𝙴 𝚄𝙽 𝚅𝙸𝙳𝙴𝙾 𝙳𝙴 𝚈𝙾𝚄𝚃𝚄𝙱𝙴*');
+    return;
   }
 
-  // Intentamos obtener el video de YouTube
+  // Si tenemos un enlace de YouTube, tratamos de obtener la descarga
   try {
+    console.log("Intentando procesar el video...");
+    
     const qu = args[1] || '360';  // Resolución por defecto
     const q = qu + 'p';  // Formato de resolución
     const v = args[0];  // URL del video
 
     // Intentamos obtener el video usando youtubedl primero
-    console.log("Buscando video con youtubedl...");
     let yt = await youtubedl(v).catch(async (_) => {
       console.log("youtubedl falló, intentando con youtubedlv2...");
       return await youtubedlv2(v);
     });
 
-    if (!yt) throw "*[❗] 𝙴𝙻 𝚅𝙸𝙳𝙴𝙾 𝙽𝙾 𝙴𝚂𝚃Á 𝙴𝙽 𝙻𝙸𝙽𝙺*";
+    if (!yt) {
+      console.log("No se encontró el video con youtubedl o youtubedlv2");
+      throw "*[❗] 𝙴𝙻 𝚅𝙸𝙳𝙴𝙾 𝙽𝙾 𝙴𝚂𝚃Á 𝙴𝙽 𝙻𝙸𝙽𝙺*";
+    }
 
     // Verificamos si la resolución está disponible
     const resolution = yt.video[q];
-    if (!resolution) throw `*[❗] 𝙼𝙴𝙽𝙰𝙽𝙳𝙾 𝙲𝙾𝙽 𝚄𝙽𝚁𝙴𝚂𝙾𝙻𝚄𝙲𝙸𝙾𝙽 𝙼𝙰𝚂 𝚂𝚄𝙿𝙴𝚁𝙸𝙾𝚁: ${q}*`;
+    if (!resolution) {
+      console.log("Resolución no encontrada: " + q);
+      throw `*[❗] 𝙼𝙴𝙽𝙰𝙽𝙳𝙾 𝙲𝙾𝙽 𝚄𝙽𝚁𝙴𝚂𝙾𝙻𝚄𝙲𝙸𝙾𝙽 𝙼𝙰𝚂 𝚂𝚄𝙿𝙴𝚁𝙸𝙾𝚁: ${q}*`;
+    }
 
     // Obtenemos la URL de descarga y el título
     const dl_url = await resolution.download();
@@ -45,11 +51,10 @@ const handler = async (m, { conn, args }) => {
     }, { quoted: m });
 
   } catch (error) {
-    console.log("Error en el proceso:", error);
+    console.log("Error al procesar el video:", error);
 
     try {
       // Si la descarga falla, intentamos usar la API de lolhuman
-      console.log("Intentando con la API de lolhuman...");
       const lolhuman = await fetch(`https://api.lolhuman.xyz/api/ytvideo2?apikey=${lolkeysapi}&url=${args[0]}`);
       const lolh = await lolhuman.json();
 
@@ -69,6 +74,7 @@ const handler = async (m, { conn, args }) => {
           fileName: n + `.mp4`,
         }, { quoted: m });
       } else {
+        console.log("No se pudo obtener la información desde lolhuman");
         throw '*[❗] 𝙴𝙻 𝚅𝙸𝙳𝙴𝙾 𝙽𝙾 𝙴𝚂𝚃Á 𝙴𝙽 𝙻𝙸𝙽𝙺 𝙰𝙶𝙰𝙳𝙾*';
       }
     } catch (error) {
