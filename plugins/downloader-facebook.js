@@ -2,7 +2,7 @@
 
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   if (!args[0]) {
-    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el link del video de Facebook.*\n\n*[ 💡 ] Ejemplo:* _.facebook https://www.facebook.com/reel/858448809516815/?mibextid=9drbnH&s=yWDuG2&fs=e_', m);
+    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa el link del video de Facebook.*\n\n*[ 💡 ] Ejemplo:* .fb https://www.facebook.com/reel/858448809516815/?mibextid=9drbnH&s=yWDuG2&fs=e', m);
   }
 
   await m.react('🕒');
@@ -35,7 +35,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
   try {
     await conn.sendMessage(m.chat, { video: { url: video }, caption: dev, fileName: 'fb.mp4', mimetype: 'video/mp4' }, { quoted: m });
   } catch (error) {
-    return conn.reply(m.chat, '*`Error al enviar el video.`*', m);
+    return conn.reply(m.chat, '*Url invalida del vídeo.*', m);
   await m.react('❌');
   }
 };
