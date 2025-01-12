@@ -18,7 +18,7 @@ const handler = async (m, { conn, args, command, usedPrefix, text }) => {
     throw `*[ ℹ️ ] Error, Proporciona un enlace correcto de XVideos.*`;
   }
 };
-handler.command = /^(xvideosdl)$/i;
+handler.command = /^(xvideosdl|xvdl)$/i;
 export default handler;
 
 async function xvideosdl(url) {
