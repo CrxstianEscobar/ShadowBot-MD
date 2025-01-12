@@ -7,7 +7,7 @@ const handler = async (m, { conn, args, command, usedPrefix, text }) => {
   //if (!db.data.chats[m.chat].modohorny && m.isGroup) throw `*Modo Horny #enable modohorny*`;
 
   if (!args[0]) {
-  return conn.reply(m.chat, `*[ ℹ️ ] Por favor, proporciona un enlace de XVideos.*\n\n*[ 💡 ] Ejemplo: https://www.xvideos.com/video70389849/pequena_zorra_follada_duro*`, m);
+  return conn.reply(m.chat, `*[ ℹ️ ] Por favor, proporciona un enlace de XVideos.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} https://www.xvideos.com/video70389849/pequena_zorra_follada_duro*`, m);
 }
 
   try {
