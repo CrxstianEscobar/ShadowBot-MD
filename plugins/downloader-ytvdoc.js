@@ -1,4 +1,4 @@
-/*import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
+import {youtubedl, youtubedlv2} from '@bochilteam/scraper';
 import fetch from 'node-fetch';
 const handler = async (m, {conn, args}) => {
   if (!args[0]) {
@@ -31,4 +31,4 @@ return;
   }
 };
 handler.command = /^ytmp4doc|ytvdoc|ytmp4.2|ytv.2$/i;
-export default handler;*/
+export default handler;
