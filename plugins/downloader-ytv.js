@@ -11,12 +11,13 @@ let handler = async (m, { conn, text, args }) => {
     return m.reply("*[ ℹ️ ] No se encontraron resultados.*");
   }
 
-  let txt = `\`YOUTUBE - DOWNLOAD\`
-*Título:* ${ytres[0].title}
-*Duración:* ${ytres[0].timestamp}
-*Publicado:* ${ytres[0].ago}
-*Canal:* ${ytres[0].author.name || 'Desconocido'}
-*Url:* https://youtu.be/${ytres[0].videoId}
+  let txt = `\`YOUTUBE - DESCARGAS\`
+
+এ *Título:* ${ytres[0].title}
+এ *Duración:* ${ytres[0].timestamp}
+এ *Publicado:* ${ytres[0].ago}
+এ *Canal:* ${ytres[0].author.name || 'Desconocido'}
+এ *Url:* https://youtu.be/${ytres[0].videoId}
 
 > *[ ℹ️ ] Enviando video, aguarda un momento...*`;
 
