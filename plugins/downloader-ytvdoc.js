@@ -61,7 +61,7 @@ export default handler;*/
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw m.reply(`*[ 🌷 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
+    if (!text) throw m.reply(`*[ 👿 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
 
     // Enviar un "react" mientras se procesa la solicitud
     conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
