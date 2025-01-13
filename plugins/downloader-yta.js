@@ -21,6 +21,7 @@ let handler = async (m, { conn, text }) => {
   let vistas = parseInt(views).toLocaleString("es-ES") + " vistas";
 
   let HS = `\`YOUTUBE - DESCARGAS\`
+
 ᜊ *Duración:* ${timestamp}
 ᜊ *Vistas:* ${vistas}
 ᜊ *Subido:* ${ago}
