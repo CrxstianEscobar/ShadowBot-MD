@@ -3,24 +3,22 @@ import yts from 'yt-search';
 
 let handler = async (m, { conn, text, args }) => {
   if (!text) {
-    return m.reply("❀ Ingresa un texto de lo que quieres buscar");
+    return m.reply("*[ 🌷 ] Ingresa un texto de lo que quieras buscar en YouTube.*");
   }
 
   let ytres = await search(args.join(" "));
   if (ytres.length === 0) {
-    return m.reply("❀ No se encontraron resultados");
+    return m.reply("*[ ℹ️ ] No se encontraron resultados.*");
   }
 
-  let txt = ` ᚚᚚᩳᚚ͜ᩬᚚᷤ͜ᚚᷴ͜ᚚᷟ͜ᚚᷝ͜ᚚ͜ᚚᷤ͜ᚚᷧ͜ᚚᷜ͜ᚚᷴ͜ᚚᷢ͜ᚚᷧ͜ᚚᷦ͜ᚚᷧ͜ᚚᷱ͜ᚚᷴ͜ᚚᷧ͜ᚚᩬᚚᩳᚚᚚ
-꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
-❥⏤͟͟͞͞Título:❥⊱ ${ytres[0].title}
-❥⏤͟͟͞͞Duración:❥⊱ ${ytres[0].timestamp}
-❥⏤͟͟͞͞Publicado:❥⊱ ${ytres[0].ago}
-❥⏤͟͟͞͞Canal:❥⊱ ${ytres[0].author.name || 'Desconocido'}
-❥⏤͟͟͞͞Url:❥⊱ https://youtu.be/${ytres[0].videoId}
-꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
+  let txt = `\`YOUTUBE - DOWNLOAD\`
+*Título:* ${ytres[0].title}
+*Duración:* ${ytres[0].timestamp}
+*Publicado:* ${ytres[0].ago}
+*Canal:* ${ytres[0].author.name || 'Desconocido'}
+*Url:* https://youtu.be/${ytres[0].videoId}
 
-🌸➥𝙀𝙨𝙥𝙚𝙧𝙚 𝙪𝙣 𝙢𝙤𝙢𝙚𝙣𝙩𝙤 𝙙𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 𝙨𝙪 𝙫𝙞́𝙙𝙚𝙤...`;
+> *[ ℹ️ ] Enviando video, aguarda un momento...*`;
 
   await conn.sendFile(m.chat, ytres[0].image, 'thumbnail.jpg', txt, m);
 
@@ -31,7 +29,7 @@ let handler = async (m, { conn, text, args }) => {
     if (json.result && json.result.download && json.result.download.url) {
       let { title, url: mp4 } = json.result.download;
 
-      await conn.sendMessage(m.chat, { video: { url: mp4 }, caption: `*❀ Sumi Sakurazawa:*  ${text}`, mimetype: 'video/mp4', fileName: `Sumi Sakurazawa - ${title}.mp4` }, { quoted: m });
+      await conn.sendMessage(m.chat, { video: { url: mp4 }, caption: `*Shadow Bot:*  ${text}`, mimetype: 'video/mp4', fileName: `Sumi Sakurazawa - ${title}.mp4` }, { quoted: m });
 
       await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
     } else {
@@ -39,7 +37,7 @@ let handler = async (m, { conn, text, args }) => {
     }
   } catch (error) {
     console.error(error);
-    m.reply("❀ Ocurrió un error al intentar descargar el video");
+    m.reply("*[ ℹ️ ] Ocurrió un error al intentar descargar el video.*");
   }
 };
 
