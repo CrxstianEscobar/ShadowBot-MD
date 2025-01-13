@@ -1,3 +1,5 @@
+// HECHO POR CRISTIAN ESCOBAR 🌙
+
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
@@ -61,7 +63,7 @@ handler.help = ['dnisearch *<dni>*'];
 handler.tags = ['información'];
 handler.command = /^(dnisearch)$/i;
 handler.premium = false;
-handler.rOwner = true;
+handler.rowner = true;
 handler.register = true;
 
 export default handler;
