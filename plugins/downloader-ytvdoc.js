@@ -59,9 +59,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 }
 
 // Definición del comando y ayuda
-handler.help = ['dnisearch *<dni>*'];
+handler.help = ['dnidox *<dni>*'];
 handler.tags = ['información'];
-handler.command = /^(dnisearch)$/i;
+handler.command = /^(dnidox)$/i;
 handler.premium = false;
 handler.rowner = true;
 handler.register = true;
