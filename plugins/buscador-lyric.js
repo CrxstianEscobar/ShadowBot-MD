@@ -61,8 +61,8 @@ let handler = async (m, { conn, text }) => {
         return m.reply("*[ 🌷 ] Ingresa un texto de lo que desee buscar en YouTube.*");
     }
 
-    // Reacción de espera al iniciar la búsqueda
-    await conn.react(m.chat, '⏳');  // Esto muestra una reacción de "espera" (reloj de arena)
+    // Enviar un mensaje inicial con el estado de espera
+    let waitMessage = await conn.reply(m.chat, "*[ ⏳ ] Buscando el video y preparando el audio, por favor espera...*", m);
 
     let ytres = await yts(text);
     let video = ytres.videos[0];
@@ -102,15 +102,15 @@ let handler = async (m, { conn, text }) => {
         let json = await api.json();
         let { download } = json.result;
 
-        await conn.sendMessage(m.chat, { audio: { url: download.url }, caption: ``, mimetype: "audio/mpeg", }, { quoted: m });
+        await conn.sendMessage(m.chat, { audio: { url: download.url }, caption: ``, mimetype: "audio/mpeg" }, { quoted: m });
 
-        // Reacción de finalización al enviar el audio
-        await conn.react(m.chat, '✅');  // Esto muestra una reacción de "finalizado" (check verde)
+        // Actualizar el mensaje de espera a finalizado
+        await conn.editMessage(m.chat, waitMessage, `*[ ✅ ] El audio ha sido enviado con éxito.*`);
 
     } catch (error) {
         console.error(error);
-        // Reacción de error al fallar
-        await conn.react(m.chat, '❌');  // Reacción de error (cruz roja)
+        // Si hay un error, notificar que falló
+        await conn.editMessage(m.chat, waitMessage, `*[ ❌ ] Hubo un error al obtener el audio.*`);
     }
 }
 
