@@ -51,7 +51,9 @@ console.error(error)
 
 handler.command = /^(playyt)$/i
 
-export default handler*/
+//ℹ️ℹ️ℹ️ℹ️ℹ️🌷❤️ℹ️
+
+export default handler
 
 import fetch from "node-fetch";
 import yts from "yt-search";
@@ -116,4 +118,4 @@ let handler = async (m, { conn, text }) => {
 
 handler.command = /^(playyt)$/i;
 
-export default handler;
+export default handler;*/
