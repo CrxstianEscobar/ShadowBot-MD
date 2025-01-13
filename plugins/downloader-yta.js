@@ -20,13 +20,13 @@ let handler = async (m, { conn, text }) => {
 
   let vistas = parseInt(views).toLocaleString("es-ES") + " vistas";
 
-  let HS = `
-*Duración:* ${timestamp}
-*Vistas:* ${vistas}
-*Subido:* ${ago}
-*Enlace:* ${url}
+  let HS = `\`YOUTUBE - DESCARGAS`\
+ᜊ *Duración:* ${timestamp}
+ᜊ *Vistas:* ${vistas}
+ᜊ *Subido:* ${ago}
+ᜊ *Enlace:* ${url}
 
-*[ ℹ️ ] Se está enviando su audio...*`;
+*[ ℹ️ ] Se está enviando su audio, aguarde un momento...*`;
 
   let thumb = (await conn.getFile(thumbnail))?.data;
 
