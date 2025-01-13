@@ -14,6 +14,6 @@ await conn.sendMessage(m.chat, { audio: { url: dl_url }, fileName: `${title}.mp3
 console.error(error)
 }}
 
-HS.command = ['yta', 'ytmp3']
+HS.command = ['ytmp3']
 
 export default HS
