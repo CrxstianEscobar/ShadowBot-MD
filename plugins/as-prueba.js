@@ -1,6 +1,6 @@
 import { promises as fs } from 'fs';
 
-const charactersFilePath = './plugins/_characters.json';
+const charactersFilePath = './plugins/_.characters.json';
 const haremFilePath = './src/database/harem.json';
 
 const cooldowns = {};
