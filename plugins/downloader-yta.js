@@ -26,7 +26,7 @@ let handler = async (m, { conn, text }) => {
 ᜊ *Subido:* ${ago}
 ᜊ *Enlace:* ${url}
 
-*[ ℹ️ ] Se está enviando su audio, aguarde un momento...*`;
+> *[ ℹ️ ] Se está enviando su audio, aguarde un momento...*`;
 
   let thumb = (await conn.getFile(thumbnail))?.data;
 
