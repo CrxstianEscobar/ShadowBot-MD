@@ -4,29 +4,27 @@ import yts from "yt-search";
 
 let handler = async (m, { conn, text }) => {
 if (!text) {
-return m.reply("❀ Ingresa el texto de lo que quieres buscar")
+return m.reply("*[ 🌷 ] Ingresa un texto de lo que desee buscar en YouTube.*")
 }
 
 let ytres = await yts(text)
 let video = ytres.videos[0]
   
 if (!video) {
-return m.reply("❀ Video no encontrado")
+return m.reply("*[ ℹ️ ] Video no encontrado*")
 }
 
 let { title, thumbnail, timestamp, views, ago, url } = video
 
 let vistas = parseInt(views).toLocaleString("es-ES") + " vistas"
 
-let HS = ` ᚚᚚᩳᚚ͜ᩬᚚᷤ͜ᚚᷴ͜ᚚᷟ͜ᚚᷝ͜ᚚ͜ᚚᷤ͜ᚚᷧ͜ᚚᷜ͜ᚚᷴ͜ᚚᷢ͜ᚚᷧ͜ᚚᷦ͜ᚚᷧ͜ᚚᷱ͜ᚚᷴ͜ᚚᷧ͜ᚚᩬᚚᩳᚚᚚ
-꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
-❥⊰⏤͟͟͞͞Duración:⊱ ${timestamp}
-❥⊰⏤͟͟͞͞Vistas:⊱ ${vistas}
-❥⊰⏤͟͟͞͞Subido:⊱ ${ago}
-❥⊰⏤͟͟͞͞Enlace:⊱ ${url}
-꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
+let HS = `
+*Duración:* ${timestamp}
+*Vistas:* ${vistas}
+*Subido:* ${ago}
+*Enlace:* ${url}
 
-🌸➥𝙀𝙨𝙥𝙚𝙧𝙚 𝙙𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 𝙨𝙪 𝙖𝙪𝙙𝙞𝙤...`
+*[ ℹ️ ] Se está enviando su audio...*`
 
 let thumb = (await conn.getFile(thumbnail))?.data;
 
@@ -51,6 +49,6 @@ await conn.sendMessage(m.chat, { audio: { url: download.url }, caption: ``, mime
 console.error(error)    
 }}
 
-handler.command = /^(test)$/i
+handler.command = /^(playyt)$/i
 
 export default handler
