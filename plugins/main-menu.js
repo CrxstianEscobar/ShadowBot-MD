@@ -169,6 +169,10 @@ ${readMore}
 ┊⪩ .violar *<tag>*
 ┊⪩ .follar *<tag>*
 ┊⪩ .anal *<tag>*
+┊⪩ .penetrar *<tag>*
+┊⪩ .mamada *<tag>*
+┊⪩ .suckboobs *<tag>*
+┊⪩ .sexo *<tag>*
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰ \`sᴛɪᴄᴋᴇʀs\`
