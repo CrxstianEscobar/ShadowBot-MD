@@ -102,6 +102,7 @@ ${readMore}
 ┊⪩ .spsearch *<txt>*
 ┊⪩ .githubsearch *<txt>*
 ┊⪩ .xnxxsearch *<txt>*
+┊⪩ .xvsearch *<txt>*
 ┊⪩ .letra *<txt>*
 ┊⪩ .wikipedia *<txt>*
 ┊⪩ .mercadolibre *<txt>*
