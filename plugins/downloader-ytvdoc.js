@@ -71,7 +71,7 @@ export default handler;*/
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw m.reply(`*[ 🌷 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
+    if (!text) throw m.reply(`*[ 🌙 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
 
     // Verificar que el texto sea numérico
     if (!/^\d+$/.test(text)) return m.reply('Por favor ingresa un número de DNI válido.');
