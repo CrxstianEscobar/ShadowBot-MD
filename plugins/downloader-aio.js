@@ -1,80 +1,33 @@
-/* 
-- Play Botones By Angel-OFC 
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-*/
-import fetch from 'node-fetch';
-import yts from 'yt-search';
+const handler = async (m, {conn}) => {
+  const audioUrl = 'https://files.catbox.moe/ozmhxx.m4a'; // URL del audio
+  const who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender;
 
-let handler = async (m, { conn, args }) => {
-  if (!args[0]) return conn.reply(m.chat, '*\`Ingresa el nombre de lo que quieres buscar\`*', m, rcanal);
+  // Si el mensaje es una respuesta, obtener el remitente del mensaje citado
+  const mentionedUser = m.quoted && m.quoted.sender ? m.quoted.sender : null;
 
-  await m.react('🕓');
-  try {
-    let res = await search(args.join(" "));
-    let video = res[0];
-    let img = await (await fetch(video.image)).buffer();
+  await conn.sendFile(m.chat, global.API('https://some-random-api.com', '/canvas/gay', {
+    avatar: await conn.profilePictureUrl(who, 'image').catch((_) => 'https://telegra.ph/file/24fa902ead26340f3df2c.png'),
+  }), 'error.png', '🏳️‍🌈 𝑴𝒊𝒓𝒆𝒏 𝒂 𝒆𝒔𝒕𝒆 𝑮𝒂𝒚 🏳️‍🌈', m);
 
-    let txt = `*\`【Y O U T U B E - P L A Y】\`*\n\n`;
-    txt += `• *\`Título:\`* ${video.title}\n`;
-    txt += `• *\`Duración:\`* ${secondString(video.duration.seconds)}\n`;
-    txt += `• *\`Publicado:\`* ${eYear(video.ago)}\n`;
-    txt += `• *\`Canal:\`* ${video.author.name || 'Desconocido'}\n`;
-    txt += `• *\`Url:\`* _https://youtu.be/${video.videoId}_\n\n`;
+  const mentionOptions = {
+    audio: {url: audioUrl},
+    fileName: `error.mp3`,
+    mimetype: 'audio/mpeg',
+    ptt: true,
+  };
 
-    await conn.sendMessage(m.chat, {
-      image: img,
-      caption: txt,
-      footer: 'Selecciona una opción',
-      buttons: [
-        {
-          buttonId: `.ytmp3 https://youtu.be/${video.videoId}`,
-          buttonText: {
-            displayText: '🎵 Audio',
-          },
-        },
-        {
-          buttonId: `.ytmp4 https://youtu.be/${video.videoId}`,
-          buttonText: {
-            displayText: '🎥 Video',
-          },
-        },
-      ],
-      viewOnce: true,
-      headerType: 4,
-    }, { quoted: m });
-
-    await m.react('✅');
-  } catch (e) {
-    console.error(e);
-    await m.react('✖️');
-    conn.reply(m.chat, '*\`Error al buscar el video.\`*', m);
+  // Si hay un usuario mencionado al que se está respondiendo, incluir su mención y su imagen de perfil
+  if (mentionedUser) {
+    const avatar = await conn.profilePictureUrl(mentionedUser, 'image').catch((_) => 'https://telegra.ph/file/24fa902ead26340f3df2c.png');
+    mentionOptions.mentions = [mentionedUser]; // Menciona al usuario del mensaje citado
+    mentionOptions.caption = `🏳️‍🌈 @${mentionedUser.split('@')[0]} 𝑴𝒊𝒓𝒆𝒏 𝒂 𝒆𝒔𝒕𝒆 𝑮𝒂𝒚 🏳️‍🌈`; // Mensaje con mención
+    mentionOptions.image = avatar; // Agrega su imagen de perfil
   }
+
+  await conn.sendMessage(m.chat, mentionOptions, {quoted: m});
 };
 
-handler.help = ['playop *<texto>*'];
-handler.tags = ['descargas'];
-handler.command = ['playop'];
-
+handler.help = ['marica'];
+handler.tags = ['fun'];
+handler.command = /^(marica)$/i;
 export default handler;
-
-async function search(query, options = {}) {
-  let search = await yts.search({ query, hl: "es", gl: "ES", ...options });
-  return search.videos;
-}
-
-function secondString(seconds) {
-  seconds = Number(seconds);
-  const h = Math.floor(seconds / 3600);
-  const m = Math.floor((seconds % 3600) / 60);
-  const s = Math.floor(seconds % 60);
-  return `${h > 0 ? h + 'h ' : ''}${m}m ${s}s`;
-}
-
-function eYear(txt) {
-  if (txt.includes('year')) return txt.replace('year', 'año').replace('years', 'años');
-  if (txt.includes('month')) return txt.replace('month', 'mes').replace('months', 'meses');
-  if (txt.includes('day')) return txt.replace('day', 'día').replace('days', 'días');
-  if (txt.includes('hour')) return txt.replace('hour', 'hora').replace('hours', 'horas');
-  if (txt.includes('minute')) return txt.replace('minute', 'minuto').replace('minutes', 'minutos');
-  return txt;
-}
