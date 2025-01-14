@@ -9,7 +9,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 
     // Definir el token de la API de RENIEC
-    const token = 'apis-token-1.aTSI1U7KEuT-6bbbCguH-4Y8TI6KS73N';
+    const token = 'apis-token-12650.pVULlTTTwy7u8k8AhFR72g3rupfRXFBr';
 
     try {
         // Realizar la solicitud a la API de RENIEC para obtener los datos del DNI
