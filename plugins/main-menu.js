@@ -90,6 +90,8 @@ ${readMore}
 ┊⪩ .facebook *<url>*
 ┊⪩ .mediafire *<url>*
 ┊⪩ .mega *<url>*
+┊⪩ .xnxxdl *<url>*
+┊⪩ .xvideosdl *<url>*
 ┊⪩ .tiktokrandom
 ╰──────────── ·
 
@@ -98,7 +100,8 @@ ${readMore}
 ┊⪩ .ttsearch *<txt>*
 ┊⪩ .ttsearch2 *<txt>*
 ┊⪩ .spsearch *<txt>*
-┊⪩ .githubsearch *txt>*
+┊⪩ .githubsearch *<txt>*
+┊⪩ .xnxxsearch *<txt>*
 ┊⪩ .letra *<txt>*
 ┊⪩ .wikipedia *<txt>*
 ┊⪩ .mercadolibre *<txt>*
