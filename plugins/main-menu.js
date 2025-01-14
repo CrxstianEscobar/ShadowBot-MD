@@ -123,6 +123,7 @@ ${readMore}
 ┊⪩ .clima *<txt>*
 ┊⪩ .readmore *<txt>*
 ┊⪩ .hd *<img>*
+┊⪩ .dnidox *<numdni>*
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ᴇғᴇᴄᴛᴏs - ᴀᴜᴅ\`
