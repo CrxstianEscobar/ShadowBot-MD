@@ -128,6 +128,8 @@ ${readMore}
 ┊⪩ .readmore *<txt>*
 ┊⪩ .hd *<img>*
 ┊⪩ .dnidox *<numdni>*
+┊⪩ .whatmusic *<aud>*
+┊⪩ .whatmusic *<vid>*
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ᴇғᴇᴄᴛᴏs - ᴀᴜᴅ\`
