@@ -29,5 +29,5 @@ const handler = async (m, {conn}) => {
 
 handler.help = ['marica'];
 handler.tags = ['fun'];
-handler.command = /^(marica)$/i;
+handler.command = /^(gay)$/i;
 export default handler;
