@@ -77,6 +77,7 @@ ${readMore}
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ᴅᴇsᴄᴀʀɢᴀs\`
 ┊⪩ .play *<txt>*
+┊⪩ .play2 *<txt>*
 ┊⪩ .aplay *<txt>*
 ┊⪩ .apk *<txt>*
 ┊⪩ .pinterest *<txt>*
