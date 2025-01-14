@@ -29,7 +29,8 @@ let txt = `
 `.trim()
 fs.unlinkSync(`./tmp/${m.sender}.${ext}`)
 m.reply(txt)
-} else throw '💭 Responda A Un Audio O Video'
+} else
+return m.reply('Por favor, responda a un audio o video para que pueda identificar la música.');
 }
 handler.command = /^quemusica|quemusicaes|whatmusic$/i
 //handler.estrellas = 6;
