@@ -10,6 +10,10 @@ await m.react('🍃')
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
 let mentionedJid = [who]
 let perfil = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/QGAVS.jpg')
+
+const fechaPeru = new Date().toLocaleString("es-PE", { timeZone: "America/Lima", day: '2-digit', month: '2-digit', year: 'numeric' });
+console.log(fechaPeru);
+
 let taguser = '@' + m.sender.split("@s.whatsapp.net")[0]
 const vid = ['https://telegra.ph/file/32e696946433c03588726.mp4', 'https://telegra.ph/file/5293a73eb90a920f8948b.mp4', 'https://telegra.ph/file/d5ed2537cb22b628d8ef1.mp4']
 
@@ -22,10 +26,11 @@ ${ucapan()}
 *╭╌┈╼◈ ╰ 1.4.0 ╯◈╾┈╌★*
 *│*
 *╰ ˚₊·˚₊· ͟͟͞͞➳❥  Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡*
-
+ 
 *☕ Creador:* Cristian Escobar
 *🪀 Numero:* +51927238856
 *⏰ Tiempo:* 18:34:59
+*📆 Fecha:* ${fechaPeru}
 *🆙 Versión:* 1.0.0
 *👸🏻 Colab:* @la_mari1343
 ${readMore}
