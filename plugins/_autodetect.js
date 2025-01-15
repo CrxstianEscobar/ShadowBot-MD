@@ -44,8 +44,8 @@ import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 import * as fs from 'fs';
 
 const handler = async (m, { conn, text, participants, isOwner, isAdmin, usedPrefix }) => {
-  // Si el prefijo es "A" y el comando es "viso"
-  if (text && text.toLowerCase() === 'viso' && usedPrefix === 'A') {
+  // Detectar el comando "Aviso" con el prefijo "A"
+  if (text && text.toLowerCase() === 'aviso' && usedPrefix === 'A') {
     try {
       const users = participants.map((u) => conn.decodeJid(u.id));
       const q = m.quoted ? m.quoted : m || m.text || m.sender;
@@ -79,8 +79,8 @@ const handler = async (m, { conn, text, participants, isOwner, isAdmin, usedPref
   }
 };
 
-// Aquí definimos el comando para que funcione cuando escriban "viso" con el prefijo "A"
-handler.command = /^(viso)$/i;  // Se activa cuando el mensaje es "viso"
+// Aquí verificamos si el comando es "Aviso" con el prefijo "A"
+handler.command = /^(aviso)$/i;  // El comando será "Aviso" sin el prefijo "."
 handler.group = true;
 handler.admin = true;
 
