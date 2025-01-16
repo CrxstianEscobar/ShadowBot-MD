@@ -1,4 +1,5 @@
 
+//By CrxstianEscobar 
 let handler = async (m, { conn }) => {
   // Asegúrate de que global.chiste tenga una lista de chistes
   if (global.chiste && global.chiste.length > 0) {
