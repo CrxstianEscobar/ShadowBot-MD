@@ -166,6 +166,7 @@ ${ucapan()}
 
 ╭─·˚₊· ͟͟͞͞꒰ \`ᴅɪᴠᴇʀsɪᴏ́ɴ\`
 ┊⪩ .piropo
+┊⪩ .chiste
 ┊⪩ .doxxing *<tag>*
 ┊⪩ .doxear *<tag>*
 ╰──────────── ·
