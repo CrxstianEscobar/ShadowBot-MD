@@ -587,7 +587,7 @@ group: `*[ ℹ️ ] El comando ${comando} solo puede ser usado en grupos.*`,
 private: `*[ ℹ️ ] El comando ${comando} solo puede ser usado en el chat privado del bot.*`,
 admin: `*[ ℹ️ ] El comando ${comando} solo puede ser usado por los administradores del grupo.*`, 
 botAdmin: `*[ ℹ️ ] Para ejecutar el comando ${comando} debo ser administrador del grupo.*`,
-unreg: `*[ ℹ️ ] El comando ${comando} solo puede ser usado por los usuarios registrado, registrate usando:\n> » #${verifyaleatorio} ${user2}.${edadaleatoria}`,
+unreg: `*[ ℹ️ ] No te encuentras registrado, regístrate para usar esta función.*\n\n*.reg <nombre.edad>*\n\n*[ 💡] Ejemplo:*\n.reg ${user2}.${edadaleatoria}`,
 restrict: `*[ ℹ️ ] Esta caracteristica está desactivada.*`
 }[type];
 if (msg) return m.reply(msg).then(_ => m.react('✖️'))}
