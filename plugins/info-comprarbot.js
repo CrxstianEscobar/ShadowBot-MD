@@ -1,6 +1,6 @@
 
 const handler = async (m, {conn}) => {
-let taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
+const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
   m.reply(global.ComprarBot);
 
 };
