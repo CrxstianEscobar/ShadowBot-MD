@@ -2,7 +2,7 @@ import yts from 'yt-search'
 
 var handler = async (m, { text, conn, args, command, usedPrefix }) => {
 
-if (!text) return conn.reply(m.chat, `*🌷 Por favor, ingresa una busqueda de Youtube.*`, m)
+if (!text) return conn.reply(m.chat, `🍬 Por favor, ingresa una busqueda de Youtube.`, m, rcanal, )
 
 conn.reply(m.chat, wait, m, {
 contextInfo: { externalAdReply :{ mediaUrl: null, mediaType: 1, showAdAttribution: true,
@@ -17,12 +17,14 @@ let teks = results.all.map(v => {
 switch (v.type) {
 case 'video': return `「✦」Resultados de la búsqueda para *<${text}>*
 
-☕ *Título:* ${v.title}
-🕝 *Duración:* ${v.timestamp}
-📆 *Subido:* ${v.ago}
-🔗 *Enlace:* ${v.url}`}}).filter(v => v).join('\n\n*┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n')
+> ☁️ Título » *${v.title}*
+> 🍬 Canal » *${v.author.name}*
+> 🕝 Duración » *${v.timestamp}*
+> 📆 Subido » *${v.ago}*
+> 👀 Vistas » *${v.views}*
+> 🔗 Enlace » ${v.url}`}}).filter(v => v).join('\n\n••••••••••••••••••••••••••••••••••••\n\n')
 
-conn.sendFile(m.chat, tes[0].thumbnail, 'yts.jpeg', m)
+conn.sendFile(m.chat, tes[0].thumbnail, 'yts.jpeg', teks, fkontak, m)
 
 }
 handler.help = ['ytsearch']
