@@ -56,9 +56,9 @@ let handler = async (m, { conn, usedPrefix }) => {
   //  m.react('🔥');
 }
 
-handler.help = ['violar @tag'];
+handler.help = ['viol @tag'];
 handler.tags = ['fun'];
-handler.command = ['violar','fuck']
+handler.command = ['viol','fuck']
 handler.group = true;
 
 export default handler;
