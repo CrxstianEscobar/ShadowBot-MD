@@ -1,6 +1,4 @@
-
 const handler = async (m, {conn}) => {
-const taguser = '@' + m.sender.split("@s.whatsapp.net")[0];
   m.reply(global.ComprarBot);
 
 };
@@ -8,7 +6,7 @@ handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
 global.ComprarBot = `
-*👋🏻 Hola ${taguser} te presento al bot mas lindo de Whatsapp.*
+*👋🏻 Hola, te presento al bot mas lindo de Whatsapp.*
 
   ᰰ᷒☕᪤ ᥣіᥒk ძᥱ ⍴rᥙ፝֟ᥱ͟ᑲᥲs ::
 https://chat.whatsapp.com/BiMD1YYaFox8wqYyEBx0so
