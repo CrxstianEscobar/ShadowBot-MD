@@ -44,7 +44,7 @@ await conn.reply(m.chat, '*🥀 Error al analizar la imagen.*', m)}
 
 } else {
 
-if (!text) { return conn.reply(m.chat, `*[ ℹ️ ] Ingrese su petición*\n\n*[ 💡 ] Ejemplo de uso:* _${usedPrefix + command} Que es la Radiación solar?_`, m, rcanal)}
+if (!text) { return conn.reply(m.chat, `*[ ℹ️ ] Ingrese su petición*\n\n*[ 💡 ] Ejemplo de uso:* ${usedPrefix + command} Que es la Radiación solar?`, m, rcanal)}
 
 await m.react('💬')
 
