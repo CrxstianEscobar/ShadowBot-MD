@@ -7,7 +7,7 @@ handler.command = /^(preciosbot|precios|comprarbot|comprar)$/i;
 export default handler;
 
 global.ComprarBot = `
-*👋🏻 Hola ${conn.getName(m.sender)} te presento al bot mas lindo de Whatsapp.*
+*👋🏻 Hola bb te presento al bot mas lindo de Whatsapp.*
 
   ᰰ᷒☕᪤ ᥣіᥒk ძᥱ ⍴rᥙ፝֟ᥱ͟ᑲᥲs ::
 https://chat.whatsapp.com/BiMD1YYaFox8wqYyEBx0so
