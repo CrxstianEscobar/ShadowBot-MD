@@ -41,7 +41,7 @@ await conn.reply(m.chat, '*Error: intenta más tarde.*', m)}}}
 handler.help = ['chatgpt <texto>', 'ia <texto>']
 handler.tags = ['tools']
 handler.register = true
-handler.command = ['chatgpt', 'ia', 'bot']
+handler.command = ['chatgpt2', 'ia2', 'bot2']
 export default handler
 
 async function fetchImageBuffer(content, imageBuffer) {
