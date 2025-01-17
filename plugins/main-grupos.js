@@ -10,7 +10,7 @@ let txt = `*¡Hola!, te invito a unirte a los grupos oficiales de de Shadow Bot 
 
 *─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ*
 
-➳ ¿Enlace anulado? ¡Entre aquí! 
+➳ *¿Enlace anulado? ¡Entre aquí!*
 
 Canal Oficial:
 ꨄ https://whatsapp.com/channel/0029VauTE8AHltY1muYir31n
