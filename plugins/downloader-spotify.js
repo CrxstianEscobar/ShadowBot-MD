@@ -1,69 +1,37 @@
-/* 
-- Flux Ai Imagen By Angel-OFC 
-- https://whatsapp.com/channel/0029VaJxgcB0bIdvuOwKTM2Y
-*/
-import axios from "axios";
+import fetch from 'node-fetch'
 
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(m.chat,`🤍 Ejemplo: ${usedPrefix}${command} paisaje hermoso`, m)
-  await m.react('🕓')
-
-  try {
-    const result = await fluximg.create(text);
-    if (result && result.imageLink) {
-      await m.react('✅')
-      await conn.sendMessage(
-        m.chat,
-        {
-          image: { url: result.imageLink },
-          caption: `*\`Resultados De:\`* ${text}`,
-        },
-        { quoted: m }
-      );
-    } else {
-      throw new Error("No se pudo crear la imagen. Intentar otra vez.");
+let handler = async(m, { conn, text }) => {
+if (!text) {
+return conn.reply(m.chat, `❀ Ingresa un texto para hablar con gifted`, m)
+}
+    
+try {
+let api = await fetch(`https://api.giftedtech.my.id/api/ai/gpt?apikey=gifted&q=${text}`)
+let json = await api.json()
+// await m.reply(json.result)
+await conn.sendMessage(m.chat, { 
+    text: '*Gifted:* ' + json.result,
+    contextInfo: {
+        forwardingScore: 9999999,
+        isForwarded: false, 
+        externalAdReply: {
+            showAdAttribution: true,
+            containsAutoReply: true,
+            title: `❀ gі𝖿𝗍ᥱძ - іᥒ𝗍ᥱᥣіgᥱᥒᥴіᥲ`,
+            body: dev,
+            previewType: "PHOTO",
+            thumbnailUrl: 'https://files.catbox.moe/bjmjxd.jpeg', 
+            sourceUrl: channels,
+        }
     }
-  } catch (error) {
-    console.error(error);
-    conn.reply(
-      m.chat,
-      "Se produjo un error al crear la imagen.",
-      m
-    );
-  }
-};
+}, { quoted: m });
+} catch (error) {
+console.error(error)    
+}}
 
-handler.help = ["flux *<texto>*"];
-handler.tags = ["ai"];
-handler.command = ["flux"];
+handler.help = ['gifted *<text>*']
+handler.tags = ['ai']
+handler.register = true
+handler.command = ['gifted']
 
-export default handler;
-
-const fluximg = {
-  defaultRatio: "2:3", 
-
-  create: async (query) => {
-    const config = {
-      headers: {
-        accept: "*/*",
-        authority: "1yjs1yldj7.execute-api.us-east-1.amazonaws.com",
-        "user-agent": "Postify/1.0.0",
-      },
-    };
-
-    try {
-      const response = await axios.get(
-        `https://1yjs1yldj7.execute-api.us-east-1.amazonaws.com/default/ai_image?prompt=${encodeURIComponent(
-          query
-        )}&aspect_ratio=${fluximg.defaultRatio}`,
-        config
-      );
-      return {
-        imageLink: response.data.image_link,
-      };
-    } catch (error) {
-      console.error(error);
-      throw error;
-    }
-  },
-};
+export default handler
