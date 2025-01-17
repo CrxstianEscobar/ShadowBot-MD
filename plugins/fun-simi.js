@@ -40,7 +40,7 @@ console.error('*[ ℹ️ ] Error al obtener la respuesta:*', error)
 await conn.reply(m.chat, '*Error: intenta más tarde.*', m)}}}
 
 handler.help = ['simi <texto>']
-handler.tags = ['tools']
+handler.tags = ['fun']
 handler.register = true
 handler.command = ['simi']
 export default handler
