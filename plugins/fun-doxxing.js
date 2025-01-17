@@ -22,8 +22,7 @@ var hawemod = [
     " HACKING COMPLETED ",
     " SENDING LOG DOCUMENTS...",
     " SUCCESSFULLY SENT DATA AND Connection disconnected",
-    "*Nombre:* ${userName}
-*Ip:* 92.28.211.234
+    "*Nombre:* ${userName}*Ip:* 92.28.211.234
 *N:* 43 7462
 *W:* 12.4893
 *SS NUMBER:* 6979191519182016
