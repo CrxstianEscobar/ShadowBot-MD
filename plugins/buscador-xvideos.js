@@ -7,7 +7,7 @@ const handler = async (m, { conn, args, command, usedPrefix }) => {
     return m.reply('*[❗] 𝐋𝐨𝐬 𝐜𝐨𝐦𝐚𝐧𝐝𝐨𝐬 +𝟏𝟖 𝐞𝐬𝐭𝐚́𝐧 𝐝𝐞𝐬𝐚𝐜𝐭𝐢𝐯𝐚𝐝𝐨𝐬 𝐞𝐧 𝐞𝐬𝐭𝐞 𝐠𝐫𝐮𝐩𝐨.*\n> 𝐬𝐢 𝐞𝐬 𝐚𝐝𝐦𝐢𝐧 𝐲 𝐝𝐞𝐬𝐞𝐚 𝐚𝐜𝐭𝐢𝐯𝐚𝐫𝐥𝐨𝐬 𝐮𝐬𝐞 .enable nsfw');
     }
     if (!args[0]) {
-        return conn.reply(m.chat, `*[❗𝐈𝐍𝐅𝐎❗]*\n\n🌼 *Instrucciones:* \nPara buscar videos en Xvideos, por favor ingresa un término de búsqueda.\nEjemplo: \n*${usedPrefix + command} perro*`, m);
+        return conn.reply(m.chat, `*[ 🌷 ] Por favor, ingrese la búsqueda que desea realizar en XVideos.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} con mi perro.`, m);
     }
 
     try {
