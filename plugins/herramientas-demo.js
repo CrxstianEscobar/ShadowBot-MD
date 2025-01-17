@@ -18,7 +18,7 @@ title: `Shadow Bot - MD`,
 body: ``,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
-sourceUrl: 'https://www.instagram.com/bk_crxss'}}},
+sourceUrl: 'https://www.tiktok.com/bk_crxss'}}},
 { quoted: m})
    m.react('✨')
     } catch (err) {
