@@ -14,11 +14,11 @@ isForwarded: false,
 "externalAdReply": {
 "showAdAttribution": true,
 "containsAutoReply": true,
-title: `[ IsitaBot By Isa ]`,
+title: `Shadow Bot - MD`,
 body: ``,
 "previewType": "PHOTO",
 thumbnailUrl: 'https://tinyurl.com/2awg2bch', 
-sourceUrl: 'https://www.instagram.com/star.moony_desing'}}},
+sourceUrl: 'https://www.instagram.com/bk_crxss'}}},
 { quoted: m})
    m.react('✨')
     } catch (err) {
