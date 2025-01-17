@@ -1,11 +1,11 @@
 import yts from 'yt-search'
 
 var handler = async (m, { text, conn, args, command, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `🍬 Por favor, ingresa una búsqueda de YouTube.`, m);
+    if (!text) return conn.reply(m.chat, `*[ 🌷 ] Por favor, ingresa una búsqueda de YouTube.*`, m);
 
     try {
         // Respuesta mientras se realiza la búsqueda
-        conn.reply(m.chat, '🔍 Buscando resultados...', m);
+        conn.reply(m.chat, '*🔍 Buscando resultados...*', m);
 
         // Realizamos la búsqueda en YouTube
         let results = await yts(text);
@@ -20,9 +20,9 @@ var handler = async (m, { text, conn, args, command, usedPrefix }) => {
         let teks = tes.map(v => {
             switch (v.type) {
                 case 'video':
-                    return `「✦」Resultados de la búsqueda para *<${text}>*\n\n> ☁️ Título » *${v.title}*\n> 🍬 Canal » *${v.author.name}*\n> 🕝 Duración » *${v.timestamp}*\n> 📆 Subido » *${v.ago}*\n> 👀 Vistas » *${v.views}*\n> 🔗 Enlace » ${v.url}`;
+                    return `*「🌷」Resultados de la búsqueda para:*\n<${text}>\n\n☕ *Título:* ${v.title}\n📡 *Canal* ${v.author.name}\n*🕝 Duración:* ${v.timestamp}\n📆 *Subido:* ${v.ago}\n👀 *Vistas:* ${v.views}\n🔗 *Enlace* ${v.url}`;
             }
-        }).filter(v => v).join('\n\n••••••••••••••••••••••••••••••••••••\n\n');
+        }).filter(v => v).join('\n\n*┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈\n\n');
 
         // Si existen resultados, enviamos el primero junto con la información
         if (tes.length > 0) {
