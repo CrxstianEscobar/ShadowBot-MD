@@ -3,21 +3,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   let muptime = clockString(uptime)
   m.reply(`*» Bot activo durante* : ${muptime}`)
 }
-
-
-/*let handler = async (m, { conn, args, usedPrefix, command }) => {
-
-        let _muptime
-    if (process.send) {
-      process.send('uptime')
-      _muptime = await new Promise(resolve => {
-        process.once('message', resolve)
-        setTimeout(resolve, 1000)
-      }) * 1000
-    }
-    let muptime = clockString(_muptime)
-   m.reply(`*» Bot activo durante* : ${muptime}`) 
-}*/
 handler.help = ['runtime']
 handler.tags = ['info']
 handler.command = ['runtime', 'uptime']
