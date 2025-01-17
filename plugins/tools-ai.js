@@ -72,7 +72,7 @@ handler.register = true
 
 // handler.estrellas = 1
 
-handler.command = ['ia', 'chatgpt', 'ai', 'chat', 'gpt']
+handler.command = ['chatgpt', 'ia', 'shadow', 'bot']
 
 export default handler
 
