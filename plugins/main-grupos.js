@@ -8,7 +8,7 @@ let txt = `*¡Hola!, te invito a unirte a los grupos oficiales de de Shadow Bot 
 
 ♡ ${group}
 
-*─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ*
+*─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ⭒─ׄ─ׅ─ׄ*
 
 ➳ ¿Enlace anulado? ¡Entre aquí! 
 
