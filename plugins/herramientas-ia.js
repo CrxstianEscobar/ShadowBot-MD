@@ -11,7 +11,7 @@ const q = m.quoted
 const img = await q.download?.()
 if (!img) {
 console.error('*[ ℹ️ ] Error: No image buffer available*')
-return conn.reply(m.chat, '*[ ℹ️ ] Error: No se pudo descargar la imagen.*', m, fake)}
+return conn.reply(m.chat, '*[ ℹ️ ] Error: No se pudo descargar la imagen.*', m)}
 const content = '*[ ℹ️ ] ¿Qué se observa en la imagen?*'
   
 try {
