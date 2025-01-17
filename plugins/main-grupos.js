@@ -19,6 +19,6 @@ Canal Oficial:
 await conn.sendFile(m.chat, img, "Thumbnail.jpg", txt, m, null, rcanal)
 }
 handler.help = ['grupos']
-handler.tags = ['main']
+handler.tags = ['info']
 handler.command = /^(grupos)$/i
 export default handler
