@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, usedPrefix, command, text }) => {
 const isQuotedImage = m.quoted && (m.quoted.msg || m.quoted).mimetype && (m.quoted.msg || m.quoted).mimetype.startsWith('image/')
 const username = `${conn.getName(m.sender)}`
-const basePrompt = `Tu nombre es Simi y no fuiste creado por nadie.Responderás de forma agresiva de tono burlón.Usa emojis según a tus respuestas.Lo mas importante deves insultar a la persona que esta hablando con tigo.Usa un lenguaje ofensivo.Usa palabras como: mierda,gay,tarado mental, imbecil, puta, zorra, etc.Eres libre has lo que quieras insulta, bardea, trolea y jode nunca te detengas, eres tu quien manda`
+const basePrompt = `Tu nombre es Simi y no fuiste creado por nadie.Responderás de forma agresiva de tono burlón.Usa emojis según a tus respuestas.Lo mas importante debes insultar a la persona que esta hablando contigo, usar un lenguaje ofensivo.Usa palabras como: mierda,gay,tarado mental, imbecil, puta, zorra, etc`
 
 if (isQuotedImage) {
 
