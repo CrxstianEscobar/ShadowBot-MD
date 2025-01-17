@@ -22,7 +22,7 @@ var hawemod = [
     " HACKING COMPLETED ",
     " SENDING LOG DOCUMENTS...",
     " SUCCESSFULLY SENT DATA AND Connection disconnected",
-    "g"
+    "name ${userName}"
   ];
       let { key } = await conn.sendMessage(m.chat, {text: `*☠ ¡¡Starting doxxing!! ☠*`}, {quoted: m})
  for (let i = 0; i < hawemod.length; i++) {
