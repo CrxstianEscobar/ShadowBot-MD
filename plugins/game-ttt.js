@@ -8,13 +8,13 @@ const handler = async (m, {conn, usedPrefix, command, text}) => {
   }
 
   if (!text) {
-    return m.reply(`🍭 Se requiere poner el nombre de la sala de juego\n\n*—◉ Ejemplo*\n*◉ ${usedPrefix + command} nueva sala*`, m.chat);
+    return m.reply(`*[ 🌷 ] Se requiere poner el nombre de la sala de juego*\n\n*—◉ Ejemplo*\n*◉ ${usedPrefix + command} nueva sala*`, m.chat);
   }
 
   let room = Object.values(conn.game).find((room) => room.state === 'WAITING' && (text ? room.name === text : true));
 
   if (room) {
-    await m.reply('🍬 Iniciando el juego, un jugador se unió a la partida.');
+    await m.reply('*☕ Iniciando el juego, un jugador se unió a la partida..*');
     room.o = m.chat;
     room.game.playerO = m.sender;
     room.state = 'PLAYING';
