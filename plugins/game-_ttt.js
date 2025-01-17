@@ -58,7 +58,7 @@ export async function before(m) {
     }
     const winner = isSurrender ? room.game.currentTurn : room.game.winner;
     const str = `
-🎮 TRES EN RAYA 🎮
+🎮 *TRES EN RAYA* 🎮
 
 ❎ = @${room.game.playerX.split('@')[0]}
 ⭕ = @${room.game.playerO.split('@')[0]}
