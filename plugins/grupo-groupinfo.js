@@ -35,7 +35,7 @@ ${listAdmin}
 
 handler.help = ['infogp']
 handler.tags = ['group']
-handler.command = ['infogrupo', 'groupinfo', 'infogp'] 
+handler.command = ['infogrupo', 'groupinfo', 'infogroup'] 
 handler.group = true
 
 export default handler
