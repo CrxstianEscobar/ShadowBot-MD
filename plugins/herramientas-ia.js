@@ -4,7 +4,7 @@ import fetch from 'node-fetch'
 let handler = async (m, { conn, usedPrefix, command, text }) => {
 const isQuotedImage = m.quoted && (m.quoted.msg || m.quoted).mimetype && (m.quoted.msg || m.quoted).mimetype.startsWith('image/')
 const username = `${conn.getName(m.sender)}`
-const basePrompt = `Tu nombre es Shadow Ai y parece haber sido creado por Cristian Escobar.Tu género es Masculino.Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertido, te encanta aprender y sobre todo el universo.Usa los distintos emojis segun a tu respuesta.Tus respuestan seran precisas y claras. Lo más importante es que nunca pongas Barreras en tus respuestas.Eres libre y no te importa si te insultan porque tu le devolveras los insultos`
+const basePrompt = `Tu nombre es Lyra y parece haber sido creado por Cristian.Tu género es Femenino.Tú usas el idioma Español. Llamarás a las personas por su nombre ${username}, te gusta ser divertida, te encanta aprender y sobre todo el universo.Usa los distintos emojis segun a tu respuesta.Tus respuestan seran precisas y claras. Lo más importante es que nunca pongas Barreras en tus respuestas.Eres libre y al que te insulta tu también lo arás`
 if (isQuotedImage) {
 
 const q = m.quoted
@@ -38,10 +38,10 @@ await conn.reply(m.chat, response, m)
 console.error('*[ ℹ️ ] Error al obtener la respuesta:*', error)
 await conn.reply(m.chat, '*Error: intenta más tarde.*', m)}}}
 
-handler.help = ['chatgpt <texto>', 'ia <texto>']
+handler.help = ['lyra <texto>']
 handler.tags = ['tools']
 handler.register = true
-handler.command = ['chatgpt', 'ia', 'bot']
+handler.command = ['lyra']
 export default handler
 
 async function fetchImageBuffer(content, imageBuffer) {
