@@ -38,10 +38,10 @@ await conn.reply(m.chat, response, m)
 console.error('*[ ℹ️ ] Error al obtener la respuesta:*', error)
 await conn.reply(m.chat, '*Error: intenta más tarde.*', m)}}}
 
-handler.help = ['chatgpt2 <texto>', 'ia2 <texto>']
+handler.help = ['simi <texto>']
 handler.tags = ['tools']
 handler.register = true
-handler.command = ['chatgpt2', 'ia2', 'bot2']
+handler.command = ['simi']
 export default handler
 
 async function fetchImageBuffer(content, imageBuffer) {
