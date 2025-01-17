@@ -1,4 +1,4 @@
-/*import PhoneNumber from 'awesome-phonenumber'
+import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 var handler = async (m, { conn }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -19,7 +19,7 @@ let txt = `
 │ ୨୧ *Eᴅᴀᴅ*: ${age} años
 │ ୨୧ *Gᴇɴᴇʀᴏ:* Hetero
 │ ୨୧ *Rᴇɢ:* ${registered ? 'Si': 'No'}
-│ ୨୧ *Pᴀɪs:* ${userNationality}
+│ ୨୧ *Pᴀɪs:* //${userNationality}
 ╰───────────────────⪩
 ˏˋ°•*⁀➷ *. :  ｡ * ﾟ  * .: ｡   * . :  ｡   *
 ╭─⪩ 𓆩 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𓆪
@@ -36,9 +36,9 @@ handler.help = ['profile']
 handler.register = true
 handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
-export default handler*/
+export default handler
 
-
+/*
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import { createHash } from 'crypto'
 import PhoneNumber from 'awesome-phonenumber'
@@ -93,4 +93,4 @@ function formatHour(n, locale = 'en-US') {
     second: 'numeric',
     hour12: true
   })
-}
+}*/
