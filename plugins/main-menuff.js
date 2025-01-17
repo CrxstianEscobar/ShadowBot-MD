@@ -25,7 +25,23 @@ ${ucapan()}
 
 
 ╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ᴍᴇɴᴜ ғғ\` 」*
-
+┊⪩ .v4fem
+┊⪩ .v4masc
+┊⪩ .v4mixto
+┊⪩ .v6fem
+┊⪩ .v6masc
+┊⪩ .v6mixto
+┊⪩ .feminterna4
+┊⪩ .mascinterna4
+┊⪩ .mixtointerna4
+┊⪩ .feminterna6
+┊⪩ .mascinterna6
+┊⪩ .mixtointerna6
+┊⪩ .donarsala
+┊⪩ .bermuda
+┊⪩ .kalahari
+┊⪩ .purgatorio
+┊⪩ .nexterra
 ╰──────────── ·`.trim()
 
 await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nSɪᴍᴘʟᴇ Bᴏᴛ Wʜᴀᴛsᴀᴘᴘ 💫', thumbnailUrl: perfil, mediaType: 1, renderLargerThumbnail: false,
