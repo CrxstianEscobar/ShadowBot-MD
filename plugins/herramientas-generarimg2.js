@@ -24,7 +24,7 @@ m.react('✔️');
 await conn.sendMessage(m.chat, {image: buffer}, {quoted: m});
 } catch (error) {
 console.error(error);
-throw `*🚨 Lo sentimos, ha ocurrido un error 😔*`;
+throw `*Lo sentimos, ha ocurrido un error 😔*`;
 }
 }
 // Definimos las etiquetas y comandos para el handler
