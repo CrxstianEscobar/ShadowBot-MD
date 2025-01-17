@@ -48,6 +48,7 @@ ${ucapan()}
 ┊⪩ .owner
 ┊⪩ .ping
 ┊⪩ .uptime
+┊⪩ .horario
 ┊⪩ .comprar
 ┊⪩ .precios
 ╰──────────── ·
