@@ -1,4 +1,3 @@
-import {format} from 'util';
 const debugMode = !1;
 const winScore = 4999;
 const playScore = 99;
@@ -59,7 +58,7 @@ export async function before(m) {
     }
     const winner = isSurrender ? room.game.currentTurn : room.game.winner;
     const str = `
-🎮 𝐓𝐑𝐄𝐒 𝐄𝐍 𝐑𝐀𝐘𝐀 🎮
+🎮 TRES EN RAYA 🎮
 
 ❎ = @${room.game.playerX.split('@')[0]}
 ⭕ = @${room.game.playerO.split('@')[0]}
@@ -68,7 +67,7 @@ export async function before(m) {
         ${arr.slice(3, 6).join('')}
         ${arr.slice(6).join('')}
 
-${isWin ? `@${(isSurrender ? room.game.currentTurn : room.game.winner).split('@')[0]} 𝙶𝙰𝙽𝙰𝚂𝚃𝙴 🥳, 𝚃𝙴 𝙻𝙻𝙴𝚅𝙰𝚂 +4999 𝚎𝚡𝚙` : isTie ? '𝙴𝙻 𝙹𝚄𝙴𝙶𝙾 𝚃𝙴𝚁𝙼𝙸𝙽𝙾 𝙴𝙽 𝙴𝙼𝙿𝙰𝚃𝙴 😐' : `𝚃𝚄𝚁𝙽𝙾 𝙳𝙴 @${room.game.currentTurn.split('@')[0]}`}
+${isWin ? `@${(isSurrender ? room.game.currentTurn : room.game.winner).split('@')[0]} Ganaste 🥳, Te llevas +4999 XP` : isTie ? 'El juego termino en empate 😐' : `Turno de @${room.game.currentTurn.split('@')[0]}`}
 `.trim();
     const users = global.db.data.users;
     if ((room.game._currentTurn ^ isSurrender ? room.x : room.o) !== m.chat) {
