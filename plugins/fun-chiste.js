@@ -1,23 +1,22 @@
-
 //By CrxstianEscobar 
+
 let handler = async (m, { conn }) => {
-  // Asegúrate de que global.chiste tenga una lista de chistes
   if (global.chiste && global.chiste.length > 0) {
-    const chisteAleatorio = pickRandom(global.chiste); // Selecciona un chiste aleatorio
-    conn.reply(m.chat, `*Chiste:* ${chisteAleatorio}`, m); // Envia el chiste
+    const chisteAleatorio = pickRandom(global.chiste);
+    conn.reply(m.chat, `*Chiste:* ${chisteAleatorio}`, m);
   } else {
-    conn.reply(m.chat, "*No hay chistes disponibles.*", m); // Si no hay chistes, informa al usuario
+    conn.reply(m.chat, "*[ ℹ️ ] No hay chistes disponibles.*", m);
   }
 };
 
-handler.command = ['chiste']; // El comando que activará el bot
+handler.help = ['chiste'];
+handler.tags = ['fun'];
+handler.command = ['chiste'];
 
-// Función para seleccionar un chiste aleatorio
 function pickRandom(list) {
   return list[Math.floor(Math.random() * list.length)];
 }
 
-// Lista de chistes
 global.chiste = [
   "¿Cuál es el último animal que subió al arca de Noé? El del-fin..",
   "¿Cómo se dice pañuelo en japonés? Saka-moko",
