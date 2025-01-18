@@ -1,44 +1,19 @@
-/*
-import fetch from 'node-fetch'
-
-let handler = async (m, { conn, text, usedPrefix, command }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa un  link de youtube`, m)
-    
-try {
-let api = await fetch(`https://apidl.asepharyana.cloud/api/downloader/ytmp4?url=${text}&quality=360`)
-let json = await api.json()
-let { title, author, authorUrl, lengthSeconds, views, uploadDate, thumbnail, description, duration, downloadUrl, quality } = json
-let HS = `- *Titulo :* ${title}
-- *Autor :* ${author}
-- *Visitas :* ${views}
-- *Subido :* ${uploadDate}
-- *Duracion :* ${duration}
-- *Calidad :* ${quality}p`
-await conn.sendMessage(m.chat, { video: { url: downloadUrl }, caption: HS }, { quoted: m })
-} catch (error) {
-console.error(error)
-}}
-
-handler.command = ['ytmp4']
-
-export default handler*/
-
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
   if (!text) {
-    return conn.reply(m.chat, '❀ Ingresa un enlace de YouTube válido.', m);
+    return conn.reply(m.chat, '*🌷 Ingresa un enlace de YouTube válido.*', m);
   }
 
   // Validación básica de URL de YouTube
   const youtubeRegex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.be)\/.+$/;
   if (!youtubeRegex.test(text)) {
-    return conn.reply(m.chat, '❀ El enlace proporcionado no es un enlace válido de YouTube.', m);
+    return conn.reply(m.chat, '*❌ El enlace proporcionado no es un enlace válido de YouTube.*', m);
   }
 
   try {
     // Enviar mensaje informando que se está procesando
-    await conn.reply(m.chat, '❀ Se está procesando tu solicitud... Enviando el video.', m);
+    await conn.reply(m.chat, '*[ ℹ️ ] Se está enviando el video..*.', m);
 
     // Solicitar la API para obtener los detalles del video
     let api = await fetch(`https://apidl.asepharyana.cloud/api/downloader/ytmp4?url=${text}&quality=360`);
@@ -67,7 +42,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     
   } catch (error) {
     console.error(error);
-    return conn.reply(m.chat, '❀ Ocurrió un error al intentar descargar el video, por favor intenta de nuevo más tarde.', m);
+    return conn.reply(m.chat, '*ℹ️ Ocurrió un error al intentar descargar el video, por favor intenta de nuevo más tarde.*', m);
   }
 };
 
