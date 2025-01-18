@@ -1,9 +1,7 @@
 import fetch from 'node-fetch';
-import yts from "yt-search";
-import axios from 'axios';
-const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@adiwajshing/baileys')).default;
-import FormData from "form-data";
-import Jimp from "jimp";
+import yts from 'yt-search';
+import { generateWAMessageContent, generateWAMessageFromContent, proto } from '@adiwajshing/baileys';
+import FormData from 'form-data';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     if (!text) return m.reply(`• *Ejemplo:* ${usedPrefix + command} elaina edit`);
@@ -26,17 +24,23 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         }
     }
 
-    let push = [];
+    // Buscar videos en YouTube
     let results = await yts(text);
     let videos = results.videos.slice(0, 6); 
     shuffleArray(videos);
 
+    let push = [];
     let i = 1;
+
+    // Crear los mensajes con los videos
     for (let video of videos) {
         let imageUrl = video.thumbnail;
         let imageK = await fetch(imageUrl);
         let imageB = await imageK.buffer();
-      let pr = await remini(imageB, "enhance")
+        
+        // Llamar a la función para mejorar la imagen
+        let pr = await remini(imageB, "enhance");
+
         push.push({
             body: proto.Message.InteractiveMessage.Body.fromObject({
                 text: `🎬 *Título:* ${video.title}\n⌛ *Duración:* ${video.timestamp}\n👀 *Vistas:* ${video.views}`
@@ -47,7 +51,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
             header: proto.Message.InteractiveMessage.Header.fromObject({
                 title: `Video - ${i++}`,
                 hasMediaAttachment: true,
-                imageMessage: await createImage(pr) 
+                imageMessage: await createImage(pr)
             }),
             nativeFlowMessage: proto.Message.InteractiveMessage.NativeFlowMessage.fromObject({
                 buttons: [
@@ -56,17 +60,18 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                         "buttonParamsJson": `{"display_text":"Mirar en YouTube","url":"${video.url}"}`
                     },
                     {
-                "name": "cta_copy",
-                "buttonParamsJson": JSON.stringify({
-                "display_text": "Copiar Link",
-                "copy_code": `${video.url}`
-                })
-              }
+                        "name": "cta_copy",
+                        "buttonParamsJson": JSON.stringify({
+                            "display_text": "Copiar Link",
+                            "copy_code": `${video.url}`
+                        })
+                    }
                 ]
             })
         });
     }
 
+    // Crear el mensaje de salida con todos los videos
     const bot = generateWAMessageFromContent(m.chat, {
         viewOnceMessage: {
             message: {
@@ -79,15 +84,14 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
                         text: "Resultados de la búsqueda completos..."
                     }),
                     footer: proto.Message.InteractiveMessage.Footer.create({
-                        text: wm
+                        text: 'YOUTUBE'
                     }),
                     header: proto.Message.InteractiveMessage.Header.create({
                         hasMediaAttachment: false
                     }),
                     carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({
-                        cards: [...push] // Mengisi carousel dengan hasil video
+                        cards: [...push]
                     })
-                    
                 })
             }
         }
@@ -96,7 +100,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
     await conn.relayMessage(m.chat, bot.message, { messageId: bot.key.id });
 }
 
-handler.help = ["ytslide *<consula>*", "ytx *<consulta>*"];
+handler.help = ["ytslide *<consulta>*", "ytx *<consulta>*"];
 handler.tags = ["search"];
 handler.command = ["ytslide", "ytx"];
 
@@ -104,26 +108,32 @@ export default handler;
 
 async function remini(imageData, operation) {
   return new Promise(async (resolve, reject) => {
-    const availableOperations = ["enhance", "recolor", "dehaze"]
-    if (availableOperations.includes(operation)) {
-      operation = operation
-    } else {
-      operation = availableOperations[0]
+    const availableOperations = ["enhance", "recolor", "dehaze"];
+    if (!availableOperations.includes(operation)) {
+      operation = availableOperations[0];
     }
-    const baseUrl = "https://inferenceengine.vyro.ai/" + operation + ".vyro"
-    const formData = new FormData()
-    formData.append("image", Buffer.from(imageData), {filename: "enhance_image_body.jpg", contentType: "image/jpeg"})
-    formData.append("model_version", 1, {"Content-Transfer-Encoding": "binary", contentType: "multipart/form-data; charset=utf-8"})
-    formData.submit({url: baseUrl, host: "inferenceengine.vyro.ai", path: "/" + operation, protocol: "https:", headers: {"User-Agent": "okhttp/4.9.3", Connection: "Keep-Alive", "Accept-Encoding": "gzip"}},
-      function (err, res) {
-        if (err) reject(err);
-        const chunks = [];
-        res.on("data", function (chunk) {chunks.push(chunk)});
-        res.on("end", function () {resolve(Buffer.concat(chunks))});
-        res.on("error", function (err) {
-        reject(err);
-        });
-      },
-    )
-  })
+    
+    const baseUrl = `https://inferenceengine.vyro.ai/${operation}.vyro`;
+    const formData = new FormData();
+    formData.append("image", Buffer.from(imageData), { filename: "enhance_image_body.jpg", contentType: "image/jpeg" });
+    formData.append("model_version", 1, { "Content-Transfer-Encoding": "binary", contentType: "multipart/form-data; charset=utf-8" });
+    
+    formData.submit({
+      url: baseUrl,
+      host: "inferenceengine.vyro.ai",
+      path: `/${operation}`,
+      protocol: "https:",
+      headers: {
+        "User-Agent": "okhttp/4.9.3",
+        "Connection": "Keep-Alive",
+        "Accept-Encoding": "gzip"
+      }
+    }, function (err, res) {
+      if (err) reject(err);
+      const chunks = [];
+      res.on("data", function (chunk) { chunks.push(chunk); });
+      res.on("end", function () { resolve(Buffer.concat(chunks)); });
+      res.on("error", function (err) { reject(err); });
+    });
+  });
 }
