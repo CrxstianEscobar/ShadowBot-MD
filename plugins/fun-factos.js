@@ -3,7 +3,7 @@
 let handler = async (m, { conn }) => {
   if (global.factos && global.factos.length > 0) {
     const factoAleatorio = pickRandom(global.factos); 
-    conn.reply(m.chat, `*Facts:* ${factoAleatorio}`, m);
+    conn.reply(m.chat, `*┏━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┓*\n\n❥ *"${pickRandom(global.factos)}"*\n\n*┗━_͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡⚘-͜͡-͜͡-͜͡-͜͡-͜͡-͜͡_͜͡━┛*`, m);
   } else {
     conn.reply(m.chat, "*[ ℹ️ ] No hay factos disponibles.*", m);
   }
