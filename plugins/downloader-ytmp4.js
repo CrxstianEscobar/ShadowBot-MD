@@ -1,22 +1,4 @@
-/* 
-
-*❀ By JTxs*
-
-[ Canal Principal ] :
-https://whatsapp.com/channel/0029VaeQcFXEFeXtNMHk0D0n
-
-[ Canal Rikka Takanashi Bot ] :
-https://whatsapp.com/channel/0029VaksDf4I1rcsIO6Rip2X
-
-[ Canal StarlightsTeam] :
-https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
-
-[ HasumiBot FreeCodes ] :
-https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
-*/
-
-// *[ ❀ YTMP4 ]*
-
+/*
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
@@ -39,4 +21,56 @@ console.error(error)
 
 handler.command = ['ytmp4']
 
-export default handler
+export default handler*/
+
+import fetch from 'node-fetch';
+
+let handler = async (m, { conn, text, usedPrefix, command }) => {
+  if (!text) {
+    return conn.reply(m.chat, '❀ Ingresa un enlace de YouTube válido.', m);
+  }
+
+  // Validación básica de URL de YouTube
+  const youtubeRegex = /^(https?\:\/\/)?(www\.youtube\.com|youtu\.be)\/.+$/;
+  if (!youtubeRegex.test(text)) {
+    return conn.reply(m.chat, '❀ El enlace proporcionado no es un enlace válido de YouTube.', m);
+  }
+
+  try {
+    // Enviar mensaje informando que se está procesando
+    await conn.reply(m.chat, '❀ Se está procesando tu solicitud... Enviando el video.', m);
+
+    // Solicitar la API para obtener los detalles del video
+    let api = await fetch(`https://apidl.asepharyana.cloud/api/downloader/ytmp4?url=${text}&quality=360`);
+    let json = await api.json();
+
+    // Verificar si la API responde correctamente
+    if (!json || !json.downloadUrl) {
+      return conn.reply(m.chat, '❀ Hubo un error al obtener los datos del video, por favor intenta de nuevo más tarde.', m);
+    }
+
+    // Extraer la información del JSON
+    let { title, author, views, uploadDate, duration, downloadUrl, quality } = json;
+
+    // Formatear la información para mostrar
+    let infoMessage = `
+      - *Título:* ${title}
+      - *Autor:* ${author}
+      - *Visitas:* ${views}
+      - *Subido:* ${uploadDate}
+      - *Duración:* ${duration}
+      - *Calidad:* ${quality}p
+    `;
+
+    // Enviar el video con la información
+    await conn.sendMessage(m.chat, { video: { url: downloadUrl }, caption: infoMessage }, { quoted: m });
+    
+  } catch (error) {
+    console.error(error);
+    return conn.reply(m.chat, '❀ Ocurrió un error al intentar descargar el video, por favor intenta de nuevo más tarde.', m);
+  }
+};
+
+handler.command = ['ytmp4'];
+
+export default handler;
