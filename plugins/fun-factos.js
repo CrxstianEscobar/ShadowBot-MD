@@ -1,3 +1,5 @@
+//By CrxstianEscobar
+
 let handler = async (m, { conn }) => {
   if (global.factos && global.factos.length > 0) {
     const factoAleatorio = pickRandom(global.factos); 
