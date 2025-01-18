@@ -48,3 +48,5 @@ global.factos = [
     "Tu vida es como un rompecabezas con piezas que nunca encajan.",
     "Si fueras una película, serías una secuela que nadie pidió."
 ];
+
+export default handler;
