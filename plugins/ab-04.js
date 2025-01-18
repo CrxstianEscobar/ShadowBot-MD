@@ -2,7 +2,7 @@ import axios from 'axios';
 const { proto, generateWAMessageFromContent, generateWAMessageContent } = (await import("@whiskeysockets/baileys")).default;
 
 let handler = async (message, { conn, text, usedPrefix, command }) => {
-  if (!text) return conn.reply(message.chat, '🍬 Por favor, ingrese lo que desea buscar en tiktok.', message);
+  if (!text) return conn.reply(message.chat, '*[ 🌷 ] Por favor, ingrese el texto de lo que desea buscar en tiktok.*', message);
 
   // Función para crear el mensaje de video
   async function createVideoMessage(url) {
@@ -12,7 +12,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
 
   try {
     // Mensaje inicial informando al usuario que se está descargando el video
-    conn.reply(message.chat, '🍭 Descargando su video, espere un momento...', message);
+    conn.reply(message.chat, '*Espere un momento...*', message);
 
     // Realizar la búsqueda de TikTok
     let { data: response } = await axios.get('https://apis-starlights-team.koyeb.app/starlight/tiktoksearch?text=' + text);
@@ -26,7 +26,7 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
     for (let result of selectedResults) {
       results.push({
         body: proto.Message.InteractiveMessage.Body.fromObject({ text: null }),
-        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: '⪛✰ Tiktok - Busquedas ✰⪜' }),
+        footer: proto.Message.InteractiveMessage.Footer.fromObject({ text: 'TikTok - Search' }),
         header: proto.Message.InteractiveMessage.Header.fromObject({
           title: result.title,
           hasMediaAttachment: true,
@@ -45,8 +45,8 @@ let handler = async (message, { conn, text, usedPrefix, command }) => {
             deviceListMetadataVersion: 2
           },
           interactiveMessage: proto.Message.InteractiveMessage.fromObject({
-            body: proto.Message.InteractiveMessage.Body.create({ text: '🍬 Resultado de: ' + text }),
-            footer: proto.Message.InteractiveMessage.Footer.create({ text: '⪛✰ Tiktok - Busquedas ✰⪜' }),
+            body: proto.Message.InteractiveMessage.Body.create({ text: '*🌷 Resultado de:* ' + text }),
+            footer: proto.Message.InteractiveMessage.Footer.create({ text: 'TikTok - Search' }),
             header: proto.Message.InteractiveMessage.Header.create({ hasMediaAttachment: false }),
             carouselMessage: proto.Message.InteractiveMessage.CarouselMessage.fromObject({ cards: [...results] })
           })
@@ -66,6 +66,6 @@ handler.help = ['tiktoksearch <txt>'];
 handler.coin = 1;
 handler.register = true;
 handler.tags = ['buscador'];
-handler.command = ['tiktoksearch', 'ttss', 'tiktoks'];
+handler.command = ['tiktoksearch', 'ttss', 'ttsearch'];
 
 export default handler;
