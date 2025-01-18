@@ -87,10 +87,9 @@ ${ucapan()}
 ┊⪩ .play *<txt>*
 ┊⪩ .play2 *<txt>*
 ┊⪩ .aplay *<txt>*
+┊⪩ .yta <txt>
 ┊⪩ .apk *<txt>*
 ┊⪩ .pinterest *<txt>*
-┊⪩ .yta *<url>*
-┊⪩ .ytvdoc *<url>*
 ┊⪩ .tiktok *<url>*
 ┊⪩ .tiktok2 *<url>*
 ┊⪩ .instagram *<url>*
