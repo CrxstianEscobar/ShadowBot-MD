@@ -1,5 +1,5 @@
 // HECHO POR CRISTIAN ESCOBAR 🌙
-*/
+/*
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
