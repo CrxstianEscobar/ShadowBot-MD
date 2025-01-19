@@ -3,7 +3,7 @@ import FormData from "form-data";
 import cheerio from "cheerio";
 
 let handler = async (m, { conn, usedPrefix, command, text, args }) => {
-  if (!text) return conn.reply(m.chat, '*\`Ingresa El link Del vídeo a descargar 🤍\`*', m, rcanal)
+  if (!text) return conn.reply(m.chat, '*[ 🌷 ] Ingresa un link de tiktok*', m)
     try {
         let data = await tiktokdl(text);
         console.log(data);
@@ -13,7 +13,6 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
         
         await m.react('🕓');
         
-        // Solo enviamos el video en calidad HD
         await conn.sendMessage(m.chat, {
             video: {
                 url: data.serverHD.url
@@ -30,8 +29,8 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
 };
 
 handler.help = ['tiktokhd *<url>*'];
-handler.tags = ['dl'];
-handler.command = /^(tiktokhd)$/i;
+handler.tags = ['downloader'];
+handler.command = /^(tiktokhd|tthd|tt3)$/i;
 
 export default handler;
 
