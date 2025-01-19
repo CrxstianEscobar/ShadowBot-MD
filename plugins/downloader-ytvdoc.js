@@ -1,15 +1,18 @@
 /*// HECHO POR CRISTIAN ESCOBAR 🌙
-
+*/
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw m.reply(`*[ 🌷 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
+    if (!text) throw m.reply(`*[ 🌙 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
+
+    // Verificar que el texto sea numérico
+    if (!/^\d+$/.test(text)) return m.reply('Por favor ingresa un número de DNI válido.');
 
     // Enviar un "react" mientras se procesa la solicitud
     conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 
     // Definir el token de la API de RENIEC
-    const token = 'apis-token-12650.pVULlTTTwy7u8k8AhFR72g3rupfRXFBr';
+    const token = 'apis-token-1.aTSI1U7KEuT-6bbbCguH-4Y8TI6KS73N';
 
     try {
         // Realizar la solicitud a la API de RENIEC para obtener los datos del DNI
@@ -22,7 +25,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
         // Verificar si la respuesta fue exitosa
         if (!response.ok) {
-            const errorData = await response.json();  // Capturar respuesta en caso de error
+            const errorData = await response.json();
             throw new Error(`Error de la API: ${errorData.message || 'Desconocido'}`);
         }
 
@@ -36,7 +39,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
 
         // Extraer la información relevante de la respuesta
         const nombre = data.nombres;
-        const apellidos = `${data.apellidoPaterno || ''} ${data.apellidoMaterno || ''}`;
+        const apellidos = `${data.apellidoPaterno || ''}${data.apellidoPaterno && data.apellidoMaterno ? ' ' : ''}${data.apellidoMaterno || ''}`;
         const fechaNacimiento = data.fechaNacimiento;
 
         // Formatear el mensaje para enviar los datos del DNI
@@ -71,16 +74,20 @@ export default handler;*/
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
-    if (!text) throw m.reply(`*[ 🌙 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
+    if (!text) throw m.reply(`*[ 😮‍💨 ] Ingresa un número de DNI*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} 46027897`);
 
-    // Verificar que el texto sea numérico
-    if (!/^\d+$/.test(text)) return m.reply('Por favor ingresa un número de DNI válido.');
+    // Verificar que el texto sea numérico y tenga 8 dígitos (longitud típica del DNI en Perú)
+    if (!/^\d{8}$/.test(text)) return m.reply('Por favor ingresa un número de DNI válido (8 dígitos).');
 
     // Enviar un "react" mientras se procesa la solicitud
     conn.sendMessage(m.chat, { react: { text: "🕒", key: m.key } });
 
-    // Definir el token de la API de RENIEC
-    const token = 'apis-token-1.aTSI1U7KEuT-6bbbCguH-4Y8TI6KS73N';
+    // Obtener el token de la API desde las variables de entorno
+    const token = process.env.RENIEC_API_TOKEN; // Asegúrate de definir esta variable en tu entorno
+
+    if (!token) {
+        return m.reply('No se ha encontrado el token de la API. Por favor, verifica la configuración.');
+    }
 
     try {
         // Realizar la solicitud a la API de RENIEC para obtener los datos del DNI
@@ -91,10 +98,10 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
             }
         });
 
-        // Verificar si la respuesta fue exitosa
+        // Verificar si la respuesta fue exitosa (código 200)
         if (!response.ok) {
             const errorData = await response.json();
-            throw new Error(`Error de la API: ${errorData.message || 'Desconocido'}`);
+            throw new Error(`Error de la API: ${errorData.message || 'Desconocido'} (Código: ${response.status})`);
         }
 
         // Obtener la respuesta en formato JSON
