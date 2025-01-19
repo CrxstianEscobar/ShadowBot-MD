@@ -92,6 +92,7 @@ ${ucapan()}
 ┊⪩ .pinterest *<txt>*
 ┊⪩ .tiktok *<url>*
 ┊⪩ .tiktok2 *<url>*
+┊⪩ .tiktokhd *<url>*
 ┊⪩ .instagram *<url>*
 ┊⪩ .instagram2 *<url>*
 ┊⪩ .facebook *<url>*
@@ -157,7 +158,7 @@ ${ucapan()}
 ┊⪩ .promote *<tag>*
 ┊⪩ .demote *<tag>*
 ┊⪩ .kick *<tag>*
-┊⪩ .fantasmas *<opcion>*
+┊⪩ .fantasmas *<opción>*
 ┊⪩ .notify *<txt>*
 ┊⪩ .setwelcome *<txt>*
 ┊⪩ .todos *<txt>*
@@ -168,6 +169,7 @@ ${ucapan()}
 ╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ғᴜɴ\` 」* ⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪
 ┊⪩ .piropo
 ┊⪩ .chiste
+┊⪩ .facto
 ┊⪩ .simi *<txt>*
 ┊⪩ .doxxing *<tag>*
 ┊⪩ .doxear *<tag>*
@@ -177,6 +179,7 @@ ${ucapan()}
 ╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ɢᴀᴍᴇs\` 」* ⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪
 ┊⪩ .pregunta *<txt>*
 ┊⪩ .ttt *<txt>*
+┊⪩ .ppt *<opción>*
 ┊⪩ .delttt
 ┊⪩ .acertijo
 ╰──────────── ·
