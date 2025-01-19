@@ -76,9 +76,9 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
   }
 };
 
-handler.help = ["tiktok *<url>*"];
+handler.help = ["ttv *<url>*"];
 handler.tags = ["dl"];
-handler.command = ["tiktok"];
+handler.command = ["ttv"];
 export default handler;
 
 // Definir el objeto ttsave para manejar las descargas de TikTok
