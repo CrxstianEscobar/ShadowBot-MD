@@ -1,4 +1,4 @@
-/*// HECHO POR CRISTIAN ESCOBAR 🌙
+// HECHO POR CRISTIAN ESCOBAR 🌙
 */
 import fetch from 'node-fetch';
 
