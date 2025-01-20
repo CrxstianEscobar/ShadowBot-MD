@@ -1,52 +1,242 @@
 [
   {
-    "question": "¿Cuál es la capital de Francia?",
-    "options": ["Londres", "París", "Roma"],
-    "answer": "París"
+    "question": "¿Quién fue el primer emperador romano?",
+    "options": ["Augusto", "César", "Nerón"],
+    "answer": "Augusto"
   },
   {
-    "question": "¿Cuál es la capital de España?",
-    "options": ["Madrid", "Barcelona", "Sevilla"],
-    "answer": "Madrid"
+    "question": "¿Cuál es el nombre completo de la teoría de la relatividad de Einstein?",
+    "options": ["Teoría de la relatividad especial", "Teoría de la relatividad general", "Teoría unificada de campos"],
+    "answer": "Teoría de la relatividad general"
   },
   {
-    "question": "¿Quién pintó la Mona Lisa?",
-    "options": ["Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh"],
-    "answer": "Leonardo da Vinci"
+    "question": "¿Quién pintó el techo de la Capilla Sixtina?",
+    "options": ["Leonardo da Vinci", "Raphael", "Miguel Ángel"],
+    "answer": "Miguel Ángel"
   },
   {
-    "question": "¿En qué año llegó el hombre a la luna?",
-    "options": ["1969", "1959", "1979"],
-    "answer": "1969"
+    "question": "¿En qué año se firmó la Declaración de Independencia de los Estados Unidos?",
+    "options": ["1776", "1789", "1800"],
+    "answer": "1776"
   },
   {
-    "question": "¿Cuál es el continente más grande?",
-    "options": ["Asia", "África", "Europa"],
-    "answer": "Asia"
+    "question": "¿Cómo se llama la capa más externa de la Tierra?",
+    "options": ["Corteza", "Manto", "Núcleo"],
+    "answer": "Corteza"
   },
   {
-    "question": "¿Qué elemento químico tiene el símbolo O?",
-    "options": ["Oxígeno", "Osmio", "Ouro"],
+    "question": "¿Qué país fue el primero en lanzar un satélite artificial al espacio?",
+    "options": ["Estados Unidos", "Unión Soviética", "China"],
+    "answer": "Unión Soviética"
+  },
+  {
+    "question": "¿Cuál es el órgano más grande del cuerpo humano?",
+    "options": ["El corazón", "La piel", "El hígado"],
+    "answer": "La piel"
+  },
+  {
+    "question": "¿Qué filósofo griego fue maestro de Alejandro Magno?",
+    "options": ["Platón", "Aristóteles", "Sócrates"],
+    "answer": "Aristóteles"
+  },
+  {
+    "question": "¿Qué es el bosón de Higgs?",
+    "options": ["Una partícula subatómica", "Una teoría matemática", "Un tipo de energía"],
+    "answer": "Una partícula subatómica"
+  },
+  {
+    "question": "¿Cuál es el país más grande del mundo por superficie?",
+    "options": ["Canadá", "Rusia", "China"],
+    "answer": "Rusia"
+  },
+  {
+    "question": "¿En qué ciudad se encuentra la famosa Torre Inclinada?",
+    "options": ["Roma", "Florencia", "Pisa"],
+    "answer": "Pisa"
+  },
+  {
+    "question": "¿Qué autor escribió la obra 'Don Quijote de la Mancha'?",
+    "options": ["Miguel de Cervantes", "Fernando de Rojas", "Luis de Góngora"],
+    "answer": "Miguel de Cervantes"
+  },
+  {
+    "question": "¿Cuál es la capital de Mongolia?",
+    "options": ["Ulan Bator", "Astana", "Pyongyang"],
+    "answer": "Ulan Bator"
+  },
+  {
+    "question": "¿Cuántos elementos químicos hay en la tabla periódica?",
+    "options": ["118", "120", "112"],
+    "answer": "118"
+  },
+  {
+    "question": "¿Qué físico es conocido por sus contribuciones a la teoría cuántica y la relatividad?",
+    "options": ["Max Planck", "Albert Einstein", "Niels Bohr"],
+    "answer": "Albert Einstein"
+  },
+  {
+    "question": "¿Qué instrumento musical tiene 88 teclas?",
+    "options": ["Piano", "Órgano", "Arpa"],
+    "answer": "Piano"
+  },
+  {
+    "question": "¿Cuál es el río más largo del mundo?",
+    "options": ["Río Amazonas", "Río Nilo", "Río Yangtsé"],
+    "answer": "Río Amazonas"
+  },
+  {
+    "question": "¿Cuál fue la primera civilización que inventó la escritura?",
+    "options": ["Egipcios", "Sumerios", "Chinos"],
+    "answer": "Sumerios"
+  },
+  {
+    "question": "¿En qué país nació el matemático y filósofo René Descartes?",
+    "options": ["Francia", "Alemania", "Países Bajos"],
+    "answer": "Francia"
+  },
+  {
+    "question": "¿Cuál es el nombre de la teoría que propone que los continentes eran una vez un solo supercontinente?",
+    "options": ["Deriva continental", "Teoría de cuerdas", "Teoría del Big Bang"],
+    "answer": "Deriva continental"
+  },
+  {
+    "question": "¿Qué pintor es conocido por su obra 'La noche estrellada'?",
+    "options": ["Claude Monet", "Vincent van Gogh", "Pablo Picasso"],
+    "answer": "Vincent van Gogh"
+  },
+  {
+    "question": "¿En qué continente se encuentra el desierto de Atacama?",
+    "options": ["Asia", "América del Sur", "África"],
+    "answer": "América del Sur"
+  },
+  {
+    "question": "¿Cuál es el único mamífero capaz de volar?",
+    "options": ["Murciélago", "Albatros", "Murciégalo"],
+    "answer": "Murciélago"
+  },
+  {
+    "question": "¿Qué país ganó la Copa del Mundo de Fútbol de 1970?",
+    "options": ["Brasil", "Argentina", "Alemania"],
+    "answer": "Brasil"
+  },
+  {
+    "question": "¿Qué escritor estadounidense es conocido por su obra 'Matar a un ruiseñor'?",
+    "options": ["Ernest Hemingway", "Mark Twain", "Harper Lee"],
+    "answer": "Harper Lee"
+  },
+  {
+    "question": "¿Cuál es el nombre de la galaxia en la que vivimos?",
+    "options": ["Vía Láctea", "Andrómeda", "Sagitario A"],
+    "answer": "Vía Láctea"
+  },
+  {
+    "question": "¿Quién fue el último emperador de China?",
+    "options": ["Pu Yi", "Qianlong", "Yongzheng"],
+    "answer": "Pu Yi"
+  },
+  {
+    "question": "¿Qué científico descubrió la penicilina?",
+    "options": ["Marie Curie", "Alexander Fleming", "Louis Pasteur"],
+    "answer": "Alexander Fleming"
+  },
+  {
+    "question": "¿Cuál es el número atómico del oxígeno?",
+    "options": ["8", "16", "6"],
+    "answer": "8"
+  },
+  {
+    "question": "¿En qué país se originó el ajedrez?",
+    "options": ["China", "India", "Persia"],
+    "answer": "India"
+  },
+  {
+    "question": "¿Quién fue el primer ser humano en viajar al espacio?",
+    "options": ["Neil Armstrong", "Yuri Gagarin", "Buzz Aldrin"],
+    "answer": "Yuri Gagarin"
+  },
+  {
+    "question": "¿Cuál es el elemento más abundante en la corteza terrestre?",
+    "options": ["Oxígeno", "Silicio", "Aluminio"],
     "answer": "Oxígeno"
   },
   {
-    "question": "¿Cuál es el océano más grande?",
+    "question": "¿En qué año se hundió el Titanic?",
+    "options": ["1912", "1905", "1898"],
+    "answer": "1912"
+  },
+  {
+    "question": "¿Qué continente tiene más países?",
+    "options": ["África", "Asia", "Europa"],
+    "answer": "África"
+  },
+  {
+    "question": "¿En qué país se encuentra la ciudad de Petra, famosa por su arquitectura excavada en roca?",
+    "options": ["Jordania", "Israel", "Egipto"],
+    "answer": "Jordania"
+  },
+  {
+    "question": "¿Quién escribió la novela '1984'?",
+    "options": ["Aldous Huxley", "George Orwell", "Ray Bradbury"],
+    "answer": "George Orwell"
+  },
+  {
+    "question": "¿Qué filósofo griego escribió 'La República'?",
+    "options": ["Platón", "Aristóteles", "Sócrates"],
+    "answer": "Platón"
+  },
+  {
+    "question": "¿Cuál es el símbolo químico del oro?",
+    "options": ["Au", "Ag", "Pb"],
+    "answer": "Au"
+  },
+  {
+    "question": "¿Qué famoso físico teórico propuso la ecuación E = mc^2?",
+    "options": ["Isaac Newton", "Albert Einstein", "Niels Bohr"],
+    "answer": "Albert Einstein"
+  },
+  {
+    "question": "¿Cuál es la montaña más alta del mundo?",
+    "options": ["K2", "Everest", "Makalu"],
+    "answer": "Everest"
+  },
+  {
+    "question": "¿Quién fue el primer presidente de los Estados Unidos?",
+    "options": ["Abraham Lincoln", "Thomas Jefferson", "George Washington"],
+    "answer": "George Washington"
+  },
+  {
+    "question": "¿Qué metal es líquido a temperatura ambiente?",
+    "options": ["Mercurio", "Plomo", "Cobre"],
+    "answer": "Mercurio"
+  },
+  {
+    "question": "¿Qué escritor inglés es conocido por su obra 'Hamlet'?",
+    "options": ["Charles Dickens", "William Shakespeare", "John Milton"],
+    "answer": "William Shakespeare"
+  },
+  {
+    "question": "¿Cuál es el planeta más cercano al Sol?",
+    "options": ["Venus", "Mercurio", "Marte"],
+    "answer": "Mercurio"
+  },
+  {
+    "question": "¿Qué país inventó el papel?",
+    "options": ["Egipto", "China", "Grecia"],
+    "answer": "China"
+  },
+  {
+    "question": "¿Qué océano es el más grande?",
     "options": ["Atlántico", "Índico", "Pacífico"],
     "answer": "Pacífico"
   },
   {
-    "question": "¿Quién escribió 'Cien años de soledad'?",
-    "options": ["Gabriel García Márquez", "Mario Vargas Llosa", "Julio Cortázar"],
-    "answer": "Gabriel García Márquez"
+    "question": "¿Quién descubrió la gravedad?",
+    "options": ["Galileo Galilei", "Isaac Newton", "Albert Einstein"],
+    "answer": "Isaac Newton"
   },
   {
-    "question": "¿Cuántos planetas tiene el sistema solar?",
-    "options": ["8", "9", "7"],
-    "answer": "8"
-  },
-  {
-    "question": "¿Qué es la fotosíntesis?",
-    "options": ["Un proceso de respiración celular", "Un proceso de producción de energía en plantas", "Un proceso de transpiración en animales"],
-    "answer": "Un proceso de producción de energía en plantas"
+    "question": "¿Cuál es la ciudad más poblada del mundo?",
+    "options": ["Tokio", "Nueva York", "Seúl"],
+    "answer": "Tokio"
   }
 ]
