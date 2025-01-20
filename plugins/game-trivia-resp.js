@@ -35,9 +35,7 @@ handler.before = async function(m) {
       clearTimeout(this.trivia[id][3]); // Cancelar el temporizador
       delete this.trivia[id]; // Eliminar la trivia actual
     } else {
-      m.reply(`❌ *Respuesta incorrecta!*\nLa respuesta correcta era: *${json.answer}*`);
-      clearTimeout(this.trivia[id][3]); // Cancelar el temporizador
-      delete this.trivia[id]; // Eliminar la trivia actual
+      m.reply(`❌ *Respuesta incorrecta!*\n¡Inténtalo de nuevo antes de que el tiempo se acabe!`);
     }
   }
 
