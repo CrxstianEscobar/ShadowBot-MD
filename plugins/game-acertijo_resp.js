@@ -44,6 +44,7 @@ handler.before = async function(m) {
 handler.exp = 0;
 export default handler;*/
 
+
 import similarity from 'similarity';
 const threshold = 0.72;
 
@@ -59,12 +60,7 @@ handler.before = async function(m) {
 
   // Verificar si el juego está activo para este chat
   if (!(id in this.tekateki)) {
-    // Enviar mensaje solo una vez si el juego ya terminó
-    if (!m._replied) {
-      m.reply('*😈Ese acertijo ya ha terminado!*');
-      m._replied = true; // Marcar que ya se ha enviado el mensaje de fin
-    }
-    return;
+    return; // Si el juego ya terminó, no hacer nada ni enviar mensaje
   }
 
   // Verificar si el mensaje citado corresponde al acertijo actual
