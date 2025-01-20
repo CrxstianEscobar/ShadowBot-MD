@@ -1,36 +1,34 @@
+// CREATED BY CRISTIAN ESCOBAR
+
 import fs from 'fs';
 
-const timeout = 60000;  // Tiempo límite de 60 segundos
-const poin = 500;  // Puntos que ganará el usuario si responde correctamente
+const timeout = 60000;
+const poin = 500;
 
 const handler = async (m, { conn, usedPrefix }) => {
   conn.sortword = conn.sortword ? conn.sortword : {};
   const id = m.chat;
 
-  // Si ya hay un juego en curso en este chat
   if (id in conn.sortword) {
-    conn.reply(m.chat, '*[ ℹ️ ] Ya estás jugando a ordenar palabras en este chat.*', conn.sortword[id][0]);
+    conn.reply(m.chat, '*[ 🌷 ] Ya estás jugando a ordenar palabras en este chat.*', conn.sortword[id][0]);
     throw false;
   }
 
-  // Leer el archivo JSON con las palabras
-  const filePath = './plugins/_palabras.json';  // Ruta al archivo JSON con las palabras
+  const filePath = './plugins/_palabras.json';
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const words = JSON.parse(fileContent);
 
-  // Seleccionar una palabra aleatoria
   const json = words[Math.floor(Math.random() * words.length)];
 
-  // Desordenar la palabra
   const wordToShuffle = json.word;
   const shuffledWord = wordToShuffle.split('').sort(() => Math.random() - 0.5).join('');
 
-  // Enviar la palabra desordenada al usuario
   const caption = `
-ⷡ *Ordena las palabras:*
-• *Palabra desordenada:* *${shuffledWord}*
-• *Tiempo restante:* ${(timeout / 1000).toFixed(2)} segundos
-• *Puntos:* +${poin} Exp
+ⷡ *ORDENA LA PALABRA:*
+\`${shuffledWord}\`
+
+> *Tiempo restante:* ${(timeout / 1000).toFixed(2)} segundos
+> *Puntos:* +${poin} Exp
 `.trim();
 
   conn.sortword[id] = [
@@ -45,6 +43,6 @@ const handler = async (m, { conn, usedPrefix }) => {
 
 handler.help = ['sortword'];
 handler.tags = ['game'];
-handler.command = /^(sortword)$/i;  // Comando sortword
+handler.command = /^(sortword|ordenarpalabra)$/i;
 
 export default handler;
