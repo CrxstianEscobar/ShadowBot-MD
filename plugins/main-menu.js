@@ -180,6 +180,9 @@ ${ucapan()}
 ┊⪩ .pregunta *<txt>*
 ┊⪩ .ttt *<txt>*
 ┊⪩ .ppt *<opción>*
+┊⪩ .ordenarpalabra
+┊⪩ .trivia
+┊⪩ .ahorcado
 ┊⪩ .delttt
 ┊⪩ .acertijo
 ╰──────────── ·
