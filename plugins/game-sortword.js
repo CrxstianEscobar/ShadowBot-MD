@@ -27,7 +27,7 @@ const handler = async (m, { conn, usedPrefix }) => {
 
   // Enviar la palabra desordenada al usuario
   const caption = `
-ⷮ *Ordena las palabras:*
+ⷡ *Ordena las palabras:*
 • *Palabra desordenada:* *${shuffledWord}*
 • *Tiempo restante:* ${(timeout / 1000).toFixed(2)} segundos
 • *Puntos:* +${poin} Exp
