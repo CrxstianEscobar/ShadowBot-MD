@@ -1,0 +1,27 @@
+[
+  {
+    "question": "¿Cuál es la capital de Francia?",
+    "options": ["a) Londres", "b) París", "c) Roma"],
+    "answer": "b"
+  },
+  {
+    "question": "¿Quién escribió 'Don Quijote de la Mancha'?",
+    "options": ["a) Gabriel García Márquez", "b) Miguel de Cervantes", "c) Mario Vargas Llosa"],
+    "answer": "b"
+  },
+  {
+    "question": "¿Cuál es el animal más grande del mundo?",
+    "options": ["a) Elefante", "b) Ballena azul", "c) Jirafa"],
+    "answer": "b"
+  },
+  {
+    "question": "¿Qué instrumento musical tiene teclas?",
+    "options": ["a) Guitarra", "b) Piano", "c) Batería"],
+    "answer": "b"
+  },
+  {
+    "question": "¿En qué continente se encuentra Egipto?",
+    "options": ["a) Asia", "b) Europa", "c) África"],
+    "answer": "c"
+  }
+]
