@@ -3,9 +3,10 @@ import fs from 'fs';
 const timeout = 60000;
 const poin = 500;
 const handler = async (m, { conn, usedPrefix }) => {
-
   conn.trivia = conn.trivia ? conn.trivia : {};
   const id = m.chat;
+
+  // Verifica si ya hay un trivia en curso para este chat
   if (id in conn.trivia) {
     conn.reply(m.chat, '*[ ℹ️ ] Estás en un juego de trivia*', conn.trivia[id][0]);
     throw false;
@@ -15,6 +16,7 @@ const handler = async (m, { conn, usedPrefix }) => {
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const trivia = JSON.parse(fileContent);
 
+  // Elige una pregunta aleatoria
   const json = trivia[Math.floor(Math.random() * trivia.length)];
   const questionText = `
 ⷢ *Pregunta de Trivia:*
@@ -30,6 +32,7 @@ C) ${json.options[2]}
 • *Puntos:* +${poin} Exp
   `.trim();
 
+  // Guarda la trivia en curso
   conn.trivia[id] = [
     await conn.reply(m.chat, questionText, m), json,
     poin,
