@@ -1,27 +1,52 @@
 [
   {
     "question": "¿Cuál es la capital de Francia?",
-    "options": ["a) Londres", "b) París", "c) Roma"],
-    "answer": "b"
+    "options": ["Londres", "París", "Roma"],
+    "answer": "París"
   },
   {
-    "question": "¿Quién escribió 'Don Quijote de la Mancha'?",
-    "options": ["a) Gabriel García Márquez", "b) Miguel de Cervantes", "c) Mario Vargas Llosa"],
-    "answer": "b"
+    "question": "¿Cuál es la capital de España?",
+    "options": ["Madrid", "Barcelona", "Sevilla"],
+    "answer": "Madrid"
   },
   {
-    "question": "¿Cuál es el animal más grande del mundo?",
-    "options": ["a) Elefante", "b) Ballena azul", "c) Jirafa"],
-    "answer": "b"
+    "question": "¿Quién pintó la Mona Lisa?",
+    "options": ["Pablo Picasso", "Leonardo da Vinci", "Vincent van Gogh"],
+    "answer": "Leonardo da Vinci"
   },
   {
-    "question": "¿Qué instrumento musical tiene teclas?",
-    "options": ["a) Guitarra", "b) Piano", "c) Batería"],
-    "answer": "b"
+    "question": "¿En qué año llegó el hombre a la luna?",
+    "options": ["1969", "1959", "1979"],
+    "answer": "1969"
   },
   {
-    "question": "¿En qué continente se encuentra Egipto?",
-    "options": ["a) Asia", "b) Europa", "c) África"],
-    "answer": "c"
+    "question": "¿Cuál es el continente más grande?",
+    "options": ["Asia", "África", "Europa"],
+    "answer": "Asia"
+  },
+  {
+    "question": "¿Qué elemento químico tiene el símbolo O?",
+    "options": ["Oxígeno", "Osmio", "Ouro"],
+    "answer": "Oxígeno"
+  },
+  {
+    "question": "¿Cuál es el océano más grande?",
+    "options": ["Atlántico", "Índico", "Pacífico"],
+    "answer": "Pacífico"
+  },
+  {
+    "question": "¿Quién escribió 'Cien años de soledad'?",
+    "options": ["Gabriel García Márquez", "Mario Vargas Llosa", "Julio Cortázar"],
+    "answer": "Gabriel García Márquez"
+  },
+  {
+    "question": "¿Cuántos planetas tiene el sistema solar?",
+    "options": ["8", "9", "7"],
+    "answer": "8"
+  },
+  {
+    "question": "¿Qué es la fotosíntesis?",
+    "options": ["Un proceso de respiración celular", "Un proceso de producción de energía en plantas", "Un proceso de transpiración en animales"],
+    "answer": "Un proceso de producción de energía en plantas"
   }
 ]
