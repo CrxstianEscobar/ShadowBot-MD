@@ -17,11 +17,14 @@ handler.before = async function(m) {
   if (m.quoted.id === this.trivia[id][0].id) {
     const json = JSON.parse(JSON.stringify(this.trivia[id][1]));
 
-    // Comparar la respuesta con las opciones usando la letra (A, B, C)
-    const respuestaCorrecta = json.options[["A", "B", "C"].indexOf(m.text.toUpperCase())];
+    // Definir las respuestas posibles de acuerdo a las letras
+    const options = ["A", "B", "C"];
 
-    // Comprobar si la respuesta seleccionada (A, B, o C) es correcta
-    if (respuestaCorrecta && m.text.toUpperCase() === json.answer[0].toUpperCase()) {
+    // Determinar cuál opción corresponde a la letra (A, B, C) seleccionada
+    const respuestaSeleccionada = json.options[options.indexOf(m.text.toUpperCase())];
+
+    // Comprobar si la respuesta seleccionada (A, B o C) es correcta
+    if (respuestaSeleccionada && respuestaSeleccionada.toUpperCase() === json.answer.toUpperCase()) {
       m.reply(`*Respuesta correcta!*\n+${this.trivia[id][2]} exp`);
       clearTimeout(this.trivia[id][3]);
       delete this.trivia[id];
