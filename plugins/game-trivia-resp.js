@@ -20,7 +20,7 @@ handler.before = async function(m) {
   if (m.quoted.id === this.trivia[id][0].id) {
     const json = JSON.parse(JSON.stringify(this.trivia[id][1]));
 
-    // Comprobar si la respuesta es correcta
+    // Comprobar si la respuesta es correcta (letra A, B o C)
     const playerAnswer = m.text.toLowerCase().trim();
     if (playerAnswer === json.answer) {
       m.reply(`*Respuesta correcta!*\n+${this.trivia[id][2]} exp`);
