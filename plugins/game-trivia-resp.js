@@ -16,7 +16,7 @@ handler.before = async function(m) {
   // Verificar si el mensaje citado corresponde al trivia actual
   if (m.quoted.id === this.trivia[id][0].id) {
     const json = JSON.parse(JSON.stringify(this.trivia[id][1]));
-    
+
     // Comparar la respuesta con las opciones usando la letra (A, B, C)
     const respuestaCorrecta = json.options[["A", "B", "C"].indexOf(m.text.toUpperCase())];
 
@@ -25,9 +25,7 @@ handler.before = async function(m) {
       m.reply(`*Respuesta correcta!*\n+${this.trivia[id][2]} exp`);
       clearTimeout(this.trivia[id][3]);
       delete this.trivia[id];
-    } 
-    // Si la respuesta es incorrecta
-    else {
+    } else {
       m.reply('*Respuesta incorrecta!*');
     }
   }
