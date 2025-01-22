@@ -10,9 +10,7 @@ let api = await /axios.get(`https://deliriussapi-oficial.vercel.app/tools/countr
     let userNationalityData = api.data.result;
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
 
-let txt = `
-
-ˏˋ°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°ˊˎ
+let txt = `ˏˋ°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°ˊˎ
 
 ╭─⪩ 𓆩 𝐏𝐄𝐑𝐅𝐈𝐋 - 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𓆪
 │ ୨୧ *Nᴏᴍʙʀᴇ:* xd
@@ -25,8 +23,7 @@ let txt = `
 │ დ *Nᴠʟ:* 
 │ დ *Exᴘ:* 
 │ დ *Cᴏɪɴs:* 15
-╰─⪩
-`.trim()
+╰─⪩`.trim()
 conn.sendFile(m.chat, pp, 'perfil.jpg', `${txt.trim()}`, m, rcanal, { mentions: [who] })
 }
 handler.help = ['profile']
