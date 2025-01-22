@@ -12,14 +12,14 @@ let api = await /axios.get(`https://deliriussapi-oficial.vercel.app/tools/countr
 
 let txt = `°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°
 
-╭─⪩ 𓆩 𝐏𝐄𝐑𝐅𝐈𝐋 - 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𓆪
+
 │ ୨୧ *Nᴏᴍʙʀᴇ:* xd
 │ ୨୧ *Eᴅᴀᴅ*: 
 │ ୨୧ *Gᴇɴᴇʀᴏ:*
 │ ୨୧ *Pᴀɪs:*
 ╰─⪩
 ˏˋ°•*⁀➷ *. :  ｡ * ﾟ  * .: ｡
-╭─⪩ 𓆩 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𓆪
+
 │ დ *Nᴠʟ:* 
 │ დ *Exᴘ:* 
 │ დ *Cᴏɪɴs:* 15
@@ -42,10 +42,6 @@ let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kg
 let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender]
 let username = conn.getName(who)
 
-  let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
-  let userNationalityData = api.data.result;
-  let userNationality = userNationalityData?.name && userNationalityData?.emoji ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
-
 let noprem = `
 🚩 *PERFIL DE USUARIO*
 ${userNationality}
@@ -61,18 +57,19 @@ ${userNationality}
 
 💖 *Premium:* ${premium ? '✅': '❌'}
 `.trim()
-let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
+
+let prem = `╭─⪩ 𓆩 𝐏𝐄𝐑𝐅𝐈𝐋 - 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𓆪
 │⧼👤⧽ *ᴜsᴜᴀʀɪᴏ:* 「${username}」
 │⧼💌⧽ *ʀᴇɢɪsᴛʀᴀᴅᴏ:* ${registered ? '✅': '❌'}
 │⧼🔱⧽ *ʀᴏʟ:* Vip 👑
-╰───⪨
+╰─⪩
 
-╭────⪩ 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 ⪨
+╭─⪩ 𓆩 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒 𓆪
 │⧼🍪⧽ *ᴄᴏᴏᴋɪᴇs:* ${cookies}
 │⧼🔰⧽ *ɴɪᴠᴇʟ:* ${level}
 │⧼💫⧽ *ᴇxᴘᴇʀɪᴇɴᴄɪᴀ:* ${exp}
 │⧼⚜️⧽ *ʀᴀɴɢᴏ:* ${role}
-╰───⪨ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸* ⪩`.trim()
+╰─⪩ *𝓤𝓼𝓾𝓪𝓻𝓲𝓸 𝓓𝓮𝓼𝓽𝓪𝓬𝓪𝓭𝓸*`.trim()
 conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()}`, m, rcanal, { mentions: [who] })
 }
 handler.help = ['profile']
