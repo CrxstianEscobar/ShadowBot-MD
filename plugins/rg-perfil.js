@@ -1,39 +1,3 @@
-/*import PhoneNumber from 'awesome-phonenumber'
-import fetch from 'node-fetch'
-var handler = async (m, { conn }) => {
-let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
-let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kgzBh.jpg')
-let { level, exp, registered, regTime, age } = global.db.data.users[m.sender]
-let username = conn.getName(who)
-let api = await /axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
-
-    let userNationalityData = api.data.result;
-    let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
-
-let txt = °───･ ｡ﾟ☆: *.☽.* :☆ﾟ｡ ･───°
-
-
-│ ୨୧ *Nᴏᴍʙʀᴇ:* xd
-│ ୨୧ *Eᴅᴀᴅ*: 
-│ ୨୧ *Gᴇɴᴇʀᴏ:*
-│ ୨୧ *Pᴀɪs:*
-╰─⪩
-ˏˋ°•*⁀➷ *. :  ｡ * ﾟ  * .: ｡
-
-│ დ *Nᴠʟ:* 
-│ დ *Exᴘ:* 
-│ დ *Cᴏɪɴs:* 15
-╰──⪩`.trim()
-conn.sendFile(m.chat, pp, 'perfil.jpg', `${txt.trim()}`, m, rcanal, { mentions: [who] })
-}
-handler.help = ['profile']
-handler.register = true
-handler.tags = ['rg']
-handler.command = ['profile', 'perfil']
-export default handler;*/
-
-// 🫵🏻🫵🏻🫵🏻🫵🏻🫵🏻🫵🏻
-
 import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 var handler = async (m, { conn }) => {
@@ -75,7 +39,7 @@ conn.sendFile(m.chat, pp, 'perfil.jpg', `${premium ? prem.trim() : noprem.trim()
 }
 handler.help = ['profile']
 handler.register = true
-handler.group = true
+handler.group = false
 handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
 export default handler
