@@ -23,7 +23,7 @@ let txt = °───･ ｡ﾟ☆: *.☽.* :☆ﾟ｡ ･───°
 │ დ *Nᴠʟ:* 
 │ დ *Exᴘ:* 
 │ დ *Cᴏɪɴs:* 15
-╰─⪩`.trim()
+╰──⪩`.trim()
 conn.sendFile(m.chat, pp, 'perfil.jpg', `${txt.trim()}`, m, rcanal, { mentions: [who] })
 }
 handler.help = ['profile']
@@ -55,7 +55,7 @@ let noprem = `
 │ *🍨 Nivel:* ${level}
 │ *🌷 Xp:* ${exp}
 │ *☕ Rango:* ${role}
-╰─•
+╰─────────────── •
 
 > By Shadow Bot MD
 `.trim()
