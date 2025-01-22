@@ -48,15 +48,16 @@ let noprem = `
 👤 *Nombre:* ${username}
 🏷️ *Tag:* @${who.replace(/@.+/, '')}
 🎫 *Registrado:* ${registered ? '✅': '❌'}
+🧃 *Premium:* ${premium ? '✅': '❌'}
 
-ㅤㅤ  ㅤㅤ *\`RECURSOS\`*
+╭─• 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒
+│ *Coins:* 15
+│ *Nivel:* ${level}
+│ *Xp: ${exp}
+│ *Rango:* ${role}
+╰─•
 
-🍪 *Cookies:* ${cookies}
-💥 *Nivel:* ${level}
-💫 *Experiencia:* ${exp}
-✨️ *Rango:* ${role}
-
-💖 *Premium:* ${premium ? '✅': '❌'}
+> By Shadow Bot MD
 `.trim()
 let prem = `╭──⪩ 𝐔𝐒𝐔𝐀𝐑𝐈𝐎 𝐏𝐑𝐄𝐌𝐈𝐔𝐌 ⪨
 │⧼👤⧽ *ᴜsᴜᴀʀɪᴏ:* 「${username}」
