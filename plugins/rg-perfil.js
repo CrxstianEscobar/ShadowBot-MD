@@ -8,8 +8,8 @@ let username = conn.getName(who)
 let api = await /axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
 /*
     let userNationalityData = api.data.result;
-    let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';*/
-
+    let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
+*/
 let txt = `
 
 ˏˋ°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°ˊˎ
