@@ -1,4 +1,4 @@
-import PhoneNumber from 'awesome-phonenumber'
+/*import PhoneNumber from 'awesome-phonenumber'
 import fetch from 'node-fetch'
 var handler = async (m, { conn }) => {
 let who = m.mentionedJid && m.mentionedJid[0] ? m.mentionedJid[0] : m.fromMe ? conn.user.jid : m.sender
@@ -30,4 +30,4 @@ handler.help = ['profile']
 handler.register = true
 handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
-export default handler
+export default handler;*/
