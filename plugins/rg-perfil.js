@@ -51,10 +51,10 @@ let noprem = `
 🧃 *Premium:* ${premium ? '✅': '❌'}
 
 ╭─• 𝐑𝐄𝐂𝐔𝐑𝐒𝐎𝐒
-│ *Coins:* 15
-│ *Nivel:* ${level}
-│ *Xp: ${exp}
-│ *Rango:* ${role}
+│ *🪙 Coins:* 15
+│ *🍨 Nivel:* ${level}
+│ *🌷 Xp:* ${exp}
+│ *☕ Rango:* ${role}
 ╰─•
 
 > By Shadow Bot MD
