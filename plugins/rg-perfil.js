@@ -49,7 +49,8 @@ let noprem = `
 🏷️ *Tag:* @${who.replace(/@.+/, '')}
 🎫 *Registrado:* ${registered ? '✅': '❌'}
 
-👑 *RECURSOS*
+ㅤㅤ  ㅤㅤ *\`RECURSOS\`*
+
 🍪 *Cookies:* ${cookies}
 💥 *Nivel:* ${level}
 💫 *Experiencia:* ${exp}
