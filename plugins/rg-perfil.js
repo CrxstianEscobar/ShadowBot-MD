@@ -35,7 +35,7 @@ handler.tags = ['rg']
 handler.command = ['profile', 'perfil']
 export default handler
 
-/*
+
 import { canLevelUp, xpRange } from '../lib/levelling.js'
 import { createHash } from 'crypto'
 import PhoneNumber from 'awesome-phonenumber'
@@ -90,4 +90,4 @@ function formatHour(n, locale = 'en-US') {
     second: 'numeric',
     hour12: true
   })
-}*/
+}
