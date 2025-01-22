@@ -43,7 +43,7 @@ let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } 
 let username = conn.getName(who)
 let noprem = `
 ˏˋ°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°ˊˎ
-*\`PERFIL DEL USUARIO\`*
+ㅤㅤㅤ *\`PERFIL DEL USUARIO\`*
 ☁️ *Nombre:* ${username}
 💥 *Tag:* @${who.replace(/@.+/, '')}
 🌀 *Registrado:* ${registered ? '✅': '❌'}
