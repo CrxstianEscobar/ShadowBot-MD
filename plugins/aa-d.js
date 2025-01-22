@@ -1,50 +1,89 @@
-import {sticker} from '../lib/sticker.js';
-import uploadFile from '../lib/uploadFile.js';
-import uploadImage from '../lib/uploadImage.js';
-import {webp2png} from '../lib/webp2mp4.js';
+/* 
 
-const handler = async (m, {conn, args, usedPrefix, command}) => {
-  if (usedPrefix == 'a' || usedPrefix == 'A') return;
-  let stiker = false;
-  const user = db.data.users[m.sender];
-  try {
-    const q = m.quoted ? m.quoted : m;
-    const mime = (q.msg || q).mimetype || q.mediaType || '';
-    if (/webp|image|video/g.test(mime)) {
-      const img = await q.download?.();
-      if (!img) throw `*[❗𝐈𝐍𝐅𝐎❗] 𝚁𝙴𝚂𝙿𝙾𝙽𝙳𝙴 𝙰 𝚄𝙽 𝚅𝙸𝙳𝙴𝙾, 𝙸𝙼𝙰𝙶𝙴𝙽 𝙾 𝙸𝙽𝚂𝙴𝚁𝚃𝙴 𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 𝙳𝙴 𝚄𝙽𝙰 𝙸𝙼𝙰𝙶𝙴𝙽 𝚃𝙴𝚁𝙼𝙸𝙽𝙰𝙲𝙸𝙾́𝙽 .𝚓𝚙𝚐 𝙴𝙻 𝙲𝚄𝙰𝙻 𝚂𝙴𝚁𝙰 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙸𝙳𝙾 𝙴𝙽 𝚂𝚃𝙸𝙲𝙺𝙴𝚁, 𝙳𝙴𝙱𝙴 𝚁𝙴𝚂𝙿𝙾𝙽𝙳𝙴𝚁 𝙾 𝚄𝚂𝙰𝚁 𝙴𝙻 𝙲𝙾𝙼𝙰𝙽𝙳𝙾 ${usedPrefix + command}*`;
-      let out;
-      try {
-        stiker = await sticker(img, false, global.packname, global.author);
-      } catch (e) {
-        console.error(e);
-      } finally {
-        if (!stiker) {
-          if (/webp/g.test(mime)) out = await webp2png(img);
-          else if (/image/g.test(mime)) out = await uploadImage(img);
-          else if (/video/g.test(mime)) out = await uploadFile(img);
-          if (typeof out !== 'string') out = await uploadImage(img);
-          stiker = await sticker(false, out, global.packname, global.author);
-        }
-      }
-    } else if (args[0]) {
-      if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packname, global.author);
-      else return m.reply('*[❗𝐈𝐍𝐅𝐎❗] 𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 / 𝚄𝚁𝙻 / 𝙻𝙸𝙽𝙺 𝙽𝙾 𝙴𝚂 𝚅𝙰𝙻𝙸𝙳𝙰, 𝙻𝙰 𝚃𝙴𝚁𝙼𝙸𝙽𝙰𝙲𝙸𝙾𝙽 𝙳𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 / 𝚄𝚁𝙻 / 𝙻𝙸𝙽𝙺 𝙳𝙴𝙱𝙴 𝚂𝙴𝚁 .𝚓𝚙𝚐, 𝙴𝙹𝙴𝙼𝙿𝙻𝙾: ${usedPrefix}s https://telegra.ph/file/0dc687c61410765e98de2.jpg*');
-    }
-  } catch (e) {
-    console.error(e);
-    if (!stiker) stiker = e;
-  } finally {
-    if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '', m);
-    else throw '*[❗𝐈𝐍𝐅𝐎❗] 𝙾𝙲𝚄𝚁𝚁𝙸𝙾 𝚄𝙽 𝙴𝚁𝚁𝙾𝚁, 𝚅𝚄𝙴𝙻𝚅𝙰 𝙰 𝙸𝙽𝚃𝙴𝙽𝚃𝙰𝚁𝙻𝙾. 𝚁𝙴𝚂𝙿𝙾𝙽𝙳𝙴 𝙰 𝚄𝙽 𝚅𝙸𝙳𝙴𝙾, 𝙸𝙼𝙰𝙶𝙴𝙽 𝙾 𝙸𝙽𝚂𝙴𝚁𝚃𝙴 𝙴𝙻 𝙴𝙽𝙻𝙰𝙲𝙴 𝙳𝙴 𝚄𝙽𝙰 𝙸𝙼𝙰𝙶𝙴𝙽 𝚃𝙴𝚁𝙼𝙸𝙽𝙰𝙲𝙸𝙾́𝙽 .𝚓𝚙𝚐 𝙴𝙻 𝙲𝚄𝙰𝙻 𝚂𝙴𝚁𝙰 𝙲𝙾𝙽𝚅𝙴𝚁𝚃𝙸𝙳𝙾 𝙴𝙽 𝚂𝚃𝙸𝙲𝙺𝙴𝚁*';
-  }
-};
-handler.help = ['sfull'];
-handler.tags = ['sticker2'];
-handler.command = /^s2(tic?ker2)?(gif)?(wm)?$/i;
+*❀ By JTxs*
 
-export default handler;
+[ Canal Principal ] :
+https://whatsapp.com/channel/0029VaeQcFXEFeXtNMHk0D0n
 
-const isUrl = (text) => {
-  return text.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)(jpe?g|gif|png)/, 'gi'));
-};
+[ Canal Rikka Takanashi Bot ] :
+https://whatsapp.com/channel/0029VaksDf4I1rcsIO6Rip2X
+
+[ Canal StarlightsTeam] :
+https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
+
+[ HasumiBot FreeCodes ] :
+https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
+*/
+
+// *[ ❀ SOUNDCLOUD SEARCH  ]*
+
+
+import fetch from 'node-fetch'
+
+let handler = async (m, { conn, text, usedPrefix }) => {
+if (!text) return conn.reply(m.chat, `❀ Ingresa el texto de la cancion que quieras buscar en soundcloud`, m)
+
+let result = await soundcloudSearch(text)
+let title = result.name
+let HS = 'Responde a este mensaje con el numero de la cancion que quieres\n\n'
+result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
+})
+HS += `\n\n*Ejemplo de uso: *responder al mensaje* 1`   
+let { key } = await conn.reply(m.chat, HS, m)
+conn.SoundCloudSearch[m.sender] = { result, key, title }
+}
+
+handler.before = async (m, { conn }) => {
+conn.SoundCloudSearch = conn.SoundCloudSearch ? conn.SoundCloudSearch : {}
+if (m.isBaileys || !(m.sender in conn.SoundCloudSearch)) return
+
+let { result, key, title } = conn.SoundCloudSearch[m.sender]
+if (!m.quoted || m.quoted.id !== key.id || !m.text) return
+let c = m.text.trim()
+let n = Number(c)
+if (n >= 1 && n <= result.length) {
+let s = result[n - 1]
+
+try {
+let res = await soundcloudDL(s.link)
+let thumbnail = s.imagen
+
+let aud = { audio: { url: res.download }, mimetype: 'audio/mp4', fileName: `${res.title}.mp3`, contextInfo: { externalAdReply: { showAdAttribution: true, mediaType: 2, mediaUrl: null, title: res.title, sourceUrl: null, thumbnail: await (await conn.getFile(thumbnail)).data }}}
+
+await conn.sendMessage(m.chat, aud, { quoted: m })
+conn.sendMessage(m.chat, { delete: key })
+delete conn.SoundCloudSearch[m.sender]
+} catch (error) {
+console.error(error)
+await conn.reply(m.chat, 'Error al enviar la cancion', m)
+}} else {
+await conn.reply(m.chat, "Responde con uno de los numeros de la cancion que quieres", m)
+}}
+
+handler.command = ['soundcloudsearch', 'soundsearch']
+
+export default handler
+
+async function soundcloudDL(url) {
+try {
+let ApiDL = await fetch(`https://api.siputzx.my.id/api/d/soundcloud?url=${encodeURIComponent(url)}`)
+let json = await ApiDL.json() 
+
+return { download: json.data.url, title: json.data.title, imagen: json.data.thumbnail }
+} catch (error) {
+console.error('Api DL error : ', error)
+}}
+
+async function soundcloudSearch(q) {
+try {
+let apiS = await fetch(`https://api.siputzx.my.id/api/s/soundcloud?query=${encodeURIComponent(q)}`)
+let jsonS = await apiS.json()  
+
+return jsonS.data.map(item => ({
+name: item.permalink,
+link: item.permalink_url,
+imagen: item.artwork_url,
+}))
+} catch (error) {
+console.error('Api Search error : ', error)
+}}
