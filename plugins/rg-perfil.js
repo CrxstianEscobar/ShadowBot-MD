@@ -10,7 +10,7 @@ let api = await /axios.get(`https://deliriussapi-oficial.vercel.app/tools/countr
     let userNationalityData = api.data.result;
     let userNationality = userNationalityData ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
 
-let txt = `°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°
+let txt = `°─── ･ ｡ﾟ☆: *.☽.* :☆ﾟ｡ ･ ───°
 
 
 │ ୨୧ *Nᴏᴍʙʀᴇ:* xd
@@ -42,7 +42,7 @@ let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kg
 let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender]
 let username = conn.getName(who)
 let noprem = `
-ˏˋ°─── ･ ｡ﾟ☆: *.☽ .* :☆ﾟ. ───°ˊˎ
+ˏˋ°─── ･ ｡ﾟ☆: *.☽.* :☆ﾟ｡ ･ ───°ˊˎ
 ㅤㅤㅤ *\`PERFIL DEL USUARIO\`*
 ☁️ *Nombre:* ${username}
 💥 *Tag:* @${who.replace(/@.+/, '')}
