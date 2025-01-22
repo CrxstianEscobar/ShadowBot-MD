@@ -42,13 +42,9 @@ let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kg
 let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender]
 let username = conn.getName(who)
 
-try {
   let api = await axios.get(`https://deliriussapi-oficial.vercel.app/tools/country?text=${PhoneNumber('+' + who.replace('@s.whatsapp.net', '')).getNumber('international')}`);
   let userNationalityData = api.data.result;
   let userNationality = userNationalityData?.name && userNationalityData?.emoji ? `${userNationalityData.name} ${userNationalityData.emoji}` : 'Desconocido';
-} catch (error) {
-  console.error(error);
-}
 
 let noprem = `
 🚩 *PERFIL DE USUARIO*
