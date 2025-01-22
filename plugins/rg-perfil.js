@@ -52,6 +52,7 @@ try {
 
 let noprem = `
 🚩 *PERFIL DE USUARIO*
+${userNationality}
 ☁️ *Nombre:* ${username}
 💥 *Tag:* @${who.replace(/@.+/, '')}
 🌀 *Registrado:* ${registered ? '✅': '❌'}
