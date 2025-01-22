@@ -42,7 +42,7 @@ let pp = await conn.profilePictureUrl(who, 'image').catch(_ => 'https://qu.ax/kg
 let { premium, level, cookies, exp, lastclaim, registered, regTime, age, role } = global.db.data.users[m.sender]
 let username = conn.getName(who)
 let noprem = `
-🚩 *PERFIL DE USUARIO*
+\`*PERFIL DE USUARIO*\`
 ☁️ *Nombre:* ${username}
 💥 *Tag:* @${who.replace(/@.+/, '')}
 🌀 *Registrado:* ${registered ? '✅': '❌'}
