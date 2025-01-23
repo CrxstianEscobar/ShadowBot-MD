@@ -89,8 +89,8 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
         contextInfo: {
             externalAdReply: {
                 title: '⊱『✅𝆺𝅥 𝗥𝗘𝗚𝗜𝗦𝗧𝗥𝗔𝗗𝗢(𝗔) 𝆹𝅥✅』⊰',
-                body: 'Gracias por registrarte',
-                thumbnailUrl: 'https://files.catbox.moe/lger9i.jpg',
+                body: 'By Heavenly Team ☕',
+                thumbnailUrl: 'https://i.ibb.co/QjgtQnR/file.jpg',
                 sourceUrl: 'https://whatsapp.com',
                 mediaType: 1,
                 showAdAttribution: true,
