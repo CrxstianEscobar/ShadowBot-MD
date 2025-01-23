@@ -97,7 +97,7 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
                 renderLargerThumbnail: true
             }
         }
-    }, { quoted: m });
+    }, { quoted: m }, rcanal);
 }
 
 handler.help = ['reg']
