@@ -52,9 +52,9 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
     if (!Reg.test(text)) return m.reply(`Eʟ ғᴏʀᴍᴀᴛᴏ ɪɴɢʀᴇsᴀᴅᴏ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴏ\n\nUsᴏ ᴅᴇʟ ᴄᴏᴍᴀɴᴅᴏ: ${usedPrefix + command} 𝗻𝗼𝗺𝗯𝗿𝗲.𝗲𝗱𝗮𝗱\nEᴊᴇᴍᴘʟᴏ : *${usedPrefix + command} ${name2}.14*`)
 
     let [_, name, splitter, age] = text.match(Reg)
-    if (!name) return m.reply('💛 Eʟ ɴᴏʍ𝗯𝗿ᴇ ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪᴏ.')
-    if (!age) return m.reply('💛 Lᴀ ᴇᴅᴀᴅ ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪ́ᴀ.')
-    if (name.length >= 100) return m.reply('💛 El nombre es demasiado largo.')
+    if (!name) return m.reply('🌷 Eʟ ɴᴏʍ𝗯𝗿ᴇ ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪᴏ.')
+    if (!age) return m.reply('🌷 Lᴀ ᴇᴅᴀᴅ ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪ́ᴀ.')
+    if (name.length >= 100) return m.reply('🌷 El nombre es demasiado largo.')
 
     age = parseInt(age)
     if (age > 100) return m.reply('*ʟᴀ ᴇᴅᴀᴅ ɪɴɢʀᴇsᴀᴅᴀ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴀ*')
@@ -71,16 +71,16 @@ let handler = async function (m, { conn, text, usedPrefix, command }) {
 
     let sn = createHash('md5').update(m.sender).digest('hex')
     let regbot = `┏━━━━━━━━━━━━━━━━━━⬣
-┃⋄ *🎩 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎 - 𝐂𝐑𝐎𝐖𝐁𝐎𝐓*
+┃⋄ *🎩 REGISTRO - SHADOW*
 ┗━━━━━━━━━━━━━━━━━━⬣\n`
     regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
-    regbot += `「💛」𝐍𝐨𝐦𝐛𝐫𝐞: ${name}\n`
-    regbot += `「💛」𝐄𝐝𝐚𝐝: ${age} años\n`
+    regbot += `「👤」𝐍𝐨𝐦𝐛𝐫𝐞: ${name}\n`
+    regbot += `「🍦」𝐄𝐝𝐚𝐝: ${age} años\n`
     regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
     regbot += `「💝」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:\n> `
     regbot += `• 15 Estrellas 🌟\n> `
-    regbot += `• 5 CrowCoins 🪙\n> `
-    regbot += `• 245 Experiencia 💸\n> `
+    regbot += `• 5 Coins 🪙\n> `
+    regbot += `• 245 Exp 💸\n> `
     regbot += `• 12 Tokens 💰\n`
 
     await m.react('📪')
