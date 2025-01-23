@@ -16,7 +16,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 
         const videoURL = tiktokData.data.play;
         const videoURLWatermark = tiktokData.data.wmplay;
-        const infonya_gan = `👍🏻🌷`;
+        const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*`;
 
         if (videoURL || videoURLWatermark) {
             await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOADER - TIKTOK`" + `\n\n${infonya_gan}`, m);
