@@ -38,71 +38,72 @@ export default handler*/
 
 
 
-import { createHash } from 'crypto';
-import moment from 'moment-timezone';
+import { createHash } from 'crypto'
+import fetch from 'node-fetch'
 
-let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i;
-
+let Reg = /\|?(.*)([.|] *?)([0-9]*)$/i
 let handler = async function (m, { conn, text, usedPrefix, command }) {
-    let user = global.db.data.users[m.sender];
-    let name2 = conn.getName(m.sender);
+    let user = global.db.data.users[m.sender]
+    let name2 = conn.getName(m.sender)
 
     // Verificar si el usuario ya está registrado
     if (user.registered === true) {
-        return m.reply(`💛 Ya estás registrado.\n\nSi deseas registrarte nuevamente, usa el siguiente comando para eliminar tu registro actual:\n*${usedPrefix}unreg <Número de serie>*`);
+        return m.reply(`💛 𝗬𝗮 𝘁𝗲 𝗲𝗻𝗰𝘂𝗲𝗻𝘁𝗿𝗮𝘀 𝗿𝗲𝗴𝗶𝘀𝘁𝗿𝗮𝗱𝗼.\n\n¿𝗤𝘂𝗶𝗲𝗿𝗲 𝘃𝗼𝗹𝘃𝗲𝗿 𝗮 𝗿𝗲𝗴𝗶𝘀𝘁𝗿𝗮𝗿𝘀𝗲?\n\n𝗨𝘀𝗲 𝗲𝘀𝘁𝗲 𝗰𝗼𝗺𝗮𝗻𝗱𝗼 𝗽𝗮𝗿𝗮 𝗲𝗹𝗶𝗺𝗶𝗻𝗮𝗿 𝘀𝘂 𝗿𝗲𝗴𝗶𝘀𝘁𝗿𝗼.\n*${usedPrefix}unreg*`)
     }
 
-    // Validar formato del comando
-    if (!Reg.test(text)) {
-        return m.reply(`❌ Formato incorrecto.\n\nUso del comando: *${usedPrefix + command} nombre.edad*\nEjemplo: *${usedPrefix + command} ${name2}.21*`);
-    }
+    // Validar el formato del comando
+    if (!Reg.test(text)) return m.reply(`Eʟ ғᴏʀᴍᴀᴛᴏ ɪɴɢʀᴇsᴀᴅᴏ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴏ\n\nUsᴏ ᴅᴇʟ ᴄᴏᴍᴀɴᴅᴏ: ${usedPrefix + command} 𝗻𝗼𝗺𝗯𝗿𝗲.𝗲𝗱𝗮𝗱\nEᴊᴇᴍᴘʟᴏ : *${usedPrefix + command} ${name2}.14*`)
 
-    let [_, name, splitter, age] = text.match(Reg);
+    let [_, name, splitter, age] = text.match(Reg)
+    if (!name) return m.reply('💛 Eʟ ɴᴏʍ𝗯𝗿𝗲 ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪᴏ.')
+    if (!age) return m.reply('💛 Lᴀ ᴇᴅᴀᴅ ɴᴏ ᴘᴜᴇᴅᴇ ᴇsᴛᴀʀ ᴠᴀᴄɪ́ᴀ.')
+    if (name.length >= 100) return m.reply('💛 El nombre es demasiado largo.')
 
-    // Validaciones de entrada
-    if (!name) return m.reply('💛 El nombre no puede estar vacío.');
-    if (!age) return m.reply('💛 La edad no puede estar vacía.');
-    if (name.length >= 100) return m.reply('💛 El nombre es demasiado largo.');
-    age = parseInt(age);
-    if (age > 100) return m.reply('👴🏻 ¡Wow! El abuelo quiere jugar al bot.');
-    if (age < 5) return m.reply('🚼 ¡El bebé quiere jugar!');
+    age = parseInt(age)
+    if (age > 100) return m.reply('*ʟᴀ ᴇᴅᴀᴅ ɪɴɢʀᴇsᴀᴅᴀ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴀ*')
+    if (age < 5) return m.reply('*ʟᴀ ᴇᴅᴀᴅ ɪɴɢʀᴇsᴀᴅᴀ ᴇs ɪɴᴄᴏʀʀᴇᴄᴛᴀ*')
 
-    // Guardar datos del usuario
-    user.name = name.trim();
-    user.age = age;
-    user.regTime = +new Date();
-    user.registered = true;
-    user.money = (user.money || 0) + 600;
-    user.estrellas = (user.estrellas || 0) + 15;
-    user.exp = (user.exp || 0) + 245;
-    user.joincount = (user.joincount || 0) + 5;
+    // Actualizar la información del usuario
+    user.name = name.trim()
+    user.age = age
+    user.regTime = +new Date
+    user.registered = true
+    global.db.data.users[m.sender].money += 600
+    global.db.data.users[m.sender].estrellas += 10
+    global.db.data.users[m.sender].exp += 245
+    global.db.data.users[m.sender].joincount += 5    
 
-    // Generar número de serie
-    let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6);
+    let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6)
+
+    // Obtener la imagen
+    let img = await (await fetch('https://i.ibb.co/QjgtQnR/file.jpg')).buffer()
 
     // Mensaje de registro
     let regbot = `┏━━━━━━━━━━━━━━━━━━⬣
-┃⋄ *🎩 REGISTRO - CROWBOT*
-┗━━━━━━━━━━━━━━━━━━⬣
-•━━━━━━━━━━━━━━━• 
-💛 *Nombre:* ${name}
-💛 *Edad:* ${age} años
-•━━━━━━━━━━━━━━━•
-🎁 *Recompensas:*
-  ◦ 15 Estrellas 🌟
-  ◦ 600 CrowCoins 🪙
-  ◦ 245 Experiencia 💸
-  ◦ 12 Tokens 💰
-•━━━━━━━━━━━━━━━•
-🍭 Escribe *${usedPrefix}profile* para ver tu perfil.`;
+┃⋄ *🎩 𝐑𝐄𝐆𝐈𝐒𝐓𝐑𝐎 - SB*
+┗━━━━━━━━━━━━━━━━━━⬣\n`
+    regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
+    regbot += `「💛」𝐍𝐨𝐦𝐛𝐫𝐞: ${name}\n`
+    regbot += `「💛」𝐄𝐝𝐚𝐝: ${age} años\n`
+    regbot += `•┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄•\n`
+    regbot += `「💝」𝐑𝐞𝐜𝐨𝐦𝐩𝐞𝐧𝐬𝐚𝐬:\n> `
+    regbot += `• 15 Estrellas 🌟\n> `
+    regbot += `• 5 CrowCoins 🪙\n> `
+    regbot += `• 245 Experiencia 💸\n> `
+    regbot += `• 12 Tokens 💰\n`
 
-    // Enviar mensaje de registro al usuario
-    await m.react('✅');
-    await conn.sendMessage(m.chat, { text: regbot }, { quoted: m });
-};
+    // Enviar mensaje y reaccionar
+    await conn.sendMessage(m.chat, {
+        text: regbot,
+        image: img,
+        caption: '🎉 ¡Registro exitoso!'
+    }, { quoted: m })
 
-handler.help = ['reg'];
-handler.tags = ['rg'];
-handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar'];
+    await m.react('📪')
+}
 
-export default handler;
+handler.help = ['reg']
+handler.tags = ['rg']
+handler.command = ['verify', 'verificar', 'reg', 'register', 'registrar']
+
+export default handler
