@@ -1,70 +1,95 @@
-import fetch from 'node-fetch';
-import axios from 'axios';
+import { igdl } from 'ruhend-scraper';
 
-let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-    if (!text) return conn.reply(m.chat, `🧑‍💻 Ingrese el enlace de YouTube de la canción que desea descargar.`, m, { quoted: m });
+const handler = async (m, { text, conn, args }) => {
+  // Validar que se envíe un enlace
+  if (!args[0]) {
+    return conn.reply(
+      m.chat,
+      `🔔 Envíame el enlace del video de Facebook para descargarlo.`,
+      m
+    );
+  }
 
-    await m.react('🕒');
-    try {
-        // Formar la URL con el enlace de YouTube
-        const url = `https://api.zenkey.my.id/api/download/ytmp3?apikey=zenkey&url=${encodeURIComponent(text)}`;
+  let res;
+  try {
+    await m.react('🚀'); // Reacción de espera
+    res = await igdl(args[0]); // Descargar datos del enlace
+  } catch (e) {
+    // Manejo de error en caso de enlace no válido
+    await m.react('❌');
+    return conn.reply(
+      m.chat,
+      `❗ El enlace no es válido o no pertenece a Facebook. Por favor verifica.`,
+      m
+    );
+  }
 
-        // Realizar la solicitud a la API
-        let response = await fetch(url);
-        let json = await response.json();
+  // Verificar si se obtuvieron datos
+  let result = res.data;
+  if (!result || result.length === 0) {
+    await m.react('❌');
+    return conn.reply(
+      m.chat,
+      `❗ No se encontraron videos en el enlace proporcionado.`,
+      m
+    );
+  }
 
-        if (json.status !== 'success') throw new Error('No se pudo obtener la información de la canción');
+  // Buscar video con la mejor resolución disponible
+  let data;
+  try {
+    data =
+      result.find((i) => i.resolution === '720p (HD)') ||
+      result.find((i) => i.resolution === '360p (SD)');
+  } catch (e) {
+    await m.react('❌');
+    return conn.reply(
+      m.chat,
+      `❗ No se pudieron procesar los datos del video.`,
+      m
+    );
+  }
 
-        let { link: dl_url, title, thumbnail } = json.result;
+  if (!data) {
+    await m.react('❌');
+    return conn.reply(
+      m.chat,
+      `❗ No se encontró un video descargable en el enlace.`,
+      m
+    );
+  }
 
-        // Descargar el archivo de audio
-        let audio = await getBuffer(dl_url);
+  // Enviar el video al chat
+  let video = data.url;
+  try {
+    await conn.sendMessage(
+      m.chat,
+      {
+        video: { url: video },
+        caption: `🚀 tu video de Facebook.
 
-        // Preparar el mensaje de texto
-        let txt = `*\`- Y O U T U B E - M U S I C -\`*\n\n`;
-        txt += `        ✩  *Título* : ${title}\n`;
-        txt += `        ✩  *Url* : ${text}\n\n`;
-        txt += `> 🚩 *Descarga completada*`;
-
-        // Enviar la imagen en miniatura y el mensaje
-        await conn.sendFile(m.chat, thumbnail, 'thumbnail.jpg', txt, m, null, { quoted: m });
-
-        // Enviar el archivo de audio
-        await conn.sendMessage(m.chat, { audio: audio, fileName: `${title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m });
-
-        // Reactuar con un emoji de éxito
-        await m.react('✅');
-    } catch (error) {
-        console.error(error);
-        // Enviar el sticker de error
-        const stickerUrl = 'https://files.catbox.moe/yaup2f.webp';
-        await conn.sendMessage(m.chat, { sticker: { url: stickerUrl } }, { quoted: m });
-        await m.react('✖️');
-    }
+\n> ⏤͟͟͞͞𝐓𝐞𝐜𝐧𝐨-𝐁𝐨𝐭ꗄ➺`,
+        fileName: 'facebook_video.mp4',
+        mimetype: 'video/mp4',
+      },
+      { quoted: m }
+    );
+    await m.react('✅'); // Confirmar éxito
+  } catch (e) {
+    await m.react('❌');
+    return conn.reply(
+      m.chat,
+      `❗ Ocurrió un error al descargar o enviar el video.`,
+      m
+    );
+  }
 };
 
-handler.help = ['playx *<enlace de YouTube>*'];
-handler.tags = ['downloader'];
-handler.command = ['playx']; // Mantiene el mismo comando
+// Configuración del comando
+handler.help = ['facebook2', 'fb2'];
+handler.tags = ['descargas'];
+handler.command = ['facebook2', 'fb2']; // Comandos activadores
+handler.register = true; // Requiere registro
+handler.limit = true; // Usa límite de comandos
 
 export default handler;
-
-// Función auxiliar para obtener el buffer del archivo de audio
-const getBuffer = async (url, options) => {
-    try {
-        const res = await axios({
-            method: 'get',
-            url,
-            headers: {
-                'DNT': 1,
-                'Upgrade-Insecure-Request': 1,
-            },
-            ...options,
-            responseType: 'arraybuffer',
-        });
-        return res.data;
-    } catch (e) {
-        console.log(`Error : ${e}`);
-        throw new Error('No se pudo descargar el audio');
-    }
-};
