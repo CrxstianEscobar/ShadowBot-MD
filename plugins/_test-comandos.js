@@ -1,53 +1,56 @@
-import fetch from 'node-fetch';
-import yts from 'yt-search';
+// *[ ❀ PLAY ]*
+import fetch from "node-fetch";
+import yts from "yt-search";
 
-let handler = async (m, { conn, text, args }) => {
-  if (!text) {
-    return m.reply("❀ Ingresa un texto de lo que quieres buscar");
-  }
-
-  let ytres = await search(args.join(" "));
-  if (ytres.length === 0) {
-    return m.reply("❀ No se encontraron resultados");
-  }
-
-  let txt = ` ᚚᚚᩳᚚ͜ᩬᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚᩬᚚᩳᚚᚚ
-꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
-❥⏤͟͟͞͞Título:❥⊱ ${ytres[0].title}
-❥⏤͟͟͞͞Duración:❥⊱ ${ytres[0].timestamp}
-❥⏤͟͟͞͞Publicado:❥⊱ ${ytres[0].ago}
-❥⏤͟͟͞͞Canal:❥⊱ ${ytres[0].author.name || 'Desconocido'}
-❥⏤͟͟͞͞Url:❥⊱ https://youtu.be/${ytres[0].videoId}
-꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
-
-➥𝙀𝙨𝙥𝙚𝙧𝙚 𝙪𝙣 𝙢𝙤𝙢𝙚𝙣𝙩𝙤 𝙙𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 𝙨𝙪 𝙫𝙞́𝙙𝙚𝙤...`;
-
-  await conn.sendFile(m.chat, ytres[0].image, 'thumbnail.jpg', txt, m);
-
-  try {
-    let apiResponse = await fetch(`https://api.vreden.web.id/api/ytplaymp4?query=${ytres[0].url}&apikey=0a2cc90e`);
-    let json = await apiResponse.json();
-
-    if (json.result && json.result.download && json.result.download.url) {
-      let { title, url: mp4 } = json.result.download;
-
-      await conn.sendMessage(m.chat, { video: { url: mp4 }, caption: `*❀ ${botname}:*  ${text}`, mimetype: 'video/mp4', fileName: `${botname} - ${title}.mp4` }, { quoted: m });
-
-      await conn.sendMessage(m.chat, { react: { text: '✅', key: m.key } });
-    } else {
-      throw new Error('La API no devolvió los datos esperados.');
-    }
-  } catch (error) {
-    console.error(error);
-    m.reply("❀ Ocurrió un error al intentar descargar el video");
-  }
-};
-
-handler.command = ['play22']
-
-export default handler;
-
-async function search(query, options = {}) {
-  let searchResults = await yts.search({ query, hl: "es", gl: "ES", ...options });
-  return searchResults.videos;
+let handler = async (m, { conn, text }) => {
+if (!text) {
+return m.reply("❀ Ingresa el texto de lo que quieres buscar")
 }
+
+let ytres = await yts(text)
+let video = ytres.videos[0]
+
+if (!video) {
+return m.reply("❀ Video no encontrado")
+}
+
+let { title, thumbnail, timestamp, views, ago, url } = video
+
+let vistas = parseInt(views).toLocaleString("es-ES") + " vistas"
+
+let HS = ` ᚚᚚᩳᚚ͜ᩬᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚ͜ᚚᩬᚚᩳᚚᚚ
+꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
+❥⊰⏤͟͟͞͞Duración:⊱ ${timestamp}
+❥⊰⏤͟͟͞͞Vistas:⊱ ${vistas}
+❥⊰⏤͟͟͞͞Subido:⊱ ${ago}
+❥⊰⏤͟͟͞͞Enlace:⊱ ${url}
+꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦꒷꒦
+
+➥𝙀𝙨𝙥𝙚𝙧𝙚 𝙙𝙚𝙨𝙘𝙖𝙧𝙜𝙖𝙣𝙙𝙤 𝙨𝙪 𝙖𝙪𝙙𝙞𝙤...`
+
+let thumb = (await conn.getFile(thumbnail))?.data;
+
+let JT = {
+contextInfo: {
+externalAdReply: {
+title: title, body: "",
+mediaType: 1, previewType: 0,
+mediaUrl: url, sourceUrl: url,
+thumbnail: thumb, renderLargerThumbnail: true,
+}}}
+
+await conn.reply(m.chat, HS, m, JT)
+
+try {
+let api = await fetch(`https://api.vreden.web.id/api/ytplaymp3?query=${url}`);
+let json = await api.json()
+let { download } = json.result
+
+await conn.sendMessage(m.chat, { audio: { url: download.url }, caption: ``, mimetype: "audio/mpeg", }, { quoted: m })
+} catch (error) {
+console.error(error)    
+}}
+
+handler.command = ['play']
+
+export default handler
