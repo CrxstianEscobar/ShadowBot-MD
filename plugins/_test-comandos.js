@@ -63,7 +63,7 @@ const handler = async (m, { conn, text, participants }) => {
   }
 };
 
-handler.command = /^(n)$/i;
+handler.command = /^(n2)$/i;
 handler.group = true;
 handler.admin = true;
 
