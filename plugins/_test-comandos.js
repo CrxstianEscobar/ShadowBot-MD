@@ -43,14 +43,19 @@ import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 let handler = async (m, { conn, participants }) => {
   try {
-    const users = participants.map((u) => conn.decodeJid(u.id)); // Obtener los usuarios mencionados
+    const users = participants.map((u) => conn.decodeJid(u.id)); // Extraer los usuarios
+    const quoted = m.quoted ? await m.getQuotedObj() : m; // Obtener el mensaje citado o el actual
 
-    // Generar el mensaje con las menciones a todos
+    // Verificar si el mensaje citado tiene contenido
+    const messageContent = quoted.message[quoted.mtype] || quoted.text;
+    if (!messageContent) throw 'No hay contenido en el mensaje citado.';
+
+    // Generar un mensaje con menciones a todos
     const msg = generateWAMessageFromContent(
       m.chat,
       {
-        extendedTextMessage: {
-          text: m.text, // Usar el mismo texto del comando
+        [quoted.mtype]: {
+          ...messageContent,
           contextInfo: { mentionedJid: users }, // Agregar menciones
         },
       },
