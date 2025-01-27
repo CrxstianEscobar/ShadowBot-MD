@@ -2,18 +2,29 @@ import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
 const handler = async (m, { conn, text, participants }) => {
   try {
+    // Validar datos básicos
+    if (!participants || !m.chat) {
+      console.error('Faltan datos del grupo o participantes.');
+      return;
+    }
+
     // Obtener los IDs de los participantes
     const users = participants.map((u) => conn.decodeJid(u.id));
     const quoted = m.quoted || m; // Mensaje citado o mensaje original
     const mime = quoted.msg?.mimetype || '';
-    const isMedia = /image|video|sticker|audio/.test(mime); // Verificar si es un tipo de media
+    const isMedia = /image|video|sticker|audio/.test(mime);
 
-    // Texto que se enviará
+    // Texto a enviar
     const messageText = text || '*Por favor, utiliza el comando nuevamente.*';
 
     // Procesar según el tipo de mensaje citado
     if (isMedia) {
-      const media = await quoted.download?.(); // Descargar media
+      const media = await quoted.download?.();
+      if (!media) {
+        console.error('No se pudo descargar el contenido multimedia.');
+        return;
+      }
+
       const messageOptions = {
         mentions: users,
         quoted: m,
@@ -30,7 +41,7 @@ const handler = async (m, { conn, text, participants }) => {
       }
     } else {
       // Si no es un mensaje de media, enviar un mensaje de texto
-      const hiddenText = '\u200E'.repeat(850); // Invisible padding
+      const hiddenText = '\u200E'.repeat(850); // Relleno invisible
       const finalText = `${hiddenText}\n${messageText}\n`;
 
       await conn.sendMessage(m.chat, {
@@ -39,7 +50,7 @@ const handler = async (m, { conn, text, participants }) => {
           contextInfo: {
             mentionedJid: users,
             externalAdReply: {
-              thumbnail: null, // Agrega tu imagen si es necesario
+              thumbnail: null, // Imagen opcional
               sourceUrl: 'https://www.tiktok.com/bk_crxss',
             },
           },
@@ -48,10 +59,11 @@ const handler = async (m, { conn, text, participants }) => {
     }
   } catch (err) {
     console.error('Error en el comando hidetag:', err);
+    await conn.sendMessage(m.chat, { text: 'Hubo un error al procesar tu solicitud. Intenta nuevamente.' }, { quoted: m });
   }
 };
 
-handler.command = /^(n2)$/i;
+handler.command = /^(n)$/i;
 handler.group = true;
 handler.admin = true;
 
