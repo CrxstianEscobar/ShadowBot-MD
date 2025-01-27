@@ -40,60 +40,20 @@ export default handler;*/
 
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
-let handler = async (m, { conn, text, participants }) => {
+let handler = async (m, { conn, participants }) => {
   try {
-    let users = participants.map(u => conn.decodeJid(u.id));
-    let quoted = m.quoted ? m.quoted : m;
-    let mime = (quoted.msg || quoted).mimetype || '';
-    let isMedia = /image|video|sticker|audio/.test(mime);
-    let htextos = `${text ? text : '*Por favor pon el comando de nuevo*'}`;
+    const users = participants.map((u) => conn.decodeJid(u.id)); // Extraer los usuarios
+    const quoted = m.quoted ? m.quoted : m; // Obtener el mensaje citado o actual
 
-    if (isMedia) {
-      let media = await quoted.download?.();
-      if (/image/.test(mime)) {
-        await conn.sendMessage(
-          m.chat,
-          { image: media, mentions: users, caption: htextos },
-          { quoted: m }
-        );
-      } else if (/video/.test(mime)) {
-        await conn.sendMessage(
-          m.chat,
-          { video: media, mentions: users, mimetype: 'video/mp4', caption: htextos },
-          { quoted: m }
-        );
-      } else if (/audio/.test(mime)) {
-        await conn.sendMessage(
-          m.chat,
-          { audio: media, mentions: users, mimetype: 'audio/mpeg', fileName: 'Notify.mp3' },
-          { quoted: m }
-        );
-      } else if (/sticker/.test(mime)) {
-        await conn.sendMessage(
-          m.chat,
-          { sticker: media, mentions: users },
-          { quoted: m }
-        );
-      }
-    } else {
-      const msg = conn.cMod(
-        m.chat,
-        generateWAMessageFromContent(
-          m.chat,
-          {
-            extendedTextMessage: {
-              text: htextos,
-              contextInfo: { mentionedJid: users },
-            },
-          },
-          { userJid: conn.user.id }
-        ),
-        text || quoted.text,
-        conn.user.jid,
-        { mentions: users }
-      );
-      await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
-    }
+    // Generar un mensaje con menciones a todos
+    const msg = generateWAMessageFromContent(
+      m.chat,
+      { [quoted.mtype]: { ...quoted.message[quoted.mtype] } },
+      { quoted: m, userJid: conn.user.id, mentions: users }
+    );
+
+    // Enviar el mensaje
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
   } catch (e) {
     console.error(e);
   }
