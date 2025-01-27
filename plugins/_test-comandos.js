@@ -43,13 +43,22 @@ import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 let handler = async (m, { conn, participants }) => {
   try {
     const users = participants.map((u) => conn.decodeJid(u.id)); // Extraer los usuarios
-    const quoted = m.quoted ? m.quoted : m; // Obtener el mensaje citado o actual
+    const quoted = m.quoted ? await m.getQuotedObj() : m; // Obtener el mensaje citado o el actual
+
+    // Verificar si el mensaje citado tiene contenido
+    const messageContent = quoted.message[quoted.mtype] || quoted.text;
+    if (!messageContent) throw 'No hay contenido en el mensaje citado.';
 
     // Generar un mensaje con menciones a todos
     const msg = generateWAMessageFromContent(
       m.chat,
-      { [quoted.mtype]: { ...quoted.message[quoted.mtype] } },
-      { quoted: m, userJid: conn.user.id, mentions: users }
+      {
+        [quoted.mtype]: {
+          ...messageContent,
+          contextInfo: { mentionedJid: users }, // Agregar menciones
+        },
+      },
+      { quoted: m }
     );
 
     // Enviar el mensaje
@@ -59,9 +68,9 @@ let handler = async (m, { conn, participants }) => {
   }
 };
 
-handler.help = ['n2 <mensaje>'];
+handler.help = ['n <mensaje>'];
 handler.tags = ['grupo'];
-handler.command = ['hidetag2', 'n2', 'notify2', 'notificar2'];
+handler.command = ['hidetag', 'n', 'notify', 'notificar'];
 handler.group = true;
 handler.admin = true;
 
