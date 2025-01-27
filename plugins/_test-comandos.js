@@ -36,8 +36,9 @@ const handler = async (m, {conn, text, participants, isOwner, isAdmin}) => {
 handler.command = /^(hidetag2|notificar2|notify2|n2)$/i;
 handler.group = true;
 handler.admin = true;
-export default handler;*/
+export default handler;
 
+// 💙💙💙💙
 
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
@@ -60,6 +61,45 @@ let handler = async (m, { conn, participants }) => {
         },
       },
       { quoted: m }
+    );
+
+    // Enviar el mensaje
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+handler.help = ['n2 <mensaje>'];
+handler.tags = ['grupo'];
+handler.command = ['hidetag2', 'n2', 'notify2', 'notificar2'];
+handler.group = true;
+handler.admin = true;
+
+export default handler;*/
+
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
+
+let handler = async (m, { conn, participants, args }) => {
+  try {
+    const users = participants.map((u) => conn.decodeJid(u.id)); // Extraer los usuarios
+    const quoted = m.quoted ? await m.getQuotedObj() : m; // Obtener mensaje citado o actual
+    const content = args.length > 0 
+      ? args.join(' ') // Si se proporciona texto junto al comando, usarlo
+      : quoted.text || quoted.message[quoted.mtype]; // Usar texto del mensaje citado o actual
+
+    if (!content) throw 'No hay contenido para enviar.'; // Si no hay texto, lanzar error
+
+    // Generar un mensaje con menciones a todos
+    const msg = generateWAMessageFromContent(
+      m.chat,
+      {
+        extendedTextMessage: {
+          text: content, // Enviar el texto capturado
+          contextInfo: { mentionedJid: users }, // Agregar menciones a todos los usuarios
+        },
+      },
+      { quoted: m } // Incluir el mensaje original como referencia
     );
 
     // Enviar el mensaje
