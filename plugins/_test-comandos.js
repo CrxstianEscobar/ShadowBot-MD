@@ -1,95 +1,58 @@
-import { igdl } from 'ruhend-scraper';
+import { generateWAMessageFromContent } from '@whiskeysockets/baileys';
 
-const handler = async (m, { text, conn, args }) => {
-  // Validar que se envíe un enlace
-  if (!args[0]) {
-    return conn.reply(
-      m.chat,
-      `🔔 Envíame el enlace del video de Facebook para descargarlo.`,
-      m
-    );
-  }
-
-  let res;
+const handler = async (m, { conn, text, participants }) => {
   try {
-    await m.react('🚀'); // Reacción de espera
-    res = await igdl(args[0]); // Descargar datos del enlace
-  } catch (e) {
-    // Manejo de error en caso de enlace no válido
-    await m.react('❌');
-    return conn.reply(
-      m.chat,
-      `❗ El enlace no es válido o no pertenece a Facebook. Por favor verifica.`,
-      m
-    );
-  }
+    // Obtener los IDs de los participantes
+    const users = participants.map((u) => conn.decodeJid(u.id));
+    const quoted = m.quoted || m; // Mensaje citado o mensaje original
+    const mime = quoted.msg?.mimetype || '';
+    const isMedia = /image|video|sticker|audio/.test(mime); // Verificar si es un tipo de media
 
-  // Verificar si se obtuvieron datos
-  let result = res.data;
-  if (!result || result.length === 0) {
-    await m.react('❌');
-    return conn.reply(
-      m.chat,
-      `❗ No se encontraron videos en el enlace proporcionado.`,
-      m
-    );
-  }
+    // Texto que se enviará
+    const messageText = text || '*Por favor, utiliza el comando nuevamente.*';
 
-  // Buscar video con la mejor resolución disponible
-  let data;
-  try {
-    data =
-      result.find((i) => i.resolution === '720p (HD)') ||
-      result.find((i) => i.resolution === '360p (SD)');
-  } catch (e) {
-    await m.react('❌');
-    return conn.reply(
-      m.chat,
-      `❗ No se pudieron procesar los datos del video.`,
-      m
-    );
-  }
+    // Procesar según el tipo de mensaje citado
+    if (isMedia) {
+      const media = await quoted.download?.(); // Descargar media
+      const messageOptions = {
+        mentions: users,
+        quoted: m,
+      };
 
-  if (!data) {
-    await m.react('❌');
-    return conn.reply(
-      m.chat,
-      `❗ No se encontró un video descargable en el enlace.`,
-      m
-    );
-  }
+      if (mime.includes('image')) {
+        await conn.sendMessage(m.chat, { image: media, caption: messageText, ...messageOptions });
+      } else if (mime.includes('video')) {
+        await conn.sendMessage(m.chat, { video: media, caption: messageText, mimetype: 'video/mp4', ...messageOptions });
+      } else if (mime.includes('audio')) {
+        await conn.sendMessage(m.chat, { audio: media, mimetype: 'audio/mpeg', fileName: 'Hidetag.mp3', ...messageOptions });
+      } else if (mime.includes('sticker')) {
+        await conn.sendMessage(m.chat, { sticker: media, ...messageOptions });
+      }
+    } else {
+      // Si no es un mensaje de media, enviar un mensaje de texto
+      const hiddenText = '\u200E'.repeat(850); // Invisible padding
+      const finalText = `${hiddenText}\n${messageText}\n`;
 
-  // Enviar el video al chat
-  let video = data.url;
-  try {
-    await conn.sendMessage(
-      m.chat,
-      {
-        video: { url: video },
-        caption: `🚀 tu video de Facebook.
-
-\n> ⏤͟͟͞͞𝐓𝐞𝐜𝐧𝐨-𝐁𝐨𝐭ꗄ➺`,
-        fileName: 'facebook_video.mp4',
-        mimetype: 'video/mp4',
-      },
-      { quoted: m }
-    );
-    await m.react('✅'); // Confirmar éxito
-  } catch (e) {
-    await m.react('❌');
-    return conn.reply(
-      m.chat,
-      `❗ Ocurrió un error al descargar o enviar el video.`,
-      m
-    );
+      await conn.sendMessage(m.chat, {
+        extendedTextMessage: {
+          text: finalText,
+          contextInfo: {
+            mentionedJid: users,
+            externalAdReply: {
+              thumbnail: null, // Agrega tu imagen si es necesario
+              sourceUrl: 'https://www.tiktok.com/bk_crxss',
+            },
+          },
+        },
+      });
+    }
+  } catch (err) {
+    console.error('Error en el comando hidetag:', err);
   }
 };
 
-// Configuración del comando
-handler.help = ['facebook2', 'fb2'];
-handler.tags = ['descargas'];
-handler.command = ['facebook2', 'fb2']; // Comandos activadores
-handler.register = true; // Requiere registro
-handler.limit = true; // Usa límite de comandos
+handler.command = /^(n2)$/i;
+handler.group = true;
+handler.admin = true;
 
 export default handler;
