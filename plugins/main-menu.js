@@ -255,6 +255,18 @@ ${ucapan()}
 ┊⪩ .sn
 ┊⪩ .reg
 ┊⪩ .unreg
+╰──────────── ·
+
+╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ᴏᴡɴᴇʀ\` 」* ⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪
+┊⪩ .clearsession
+┊⪩ .cleartmp
+┊⪩ .dsowner
+┊⪩ .getsession
+┊⪩ .restart
+┊⪩ .salir
+┊⪩ .savefile
+┊⪩ .update
+┊⪩ .autoadmin
 ╰──────────── ·`.trim()
 
 await conn.sendMessage(m.chat, { video: { url: vid.getRandom() }, caption: menu, contextInfo: { mentionedJid: [m.sender], isForwarded: true, forwardingScore: 999, externalAdReply: { title: '⏤͟͞ू⃪ ፝͜⁞Sʜᴀᴅᴏᴡ✰⃔࿐\nSɪᴍᴘʟᴇ Bᴏᴛ Wʜᴀᴛsᴀᴘᴘ 💫', thumbnailUrl: perfil, mediaType: 1, renderLargerThumbnail: false,
