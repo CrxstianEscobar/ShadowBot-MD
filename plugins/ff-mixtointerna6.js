@@ -1,7 +1,7 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {
-        conn.reply(m.chat, '*[ ☕ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* .feminterna4 10:00 am pe Vivido', m);
+        conn.reply(m.chat, '*[ ☕ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* .mixtointerna6 10:00 am pe Vivido', m);
         return;
     }
 
@@ -71,15 +71,20 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 │• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo A:_ ᭡
-🥷🏻 • 
-🥷🏻 • 
-🥷🏻 • 
-🥷🏻 • 
+🍨 • 
+🍨 • 
+🍨 • 
+🍨 • 
+🍨 • 
+🍨 • 
+
 ㅤ _ʚ Equipo B:_ ᭡
-🤺 • 
-🤺 • 
-🤺 • 
-🤺 • 
+🍹 • 
+🍹 • 
+🍹 • 
+🍹 • 
+🍹 • 
+🍹 • 
 
 > *Organiza:* ${conn.getName(m.sender)}`.trim();
 
