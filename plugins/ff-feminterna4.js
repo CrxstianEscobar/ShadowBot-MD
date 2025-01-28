@@ -81,7 +81,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 🌹 • 
 🌹 • 
 
-> *Organiza: ${conn.getName(m.sender)}`.trim();
+> *Organiza:* ${conn.getName(m.sender)}`.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
