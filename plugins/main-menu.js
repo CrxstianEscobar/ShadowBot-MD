@@ -209,9 +209,40 @@ ${ucapan()}
 ┊⪩ .dado
 ╰──────────── ·
 
-╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ᴀᴜᴅɪᴏs\` 」* ⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪
-┊⪩ .undefined 
-┊⪩ .undefined 
+╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ʟᴏɢᴏs\` 」* ⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪
+┊⪩ .logocorazon *<txt>*
+┊⪩ .logochristmas *<txt>*
+┊⪩ .logopareja *<txt>*
+┊⪩ .logoglitch *<txt>*
+┊⪩ .logosad *<txt>*
+┊⪩ .logogaming *<txt>*
+┊⪩ .logosolitario *<txt>*
+┊⪩ .logodragonball *<txt>*
+┊⪩ .logoneon *<txt>*
+┊⪩ .logogatito *<txt>*
+┊⪩ .logochicagamer *<txt>*
+┊⪩ .logoarmy *<txt>*
+┊⪩ .logonaruto *<txt>*
+┊⪩ .logofuturista *<txt>*
+┊⪩ .logonube *<txt>*
+┊⪩ .logoangel *<txt>*
+┊⪩ .logcielo *<txt>*
+┊⪩ .logograffiti3d *<txt>*
+┊⪩ .logomatrix *<txt>*
+┊⪩ .logohorror *<txt>*
+┊⪩ .logoalas *<txt>*
+┊⪩ .logopubg *<txt>*
+┊⪩ .logoguerrero *<txt>*
+┊⪩ .logopubgfem *<txt>*
+┊⪩ .logolol *<txt>*
+┊⪩ .logoamongus *<txt>*
+┊⪩ .logoportadaplayer *<txt>*
+┊⪩ .logoportadaff *<txt>*
+┊⪩ .logovideotiger *<txt>*
+┊⪩ .logovideointro *<txt>*
+┊⪩ .logovideogaming *<txt>*
+┊⪩ .sadcat *<txt>*
+┊⪩ .tweet *<comentario>*
 ╰──────────── ·
 
 ╭─·˚₊· ͟͟͞͞꒰➳ *「 \`ʀᴘɢ\` 」* ⬪࣪ꥈ𑁍⃪࣭۪ٜ݊݊݊݊݊໑ٜ࣪
