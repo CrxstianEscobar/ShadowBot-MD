@@ -67,8 +67,8 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 » *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modo}
 » *⏰꒱ Hᴏʀᴀʀɪᴏs:*
-│• *ᴘᴇʀ:* ${horasEnPais.PE}
-│• *ᴀʀɢ:* ${horasEnPais.AR}
+│• *\`ᴘᴇʀ:\`* ${horasEnPais.PE}
+│• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo A:_ ᭡
 🌺 • 
