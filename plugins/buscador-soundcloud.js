@@ -1,31 +1,11 @@
-/* 
-
-*❀ By JTxs*
-
-[ Canal Principal ] :
-https://whatsapp.com/channel/0029VaeQcFXEFeXtNMHk0D0n
-
-[ Canal Rikka Takanashi Bot ] :
-https://whatsapp.com/channel/0029VaksDf4I1rcsIO6Rip2X
-
-[ Canal StarlightsTeam] :
-https://whatsapp.com/channel/0029VaBfsIwGk1FyaqFcK91S
-
-[ HasumiBot FreeCodes ] :
-https://whatsapp.com/channel/0029Vanjyqb2f3ERifCpGT0W
-*/
-
-// *[ ❀ SOUNDCLOUD SEARCH  ]*
-
-
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `❀ Ingresa el texto de la cancion que quieras buscar en soundcloud`, m)
+if (!text) return conn.reply(m.chat, `*[ 🧃 ] Ingresa el texto de la cancion que quieras buscar en SoundCloud*`, m)
 
 let result = await soundcloudSearch(text)
 let title = result.name
-let HS = 'Responde a este mensaje con el numero de la cancion que quieres\n\n'
+let HS = '*Responde a este mensaje con el numero de la cancion que quieres*\n\n'
 result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
 })
 HS += `\n\n*Ejemplo de uso: *responder al mensaje* 1`   
