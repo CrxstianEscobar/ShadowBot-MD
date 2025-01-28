@@ -63,13 +63,13 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     let modo = `${modalidad}`;
 
-    const message = `ㅤ•─⪻ *_INTERNA FEM_* ⪼─•
-╭─────━━━━────── •••
-» *🍨꒱ Modalidad:* ${modo}
-» *⏰꒱ Horario:*
-╎  • *Perú:* ${horasEnPais.PE}
-╎  • *Arg:* ${horasEnPais.AR}
-╰◣◥◣◥◤◢◤◢◣◥◣◥◤
+    const message = `ㅤㅤㅤ *INTERNA FEM*
+╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
+» *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modo}
+» *⏰꒱ Hᴏʀᴀʀɪᴏs:*
+│• *ᴘᴇʀ:* ${horasEnPais.PE}
+│• *ᴀʀɢ:* ${horasEnPais.AR}
+╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo 1:_ ᭡
 🪷 • 
 🪷 • 
@@ -81,8 +81,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 🌹 • 
 🌹 • 
 
-> *Organiza: ${conn.getName(m.sender)}*
-`.trim();
+> *Organiza: ${conn.getName(m.sender)}`.trim();
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
