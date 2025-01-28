@@ -63,12 +63,12 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     let modo = `${modalidad}`;
 
-    const message = `ㅤㅤㅤ *INTERNA MIXTO*
+    const message = `ㅤㅤㅤ \`*INTERNA MIXTO*\`
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 » *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modo}
 » *⏰꒱ Hᴏʀᴀʀɪᴏs:*
-│• *ᴘᴇʀ:* ${horasEnPais.PE}
-│• *ᴀʀɢ:* ${horasEnPais.AR}
+│• *\`ᴘᴇʀ:\`* ${horasEnPais.PE}
+│• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo A:_ ᭡
 🍁 • 
@@ -85,7 +85,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     conn.sendMessage(m.chat, { text: message }, { quoted: m });
 };
-handler.help = ['mascinterna4']
+handler.help = ['mixtointerna4']
 handler.tags = ['ff']
 handler.command = /^(mixtoint4|mixtointerna4)$/i
 export default handler;
