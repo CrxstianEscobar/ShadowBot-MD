@@ -70,12 +70,12 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 │• *ᴘᴇʀ:* ${horasEnPais.PE}
 │• *ᴀʀɢ:* ${horasEnPais.AR}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
-ㅤ _ʚ Equipo 1:_ ᭡
+ㅤ _ʚ Equipo A:_ ᭡
 🍁 • 
 🍁 • 
 🍁 • 
 🍁 • 
-ㅤ _ʚ Equipo 2:_ ᭡
+ㅤ _ʚ Equipo B:_ ᭡
 🍃 • 
 🍃 • 
 🍃 • 
