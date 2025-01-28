@@ -1,13 +1,13 @@
 const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     if (args.length < 3) {
-        conn.reply(m.chat, '*[ ℹ️ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* _.feminterna4 10:00 am pe Vivido_', m);
+        conn.reply(m.chat, '*[ ☕ ] Proporciona una hora, seguido el formato AM o PM, el país y una modalidad.*\n*Usa ar para Argentina y pe para Perú.*\n\n*[ 💡 ] Ejemplo:* .feminterna4 10:00 am pe Vivido', m);
         return;
     }
 
     const horaRegex = /^(0?[1-9]|1[0-2]):[0-5][0-9]$/;
     if (!horaRegex.test(args[0])) {
-        conn.reply(m.chat, '*[ ☃️ ] Formato de hora incorrecto.*', m);
+        conn.reply(m.chat, '*[ ⏰ ] Formato de hora incorrecto.*', m);
         return;
     }
 
@@ -16,7 +16,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
     const pais = args[2].toUpperCase();
 
     if (!['AM', 'PM'].includes(ampm)) {
-        conn.reply(m.chat, '*[ ☃️ ] Utilice correctamente el formato de AM/PM*.', m);
+        conn.reply(m.chat, '*[ ⏳ ] Utilice correctamente el formato de AM/PM*.', m);
         return;
     }
 
