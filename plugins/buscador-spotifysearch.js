@@ -1,4 +1,4 @@
-/* ʙʏ ᴊᴛxꜱ 🐢 */
+/* ʙʏ ᴊᴛxꜱ 🐢 
 import fetch from 'node-fetch'
 const { generateWAMessageContent, generateWAMessageFromContent, proto } = (await import('@whiskeysockets/baileys')).default
 
@@ -72,4 +72,6 @@ handler.help = ["spotifysearch"]
 handler.tags = ["search"]
 handler.command = /^(spotifysearch|sps|spsearch)$/i
 
-export default handler
+export default handler*/
+
+// Caducado 
