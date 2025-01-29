@@ -11,7 +11,7 @@ let handler = async (m, { conn }) => {
 
     let movieName = m.text.split('.gnula ')[1]; //
     if (!movieName) {
-        return conn.sendMessage(m.chat, { text: 'Por favor, proporciona el nombre de la película.' }, { quoted: m });
+        return conn.sendMessage(m.chat, { text: '*[ 🎥 ] Por favor, proporciona el nombre de la película.*' }, { quoted: m });
     }
 
     let searchUrl = `https://gnulahd.nu/?s=${encodeURIComponent(movieName)}`;
@@ -22,7 +22,7 @@ let handler = async (m, { conn }) => {
         const results = [];
 
         if ($('.post').length === 0) {
-            return conn.sendMessage(m.chat, { text: 'No se encontraron resultados para esa película.' }, { quoted: m });
+            return conn.sendMessage(m.chat, { text: '*No se encontraron resultados para esa película.*' }, { quoted: m });
         }
 
         $('.post').each((i, element) => {
