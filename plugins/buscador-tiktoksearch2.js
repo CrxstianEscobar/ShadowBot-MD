@@ -1,3 +1,4 @@
+// Falta mejorar
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, command, text, usedPrefix }) => {
