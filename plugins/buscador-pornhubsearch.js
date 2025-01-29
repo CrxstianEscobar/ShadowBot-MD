@@ -1,3 +1,4 @@
+//Falta mejorar 
 import cheerio from 'cheerio';
 import axios from 'axios';
 
@@ -7,7 +8,7 @@ let handler = async (m, { conn, args, command, usedPrefix }) => {
   } 
 
   if (!args[0]) {
-    return conn.reply(m.chat, `*[ 🌷 ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} anal con mi prima.`, m);
+    return conn.reply(m.chat, `*[ ☕ ] Por favor, ingrese la búsqueda que desea realizar en PornHub.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} anal con mi prima.`, m);
   }
 
   try {
