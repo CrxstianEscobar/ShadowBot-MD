@@ -5,7 +5,7 @@ if (!text) return conn.reply(m.chat, `*[ 🧃 ] Ingresa el texto de la cancion q
 
 let result = await soundcloudSearch(text)
 let title = result.name
-let HS = '*Responde a este mensaje con el numero de la cancion que quieres*\n\n'
+let HS = '*[ ☕ ] Responde a este mensaje con el numero de la cancion que quieres*\n\n'
 result.forEach((t, index) => { HS += `*${index + 1}* ${t.name}\n`
 })
 HS += `\n> *Lista de canciones a descargar.*`   
