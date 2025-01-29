@@ -1,7 +1,7 @@
 import fetch from 'node-fetch'
 
 let handler = async (m, { conn, command, text, usedPrefix }) => {
-if (!text) return conn.reply(m.chat, `*[ 🌷 ] Ingresa el texto de lo que quieres buscar*`, m)
+if (!text) return conn.reply(m.chat, `*[ ☕ ] Ingresa el texto de lo que quieres buscar*`, m)
 
 try {
 let api = await fetch(`https://api.agatz.xyz/api/tiktoksearch?message=${text}`)
