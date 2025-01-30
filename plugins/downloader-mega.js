@@ -36,7 +36,6 @@ handler.help = ["mega"];
 handler.tags = ["descargas"];
 handler.command = /^(mega)$/i;
 handler.register = true
-handler.group = true
 
 export default handler;
 
