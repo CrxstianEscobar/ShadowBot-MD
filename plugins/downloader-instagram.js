@@ -6,12 +6,12 @@ let handler = async (m, { args, conn }) => {
   }
   try {
     await m.react('⏳️')
-    conn.reply(m.chat, `*[ 🍧 ] Enviando el Video...*`)
+    conn.reply(m.chat, `*[ ☕ ] Enviando el Video...*`)
     let res = await igdl(args[0])
     let data = res.data
     for (let media of data) {
       await new Promise(resolve => setTimeout(resolve, 2000))
-      await conn.sendFile(m.chat, media.url, 'instagram.mp4', '*Tu video de instagram.*')
+      await conn.sendFile(m.chat, media.url, 'instagram.mp4', '*Video IG*')
     }
   } catch {
     await m.react('❌')
