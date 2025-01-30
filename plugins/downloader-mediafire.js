@@ -20,7 +20,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, text, usedPrefix, command }) => {
     try {
         if (!text) {
-            throw `*[ 😼 ] Ingresa un link de MediaFire.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} https://www.mediafire.com/file/2v2x1p0x58qomva/WhatsApp_Messenger_2.24.21.8_beta_By_WhatsApp_LLC.apk/file`;
+            throw `*[ 📂 ] Ingresa un link de MediaFire.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix}${command} https://www.mediafire.com/file/2v2x1p0x58qomva/WhatsApp_Messenger_2.24.21.8_beta_By_WhatsApp_LLC.apk/file`;
         }
 
         // Validación de enlace de MediaFire
