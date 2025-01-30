@@ -5,7 +5,7 @@ import qs from 'qs';
 
 let handler = async (m, { conn, text, usedPrefix, command }) => {
 
-  if (!text) throw m.reply(`*[ ℹ️ ] Hace falta el título del audio de AppleMusic.*\n\n*[ 💡 ] Ejemplo:* _${usedPrefix + command} Cris MJ - Solita_`);
+  if (!text) throw m.reply(`*[ 🎧 ] Hace falta el título del audio de AppleMusic.*\n\n*[ 💡 ] Ejemplo:* ${usedPrefix + command} Paulo Londra - Camara Lenta`);
 
 
 const appleMusic = {
@@ -160,7 +160,7 @@ let dataos = await appleMusic.search(text)
 let dataos2 = await appledown.download(dataos[0].link);
 let { name, albumname, artist, url, thumb, duration, token, download } = dataos2;
 
-m.reply(`*[ ℹ️ ] Enviando ${name} (${artist}/${duration})*\n\n> ${url}`);
+m.reply(`*[ ☕ ] Enviando ${name} (${artist}/${duration})*\n\n> ${url}`);
       const doc = {
       audio: { url: download },
       mimetype: 'audio/mp4',
@@ -177,7 +177,7 @@ m.reply(`*[ ℹ️ ] Enviando ${name} (${artist}/${duration})*\n\n> ${url}`);
       }
     };
     await conn.sendMessage(m.chat, doc, { quoted: m });
-    await conn.sendMessage(m.chat, { react: { text: '☕', key: m.key }})
+    await conn.sendMessage(m.chat, { react: { text: '🎵', key: m.key }})
 }
 handler.help = ['applemusicplay'];
 handler.tags = ['downloader'];
