@@ -53,7 +53,7 @@ import fetch from 'node-fetch';
 let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
     // Verificar si hay un enlace
     if (!args[0]) {
-        return conn.reply(m.chat, `*☕ Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n\`${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp\``, m, rcanal);
+        return conn.reply(m.chat, `*[ ☕ ] Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp`, m, rcanal);
     }
 
     // Reacción de espera solo si se pasa un enlace
