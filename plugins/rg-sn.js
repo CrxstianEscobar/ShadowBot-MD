@@ -13,24 +13,38 @@ export default handler*/
 
 
 import { createHash } from 'crypto';
+import { prepareWAMessageMedia, generateWAMessageFromContent } from "baileys";
 
 let handler = async function (m, { conn }) {
     let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6);
 
-    let buttonMessage = {
-        text: `*[ ℹ️ ] Número Serial:*\n\n▢ ${sn}`,
-        footer: "Presiona el botón para copiar tu número de serie",
-        buttons: [
-            {
-                buttonId: `copiar ${sn}`,
-                buttonText: { displayText: "📋 Copiar Número" },
-                type: 1
-            }
-        ],
-        headerType: 1
-    };
+    // Construye el mensaje interactivo
+    let msg = generateWAMessageFromContent(m.chat, {
+        viewOnceMessage: {
+            message: {
+                interactiveMessage: {
+                    body: { text: `*[ ℹ️ ] Número Serial:*\n\n▢ ${sn}` },
+                    footer: { text: "Presiona el botón para copiar tu número de serie" },
+                    nativeFlowMessage: {
+                        buttons: [
+                            {
+                                name: 'cta_copy',
+                                buttonParamsJson: JSON.stringify({
+                                    display_text: "📋 Copiar Número",
+                                    copy_code: `${sn}`,
+                                    id: `${sn}`
+                                })
+                            }
+                        ],
+                        messageParamsJson: "",
+                    },
+                },
+            },
+        },
+    }, { userJid: conn.user.jid, quoted: m });
 
-    await conn.sendMessage(m.chat, buttonMessage, { quoted: m });
+    // Envía el mensaje interactivo con botón
+    await conn.relayMessage(m.chat, msg.message, { messageId: msg.key.id });
 };
 
 handler.help = ['mysn'];
