@@ -2,7 +2,7 @@
 
 let handler = async function (m, { conn, text, usedPrefix }) {
 let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6)
-m.reply(`*[ ℹ️ ] Numero Serial:*\n\n▢ ${sn}`.trim())
+m.reply(`*[ ☕ ] Numero Serial:*\n\n▢ ${sn}`.trim())
 }
 handler.help = ['mysn']
 handler.tags = ['rg']
@@ -17,7 +17,7 @@ let handler = async function (m, { conn }) {
     let sn = createHash('md5').update(m.sender).digest('hex').slice(0, 6);
     
     let messageContent = {
-        text: `*[ ℹ️ ] Número Serial:*\n\n▢ ${sn}`,
+        text: `*[ ☕ ] Número Serial:*\n\n▢ ${sn}`,
         footer: "Presiona el botón para copiar tu número de serie",
         templateButtons: [
             {
