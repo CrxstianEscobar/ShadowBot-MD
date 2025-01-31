@@ -26,7 +26,6 @@ let handler = async (m, { conn, text }) => {
       `*🏷️ Resultado:* ${v.title}
        *☕ Desarrollador:* ${v.developer}
        *💸 Precio:* ${v.priceText || "Gratis"}
-       *💾 Tamaño:* ${v.size || "No disponible"}
        *📈 Puntuación:* ${v.scoreText || "Sin Puntuación"}
        *⛓️ Link:* ${v.url}`
   ).join("\n\n");
