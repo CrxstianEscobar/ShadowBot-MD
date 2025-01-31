@@ -1,12 +1,13 @@
 import gplay from 'google-play-scraper';
 
 let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
-    // Reacción de espera
-    m.react('🔄');
-
+    // Verificar si hay un enlace
     if (!args[0]) {
-        return conn.reply(m.chat, `*🚩 Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n\`${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp\``, m, rcanal);
+        return conn.reply(m.chat, `*☕ Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n\`${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp\``, m, rcanal);
     }
+
+    // Reacción de espera solo si se pasa un enlace
+    m.react('⌛');
 
     const url = args[0];
     let packageName;
