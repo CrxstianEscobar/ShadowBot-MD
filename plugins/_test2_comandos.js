@@ -1,4 +1,4 @@
-/*import gplay from 'google-play-scraper';
+import gplay from 'google-play-scraper';
 import fetch from 'node-fetch';
 
 let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
@@ -43,7 +43,9 @@ let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
 handler.help = ['playstore *<url>*']; 
 handler.tags = ['dl'];
 handler.command = /^(playstore)$/i;
-export default handler;*/
+export default handler;
+
+/*
 
 let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
     m.react('🤍');
@@ -92,4 +94,4 @@ let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
 handler.help = ['playstore *<url>*']; 
 handler.tags = ['dl'];
 handler.command = /^(playstore)$/i;
-export default handler;
+export default handler;*/
