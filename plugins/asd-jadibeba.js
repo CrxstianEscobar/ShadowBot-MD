@@ -7,7 +7,7 @@ let handler = async (m, { conn, text }) => {
 
   let res = await gplay.search({ term: text });
   if (!res.length) {
-    return conn.reply(m.chat, "*[ 🏷️ ] Por favor ingresa el nombre de una app de la PlayStore*", m, rcanal); 
+    return conn.reply(m.chat, "*[ 🏷️ ] No se encontraron resultados, intenteb con otra busqueda*", m, rcanal); 
   }
 
   let opt = {
@@ -25,10 +25,10 @@ let handler = async (m, { conn, text }) => {
     (v) =>
       `*🏷️ Resultado:* ${v.title}
        *☕ Desarrollador:* ${v.developer}
-       *💸 Precio:* ${v.priceText}
-       *📈 Puntuación:* ${v.scoreText}
+       *💸 Precio:* ${v.priceText || "Gratis"}
+       *📈 Puntuación:* ${v.scoreText || "Sin Puntuación"}
        *⛓️ Link:* ${v.url}`
-  ).join`\n\n`;
+  ).join("\n\n");
 
   conn.reply(m.chat, res, m, opt); 
 };
