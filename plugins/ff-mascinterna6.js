@@ -63,7 +63,7 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     let modo = `${modalidad}`;
 
-    const message = `ㅤㅤㅤ \`*INTERNA MASC*\`
+    const message = `ㅤㅤㅤ *\`INTERNA MASC\`*
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 » *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modo}
 » *⏰꒱ Hᴏʀᴀʀɪᴏs:*
