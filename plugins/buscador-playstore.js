@@ -35,5 +35,5 @@ let handler = async (m, { conn, text }) => {
 
 handler.help = ['playstoresearch *<texto>*']; 
 handler.tags = ['buscador'];
-handler.command = /^(playstoresearch)$/i; 
+handler.command = /^(playstoresearch|pssearch)$/i; 
 export default handler;
