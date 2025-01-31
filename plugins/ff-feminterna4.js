@@ -63,12 +63,12 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 
     let modo = `${modalidad}`;
 
-    const message = `ㅤㅤㅤ *INTERNA FEM*
+    const message = `ㅤㅤㅤ *\`INTERNA FEM\`*
 ╭── ︿︿︿︿︿ *⭒   ⭒   ⭒   ⭒   ⭒*
 » *☕꒱ Mᴏᴅᴀʟɪᴅᴀᴅ:* ${modo}
 » *⏰꒱ Hᴏʀᴀʀɪᴏs:*
-│• *ᴘᴇʀ:* ${horasEnPais.PE}
-│• *ᴀʀɢ:* ${horasEnPais.AR}
+│• *\`ᴘᴇʀ:\`* ${horasEnPais.PE}
+│• *\`ᴀʀɢ:\`* ${horasEnPais.AR}
 ╰─── ︶︶︶︶ ✰⃕  ⌇ *⭒⭒*   ˚̩̥̩̥*̩̩͙✩
 ㅤ _ʚ Equipo A:_ ᭡
 🪷 • 
@@ -76,10 +76,10 @@ const handler = async (m, { text, conn, args, usedPrefix, command }) => {
 🪷 • 
 🪷 • 
 ㅤ _ʚ Equipo B:_ ᭡
-🌹 • 
-🌹 • 
-🌹 • 
-🌹 • 
+🦋 • 
+🦋 • 
+🦋 • 
+🦋 • 
 
 > *Organiza:* ${conn.getName(m.sender)}`.trim();
 
