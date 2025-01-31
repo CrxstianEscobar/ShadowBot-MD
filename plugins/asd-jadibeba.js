@@ -7,7 +7,7 @@ let handler = async (m, { conn, text }) => {
 
   let res = await gplay.search({ term: text });
   if (!res.length) {
-    return conn.reply(m.chat, "*\`🤍 Por favor ingresa el nombre de una app de la Play Store\`*", m, rcanal); 
+    return conn.reply(m.chat, "*[ 🏷️ ] Por favor ingresa el nombre de una app de la PlayStore*", m, rcanal); 
   }
 
   let opt = {
@@ -21,22 +21,20 @@ let handler = async (m, { conn, text }) => {
     },
   };
 
-  await console.log(res);
-
   res = res.map(
     (v) =>
-      `*\`🤍 Resultado:\`* ${v.title}
-       *\`✍️ Desarrollador:\`* ${v.developer}
-       *\`💸 Precio:\`* ${v.priceText}
-       *\`📈 Puntuacion:\`* ${v.scoreText}
-       *\`⛓️ Link:\`* ${v.url}`
+      `*🏷️ Resultado:* ${v.title}
+       *☕ Desarrollador:* ${v.developer}
+       *💸 Precio:* ${v.priceText}
+       *📈 Puntuación:* ${v.scoreText}
+       *⛓️ Link:* ${v.url}`
   ).join`\n\n`;
 
   conn.reply(m.chat, res, m, opt); 
 };
 
 handler.help = ['playstoresearch *<texto>*']; 
-handler.tags = ['search'];
+handler.tags = ['buscador'];
 handler.command = /^(playstoresearch)$/i; 
 export default handler;
 
