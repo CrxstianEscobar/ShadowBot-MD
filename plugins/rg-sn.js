@@ -22,7 +22,7 @@ let handler = async function (m, { conn }) {
         footer: "Presiona el botón para copiar tu número de serie",
         buttons: [
             {
-                buttonId: `sn_copy_${sn}`,
+                buttonId: `copiar ${sn}`,
                 buttonText: { displayText: "📋 Copiar Número" },
                 type: 1
             }
