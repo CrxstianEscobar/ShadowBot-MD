@@ -12,7 +12,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     throw false;
   }
 
-  const filePath = './plugins/_trivia.json'; // Asegúrate de que el archivo de preguntas de trivia esté en este path
+  const filePath = './src/game/trivia.json'; // Asegúrate de que el archivo de preguntas de trivia esté en este path
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const trivia = JSON.parse(fileContent);
 
