@@ -47,7 +47,7 @@ let handler = async (m, { conn }) => {
         const remainingTime = Math.ceil((cooldowns[userId] - now) / 1000);
         const minutes = Math.floor(remainingTime / 60);
         const seconds = remainingTime % 60;
-        return await conn.reply(m.chat, `*[ ⚠️ ] Debes esperar `/${minutes} minutos`/ y `/${seconds} segundos`/ para usar `/claim`/ de nuevo.*`, m);
+        return await conn.reply(m.chat, `*[ ⚠️ ] Debes esperar \`${minutes} minutos\` y \`${seconds} segundos\` para usar \`claim\` de nuevo.*`, m, rcanal);
     }
 
     if (m.quoted && m.quoted.sender === conn.user.jid) {
@@ -80,7 +80,7 @@ let handler = async (m, { conn }) => {
 
             await saveCharacters(characters);
 
-            await conn.reply(m.chat, `*[ 💚 ] Has reclamado con éxito a:*\n> \`${character.name}\``, m);
+            await conn.reply(m.chat, `*[ 💚 ] Has reclamado con éxito a:*\n> \`${character.name}\``, m, rcanal);
             cooldowns[userId] = now + 30 * 60 * 1000;
 
         } catch (error) {
