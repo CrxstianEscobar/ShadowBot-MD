@@ -14,7 +14,7 @@ const handler = async (m, { conn, usedPrefix }) => {
     throw false;
   }
 
-  const filePath = './plugins/_palabras.json';
+  const filePath = './src/game/sortword.json';
   const fileContent = fs.readFileSync(filePath, 'utf8');
   const words = JSON.parse(fileContent);
 
