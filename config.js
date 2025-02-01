@@ -31,8 +31,7 @@ global.wait = '🌙 *Aɢᴜᴀʀᴅᴇ ᴜɴ ᴍᴏᴍᴇɴᴛᴏ... ฅ^•ﻌ�
 global.botname = '[ Shadow Bot WhatsApp ]'
 global.textbot = `Powered By Cristian`
 global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
-global.namechannel = 'Shadow Bot - MD'
-
+global.namechannel = 'お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫 ☕ᭃ'
 global.catalogo = fs.readFileSync('./storage/img/catalogo.png')
 global.miniurl = fs.readFileSync('./storage/img/miniurl.jpg')
 
