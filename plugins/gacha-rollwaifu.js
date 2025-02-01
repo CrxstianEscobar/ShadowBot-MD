@@ -47,7 +47,7 @@ let handler = async (m, { conn }) => {
         const remainingTime = Math.ceil((cooldowns[userId] - now) / 1000);
         const minutes = Math.floor(remainingTime / 60);
         const seconds = remainingTime % 60;
-        return await conn.reply(m.chat, `《✧》Debes esperar *${minutes} minutos y ${seconds} segundos* para usar *#ver* de nuevo.`, m);
+        return await conn.reply(m.chat, `*[ ⚠️ ] Debes esperar \`${minutes} minutos\` y \`${seconds} segundos\` para usar \`#rw\` de nuevo.*`, m, rcanal);
     }
 
     try {
@@ -58,15 +58,15 @@ let handler = async (m, { conn }) => {
         const harem = await loadHarem();
         const userEntry = harem.find(entry => entry.characterId === randomCharacter.id);
         const statusMessage = randomCharacter.user 
-            ? `Reclamado por @${randomCharacter.user.split('@')[0]}` 
-            : 'Libre';
+            ? `*[ ✅ ] Reclamado por @${randomCharacter.user.split('@')[0]}*` 
+            : '*Libre*';
 
-        const message = `❀ Nombre » *${randomCharacter.name}*
-👤 Género » *${randomCharacter.gender}*
-💸 Valor » *${randomCharacter.value}*
-💌 Estado » ${statusMessage}
-💚 Fuente » *${randomCharacter.source}*
-🏷️ ID: *${randomCharacter.id}*`;
+        const message = `*👤 Nombre:* ${randomCharacter.name}
+*🍢 Género:* ${randomCharacter.gender}
+*💸 Valor:* ${randomCharacter.value}
+*💌 Estado:* ${statusMessage}
+*💚 Fuente:* ${randomCharacter.source}
+*🏷️ ID:* ${randomCharacter.id}`;
 
         const mentions = userEntry ? [userEntry.userId] : [];
         await conn.sendFile(m.chat, randomImage, `${randomCharacter.name}.jpg`, message, m, { mentions });
@@ -87,7 +87,7 @@ let handler = async (m, { conn }) => {
         cooldowns[userId] = now + 15 * 60 * 1000;
 
     } catch (error) {
-        await conn.reply(m.chat, `✘ Error al cargar el personaje: ${error.message}`, m);
+        await conn.reply(m.chat, `*[ ❌ ] Error al cargar el personaje:*\n> ${error.message}`, m);
     }
 };
 
