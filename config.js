@@ -36,6 +36,10 @@ global.miniurl = fs.readFileSync('./src/img/miniurl.jpg')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
+global.rcanal = { contextInfo: { isForwarded: true, forwardedNewsletterMessageInfo: { newsletterJid: "120363357231409846@newsletter", serverMessageId: 100, newsletterName: namechannel, }, }, }
+
+//*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
+
 global.group = 'https://chat.whatsapp.com/Cj8oTiVQOvIISylM5yi5DP'
 global.canal = 'https://whatsapp.com/channel/0029Vafxnat8qIzxOjUrwP41'
 
