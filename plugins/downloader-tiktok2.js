@@ -38,7 +38,7 @@ ${tiktokData.data.music}`;
                  await conn.sendFile(m.chat, `${tiktokData.data.music}`, "lagutt.mp3", "", m);
             }, 1500);
         } else {
-            throw m.reply("No se pudo descargar.");
+            throw m.reply("*No se pudo descargar.*");
         }
     } catch (error1) {
         conn.reply(m.chat, `Error: ${error1}`, m);
