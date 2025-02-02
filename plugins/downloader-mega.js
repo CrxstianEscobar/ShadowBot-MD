@@ -12,7 +12,7 @@ let handler = async (m, { conn, args, usedPrefix, text, command }) => {
 
     if (file.size >= 300000000) return m.reply('Error: El archivo es demasiado pesado (Peso máximo: 300MB ( Premium: 800MB )');
 
-    const caption = `\`DOWNLOADER - MEGA\`\n\n*🪴 File:* ${file.name}\n*⚖️ Size:* ${formatBytes(file.size)}\n\n> Shadow Bot MD`;
+    const caption = `*_MEGA - DESCARGAS_*\n\n*🪴 File:* ${file.name}\n*⚖️ Size:* ${formatBytes(file.size)}\n\n> Shadow Bot MD`;
     const data = await file.downloadBuffer();
     const fileExtension = path.extname(file.name).toLowerCase();
     const mimeTypes = {
