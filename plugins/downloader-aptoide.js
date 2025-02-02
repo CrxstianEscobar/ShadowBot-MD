@@ -8,7 +8,7 @@ const handler = async (m, { conn, usedPrefix: prefix, command, text }) => {
     const data5 = await download(searchA[0].id);  // Descarga la información del APK
     
     // Preparar el mensaje con la información del APK
-    let response = `*乂  \`APTOIDE - DESCARGAS\` 乂*\n\n`;
+    let response = `*_APTOIDE - DESCARGAS_*\n\n`;
     response += `🕵🏻 *Nombre* : ${data5.name}\n`;
     response += `🗃 *Package* : ${data5.package}\n`;
     response += `🪴 *Actualización* : ${data5.lastup}\n`;
