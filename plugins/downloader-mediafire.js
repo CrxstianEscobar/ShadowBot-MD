@@ -48,7 +48,7 @@ let handler = async (m, { conn, text, usedPrefix, command }) => {
         for (let file of data.data) {
             let readableSize = formatSize(file.size); // Convertimos el tamaño a un formato más legible
 
-            await conn.sendFile(m.chat, file.link, file.nama, `*🪴 Nombre:* ${file.nama}\n*⚖️ Peso:* ${readableSize}\n*📁 Extensión:* ${file.mime}`, m);
+            await conn.sendFile(m.chat, file.link, file.nama, `*_DESCARGAS - MEDIAFIRE_*\n\n*🪴 Nombre:* ${file.nama}\n*⚖️ Peso:* ${readableSize}\n*📁 Extensión:* ${file.mime}`, m);
         }
 
         await conn.sendMessage(m.chat, { react: { text: "✅", key: m.key } });
