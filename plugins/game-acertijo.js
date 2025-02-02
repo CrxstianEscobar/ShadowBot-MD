@@ -12,7 +12,7 @@ const handler = async (m, {conn, usedPrefix}) => {
     throw false;
   }
 
-const filePath = './plugins/_acertijo.json';
+const filePath = './src/game/acertijo.json';
 const fileContent = fs.readFileSync(filePath, 'utf8');
 const tekateki = JSON.parse(fileContent);
 
