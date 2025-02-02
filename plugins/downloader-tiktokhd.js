@@ -9,7 +9,7 @@ let handler = async (m, { conn, usedPrefix, command, text, args }) => {
         console.log(data);
         let start = Date.now();
         let sp = (Date.now() - start) + 'ms';
-        let capp = `\`DOWNLOADER - TIKTOK HD\``;
+        let capp = `*_DESCARGAS - TIKTOK HD_*`;
         
         await m.react('🕓');
         
