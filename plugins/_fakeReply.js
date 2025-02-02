@@ -18,12 +18,11 @@ let imagenes = ["https://i.ibb.co/YXKHfvL/file.jpg",
 
 let icono = imagenes[Math.floor(Math.random() * imagenes.length)]
 
-/*
-global.rcanal = {
+global.fake = {
  contextInfo: {
              isForwarded: true,
     forwardedNewsletterMessageInfo: {
-      newsletterJid: "https://www.instagram.com/star.moony_desing",
+      newsletterJid: "120363357231409846@newsletter",
       serverMessageId: 100,
       newsletterName: name2,
    }, 
@@ -35,12 +34,11 @@ global.rcanal = {
     description: null, 
     previewType: "PHOTO", 
     thumbnailUrl: icono, 
-    sourceUrl: 'https://www.instagram.com/star.moony_desing', 
+    sourceUrl: '120363357231409846@newsletter', 
     mediaType: 1, 
     renderLargerThumbnail: false }, 
     }, 
     }
-*/
 
 //Enlaces
 var canal =   'https://whatsapp.com/channel/0029Vakpp8h1Hsq5Y5kbF33t'
@@ -61,7 +59,8 @@ global.icono = [
 'https://qu.ax/CHRS.jpeg',
 ].getRandom()
 
- global.fake = {
+/*
+global.fake = {
     contextInfo: {
             isForwarded: true,
     forwardedNewsletterMessageInfo: {
@@ -70,5 +69,5 @@ global.icono = [
       newsletterName: name,
     },
     },
-  }
+  }*/
 }
