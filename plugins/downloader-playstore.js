@@ -41,4 +41,5 @@ let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
 handler.help = ['playstore *<url>*']; 
 handler.tags = ['dowloader'];
 handler.command = /^(playstore|psdl)$/i;
+hendler.register = true;
 export default handler;
