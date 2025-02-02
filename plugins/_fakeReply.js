@@ -18,6 +18,7 @@ let imagenes = ["https://i.ibb.co/YXKHfvL/file.jpg",
 
 let icono = imagenes[Math.floor(Math.random() * imagenes.length)]
 
+/*
 global.rcanal = {
  contextInfo: {
              isForwarded: true,
@@ -39,6 +40,7 @@ global.rcanal = {
     renderLargerThumbnail: false }, 
     }, 
     }
+*/
 
 //Enlaces
 var canal =   'https://whatsapp.com/channel/0029Vakpp8h1Hsq5Y5kbF33t'
