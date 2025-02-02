@@ -6,7 +6,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 
     try {
-        await conn.reply(m.chat, "*[ ⛄ ] Espere un momento, estoy descargando su video...*", m);
+        await conn.reply(m.chat, "*[ ☕ ] Ƈᴀʀɢᴀɴᴅᴏ...*\n▰▰▰▰▰▰▰▰▭▭", m);
 
         const tiktokData = await tiktokdl(args[0]);
 
@@ -19,11 +19,11 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
         const infonya_gan = `*📖 Descrip꯭ción:*\n> ${tiktokData.data.title}*`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOADER - TIKTOK`" + `\n\n${infonya_gan}`, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*_DESCARGAS - TIKTOK_*" + `\n\n${infonya_gan}`, m);
             setTimeout(async () => {
             }, 1500);
         } else {
-            throw m.reply("No se pudo descargar.");
+            throw m.reply("*No se pudo descargar.*");
         }
     } catch (error1) {
         conn.reply(m.chat, `Error: ${error1}`, m);
@@ -33,10 +33,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['tiktok'].map((v) => v + ' *<link>*')
 handler.tags = ['descargas']
 handler.command = /^(tt|tiktok)$/i;
-
-handler.disable = false
-handler.register = false
-handler.limit = false
+handler.register = true
 
 export default handler
 
