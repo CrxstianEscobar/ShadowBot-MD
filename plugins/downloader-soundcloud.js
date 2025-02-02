@@ -17,23 +17,26 @@ let { link: dl_url, quality, image } = json2;
 
 let audio = await getBuffer(dl_url);
 
-let txt = `\`DOWNLOADER - SOUNDCLOUD\`\n\n`;
-    txt += `▢ *Título:* ${json[0].title}\n`;
+let txt = `  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━━━◉─────── 06:10\n`;
+    txt += `${json[0].title}`
+
+/*
     txt += `▢ *Calidad:* ${quality}\n`;
     txt += `▢ *Url:* ${url}\n\n`;
     txt += `> *[ ℹ️ ] Se está enviando el audio, espere...*`
+*/
 
 await conn.sendFile(m.chat, image, 'thumbnail.jpg', txt, m, null, rcanal);
 await conn.sendMessage(m.chat, { audio: audio, fileName: `${json[0].title}.mp3`, mimetype: 'audio/mpeg' }, { quoted: m })
 
-await m.react('☃️');
+await m.react('⌛');
 } catch {
-await m.react('🥀');
+await m.react('❌');
 }}
 
 handler.help = ['soundcloud *<búsqueda>*']
 handler.tags = ['downloader']
-handler.command = ['soundcloud', 'sound', 'play']
+handler.command = ['soundcloud', 'play']
 
 export default handler
 
