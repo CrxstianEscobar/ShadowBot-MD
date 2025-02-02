@@ -2,11 +2,11 @@ import { igdl } from "ruhend-scraper"
 
 let handler = async (m, { args, conn }) => {
   if (!args[0]) {
-    return conn.reply(m.chat, '*[ ℹ️ ] Ingresa un link de Instagram*')
+    return conn.reply(m.chat, '*[ ☕ ] Ingresa un link de Instagram*')
   }
   try {
     await m.react('⏳️')
-    conn.reply(m.chat, `*[ ☕ ] Enviando el Video...*`)
+    conn.reply(m.chat, `*[ ☕ ] Ƈᴀʀɢᴀɴᴅᴏ...*\n▰▰▰▰▰▰▰▰▭▭`)
     let res = await igdl(args[0])
     let data = res.data
     for (let media of data) {
