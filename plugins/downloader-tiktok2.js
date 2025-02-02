@@ -6,7 +6,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
     }
 
     try {
-        await conn.reply(m.chat, "*[ ⛄ ] Espere un momento, estoy descargando su video...*", m);
+        await conn.reply(m.chat, "*[ ☕ ] Ƈᴀʀɢᴀɴᴅᴏ...*\n▰▰▰▰▰▰▰▰▭▭", m);
 
         const tiktokData = await tiktokdl(args[0]);
 
@@ -32,7 +32,7 @@ var handler = async (m, { conn, args, usedPrefix, command }) => {
 ${tiktokData.data.music}`;
 
         if (videoURL || videoURLWatermark) {
-            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "`DOWNLOADER - TIKTOK V2`" + `\n\n${infonya_gan}`, m);
+            await conn.sendFile(m.chat, videoURL, "tiktok.mp4", "*_DESCARGAS - TIKTOK V2_*" + `\n\n${infonya_gan}`, m);
             setTimeout(async () => {
                 // Aquí se eliminó la línea que enviaba el audio
                  await conn.sendFile(m.chat, `${tiktokData.data.music}`, "lagutt.mp3", "", m);
@@ -48,11 +48,7 @@ ${tiktokData.data.music}`;
 handler.help = ['tiktok2'].map((v) => v + ' *<link>*')
 handler.tags = ['descargas']
 handler.command = /^(tiktok2|tt2|tt2dl)$/i;
-
-handler.disable = false
-handler.register = false
-handler.limit = false
-
+handler.register = true
 export default handler
 
 async function tiktokdl(url) {
