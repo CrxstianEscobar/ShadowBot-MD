@@ -17,8 +17,8 @@ let { link: dl_url, quality, image } = json2;
 
 let audio = await getBuffer(dl_url);
 
-let txt = `${json[0].title}\n`;
-    txt += `ㅤ  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━━◉────── 06:10`
+let txt = `> ${json[0].title}\n`;
+    txt += `ㅤ  *⇄ㅤ     ◁   ㅤ  ❚❚ㅤ     ▷ㅤ     ↻*\n02:48 ━━━━◉───── 06:10`
 
 /*
     txt += `▢ *Calidad:* ${quality}\n`;
