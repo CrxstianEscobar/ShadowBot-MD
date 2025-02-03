@@ -15,9 +15,9 @@ let handler = async (m, { text, command, usedPrefix }) => {
   await m.react('🕓');
 
   try {
-   // const res = await fetch(global.API('https://api.github.com', '/search/repositories', {
+   /* const res = await fetch(global.API('https://api.github.com', '/search/repositories', {
       q: text
-    }));
+    }));*/
 
 const res = await fetch(`https://api.github.com/search/repositories?q=${text}`);
     
