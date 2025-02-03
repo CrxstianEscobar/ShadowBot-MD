@@ -119,35 +119,35 @@ break
        break
     default:
       if (!/[01]/.test(command)) return m.reply(`
-*🚩 Ingresa una opción para habilitar o deshabilitar*
+*[ ☕ ] Ingresa una opción para habilitar o deshabilitar*
 
 *≡ Lista de opciones*
 *Tipo :* welcome
-*Descripción :* Des/Activa la *Bienvenida* y *Despedida* para Grupos
+*Descripción :* Des/Activa la *Bienvenida* y *Despedida* para Grupos.
 
 *Tipo :* nsfw 
-*Descripción :* Des/Activa los comandos *NSFW* para Grupos
+*Descripción :* Des/Activa los comandos *+18* para Grupos.
 
 *Tipo :* antiarabes 
-*Descripción :* Des/Activa el *AntiArabes* para Grupos
+*Descripción :* Des/Activa el *AntiArabes* para eliminar números fake en el grupo.
 
 *Tipo :* antilink 
-*Descripción :* Des/Activa el *AntiLink* para Grupos
+*Descripción :* Des/Activa el *AntiLink* para eliminar a la persona que manda un link de WhatsApp.
 
 *Tipo :* autoread 
-*Descripción :* Des/Activa el *AutoRead* para el Bot
+*Descripción :* Des/Activa el *AutoRead* para que el bot lea los mensajes.
 
 *Tipo :* modoadmin
-*Descripción :* Des/Activa el *Modoadmin* para el Bot
+*Descripción :* Des/Activa el *Modoadmin* para el que el bot solo sea usado por los admins.
 
 *Tipo :* detect
-*Descripción :* Des/Activa el *detect* para el Bot
+*Descripción :* Des/Activa el *detect* para el que el bot de avisos sobre actualizaciones de grupos.
 
 *Tipo :* document 
 *Descripción :* Des/Activa la *Descarga En Documentos* para el Usuario
 
-*• Ejemplo:*
-*- ${usedPrefix + command}* welcome
+*[ 💡 ] Ejemplo:*
+*${usedPrefix + command}* detect
 `.trim())
       throw false
   }
