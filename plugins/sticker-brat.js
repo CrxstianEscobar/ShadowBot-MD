@@ -1,4 +1,4 @@
-/*import axios from 'axios';
+import axios from 'axios';
 import fs from 'fs';
 import path from 'path';
 import sharp from 'sharp';
@@ -61,7 +61,7 @@ const handler = async (m, {
                 url: outputFilePath
             },
         }, {
-            quoted: fkontak
+            quoted: m
         });
         fs.unlinkSync(outputFilePath);
     } catch (error) {
@@ -76,4 +76,4 @@ handler.command = ['brat'];
 handler.tags = ['sticker'];
 handler.help = ['brat *<texto>*'];
 
-export default handler;*/
+export default handler;
