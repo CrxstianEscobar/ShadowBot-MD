@@ -1,52 +1,29 @@
-import db from '../lib/database.js'
-let handler = m => m
-handler.before = async function (m, {conn, isAdmin, isBotAdmin} ) {
-if (!m.isGroup) return !1
-let chat = global.db.data.chats[m.chat]
-if (isBotAdmin && chat.antiarabes) {
-if (m.sender.startsWith('52' || '52')) {
-global.db.data.users[m.sender].block = true
+const handler = (m) => m;
+handler.before = async function(m, {conn, isAdmin, isBotAdmin, isOwner, isROwner} ) {
+  /* if (m.message) {
+    console.log(m.message)
+  }*/
+  if (!m.isGroup) return !1;
+  const chat = global.db.data.chats[m.chat];
+  const bot = global.db.data.settings[conn.user.jid] || {};
+  if (isBotAdmin && chat.antiArabes && !isAdmin && !isOwner && !isROwner && bot.restrict) {
+    if (m.sender.startsWith('212' || '212')) {
+      m.reply(`*[❗] ᴇɴ ᴇsᴛᴇ ɢʀᴜᴘᴏ ɴᴏ sᴇ ᴘᴇʀᴍɪᴛᴇɴ ɴᴜᴍᴇʀᴏs ᴀʀᴀʙᴇs ᴏ ʀᴀʀᴏs, ᴘᴏʀ ʟᴏ ϙᴜᴇ sᴇ ᴛᴇ sᴀᴄᴀʀᴀ ᴅᴇʟ ɢʀᴜᴘᴏ*`);
+      const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+      if (responseb[0].status === '404') return;
+    }
 
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('90' || '90')) {
-global.db.data.users[m.sender].block = true
+    if (m.sender.startsWith('52' || '52')) {
+      m.reply(`*[❗] ᴇɴ ᴇsᴛᴇ ɢʀᴜᴘᴏ ɴᴏ sᴇ ᴘᴇʀᴍɪᴛᴇɴ ɴᴜᴍᴇʀᴏs ᴀʀᴀʙᴇs ᴏ ʀᴀʀᴏs, ᴘᴏʀ ʟᴏ ϙᴜᴇ sᴇ ᴛᴇ sᴀᴄᴀʀᴀ ᴅᴇʟ ɢʀᴜᴘᴏ*`);
+      const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+      if (responseb[0].status === '404') return;
+    }
 
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('212' || '212')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('92' || '92')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('93' || '93')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('94' || '94')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('7' || '7')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('49' || '49')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('234' || '234')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('91' || '91')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')}
-if (m.sender.startsWith('48' || '48')) {
-global.db.data.users[m.sender].block = true
-
-await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')} 
-}}
-export default handler
+    if (m.sender.startsWith('92' || '92')) {
+      m.reply(`*[❗] ᴇɴ ᴇsᴛᴇ ɢʀᴜᴘᴏ ɴᴏ sᴇ ᴘᴇʀᴍɪᴛᴇɴ ɴᴜᴍᴇʀᴏs ᴀʀᴀʙᴇs ᴏ ʀᴀʀᴏs, ᴘᴏʀ ʟᴏ ϙᴜᴇ sᴇ ᴛᴇ sᴀᴄᴀʀᴀ ᴅᴇʟ ɢʀᴜᴘᴏ*`);
+      const responseb = await conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove');
+      if (responseb[0].status === '404') return;
+    }
+  }
+};
+export default handler;
