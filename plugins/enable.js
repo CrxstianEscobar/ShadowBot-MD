@@ -93,6 +93,21 @@ let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isR
       chat.detect = isEnable
       break
 
+
+case 'autoaceptar': case 'aceptarnuevos':
+if (!m.isGroup) {
+if (!isOwner) {
+global.dfail('group', m, conn)
+throw false
+}
+} else if (!isAdmin) {
+global.dfail('admin', m, conn)
+throw false
+}
+chat.autoAceptar = isEnable
+break
+
+
      case 'antiarabes':
      case 'antinegros':
        if (m.isGroup) {
