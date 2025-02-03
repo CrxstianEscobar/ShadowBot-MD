@@ -3,7 +3,7 @@ let handler = m => m
 handler.before = async function (m, {conn, isAdmin, isBotAdmin} ) {
 if (!m.isGroup) return !1
 let chat = global.db.data.chats[m.chat]
-if (isBotAdmin && chat.antifake) {
+if (isBotAdmin && chat.antiarabes) {
 if (m.sender.startsWith('52' || '52')) {
 global.db.data.users[m.sender].block = true
 
