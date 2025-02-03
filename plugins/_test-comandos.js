@@ -21,7 +21,7 @@ let xd = 'https://files.catbox.moe/trd8vu.jpg';
 let html = `*🎩 HTML EXTRAIDO DE LA WEB:* ${data}*`
 
 m.react('✅');
-conn.sendMessage(m.chat, { image: { url: xd }, caption: html }, { quoted: fkontak });
+conn.sendMessage(m.chat, { image: { url: xd }, caption: html });
 };
 
 handler.command = ['htmlweb', 'hweb'];
