@@ -66,7 +66,7 @@ const handler = async (m, {
         fs.unlinkSync(outputFilePath);
     } catch (error) {
         return conn.sendMessage(m.chat, {
-            text: `⚠️ Ocurrio un erro.`,
+            text: `*[ ⚠️ ] Ocurrio un error*.`,
         }, {
             quoted: m
         });
