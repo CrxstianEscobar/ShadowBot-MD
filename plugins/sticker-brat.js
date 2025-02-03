@@ -34,7 +34,7 @@ const handler = async (m, {
         return conn.sendMessage(m.chat, {
             text: '*[ ☕ ] Por favor ingresa el texto para hacer un sticker.*'
         }, {
-            quoted: m,
+            quoted: m
         }, rcanal);
     }
 
