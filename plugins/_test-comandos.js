@@ -9,7 +9,7 @@ import fetch from 'node-fetch';
 
 let handler = async(m, { conn, args, usedPrefix, command }) => {
 
-if (!args[0]) return m.reply('🍭 Ingresa Un Link De Alguna Web');
+if (!args[0]) return m.reply('*[ ☕ ] Ingresa un link de alguna web que deseas sacar html*');
 m.react('🕑');
 
 let api = `https://delirius-apiofc.vercel.app/tools/htmlextract?url=${args[0]}`;
@@ -18,10 +18,10 @@ let json = await titan.json();
 let data = json.html;
 
 let xd = 'https://files.catbox.moe/trd8vu.jpg';
-let html = `*🎩 HTML EXTRAIDO DE LA WEB:* ${data}*`
+let html = `*[ 👨🏻‍💻 ] HTML EXTRAÍDO DE LA WEB:*\n${data}*`
 
 m.react('✅');
-conn.sendMessage(m.chat, { image: { url: xd }, caption: html }, { quoted: fkontak});
+conn.sendMessage(m.chat, { image: { url: xd }, caption: html }, { quoted: m});
 };
 
 handler.command = ['htmlweb', 'hweb'];
