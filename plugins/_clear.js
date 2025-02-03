@@ -117,5 +117,5 @@ setInterval(cleanShadowSession, 60 * 1000);
 setInterval(displayNoFilesDeleted, 60 * 1000);
 
 cleanSubbotDirectories();
-cleanYukiSession();
+cleanShadowSession();
 displayNoFilesDeleted();
