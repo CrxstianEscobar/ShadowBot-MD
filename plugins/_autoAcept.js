@@ -11,8 +11,8 @@ import { promisify } from "util";  // Para hacer que exec sea promisificado.
 
 const execPromise = promisify(exec);
 const __dirname = path.resolve();
-const ytDlpTempDirectory = path.join(process.cwd(), 'src/tmp/YTDLP');
-const curlTempDirectory = path.join(process.cwd(), 'src/tmp/CURL');
+const ytDlpTempDirectory = path.join(process.cwd(), 'tmp');
+const curlTempDirectory = path.join(process.cwd(), 'tmp');
 const maxDownloads = 5; // Instancias Permitidas
 let activeDownloads = 0;
 const queue = [];
