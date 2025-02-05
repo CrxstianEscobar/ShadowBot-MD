@@ -125,13 +125,25 @@ handler.tags = ['sticker3']
 handler.command = ['s3', 'sticker3']
 handler.register = true
 
-export default handler
+/*export default handler
 
 async function createSticker(img, url, packName, authorName, quality = 'best') {
   let stickerMetadata = {
     type: 'full',
     pack: 'pack',
     author: 'author',
+    quality
+  }
+  return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
+}*/
+
+export default handler
+
+async function createSticker(img, url, packName, authorName, quality) {
+  let stickerMetadata = {
+    type: 'full',
+    pack: stickpack,
+    author: stickauth,
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
