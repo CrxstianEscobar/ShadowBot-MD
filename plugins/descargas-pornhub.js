@@ -13,9 +13,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
       let img = await q.download?.()
       if (!img) throw m.reply(`*[ ℹ️ ] Responde a un Vídeo con el comando:* _${usedPrefix + command}_`)
+
+      let packName = 'Shadow'
+      let authorName = 'by Criss'
+
       let stiker = false
       try {
-        stiker = await sticker(img, false, global.stickpack, global.stickauth)
+        stiker = await sticker(img, false, packName, authorName)
       } catch (e) {
         console.error(e)
       } finally {
