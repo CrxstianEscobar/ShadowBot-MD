@@ -10,7 +10,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || q.mediaType || ''
 
     // Obtenemos el nombre del usuario
-    let userName = m.pushName || 'Usuario'
+    //let userName = m.pushName || 'Usuario'
+let userName = (m.pushName || 'Usuario').replace(/[^a-zA-Z0-9\s]/g, '')
 
     if (/video/g.test(mime)) {
       if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
@@ -39,9 +40,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       let img = await q.download?.()
       let stiker = false
       try {
-        let pack = 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856'
+        /*let pack = 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856'
         let author = `\n\n☕ Bᴏᴛ:\n↳ お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳${userName}` // Aquí también se coloca el nombre
-        stiker = await addExif(img, pack, author)
+*/
+        stiker = await addExif(img, packName, authorName)
       } catch (e) {
         console.error(e)
       } finally {
