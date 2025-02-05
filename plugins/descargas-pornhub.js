@@ -35,12 +35,12 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       /*let [packname, ...author] = args.join` `.split`|`
       author = (author || []).join`|`*/
       let packName = args[0] || 'Shadow'
-      let authorName = args[1] || 'by Criss'
+      let authorName = args[1] || 'by ${userName}'
       let img = await q.download?.()
       let stiker = false
       try {
         let pack = 'hola'
-        let author = 'vrl'
+        let author = 'vv ${userName}'
         stiker = await addExif(img, pack, author)
       } catch (e) {
         console.error(e)
