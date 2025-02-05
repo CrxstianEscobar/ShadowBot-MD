@@ -1,79 +1,72 @@
-import axios from 'axios';
-import fs from 'fs';
-import path from 'path';
-import sharp from 'sharp';
-import {
-    tmpdir
-} from 'os';
-const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+import { sticker } from '../lib/sticker.js'
+import uploadFile from '../lib/uploadFile.js'
+import { addExif } from '../lib/sticker.js'
+import { Sticker } from 'wa-sticker-formatter'
 
-const fetchSticker = async (text, attempt = 1) => {
-    try {
-        const response = await axios.get(`https://kepolu-brat.hf.space/brat`, {
-            params: {
-                q: text
-            },
-            responseType: 'arraybuffer',
-        });
-        return response.data;
-    } catch (error) {
-        if (error.response?.status === 429 && attempt <= 3) {
-            const retryAfter = error.response.headers['retry-after'] || 5;
-            await delay(retryAfter * 1000);
-            return fetchSticker(text, attempt + 1);
+let handler = async (m, { conn, args, usedPrefix, command }) => {
+  try {
+    let q = m.quoted ? m.quoted : m
+    let mime = (q.msg || q).mimetype || q.mediaType || ''
+
+    if (/video/g.test(mime)) {
+      // Jalankan kode untuk video di sini
+      if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
+      let img = await q.download?.()
+      if (!img) throw m.reply(`*[ ℹ️ ] Responde a un Vídeo con el comando:* _${usedPrefix + command}_`)
+      let stiker = false
+      try {
+        stiker = await sticker(img, false, global.stickpack, global.stickauth)
+      } catch (e) {
+        console.error(e)
+      } finally {
+        if (!stiker) {
+          let out = await uploadFile(img)
+          stiker = await sticker(false, out, global.stickpack, global.stickauth)
         }
-        throw error;
+      }
+      conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
+    } else if (/image/g.test(mime)) {
+      // Jalankan kode untuk gambar di sini
+      let [packname, ...author] = args.join` `.split`|`
+      author = (author || []).join`|`
+      let img = await q.download?.()
+      let stiker = false
+      try {
+        let pack = global.stickpack
+        let author = global.stickauth
+        stiker = await addExif(img, pack, author)
+      } catch (e) {
+        console.error(e)
+      } finally {
+        if (!stiker) {
+          stiker = await createSticker(img, false, packname, author)
+        }
+      }
+      m.reply(stiker)
+    } else {
+      conn.reply(m.chat, '*[ ℹ️ ] Responde a una imágen o video la cual será convertido en sticker.*', m, rcanal)
     }
-};
+  } catch (e) {
+    console.error(e)
+    m.reply('Error')
+  }
+}
 
-const handler = async (m, {
-    text,
-    conn
-}) => {
-    if (!text) {
-        return conn.sendMessage(m.chat, {
-            text: '☁️ Te Faltó El Texto!',
-        }, {
-            quoted: m
-        });
-    }
+handler.help = ['sticker3']
+handler.tags = ['sticker3']
 
-    try {
-        const buffer = await fetchSticker(text);
-        const outputFilePath = path.join(tmpdir(), `sticker-${Date.now()}.webp`);
-        await sharp(buffer)
-            .resize(512, 512, {
-                fit: 'contain',
-                background: {
-                    r: 255,
-                    g: 255,
-                    b: 255,
-                    alpha: 0
-                }
-            })
-            .webp({
-                quality: 80
-            })
-            .toFile(outputFilePath);
+handler.command = /^s(tic?ker)?(gif)?$/i
+handler.register = true
 
-        await conn.sendMessage(m.chat, {
-            sticker: {
-                url: outputFilePath
-            },
-        }, {
-            quoted: m
-        });
-        fs.unlinkSync(outputFilePath);
-    } catch (error) {
-        return conn.sendMessage(m.chat, {
-            text: `Hubo un error 😪`,
-        }, {
-            quoted: m
-        });
-    }
-};
-handler.command = ['brat2'];
-handler.tags = ['sticker'];
-handler.help = ['brat2 *<texto>*'];
+export default handler
 
-export default handler;
+async function createSticker(img, url, packName: 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n☕ Bᴏᴛ:
+👹 Iɴғᴏ:\n🍨 Usᴜᴀʀɪᴏ:', authorName: '@heavenly_team.com\nお 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫 ほ\nWa.me/51927238856', quality) {
+  let stickerMetadata = {
+    type: 'full',
+    pack: stickpack,
+    author: stickauth,
+    quality
+  }
+  return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
+}
