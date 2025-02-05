@@ -130,8 +130,8 @@ export default handler
 async function createSticker(img, url, packName, authorName, quality = 'best') {
   let stickerMetadata = {
     type: 'full',
-    pack: pack,
-    author: author,
+    pack: 'pack',
+    author: 'author',
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
