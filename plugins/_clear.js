@@ -63,7 +63,9 @@ async function createSticker(img, url, packName, authorName, quality = 'best') {
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
-}*/
+}
+
+
 
 import { sticker } from '../lib/sticker.js'
 import uploadFile from '../lib/uploadFile.js'
@@ -125,7 +127,7 @@ handler.tags = ['sticker3']
 handler.command = ['s3', 'sticker3']
 handler.register = true
 
-/*export default handler
+export default handler
 
 async function createSticker(img, url, packName, authorName, quality = 'best') {
   let stickerMetadata = {
@@ -136,15 +138,3 @@ async function createSticker(img, url, packName, authorName, quality = 'best') {
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
 }*/
-
-export default handler
-
-async function createSticker(img, url, packName, authorName, quality) {
-  let stickerMetadata = {
-    type: 'full',
-    pack: stickpack,
-    author: stickauth,
-    quality
-  }
-  return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
-}
