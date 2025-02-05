@@ -40,7 +40,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   }
 }
 
-handler.help = ['stiker <img>', 'sticker <url>']
+handler.help = ['stiker3 <img>', 'sticker3 <url>']
 handler.tags = ['sticker']
 handler.command = ['s3', 'sticker3', 'stiker3']
 handler.register = true
