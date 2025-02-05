@@ -25,7 +25,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       } finally {
         if (!stiker) {
           let out = await uploadFile(img)
-          stiker = await sticker(false, out, global.stickpack, global.stickauth)
+          stiker = await sticker(false, out, packName, authorName)
         }
       }
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
