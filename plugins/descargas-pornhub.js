@@ -5,7 +5,6 @@ import { Sticker } from 'wa-sticker-formatter'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   try {
-    let userName = m.pushName || "Arrecho 3000" // Obtiene el nombre del usuario
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
 
@@ -33,8 +32,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       let img = await q.download?.()
       let stiker = false
       try {
-        let pack = 'Shadow'
-        let author = 'Un insano ${userName}'
+        let pack = global.stickpack
+        let author = global.stickauth
         stiker = await addExif(img, pack, author)
       } catch (e) {
         console.error(e)
@@ -53,9 +52,10 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   }
 }
 
-handler.help = ['sticker5']
+handler.help = ['st']
 handler.tags = ['sticker']
-handler.command = ['s5']
+
+handler.command = ['st']
 handler.register = true
 
 export default handler
@@ -63,8 +63,8 @@ export default handler
 async function createSticker(img, url, packName, authorName, quality) {
   let stickerMetadata = {
     type: 'full',
-    pack: 'shadow',
-    author: 'un insano es el ${userName} 😏',
+    pack: stickpack,
+    author: stickauth,
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
