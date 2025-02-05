@@ -61,7 +61,7 @@ const handler = async (m, {
                 url: outputFilePath
             },
         }, {
-            quoted: fkontak
+            quoted: m
         });
         fs.unlinkSync(outputFilePath);
     } catch (error) {
