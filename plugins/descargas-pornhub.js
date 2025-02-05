@@ -48,7 +48,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       }
       m.reply(stiker)
     } else {
-      conn.reply(m.chat, '*[ 😬 ] Responde a una imágen o video la cual será convertido en sticker.*', m, rcanal)
+      conn.reply(m.chat, '*[ 😏 ] Responde a una imágen o video la cual será convertido en sticker.*', m, rcanal)
     }
   } catch (e) {
     console.error(e)
