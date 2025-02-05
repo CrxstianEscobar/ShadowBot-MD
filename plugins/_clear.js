@@ -9,7 +9,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || q.mediaType || ''
 
     // Obtener el nombre del usuario limpiando caracteres no permitidos
-    let userName = (m.pushName || 'Usuario').replace(/[^a-zA-Z0-9\s]/g, '')
+        let userName = m.pushName || 'Usuario'
 
     // Definir valores de pack y autor
     let packName = args[0] || 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856'
