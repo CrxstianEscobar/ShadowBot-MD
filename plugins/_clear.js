@@ -137,7 +137,6 @@ async function createSticker(img, url, packName, authorName, quality = 'best') {
 }*/
 
 
-
 import { sticker } from '../lib/sticker.js'
 import uploadFile from '../lib/uploadFile.js'
 import { addExif } from '../lib/sticker.js'
@@ -156,11 +155,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let stiker = false
     let img = await q.download?.()
 
+    // Verificamos si se pudo descargar la imagen o video
     if (!img) {
       return m.reply(`*[ ℹ️ ] Responde a una imagen o video con el comando:* _${usedPrefix + command}_`)
     }
 
     if (/video/g.test(mime)) {
+      // Manejo para videos (máximo 10 segundos)
       if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
 
       try {
@@ -174,6 +175,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         stiker = await sticker(false, out, pack, author)
       }
     } else if (/image/g.test(mime)) {
+      // Conversión de imágenes a stickers
       try {
         stiker = await addExif(img, pack, author)
       } catch (e) {
@@ -213,5 +215,11 @@ async function createSticker(img, url, packName, authorName, quality = 'best') {
     author: authorName,  // Usa el texto personalizado para "author"
     quality
   }
-  return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
+
+  try {
+    return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
+  } catch (error) {
+    console.error('Error al crear sticker:', error)
+    throw new Error('No se pudo crear el sticker')
+  }
 }
