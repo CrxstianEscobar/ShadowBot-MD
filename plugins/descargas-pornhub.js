@@ -5,6 +5,7 @@ import { Sticker } from 'wa-sticker-formatter'
 
 let handler = async (m, { conn, args, usedPrefix, command }) => {
   try {
+    let userName = m.pushName || "Arrecho 3000" // Obtiene el nombre del usuario
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
 
