@@ -148,78 +148,68 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || q.mediaType || ''
     let userName = m.pushName || "Usuario" // Obtiene el nombre del usuario
 
-    // **Textos personalizados**
+    // **Textos personalizados para packname y author**
     let pack = `ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856`
     let author = `\n\n☕ Bᴏᴛ:\n↳ お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳${userName}`
 
-    let stiker = false
-    let img = await q.download?.()
-
-    // Verificamos si se pudo descargar la imagen o video
-    if (!img) {
-      return m.reply(`*[ ℹ️ ] Responde a una imagen o video con el comando:* _${usedPrefix + command}_`)
-    }
-
+    // Si es un video
     if (/video/g.test(mime)) {
-      // Manejo para videos (máximo 10 segundos)
       if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
-
+      let img = await q.download?.()
+      if (!img) throw m.reply(`*[ ℹ️ ] Responde a un Vídeo con el comando:* _${usedPrefix + command}_`)
+      let stiker = false
       try {
-        stiker = await sticker(img, false, pack, author)
+        stiker = await sticker(img, false, pack, author) // Usa los textos personalizados
       } catch (e) {
         console.error(e)
+      } finally {
+        if (!stiker) {
+          let out = await uploadFile(img)
+          stiker = await sticker(false, out, pack, author)
+        }
       }
-
-      if (!stiker) {
-        let out = await uploadFile(img)
-        stiker = await sticker(false, out, pack, author)
-      }
-    } else if (/image/g.test(mime)) {
-      // Conversión de imágenes a stickers
-      try {
-        stiker = await addExif(img, pack, author)
-      } catch (e) {
-        console.error(e)
-      }
-
-      if (!stiker) {
-        stiker = await createSticker(img, false, pack, author)
-      }
-    } else {
-      return conn.reply(m.chat, '*[ ℹ️ ] Responde a una imagen o video para convertirlo en sticker.*', m)
-    }
-
-    if (stiker) {
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
-    } else {
-      conn.reply(m.chat, '*[ ℹ️ ] No se pudo generar el sticker.*', m)
+    } 
+    
+    // Si es una imagen
+    else if (/image/g.test(mime)) {
+      let img = await q.download?.()
+      let stiker = false
+      try {
+        stiker = await addExif(img, pack, author) // Usa los textos personalizados
+      } catch (e) {
+        console.error(e)
+      } finally {
+        if (!stiker) {
+          stiker = await createSticker(img, false, pack, author) // Usa los textos personalizados
+        }
+      }
+      conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
+    } 
+    
+    else {
+      conn.reply(m.chat, '*[ ℹ️ ] Responde a una imagen o video para convertirlo en sticker.*', m)
     }
   } catch (e) {
     console.error(e)
-    m.reply('Error al generar el sticker.')
+    m.reply('Error al crear el sticker.')
   }
 }
 
-handler.help = ['sticker3']
-handler.tags = ['sticker3']
-handler.command = ['s3', 'sticker3']
+handler.help = ['sticker0']
+handler.tags = ['sticker']
+handler.command = ['s0']
 handler.register = true
 
 export default handler
 
-// **Función corregida para que use los textos personalizados correctamente**
+// Función para crear sticker con los textos personalizados (pack y author)
 async function createSticker(img, url, packName, authorName, quality = 'best') {
   let stickerMetadata = {
     type: 'full',
-    pack: packName,  // Usa el texto personalizado para "pack"
-    author: authorName,  // Usa el texto personalizado para "author"
+    pack: packName, // Usa el pack personalizado
+    author: authorName, // Usa el autor personalizado
     quality
   }
-
-  try {
-    return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
-  } catch (error) {
-    console.error('Error al crear sticker:', error)
-    throw new Error('No se pudo crear el sticker')
-  }
+  return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
 }
