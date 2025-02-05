@@ -17,7 +17,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       if (!img) throw m.reply(`*[ ℹ️ ] Responde a un Vídeo con el comando:* _${usedPrefix + command}_`)
 
       let packName = 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856'
-      let authorName = `by: ${userName}` // Aquí usamos el nombre del usuario
+      let authorName = `\n\n☕ Bᴏᴛ:\n↳ お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳${userName}` // Aquí usamos el nombre del usuario
 
       let stiker = false
       try {
@@ -33,13 +33,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
     } else if (/image/g.test(mime)) {
       let packName = args[0] || 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856'
-      let authorName = args[1] || `by: ${userName}` // Aquí también usamos el nombre del usuario
+      let authorName = args[1] || `\n\n☕ Bᴏᴛ:\n↳ お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳${userName}` // Aquí también usamos el nombre del usuario
 
       let img = await q.download?.()
       let stiker = false
       try {
         let pack = 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856'
-        let author = `Used by: ${userName}` // Aquí también se coloca el nombre
+        let author = `\n\n☕ Bᴏᴛ:\n↳ お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳${userName}` // Aquí también se coloca el nombre
         stiker = await addExif(img, pack, author)
       } catch (e) {
         console.error(e)
