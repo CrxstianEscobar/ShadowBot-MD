@@ -45,7 +45,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
         console.error(e)
       } finally {
         if (!stiker) {
-          stiker = await createSticker(img, false, packname, author)
+          stiker = await createSticker(img, false, packName, authorName)
         }
       }
       m.reply(stiker)
