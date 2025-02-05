@@ -32,8 +32,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       let img = await q.download?.()
       let stiker = false
       try {
-        let pack = 'hola',
-        let author = 'vrl',
+        let pack = 'hola'
+        let author = 'vrl'
         stiker = await addExif(img, pack, author)
       } catch (e) {
         console.error(e)
