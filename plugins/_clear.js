@@ -1,3 +1,4 @@
+
 import { sticker } from '../lib/sticker.js'
 import uploadFile from '../lib/uploadFile.js'
 import { addExif } from '../lib/sticker.js'
@@ -7,7 +8,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   try {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
-
     if (/video/g.test(mime)) {
       // Jalankan kode untuk video di sini
       if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
@@ -27,20 +27,14 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
     } else if (/image/g.test(mime)) {
       // Jalankan kode untuk gambar di sini
-      let [packname, ...author] = args.join` `.split`|`
-      author = (author || []).join`|`
+      let packName = 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n☕ Bᴏᴛ:\n👹 Iɴғᴏ:\n🍨 Usᴜᴀʀɪᴏ:'
+      let authorName = '@heavenly_team.com お\n𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫 ほ\nWa.me/51927238856\n@'
       let img = await q.download?.()
       let stiker = false
       try {
-        let pack = global.stickpack
-        let author = global.stickauth
-        stiker = await addExif(img, pack, author)
+        stiker = await createSticker(img, false, packName, authorName)
       } catch (e) {
         console.error(e)
-      } finally {
-        if (!stiker) {
-          stiker = await createSticker(img, false, packname, author)
-        }
       }
       m.reply(stiker)
     } else {
@@ -54,7 +48,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 
 handler.help = ['sticker3']
 handler.tags = ['sticker3']
-
 handler.command = ['s3', 'sticker3']
 handler.register = true
 
@@ -63,9 +56,10 @@ export default handler
 async function createSticker(img, url, packName, authorName, quality) {
   let stickerMetadata = {
     type: 'full',
-    pack: stickpack,
-    author: stickauth,
+    pack: packName,
+    author: authorName,
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
 }
+```
