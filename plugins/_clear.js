@@ -60,8 +60,7 @@ handler.register = true
 
 export default handler
 
-async function createSticker(img, url, packName: 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n☕ Bᴏᴛ:
-👹 Iɴғᴏ:\n🍨 Usᴜᴀʀɪᴏ:', authorName: '@heavenly_team.com\nお 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫 ほ\nWa.me/51927238856', quality) {
+async function createSticker(img, url, packName: 'ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n☕ Bᴏᴛ:\n👹 Iɴғᴏ:\n🍨 Usᴜᴀʀɪᴏ:', authorName: '@heavenly_team.com\nお 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫 ほ\nWa.me/51927238856', quality) {
   let stickerMetadata = {
     type: 'full',
     pack: stickpack,
