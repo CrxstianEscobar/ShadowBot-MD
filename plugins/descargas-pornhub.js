@@ -33,8 +33,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       let img = await q.download?.()
       let stiker = false
       try {
-        let pack = global.stickpack
-        let author = global.stickauth
+        let pack = 'Shadow'
+        let author = 'Un insano'
         stiker = await addExif(img, pack, author)
       } catch (e) {
         console.error(e)
