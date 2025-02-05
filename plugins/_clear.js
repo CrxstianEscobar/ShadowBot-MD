@@ -149,13 +149,13 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || q.mediaType || ''
     let userName = m.pushName || "Usuario" // Obtiene el nombre del usuario
 
-    // Pack y autor usados en cualquier conversión
+    // **Textos personalizados**
     let pack = `ꨴ 🤍꣺ꤪ꤬꤯ꨬꨶ ̷̸̲̼̈́ Hᴇʌᴠ፝֟ᴇлʟʏ Ƭᴇᴀᴍ 彡\n↳@heavenly_team\n\n👹 Iɴғᴏ:\n↳Wa.me/51927238856`
     let author = `\n\n☕ Bᴏᴛ:\n↳ お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫\n\n🍨 Usᴜᴀʀɪᴏ:\n↳${userName}`
 
     let stiker = false
     let img = await q.download?.()
-    
+
     if (!img) {
       return m.reply(`*[ ℹ️ ] Responde a una imagen o video con el comando:* _${usedPrefix + command}_`)
     }
@@ -205,12 +205,12 @@ handler.register = true
 
 export default handler
 
-// Función corregida: Ahora usa packName y authorName correctamente
+// **Función corregida para que use los textos personalizados correctamente**
 async function createSticker(img, url, packName, authorName, quality = 'best') {
   let stickerMetadata = {
     type: 'full',
-    pack: packName,  // Ahora usa el texto personalizado correctamente
-    author: authorName,  // Ahora usa el texto personalizado correctamente
+    pack: packName,  // Usa el texto personalizado para "pack"
+    author: authorName,  // Usa el texto personalizado para "author"
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
