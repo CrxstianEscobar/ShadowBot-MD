@@ -64,7 +64,7 @@ async function createSticker(img, url, packName, authorName, quality) {
   let stickerMetadata = {
     type: 'full',
     pack: 'shadow',
-    author: 'un insano',
+    author: 'un insano es el ${userName} 😏',
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
