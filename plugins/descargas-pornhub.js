@@ -32,8 +32,6 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       conn.sendFile(m.chat, stiker, 'sticker.webp', '', m, null)
     } else if (/image/g.test(mime)) {
       // Jalankan kode untuk gambar di sini
-      /*let [packname, ...author] = args.join` `.split`|`
-      author = (author || []).join`|`*/
       let packName = args[0] || 'Shadow'
       let authorName = args[1] || 'by ${userName}'
       let img = await q.download?.()
