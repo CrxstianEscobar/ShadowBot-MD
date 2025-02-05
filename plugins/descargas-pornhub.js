@@ -7,6 +7,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
   try {
     let q = m.quoted ? m.quoted : m
     let mime = (q.msg || q).mimetype || q.mediaType || ''
+    let userName = m.pushName || "Usuario" // Obtiene el nombre del usuario
 
     if (/video/g.test(mime)) {
       // Jalankan kode untuk video di sini
@@ -15,7 +16,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       if (!img) throw m.reply(`*[ ℹ️ ] Responde a un Vídeo con el comando:* _${usedPrefix + command}_`)
 
       let packName = 'Shadow'
-      let authorName = 'by Criss'
+      let authorName = 'by ${userName}'
 
       let stiker = false
       try {
