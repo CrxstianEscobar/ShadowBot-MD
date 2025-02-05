@@ -10,8 +10,8 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
     let mime = (q.msg || q).mimetype || q.mediaType || ''
 
     // Obtenemos el nombre del usuario
-    //let userName = m.pushName || 'Usuario'
-let userName = (m.pushName || 'Usuario').replace(/[^a-zA-Z0-9\s]/g, '')
+    let userName = m.pushName || 'Usuario'
+//let userName = (m.pushName || 'Usuario').replace(/[^a-zA-Z0-9\s]/g, '')
 
     if (/video/g.test(mime)) {
       if ((q.msg || q).seconds > 10) return m.reply('*[ ℹ️ ] Máximo 10 segundos.*')
@@ -61,9 +61,9 @@ let userName = (m.pushName || 'Usuario').replace(/[^a-zA-Z0-9\s]/g, '')
   }
 }
 
-handler.help = ['st']
+handler.help = ['stv']
 handler.tags = ['sticker']
-handler.command = ['st', 's2', 'sticker2']
+handler.command = ['stv', 's2', 'sticker2']
 handler.register = true
 
 export default handler
