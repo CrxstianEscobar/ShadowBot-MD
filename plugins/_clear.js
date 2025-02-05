@@ -55,7 +55,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
 handler.help = ['sticker3']
 handler.tags = ['sticker3']
 
-handler.command = /^s(tic?ker)?(gif)?$/i
+handler.command = /^(s3)$/i
 handler.register = true
 
 export default handler
