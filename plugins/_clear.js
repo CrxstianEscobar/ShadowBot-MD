@@ -207,11 +207,11 @@ handler.register = true
 
 export default handler
 
-async function createSticker(img, url, packName, authorName, quality = 'best') {
+async function createSticker(img, url, pack, author, quality = 'best') {
   let stickerMetadata = {
     type: 'full',
-    pack: packName,
-    author: authorName,
+    pack: 'hola',
+    author: 'ha',
     quality
   }
   return (new Sticker(img ? img : url, stickerMetadata)).toBuffer()
