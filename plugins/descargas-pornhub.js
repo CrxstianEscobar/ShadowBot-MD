@@ -34,7 +34,7 @@ let handler = async (m, { conn, args, usedPrefix, command }) => {
       let stiker = false
       try {
         let pack = 'Shadow'
-        let author = 'Un insano'
+        let author = 'Un insano ${userName}'
         stiker = await addExif(img, pack, author)
       } catch (e) {
         console.error(e)
