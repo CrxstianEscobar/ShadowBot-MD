@@ -8,7 +8,7 @@ await conn.reply(m.chat, `ya fué desbaneado en este chat*`, m)
 handler.help = ['unbanchat'];
 handler.tags = ['owner'];
 handler.command = ['unbanchat','desbanearchat','desbanchat']
-handler.mods = true
+//handler.mods = true
 handler.botAdmin = false
 handler.group = false
 
