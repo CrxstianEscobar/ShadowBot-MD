@@ -24,7 +24,7 @@ if (!text)  return conn.reply(m.chat, `*Ingresa un enlace de facebook*`, m, rcan
 try {
 let data = await fbdl(text)
 let { sd, hd } = data 
-await conn.sendFile(m.chat, sd || hd, 'HasumiBotFreeCodes.mp4', null, m)
+await conn.sendFile(m.chat, sd || hd, 'Shadow.mp4', null, m)
 } catch (error) {
 console.error(error)
 }}
