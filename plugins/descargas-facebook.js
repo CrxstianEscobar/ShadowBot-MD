@@ -19,7 +19,7 @@ import cheerio from 'cheerio'
 import fetch from 'node-fetch'
 
 let HS = async (m, { conn, text }) => {
-if (!text)  return conn.reply(m.chat, `❀ ingresa un enlace de facebook`, m)
+if (!text)  return conn.reply(m.chat, `*Ingresa un enlace de facebook*`, m, rcanal)
 
 try {
 let data = await fbdl(text)
@@ -29,7 +29,7 @@ await conn.sendFile(m.chat, sd || hd, 'HasumiBotFreeCodes.mp4', null, m)
 console.error(error)
 }}
 
-HS.command = ['facebook', 'fbdl', 'fb']
+HS.command = ['facebook2', 'fbdl2', 'fb2']
 
 export default HS
 
