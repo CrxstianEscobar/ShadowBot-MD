@@ -8,5 +8,6 @@ await conn.reply(m.chat, `Has *activado* a *Shadow*!`, m)
 handler.help = ['unbanchat'];
 handler.tags = ['grupo'];
 handler.command = ['unbanchat', 'vx']
+handler.isROwner = true
 
 export default handler
