@@ -370,20 +370,20 @@ ${user.bannedReason}` : '*📄 Motivo:* Sin Especificar'}\n\n🍧 Si crees que f
 user.antispam++        
 return
 }
-
+/*
 //Antispam 2                
 if (user.antispam2 && isROwner) return
 let time = global.db.data.users[m.sender].spam + 3000
 if (new Date - global.db.data.users[m.sender].spam < 3000) return console.log(`⪩ S P A M ⪨`) 
 global.db.data.users[m.sender].spam = new Date * 1
-}
+}*/
 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
 let chat = global.db.data.chats[m.chat]
 let user = global.db.data.users[m.sender]
 let setting = global.db.data.settings[this.user.jid]
-if (name != 'Grupo-unbanchat.js' && chat?.isBanned)
+if (name != 'grupo-unbanchat.js' && chat?.isBanned)
 return 
-if (name != 'Owner-unbanuser.js' && user?.banned)
+if (name != 'owner-unbanuser.js' && user?.banned)
 return
 }
 let hl = _prefix 
