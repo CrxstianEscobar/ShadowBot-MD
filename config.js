@@ -31,8 +31,8 @@ global.botname = '𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫'
 global.textbot = `𝑩𝒚 𝑪𝒓𝒊𝒔𝒔 𝑬𝒔𝒄𝒐𝒃𝒂𝒓`
 global.listo = '*Aqui tiene ฅ^•ﻌ•^ฅ*'
 global.namechannel = 'お 𝑺𝒉𝒂𝒅𝒐𝒘 𝑩𝒐𝒕 - 𝑴𝑫 ☕ᭃ'
-global.catalogo = fs.readFileSync('./src/img/catalogo.png')
-global.miniurl = fs.readFileSync('./src/img/miniurl.jpg')
+global.catalogo = fs.readFileSync('./storage/img/catalogo.png')
+global.miniurl = fs.readFileSync('./storage/img/miniurl.jpg')
 
 //*─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─⭒─ׄ─ׅ─ׄ─*
 
