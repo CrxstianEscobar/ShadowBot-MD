@@ -370,13 +370,13 @@ ${user.bannedReason}` : '*📄 Motivo:* Sin Especificar'}\n\n🍧 Si crees que f
 user.antispam++        
 return
 }
-/*
+
 //Antispam 2                
 if (user.antispam2 && isROwner) return
 let time = global.db.data.users[m.sender].spam + 3000
 if (new Date - global.db.data.users[m.sender].spam < 3000) return console.log(`⪩ S P A M ⪨`) 
 global.db.data.users[m.sender].spam = new Date * 1
-}*/
+}
 if (m.chat in global.db.data.chats || m.sender in global.db.data.users) {
 let chat = global.db.data.chats[m.chat]
 let user = global.db.data.users[m.sender]
