@@ -40,7 +40,7 @@
         "@vitalets/google-translate-api": "^9.2.0",
         "@sefinek/google-tts-api": "*",
         "@shineiichijo/marika": "^2.0.6",
-        "@whiskeysockets/baileys": "github:ds6/bails",
+        "@whiskeysockets/baileys": "6.7.5",
         "@xct007/frieren-scraper": "^0.0.2",
         "google-libphonenumber": "latest",
         "acrcloud": "^1.4.0",
