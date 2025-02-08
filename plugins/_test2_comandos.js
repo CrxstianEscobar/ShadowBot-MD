@@ -1,55 +1,52 @@
-import { sticker } from '../lib/sticker.js'
-//import uploadFile from '../lib/uploadFile.js'
-//import uploadImage from '../lib/uploadImage.js'
-//import { webp2png } from '../lib/webp2mp4.js'
+/* 
+- Download Playstore By Jose XrL
+- Power By Team Code Titans
+- https://whatsapp.com/channel/0029ValMlRS6buMFL9d0iQ0S 
+*/
+// *🍁 《 Playstore  - Download 》*
+import gplay from 'google-play-scraper';
+import fetch from 'node-fetch';
 
-let handler = async (m, { conn, args, usedPrefix, command }) => {
+let handler = async (m, { conn, args, usedPrefix: prefix, command }) => {
+    m.react('🤍');
 
-let stiker = false
-try {
-let q = m.quoted ? m.quoted : m
-let mime = (q.msg || q).mimetype || q.mediaType || ''
-if (/webp|image|video/g.test(mime)) {
-if (/video/g.test(mime)) if ((q.msg || q).seconds > 10) return m.reply(`🎩 *¡El video no puede durar mas de 10 segundos!*`)
-let img = await q.download?.()
+    if (!args[0]) {
+        console.log('Argumento vacío, enviando mensaje de ayuda');
+        return conn.reply(m.chat, `*🚩 Ingresa el enlace de la aplicación que deseas descargar de la Play Store.*\n\n*Ejemplo:*\n\`${prefix + command} https://play.google.com/store/apps/details?id=com.whatsapp\``, m, rcanal);
+    }
 
-if (!img) return conn.reply(m.chat, `*_Y el video ?, intenta enviar primero imagen/video/gif y luego responde con el comando._*`, m, rcanal)
+    const url = args[0];
 
-let out
-try {
-stiker = await sticker(img, false, global.packsticker, global.authsticker)
-} catch (e) {
-console.error(e)
-} finally {
-if (!stiker) {
-if (/webp/g.test(mime)) out = await webp2png(img)
-else if (/image/g.test(mime)) out = await uploadImage(img)
-else if (/video/g.test(mime)) out = await uploadFile(img)
-if (typeof out !== 'string') out = await uploadImage(img)
-stiker = await sticker(false, out, global.packsticker, global.authsticker)
-}}
-} else if (args[0]) {
-if (isUrl(args[0])) stiker = await sticker(false, args[0], global.packsticker, global.authsticker)
+    let packageName;
+    try {
+        packageName = new URL(url).searchParams.get("id");
+        if (!packageName) throw new Error();
+    } catch {
+        return conn.reply(m.chat, `*❌ La URL proporcionada no es válida o no contiene un ID de aplicación.*`, m, rcanal);
+    }
 
-else return m.reply(`💫 El url es incorrecto`)
+    console.log(`ID de paquete: ${packageName}`);
 
+    let info;
+    try {
+        info = await gplay.app({ appId: packageName });
+    } catch (error) {
+        console.error(error);
+        return conn.reply(m.chat, `*❌ No se pudo encontrar la aplicación. Asegúrate de que el enlace sea correcto.*`, m, rcanal);
+    }
+
+    const h = info.title;
+    console.log(`Título de la aplicación: ${h}\nID de la aplicación: ${info.appId}`);
+
+    let link = `https://d.apkpure.com/b/APK/${info.appId}?version=latest`;
+
+    conn.sendFile(m.chat, link, `${h}.apk`, ``, m, false, { mimetype: 'application/vnd.android.package-archive', asDocument: true });
+    m.react('✅️');
+
+    conn.reply(m.chat, `*¡Descarga completada para "${h}"!*`, m, rcanal);
 }
-} catch (e) {
-console.error(e)
-if (!stiker) stiker = e
-} finally {
-if (stiker) conn.sendFile(m.chat, stiker, 'sticker.webp', '',m, true, { contextInfo: { 'forwardingScore': 200, 'isForwarded': false, externalAdReply:{ showAdAttribution: false, title: '🎩𝐂𝐫𝐨𝐰𝐁𝐨𝐭 - 𝐒𝐭𝐢𝐜𝐤𝐞𝐫✨', body: `CrowBot - ST`, mediaType: 2, sourceUrl: grupo, thumbnail: icons}}}, { quoted: m })
 
-else return conn.reply(m.chat, `*_La conversión ha fallado, intenta enviar primero imagen/video/gif y luego responde con el comando._*\n\n> xd`, m, rcanal)
-
-
-}}
-handler.help = ['stiker <img>', 'sticker <url>']
-handler.tags = ['sticker2']
-handler.command = ['s2', 'sticker2', 'stiker2']
-//handler.estrellas = 3;
-
-export default handler
-
-const isUrl = (text) => {
-return text.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)(jpe?g|gif|png)/, 'gi'))} 
+handler.help = ['playstor *<url>*']; 
+handler.tags = ['dl'];
+handler.command = /^(playstor)$/i;
+export default handler;
