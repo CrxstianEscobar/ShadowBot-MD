@@ -7,26 +7,21 @@ import cfonts from 'cfonts';
 import { createInterface } from 'readline';
 import yargs from 'yargs';
 import chalk from 'chalk';
-console.log('\n✰ Iniciando Sistema...');
+console.log(`\nQuieres ver mi pene? 😍`);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(__dirname);
 const { name, description, author, version } = require(join(__dirname, './package.json'));
 const { say } = cfonts;
 const rl = createInterface(process.stdin, process.stdout);
-say('Shadow\nBot', {
-font: 'block',
-align: 'center',
-colors: ['white']
-});
-say(`Multi Device`, {
+say('PAPACITO\nbot\nShadow', {
 font: 'chrome',
 align: 'center',
-colors: ['red']
+gradient: ['red', 'magenta']
 });
-say(`Developed by Cristian`, {
+say(`Developed By Dev.Criss 🇦🇱`, {
 font: 'console',
 align: 'center',
-colors: ['magenta']
+gradient: ['red', 'magenta']
 });
 var isRunning = false;
 function start(file) {
@@ -36,7 +31,7 @@ let args = [join(__dirname, file), ...process.argv.slice(2)];
 say([process.argv[0], ...args].join(' '), {
 font: 'console',
 align: 'center',
-colors: ['green']
+gradient: ['red', 'magenta']
 });
 setupMaster({
 exec: args[0],
@@ -57,7 +52,7 @@ break;
 });
 p.on('exit', (_, code) => {
 isRunning = false;
-console.error('🔴 Error:\n', code);
+console.error('❌ Error:\n', code);
 process.exit();
 if (code === 0) return;
 watchFile(args[0], () => {
